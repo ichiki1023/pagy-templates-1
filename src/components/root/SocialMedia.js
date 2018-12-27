@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import SectionTitle from 'src/components/common/SectionTitle'
 import SNSServices, {
   BackgroundIcon
-} from 'src/components/shared/SNSServices'
+} from 'src/components/common/SNSServices/SNSServices'
 
 const Section = styled.div`
   margin: 80px 0;

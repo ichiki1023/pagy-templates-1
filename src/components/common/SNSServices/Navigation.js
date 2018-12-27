@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import SNSServices, {
   BackgroundIcon
-} from 'src/components/shared/SNSServices'
+} from 'src/components/common/SNSServices/SNSServices'
 
 const Contents = styled.div`
   position: fixed;
