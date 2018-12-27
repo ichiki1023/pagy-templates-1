@@ -119,11 +119,11 @@ const StyledArrowForwardIcon = styled(ArrowForwardIcon)`
 export default class Coordinates extends React.Component {
   render () {
     const images = [
-      '/static/images/templates/fashions/cool/shutterstock_730631257.jpg',
-      '/static/images/templates/fashions/cool/shutterstock_342317609.jpg',
-      '/static/images/templates/fashions/cool/shutterstock_793633075.jpg',
-      '/static/images/templates/fashions/cool/shutterstock_713504557.jpg',
-      '/static/images/templates/fashions/cool/shutterstock_1182188362.jpg'
+      `${process.env.STATIC_HOST}/images/shutterstock_730631257.jpg`,
+      `${process.env.STATIC_HOST}/images/shutterstock_342317609.jpg`,
+      `${process.env.STATIC_HOST}/images/shutterstock_793633075.jpg`,
+      `${process.env.STATIC_HOST}/images/shutterstock_713504557.jpg`,
+      `${process.env.STATIC_HOST}/images/shutterstock_1182188362.jpg`
     ]
 
     return (
@@ -154,7 +154,7 @@ export default class Coordinates extends React.Component {
               titleText={'おすすめコーディネート'}
             />
           </div>
-          <Link href={'/templates/fashions/cool/coordinates'}>
+          <Link href={'/coordinates'}>
             <StyledLink>
               <p>さらに詳しく</p>
               <StyledArrowForwardIcon />

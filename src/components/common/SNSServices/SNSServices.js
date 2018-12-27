@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
-import Icon from '../../shared/Icon'
+import Icon from '../Icon'
 
 /**
  * 拡張用のstyled-component. 親のComponentで${BackgroundIcon}する

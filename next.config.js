@@ -1,8 +1,24 @@
+require('dotenv').config()
+
+const path = require('path')
 const withCSS = require('@zeit/next-css')
+const Dotenv = require('dotenv-webpack')
 
 module.exports = withCSS({
   distDir: '../.next',
   webpack: function (config) {
+    config.plugins = config.plugins || []
+
+    config.plugins = [
+      ...config.plugins,
+
+      // Read the .env file
+      new Dotenv({
+        path: path.join(__dirname, '.env'),
+        systemvars: true
+      })
+    ]
+
     config.module.rules.push({
       test: /\.(eot|woff|woff2|ttf|svg|png|jpg|gif)$/,
       use: {
