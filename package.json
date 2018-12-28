@@ -4,9 +4,14 @@
   "description": "cool template",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node server.js",
+    "func": "functions start",
+    "dev": "next src/app",
     "build": "next build src",
-    "start": "next start src"
+    "serve": "firebase serve --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
   },
   "dependencies": {
     "@material-ui/core": "^3.6.1",
@@ -14,6 +19,7 @@
     "@zeit/next-css": "^1.0.1",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
+    "firebase-functions": "^2.1.0",
     "google-map-react": "^1.1.2",
     "mobile-detect": "^1.4.3",
     "next": "^7.0.2",

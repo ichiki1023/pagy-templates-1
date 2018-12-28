@@ -2,7 +2,7 @@ const express = require('express')
 const next = require('next')
 const bodyParser = require('body-parser')
 
-const dev = true
+const dev = process.env.NODE_ENV !== 'production'
 const PORT = process.env.PORT || 5000
 const app = next({ dir: './src', dev })
 const handle = app.getRequestHandler()
@@ -23,6 +23,13 @@ app.prepare().then(() => {
   })
 
   server.get('*', (req, res) => {
+    if (process.env.PROXY_PATH) {
+      req.url = req.url.replace(`${process.env.PROXY_PATH}`, '')
+    }
+    // ルートか判定
+    if (!req.url) {
+      req.url = '/'
+    }
     return handle(req, res)
   })
 

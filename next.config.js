@@ -5,7 +5,8 @@ const withCSS = require('@zeit/next-css')
 const Dotenv = require('dotenv-webpack')
 
 module.exports = withCSS({
-  distDir: '../.next',
+  distDir: '../../dist/functions/next',
+  assetPrefix: process.env.PROXY_PATH ? `${process.env.PROXY_PATH}` : '',
   webpack: function (config) {
     config.plugins = config.plugins || []
 
@@ -18,7 +19,6 @@ module.exports = withCSS({
         systemvars: true
       })
     ]
-
     config.module.rules.push({
       test: /\.(eot|woff|woff2|ttf|svg|png|jpg|gif)$/,
       use: {
