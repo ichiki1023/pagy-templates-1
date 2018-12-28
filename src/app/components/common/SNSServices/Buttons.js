@@ -1,8 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import SNSServices, {
-  BackgroundIcon
-} from './SNSServices'
+import SNSServices, { BackgroundIcon } from './SNSServices'
 
 const StyledSNSServices = styled(SNSServices)`
   color: #ffffff;

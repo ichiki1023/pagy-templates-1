@@ -62,7 +62,9 @@ const Home = props => {
       name={'home'}
       store_front_image_url={
         site.store_front_image_url ||
-        '${process.env.STATIC_HOST}/images/templates/fashions/cool/shutterstock_46325692.jpg'
+        `${
+          process.env.STATIC_HOST
+        }/images/templates/fashions/cool/shutterstock_46325692.jpg`
       }
     >
       <Page>

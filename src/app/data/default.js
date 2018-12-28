@@ -32,10 +32,12 @@ export default {
       sun: true,
       holiday: true
     },
-    store_front_image_url:
-      `${process.env.STATIC_HOST}/images/shutterstock_46325692.jpg`,
-    interior_image_url:
-      `${process.env.STATIC_HOST}/images/shutterstock_773749615.jpg`,
+    store_front_image_url: `${
+      process.env.STATIC_HOST
+    }/images/shutterstock_46325692.jpg`,
+    interior_image_url: `${
+      process.env.STATIC_HOST
+    }/images/shutterstock_773749615.jpg`,
     twitter: 'ichiki_sato',
     instagram: 'ichiki1023',
     facebook: 'sato.ichiki',
@@ -68,8 +70,9 @@ export default {
         title: 'UR CLUB Members Limited Campaign　11月30日(金)正午～',
         description:
           'いつもUR ONLINE STOREをご愛顧いただき誠にありがとうございます。\nこの度アーバンリサーチ公式オンラインストア「UR ONLINE STORE」にて、\n冬のセールに先駆けてUR CLUB会員様限定の先行セールを開催いたします。\nぜひこの機会にお買い求めください。',
-        main_image_url:
-          `${process.env.STATIC_HOST}/images/shutterstock_1022031901_cut.jpg`,
+        main_image_url: `${
+          process.env.STATIC_HOST
+        }/images/shutterstock_1022031901_cut.jpg`,
         sub_image_url: '',
         created_at: '2019/02/04',
         update_at: ''
@@ -79,8 +82,9 @@ export default {
         title: 'atone翌月後払い(コンビニ)導入のお知らせ',
         description:
           '新たに「atone」で商品をご購入いただけるようになりました。\n\n「atone」とは、クレジットカードはいらない、スマホだけで翌月払いができる、新しい後払い決済サービスです。\n今月のご利用分を翌月20日までに、コンビニでまとめてお支払いいただけます。ポイントが貯まる・使える、お得な支払い方法です。',
-        main_image_url:
-          `${process.env.STATIC_HOST}/images/shutterstock_324688757_cut.jpg`,
+        main_image_url: `${
+          process.env.STATIC_HOST
+        }/images/shutterstock_324688757_cut.jpg`,
         sub_image_url: '',
         created_at: '2019/01/26',
         update_at: ''
@@ -90,8 +94,9 @@ export default {
         title: '【d払い】魔法のスーパーチャンス!dポイント最大20倍のチャンス',
         description:
           'キャンペーン期間中にエントリーをして、d払いをご利用してお買い物していただくと通常の5倍dポイントを進呈致します。\nさらに、買い回り企画に応じて最大+15倍となります。\n※エントリーが必須となるキャンペーンとなります。\n\nキャンペーン期間:2018年11月23日(金) ～2019年1月6日(日) ',
-        main_image_url:
-          `${process.env.STATIC_HOST}/images/shutterstock_1022031901_cut.jpg`,
+        main_image_url: `${
+          process.env.STATIC_HOST
+        }/images/shutterstock_1022031901_cut.jpg`,
         sub_image_url: '',
         created_at: '2019/01/18',
         update_at: ''
@@ -131,8 +136,9 @@ export default {
     items: [
       {
         title: 'New Item1',
-        main_image_url:
-          `${process.env.STATIC_HOST}/images/shutterstock_207690136_1.jpg`,
+        main_image_url: `${
+          process.env.STATIC_HOST
+        }/images/shutterstock_207690136_1.jpg`,
         description:
           'セレクトしたアイテムの紹介やおすすめのポイントなどを記載してください',
         sub_image_urls: [
@@ -146,8 +152,9 @@ export default {
       },
       {
         title: 'New Item2',
-        main_image_url:
-          `${process.env.STATIC_HOST}/images/shutterstock_207690136_2.jpg`,
+        main_image_url: `${
+          process.env.STATIC_HOST
+        }/images/shutterstock_207690136_2.jpg`,
         description:
           'セレクトしたアイテムの紹介やおすすめのポイントなどを記載してください',
         sub_image_urls: [
@@ -161,8 +168,9 @@ export default {
       },
       {
         title: 'New Item3',
-        main_image_url:
-          `${process.env.STATIC_HOST}/images/shutterstock_207690136_3.jpg`,
+        main_image_url: `${
+          process.env.STATIC_HOST
+        }/images/shutterstock_207690136_3.jpg`,
         description:
           'セレクトしたアイテムの紹介やおすすめのポイントなどを記載してください',
         sub_image_urls: [
@@ -176,8 +184,9 @@ export default {
       },
       {
         title: 'New Item4',
-        main_image_url:
-          `${process.env.STATIC_HOST}/images/shutterstock_207690136_4.jpg`,
+        main_image_url: `${
+          process.env.STATIC_HOST
+        }/images/shutterstock_207690136_4.jpg`,
         description:
           'セレクトしたアイテムの紹介やおすすめのポイントなどを記載してください',
         sub_image_urls: [
@@ -191,8 +200,9 @@ export default {
       },
       {
         title: 'New Item5',
-        main_image_url:
-          `${process.env.STATIC_HOST}/images/shutterstock_207690136_2.jpg`,
+        main_image_url: `${
+          process.env.STATIC_HOST
+        }/images/shutterstock_207690136_2.jpg`,
         description:
           'セレクトしたアイテムの紹介やおすすめのポイントなどを記載してください',
         sub_image_urls: [
@@ -207,8 +217,9 @@ export default {
     ],
     coordinates: [
       {
-        main_image_url:
-          `${process.env.STATIC_HOST}/images/shutterstock_1022031901_cut.jpg`,
+        main_image_url: `${
+          process.env.STATIC_HOST
+        }/images/shutterstock_1022031901_cut.jpg`,
         description:
           'コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。',
         sub_image_urls: [
@@ -219,8 +230,9 @@ export default {
         item: ['1', '2']
       },
       {
-        main_image_url:
-          `${process.env.STATIC_HOST}/images/shutterstock_324688757_cut.jpg`,
+        main_image_url: `${
+          process.env.STATIC_HOST
+        }/images/shutterstock_324688757_cut.jpg`,
         description:
           'コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。',
         sub_image_urls: [
@@ -231,8 +243,9 @@ export default {
         item: ['1', '2']
       },
       {
-        main_image_url:
-          `${process.env.STATIC_HOST}/images/shutterstock_1022031901_cut.jpg`,
+        main_image_url: `${
+          process.env.STATIC_HOST
+        }/images/shutterstock_1022031901_cut.jpg`,
         description:
           'コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。',
         sub_image_urls: [
@@ -243,8 +256,9 @@ export default {
         item: ['1', '2']
       },
       {
-        main_image_url:
-          `${process.env.STATIC_HOST}/images/shutterstock_324688757_cut.jpg`,
+        main_image_url: `${
+          process.env.STATIC_HOST
+        }/images/shutterstock_324688757_cut.jpg`,
         description:
           'コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。',
         sub_image_urls: [

@@ -1,6 +1,5 @@
 import Document, { Head, Main, NextScript } from 'next/document'
-import { ServerStyleSheet } from 'styled-components'
-import { createGlobalStyle } from 'styled-components'
+import { ServerStyleSheet, createGlobalStyle } from 'styled-components'
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -23,7 +22,7 @@ const GlobalStyle = createGlobalStyle`
 `
 
 export default class TemplateDocument extends Document {
-  static async getInitialProps(ctx) {
+  static async getInitialProps (ctx) {
     const initialProps = await Document.getInitialProps(ctx)
     const sheet = new ServerStyleSheet() // for styled-component
     const styleTags = sheet.getStyleElement()
@@ -33,10 +32,10 @@ export default class TemplateDocument extends Document {
     }
   }
 
-  render() {
+  render () {
     return (
       <html>
-      <Head>{this.props.styleTags}</Head>
+        <Head>{this.props.styleTags}</Head>
         <body>
           <GlobalStyle />
           <Main />

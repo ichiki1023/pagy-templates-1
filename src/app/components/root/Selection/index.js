@@ -74,7 +74,11 @@ class Selection extends React.Component {
             backgroundText={'SELECTION'}
             titleText={'おすすめアイテム'}
           />
-          <Items userAgent={userAgent} items={items} onClickImage={this.handleOpenModal} />
+          <Items
+            userAgent={userAgent}
+            items={items}
+            onClickImage={this.handleOpenModal}
+          />
           {!userAgent.isMobile && (
             <Modal
               open={this.state.openModal}

@@ -133,7 +133,11 @@ export default class Coordinates extends React.Component {
             </div>
           ) : null}
         </Contents>
-        <StyledFooter userAgent={userAgent} site={site} isEmptyCoordinates={isEmptyCoordinates} />
+        <StyledFooter
+          userAgent={userAgent}
+          site={site}
+          isEmptyCoordinates={isEmptyCoordinates}
+        />
       </div>
     )
   }

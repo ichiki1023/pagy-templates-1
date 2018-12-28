@@ -17,10 +17,10 @@ const CoolHeader = props => {
 }
 
 CoolHeader.propTypes = {
- userAgent: PropTypes.shape({
-   userAgent: PropTypes.string.isRequired,
-   isMobile: PropTypes.bool.isRequired
- })
+  userAgent: PropTypes.shape({
+    userAgent: PropTypes.string.isRequired,
+    isMobile: PropTypes.bool.isRequired
+  })
 }
 
 export default CoolHeader

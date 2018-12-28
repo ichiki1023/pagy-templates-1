@@ -3,7 +3,7 @@ import App, { Container } from 'next/app'
 import withUserAgent from 'app/helpers/withUserAgent'
 
 class TemplateApp extends App {
-  static async getInitialProps({ Component, router, ctx }) {
+  static async getInitialProps ({ Component, router, ctx }) {
     let pageProps = {}
 
     if (Component.getInitialProps) {
@@ -22,9 +22,7 @@ class TemplateApp extends App {
 
     return (
       <Container>
-        <Component {
-          ...props
-        } />
+        <Component {...props} />
       </Container>
     )
   }

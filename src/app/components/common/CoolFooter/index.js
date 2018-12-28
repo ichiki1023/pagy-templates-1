@@ -2,7 +2,7 @@ import React from 'react'
 import MediaQuery from 'react-responsive'
 import PCCoolFooter from './PCCoolFooter'
 import SPCoolFooter from './SPCoolFooter'
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types'
 
 const CoolFooter = props => {
   const { userAgent } = props

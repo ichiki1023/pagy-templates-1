@@ -58,7 +58,7 @@ export default class Index extends React.Component {
   }
 
   render () {
-    const { site: site, userAgent } = this.props
+    const { site, userAgent } = this.props
 
     const services =
       site.facebook || site.twitter || site.instagram || site.pinterest
@@ -73,7 +73,12 @@ export default class Index extends React.Component {
     return (
       <Page>
         <Wrapper>
-          <StyledHeader userAgent={userAgent} site={site} services={services} pageName={'home'} />
+          <StyledHeader
+            userAgent={userAgent}
+            site={site}
+            services={services}
+            pageName={'home'}
+          />
           <Home site={site} />
           {site.posts && site.posts.length !== 0 ? (
             <News posts={site.posts} />

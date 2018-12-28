@@ -1,4 +1,4 @@
-const startArray = (businessHour) => [
+const startArray = businessHour => [
   businessHour.mon_start,
   businessHour.tue_start,
   businessHour.wed_start,
@@ -7,7 +7,7 @@ const startArray = (businessHour) => [
   businessHour.sat_start,
   businessHour.sun_start
 ]
-const endArray = (businessHour) => [
+const endArray = businessHour => [
   businessHour.mon_end,
   businessHour.tue_end,
   businessHour.wed_end,
@@ -25,7 +25,9 @@ export function isEqualAllBusinessHour (businessHour) {
   const isEqualStartTime = startArray(businessHour).every(
     (start, index, array) => start && array[0] === start
   )
-  const isEqualEndTime = endArray(businessHour).every((end, index, array) => end && array[0] === end)
+  const isEqualEndTime = endArray(businessHour).every(
+    (end, index, array) => end && array[0] === end
+  )
 
   return isEqualStartTime && isEqualEndTime
 }
