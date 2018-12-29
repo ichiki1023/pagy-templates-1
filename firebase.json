@@ -1,6 +1,15 @@
 {
+  "hosting": {
+    "public": "dist/public",
+    "rewrites": [
+      {
+        "source": "**/**",
+        "function": "next"
+      }
+    ]
+  },
   "functions": {
     "source": "dist/functions",
-    "predeploy": "npm run build && npm run copy-deps"
+    "predeploy": "npm run preserve"
   }
 }
