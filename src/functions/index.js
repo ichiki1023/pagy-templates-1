@@ -15,6 +15,15 @@ exports.next = functions.https.onRequest((req, res) => {
       }
       return app.render(req, res, req.url)
     }
+
+    // proxyされている場合はurlを変更する
+    if (process.env.PROXY_PATH) {
+      req.url = req.url.replace(`${process.env.PROXY_PATH}`, '')
+    }
+    // ルートか判定
+    if (!req.url) {
+      req.url = '/'
+    }
     return handle(req, res)
   })
 })
