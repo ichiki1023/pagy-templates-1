@@ -26,6 +26,7 @@
     "format": "run-s format:*",
     "format:js": "prettier-standard ./src/**/*.js",
     "format:others": "prettier --write ./src/**/*.{css,json}",
+    "remove:hosting": "firebase hosting:disable",
     "lint": "standard .src/**/*.js"
   },
   "dependencies": {
