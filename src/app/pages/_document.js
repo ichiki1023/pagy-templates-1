@@ -1,5 +1,6 @@
 import Document, { Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheet, createGlobalStyle } from 'styled-components'
+import getPageContext from 'app/helpers/getPageContext'
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -25,19 +26,31 @@ export default class TemplateDocument extends Document {
   static async getInitialProps (ctx) {
     const initialProps = await Document.getInitialProps(ctx)
     const sheet = new ServerStyleSheet() // for styled-component
+    const pageContext = getPageContext() // for material-ui
     const styleTags = sheet.getStyleElement()
     return {
       ...initialProps,
-      styleTags
+      pageContext,
+      styleTags,
+      styles: (
+        <style
+          id='jss-server-side'
+          dangerouslySetInnerHTML={{
+            __html: pageContext.sheetsRegistry.toString()
+          }}
+        />
+      )
     }
   }
 
   render () {
     return (
       <html>
-        <Head>{this.props.styleTags}</Head>
-        <body>
+        <Head>
           <GlobalStyle />
+          {this.props.styleTags}
+        </Head>
+        <body>
           <Main />
           <NextScript />
         </body>

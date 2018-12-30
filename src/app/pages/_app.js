@@ -1,8 +1,11 @@
 import React from 'react'
 import App, { Container } from 'next/app'
 import withUserAgent from 'app/helpers/withUserAgent'
+import { MuiThemeProvider } from '@material-ui/core/styles'
+import getPageContext from 'app/helpers/getPageContext'
 
 class TemplateApp extends App {
+  pageContext = null
   static async getInitialProps ({ Component, router, ctx }) {
     let pageProps = {}
 
@@ -13,8 +16,22 @@ class TemplateApp extends App {
     return { pageProps }
   }
 
+  componentWillMount () {
+    this.pageContext = this.props.pageContext || getPageContext()
+  }
+
+  componentDidMount () {
+    // Remove the server-side injected CSS.
+    // https://material-ui.com/guides/server-rendering/
+    const jssStyles = document.querySelector(`#jss-server-side`)
+    if (jssStyles && jssStyles.parentNode) {
+      jssStyles.parentNode.removeChild(jssStyles)
+    }
+  }
+
   render () {
     const { Component, pageProps, userAgent } = this.props
+    const { pageContext } = this
     const props = {
       ...pageProps,
       userAgent
@@ -22,7 +39,12 @@ class TemplateApp extends App {
 
     return (
       <Container>
-        <Component {...props} />
+        <MuiThemeProvider
+          theme={pageContext.theme}
+          sheetsManager={pageContext.sheetsManager}
+        >
+          <Component {...props} />
+        </MuiThemeProvider>
       </Container>
     )
   }
