@@ -119,11 +119,11 @@ const StyledArrowForwardIcon = styled(ArrowForwardIcon)`
 export default class Coordinates extends React.Component {
   render () {
     const images = [
-      `${process.env.STATIC_HOST}/images/shutterstock_730631257.jpg`,
-      `${process.env.STATIC_HOST}/images/shutterstock_342317609.jpg`,
-      `${process.env.STATIC_HOST}/images/shutterstock_793633075.jpg`,
-      `${process.env.STATIC_HOST}/images/shutterstock_713504557.jpg`,
-      `${process.env.STATIC_HOST}/images/shutterstock_1182188362.jpg`
+      `${process.env.STATIC_HOST}/images/shutterstock_730631257.jpeg`,
+      `${process.env.STATIC_HOST}/images/shutterstock_342317609.jpeg`,
+      `${process.env.STATIC_HOST}/images/shutterstock_793633075.jpeg`,
+      `${process.env.STATIC_HOST}/images/shutterstock_713504557.jpeg`,
+      `${process.env.STATIC_HOST}/images/shutterstock_1182188362.jpeg`
     ]
 
     return (

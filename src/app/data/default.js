@@ -34,10 +34,10 @@ export default {
     },
     store_front_image_url: `${
       process.env.STATIC_HOST
-    }/images/shutterstock_46325692.jpg`,
+    }/images/shutterstock_46325692.jpeg`,
     interior_image_url: `${
       process.env.STATIC_HOST
-    }/images/shutterstock_773749615.jpg`,
+    }/images/shutterstock_773749615.jpeg`,
     twitter: 'ichiki_sato',
     instagram: 'ichiki1023',
     facebook: 'sato.ichiki',
@@ -58,10 +58,10 @@ export default {
     },
     photos: [
       {
-        url: `${process.env.STATIC_HOST}/images/shutterstock_479222686.jpg`
+        url: `${process.env.STATIC_HOST}/images/shutterstock_479222686.jpeg`
       },
       {
-        url: `${process.env.STATIC_HOST}/images/shutterstock_479221186.jpg`
+        url: `${process.env.STATIC_HOST}/images/shutterstock_479221186.jpeg`
       }
     ],
     posts: [
@@ -72,7 +72,7 @@ export default {
           'いつもUR ONLINE STOREをご愛顧いただき誠にありがとうございます。\nこの度アーバンリサーチ公式オンラインストア「UR ONLINE STORE」にて、\n冬のセールに先駆けてUR CLUB会員様限定の先行セールを開催いたします。\nぜひこの機会にお買い求めください。',
         main_image_url: `${
           process.env.STATIC_HOST
-        }/images/shutterstock_1022031901_cut.jpg`,
+        }/images/shutterstock_1022031901_cut.jpeg`,
         sub_image_url: '',
         created_at: '2019/02/04',
         update_at: ''
@@ -84,7 +84,7 @@ export default {
           '新たに「atone」で商品をご購入いただけるようになりました。\n\n「atone」とは、クレジットカードはいらない、スマホだけで翌月払いができる、新しい後払い決済サービスです。\n今月のご利用分を翌月20日までに、コンビニでまとめてお支払いいただけます。ポイントが貯まる・使える、お得な支払い方法です。',
         main_image_url: `${
           process.env.STATIC_HOST
-        }/images/shutterstock_324688757_cut.jpg`,
+        }/images/shutterstock_324688757_cut.jpeg`,
         sub_image_url: '',
         created_at: '2019/01/26',
         update_at: ''
@@ -96,7 +96,7 @@ export default {
           'キャンペーン期間中にエントリーをして、d払いをご利用してお買い物していただくと通常の5倍dポイントを進呈致します。\nさらに、買い回り企画に応じて最大+15倍となります。\n※エントリーが必須となるキャンペーンとなります。\n\nキャンペーン期間:2018年11月23日(金) ～2019年1月6日(日) ',
         main_image_url: `${
           process.env.STATIC_HOST
-        }/images/shutterstock_1022031901_cut.jpg`,
+        }/images/shutterstock_1022031901_cut.jpeg`,
         sub_image_url: '',
         created_at: '2019/01/18',
         update_at: ''
@@ -142,11 +142,11 @@ export default {
         description:
           'セレクトしたアイテムの紹介やおすすめのポイントなどを記載してください',
         sub_image_urls: [
-          'https://example.com/example1.jpg',
-          'https://example.com/example2.jpg',
-          'https://example.com/example3.jpg',
-          'https://example.com/example4.jpg',
-          'https://example.com/example5.jpg'
+          'https://example.com/example1.jpeg',
+          'https://example.com/example2.jpeg',
+          'https://example.com/example3.jpeg',
+          'https://example.com/example4.jpeg',
+          'https://example.com/example5.jpeg'
         ],
         coordinates: ['1', '2']
       },
@@ -158,11 +158,11 @@ export default {
         description:
           'セレクトしたアイテムの紹介やおすすめのポイントなどを記載してください',
         sub_image_urls: [
-          'https://example.com/example1.jpg',
-          'https://example.com/example2.jpg',
-          'https://example.com/example3.jpg',
-          'https://example.com/example4.jpg',
-          'https://example.com/example5.jpg'
+          'https://example.com/example1.jpeg',
+          'https://example.com/example2.jpeg',
+          'https://example.com/example3.jpeg',
+          'https://example.com/example4.jpeg',
+          'https://example.com/example5.jpeg'
         ],
         coordinates: ['1', '2']
       },
@@ -174,11 +174,11 @@ export default {
         description:
           'セレクトしたアイテムの紹介やおすすめのポイントなどを記載してください',
         sub_image_urls: [
-          'https://example.com/example1.jpg',
-          'https://example.com/example2.jpg',
-          'https://example.com/example3.jpg',
-          'https://example.com/example4.jpg',
-          'https://example.com/example5.jpg'
+          'https://example.com/example1.jpeg',
+          'https://example.com/example2.jpeg',
+          'https://example.com/example3.jpeg',
+          'https://example.com/example4.jpeg',
+          'https://example.com/example5.jpeg'
         ],
         coordinates: ['1', '2']
       },
@@ -190,11 +190,11 @@ export default {
         description:
           'セレクトしたアイテムの紹介やおすすめのポイントなどを記載してください',
         sub_image_urls: [
-          'https://example.com/example1.jpg',
-          'https://example.com/example2.jpg',
-          'https://example.com/example3.jpg',
-          'https://example.com/example4.jpg',
-          'https://example.com/example5.jpg'
+          'https://example.com/example1.jpeg',
+          'https://example.com/example2.jpeg',
+          'https://example.com/example3.jpeg',
+          'https://example.com/example4.jpeg',
+          'https://example.com/example5.jpeg'
         ],
         coordinates: ['1', '2']
       },
@@ -202,15 +202,15 @@ export default {
         title: 'New Item5',
         main_image_url: `${
           process.env.STATIC_HOST
-        }/images/shutterstock_207690136_2.jpg`,
+        }/images/shutterstock_207690136_2.jpeg`,
         description:
           'セレクトしたアイテムの紹介やおすすめのポイントなどを記載してください',
         sub_image_urls: [
-          'https://example.com/example1.jpg',
-          'https://example.com/example2.jpg',
-          'https://example.com/example3.jpg',
-          'https://example.com/example4.jpg',
-          'https://example.com/example5.jpg'
+          'https://example.com/example1.jpeg',
+          'https://example.com/example2.jpeg',
+          'https://example.com/example3.jpeg',
+          'https://example.com/example4.jpeg',
+          'https://example.com/example5.jpeg'
         ],
         coordinates: ['1', '2']
       }
@@ -219,52 +219,52 @@ export default {
       {
         main_image_url: `${
           process.env.STATIC_HOST
-        }/images/shutterstock_1022031901_cut.jpg`,
+        }/images/shutterstock_1022031901_cut.jpeg`,
         description:
           'コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。',
         sub_image_urls: [
-          `${process.env.STATIC_HOST}/images/shutterstock_1022031916_cut.jpg`,
-          `${process.env.STATIC_HOST}/images/shutterstock_9076668_cut.jpg`,
-          `${process.env.STATIC_HOST}/images/shutterstock_1022031889_cut.jpg`
+          `${process.env.STATIC_HOST}/images/shutterstock_1022031916_cut.jpeg`,
+          `${process.env.STATIC_HOST}/images/shutterstock_9076668_cut.jpeg`,
+          `${process.env.STATIC_HOST}/images/shutterstock_1022031889_cut.jpeg`
         ],
         item: ['1', '2']
       },
       {
         main_image_url: `${
           process.env.STATIC_HOST
-        }/images/shutterstock_324688757_cut.jpg`,
+        }/images/shutterstock_324688757_cut.jpeg`,
         description:
           'コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。',
         sub_image_urls: [
-          `${process.env.STATIC_HOST}/images/shutterstock_535600783_cut.jpg`,
-          `${process.env.STATIC_HOST}/images/shutterstock_66613034_cut.jpg`,
-          `${process.env.STATIC_HOST}/images/shutterstock_723637684_cut.jpg`
+          `${process.env.STATIC_HOST}/images/shutterstock_535600783_cut.jpeg`,
+          `${process.env.STATIC_HOST}/images/shutterstock_66613034_cut.jpeg`,
+          `${process.env.STATIC_HOST}/images/shutterstock_723637684_cut.jpeg`
         ],
         item: ['1', '2']
       },
       {
         main_image_url: `${
           process.env.STATIC_HOST
-        }/images/shutterstock_1022031901_cut.jpg`,
+        }/images/shutterstock_1022031901_cut.jpeg`,
         description:
           'コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。',
         sub_image_urls: [
-          `${process.env.STATIC_HOST}/images/shutterstock_1022031916_cut.jpg`,
-          `${process.env.STATIC_HOST}/images/shutterstock_9076668_cut.jpg`,
-          `${process.env.STATIC_HOST}/images/shutterstock_1022031889_cut.jpg`
+          `${process.env.STATIC_HOST}/images/shutterstock_1022031916_cut.jpeg`,
+          `${process.env.STATIC_HOST}/images/shutterstock_9076668_cut.jpeg`,
+          `${process.env.STATIC_HOST}/images/shutterstock_1022031889_cut.jpeg`
         ],
         item: ['1', '2']
       },
       {
         main_image_url: `${
           process.env.STATIC_HOST
-        }/images/shutterstock_324688757_cut.jpg`,
+        }/images/shutterstock_324688757_cut.jpeg`,
         description:
           'コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。',
         sub_image_urls: [
-          `${process.env.STATIC_HOST}/images/shutterstock_535600783_cut.jpg`,
-          `${process.env.STATIC_HOST}/images/shutterstock_66613034_cut.jpg`,
-          `${process.env.STATIC_HOST}/images/shutterstock_723637684_cut.jpg`
+          `${process.env.STATIC_HOST}/images/shutterstock_535600783_cut.jpeg`,
+          `${process.env.STATIC_HOST}/images/shutterstock_66613034_cut.jpeg`,
+          `${process.env.STATIC_HOST}/images/shutterstock_723637684_cut.jpeg`
         ],
         item: ['1', '2']
       }

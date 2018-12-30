@@ -64,7 +64,7 @@ const Home = props => {
         site.store_front_image_url ||
         `${
           process.env.STATIC_HOST
-        }/images/templates/fashions/cool/shutterstock_46325692.jpg`
+        }/images/templates/fashions/cool/shutterstock_46325692.jpeg`
       }
     >
       <Page>
