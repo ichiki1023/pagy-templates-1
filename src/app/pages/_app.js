@@ -3,6 +3,27 @@ import App, { Container } from 'next/app'
 import withUserAgent from 'app/helpers/withUserAgent'
 import { MuiThemeProvider } from '@material-ui/core/styles'
 import getPageContext from 'app/helpers/getPageContext'
+import { createGlobalStyle } from 'styled-components'
+
+const GlobalStyle = createGlobalStyle`
+  * {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, 'BlinkMacSystemFont',  Sans-Serif;
+    
+    input[type="button"], input[type="submit"] {
+      -webkit-appearance: none;
+    }
+  }
+  html, #__next {
+    height: 100%;
+  }
+  body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+`
 
 class TemplateApp extends App {
   pageContext = null
@@ -39,6 +60,7 @@ class TemplateApp extends App {
 
     return (
       <Container>
+        <GlobalStyle />
         <MuiThemeProvider
           theme={pageContext.theme}
           sheetsManager={pageContext.sheetsManager}
