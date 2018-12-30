@@ -7,9 +7,7 @@ const PORT = process.env.PORT || 5000
 const app = next({ dir: './src', dev })
 const handle = app.getRequestHandler()
 
-// FIXME: cloud functionsへ移行する
-
-app.prepare().then(() => {
+const nextApp = app.prepare().then(() => {
   const server = express()
 
   server.use(bodyParser.json()) // for parsing application/json
@@ -38,3 +36,5 @@ app.prepare().then(() => {
     console.log(`> Ready on http://localhost:${PORT}`)
   })
 })
+
+exports.nextApp = nextApp
