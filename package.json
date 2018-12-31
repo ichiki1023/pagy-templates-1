@@ -8,7 +8,7 @@
     "node": "8"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Error: no test specified\"",
     "func": "functions start",
     "dev": "next src/app",
     "clean": "rimraf dist/functions",
@@ -26,7 +26,9 @@
     "format": "run-s format:*",
     "format:js": "prettier-standard ./src/**/*.js",
     "format:others": "prettier --write ./src/**/*.{css,json}",
+    "remove:func": "firebase functions:delete pagy-templates",
     "remove:hosting": "firebase hosting:disable",
+    "remove": "run-s remove:*",
     "lint": "standard .src/**/*.js"
   },
   "dependencies": {
@@ -38,6 +40,7 @@
     "firebase-admin": "^6.4.0",
     "firebase-functions": "^2.1.0",
     "google-map-react": "^1.1.2",
+    "jss": "^9.8.7",
     "mobile-detect": "^1.4.3",
     "next": "^7.0.2",
     "prop-types": "^15.6.2",
