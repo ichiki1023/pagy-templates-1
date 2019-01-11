@@ -7,6 +7,8 @@ import SNSNavigation from 'app/components/common/SNSServices/Navigation'
 import Items from 'app/components/coordinates/Items'
 import defaultData from 'app/data/default'
 import AddIcon from '@material-ui/icons/Add'
+import getConfig from 'next/config'
+import SitesApi from '../api/SitesApi'
 
 const StyledHeader = styled(CoolHeader)`
   top: 0;
@@ -79,10 +81,26 @@ const StyledAddIcon = styled(AddIcon)`
 `
 
 export default class Coordinates extends React.Component {
-  static getInitialProps ({ req }) {
+  static async getInitialProps ({ req }) {
+    const publicRuntimeConfig = getConfig().publicRuntimeConfig
+    const host = req ? req.headers.host : window.location.host
+
     // POSTから取得したデータを利用する
     if (req.body && req.body.site) {
       return { site: req.body.site }
+    }
+
+    // 登録済みのサイトの情報を取得する
+    if (host !== publicRuntimeConfig.host) {
+      console.log(host)
+      try {
+        const site = await SitesApi.getSiteWithDomain(host)
+        return { site: site }
+      } catch (error) {
+        console.log(error)
+        // なければdefaultの値
+        return { site: defaultData.site }
+      }
     }
 
     // なければdefaultの値

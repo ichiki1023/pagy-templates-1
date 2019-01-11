@@ -11,6 +11,8 @@ import Coordinates from 'app/components/root/Coordinates'
 import SocialMedia from 'app/components/root/SocialMedia'
 import Contact from 'app/components/root/Contact'
 import defaultData from 'app/data/default'
+import SitesApi from 'app/api/SitesApi'
+import getConfig from 'next/config'
 
 const StyledHeader = styled(CoolHeader)`
   z-index: 4;
@@ -47,12 +49,27 @@ const Wrapper = styled.div`
 `
 
 export default class Index extends React.Component {
-  static getInitialProps ({ req }) {
+  static async getInitialProps ({ req }) {
+    const publicRuntimeConfig = getConfig().publicRuntimeConfig
+    const host = req ? req.headers.host : window.location.host
+
     // POSTから取得したデータを利用する
     if (req.body && req.body.site) {
       return { site: req.body.site }
     }
 
+    // 登録済みのサイトの情報を取得する
+    if (host !== publicRuntimeConfig.host) {
+      console.log(host)
+      try {
+        const site = await SitesApi.getSiteWithDomain(host)
+        return { site: site }
+      } catch (error) {
+        console.log(error)
+        // なければdefaultの値
+        return { site: defaultData.site }
+      }
+    }
     // なければdefaultの値
     return { site: defaultData.site }
   }
