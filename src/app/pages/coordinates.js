@@ -92,7 +92,6 @@ export default class Coordinates extends React.Component {
 
     // 登録済みのサイトの情報を取得する
     if (host !== publicRuntimeConfig.host) {
-      console.log(host)
       try {
         const site = await SitesApi.getSiteWithDomain(host)
         return { site: site }
