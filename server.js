@@ -4,10 +4,12 @@ const bodyParser = require('body-parser')
 
 const dev = process.env.NODE_ENV !== 'production'
 const PORT = process.env.PORT || 5000
-const app = next({ dir: './src', dev })
+const app = next({ dir: './src/app', dev })
 const handle = app.getRequestHandler()
 
-const nextApp = app.prepare().then(() => {
+// ローカルのPOST TEST用にserver.jsを用意
+// nextApp.jsとほぼ同じ
+app.prepare().then(() => {
   const server = express()
 
   server.use(bodyParser.json()) // for parsing application/json
@@ -17,6 +19,7 @@ const nextApp = app.prepare().then(() => {
     if (req.body && req.body.formData) {
       req.body = JSON.parse(req.body.formData)
     }
+
     if (process.env.PROXY_PATH) {
       req.url = req.url.replace(`${process.env.PROXY_PATH}`, '')
     }
@@ -24,6 +27,7 @@ const nextApp = app.prepare().then(() => {
     if (!req.url) {
       req.url = '/'
     }
+
     app.render(req, res, req.url)
   })
 
@@ -43,5 +47,3 @@ const nextApp = app.prepare().then(() => {
     console.log(`> Ready on http://localhost:${PORT}`)
   })
 })
-
-exports.nextApp = nextApp

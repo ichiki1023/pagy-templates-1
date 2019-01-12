@@ -10,7 +10,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\"",
     "func": "functions start",
-    "dev": "next src/app",
+    "dev": "node server.js",
     "clean": "rimraf dist/functions",
     "preserve": "run-s clean build copy-deps install-deps",
     "serve": "firebase serve",
@@ -35,6 +35,7 @@
     "@material-ui/core": "^3.6.1",
     "@material-ui/icons": "^3.0.1",
     "@zeit/next-css": "^1.0.1",
+    "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "firebase-admin": "^6.4.0",
