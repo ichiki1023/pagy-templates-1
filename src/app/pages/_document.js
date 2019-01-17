@@ -25,7 +25,13 @@ export default class TemplateDocument extends Document {
   render () {
     return (
       <html>
-        <Head>{this.props.styleTags}</Head>
+        <Head>
+          {this.props.styleTags}
+          <meta
+            name='viewport'
+            content='width=device-width, initial-scale=1.0'
+          />
+        </Head>
         <body>
           <Main />
           <NextScript />
