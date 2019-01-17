@@ -5,7 +5,7 @@ import SNSServices, { BackgroundIcon } from './SNSServices'
 
 const Contents = styled.div`
   position: fixed;
-  top: calc(50% + 32px); // headerの半分を追加して調整
+  top: calc(50% + 32px); /* headerの半分を追加して調整 */
   transform: translateY(-50%);
   right: 0;
   margin-right: 10%;
