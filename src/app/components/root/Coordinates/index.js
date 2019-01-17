@@ -13,7 +13,7 @@ const Coordinates = props => {
         matches ? (
           <CoordinatesSP image={images[0]} />
         ) : (
-          <CoordinatesPC images={images} />
+          <CoordinatesPC coordinates={coordinates} images={images} />
         )
       }
     </MediaQuery>
