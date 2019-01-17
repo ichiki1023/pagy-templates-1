@@ -73,7 +73,7 @@ const StyledLink = styled.a`
 const BackgroundImages = styled.div`
   position: absolute;
   display: flex;
-  width: calc(100vw + (1200px / 4));
+  width: calc(100vw + (${screenSize}px / 4));
   height: ${screenSize}px;
   top: 0;
   left: -6%;
