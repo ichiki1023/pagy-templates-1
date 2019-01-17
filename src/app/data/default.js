@@ -202,7 +202,7 @@ export default {
         title: 'New Item5',
         main_image_url: `${
           process.env.STATIC_HOST
-        }/images/shutterstock_207690136_2.jpeg`,
+        }/images/shutterstock_207690136_2.jpg`,
         description:
           'セレクトしたアイテムの紹介やおすすめのポイントなどを記載してください',
         sub_image_urls: [
@@ -219,13 +219,13 @@ export default {
       {
         main_image_url: `${
           process.env.STATIC_HOST
-        }/images/shutterstock_1022031901_cut.jpeg`,
+        }/images/shutterstock_1022031901_cut.jpg`,
         description:
           'コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。',
         sub_image_urls: [
-          `${process.env.STATIC_HOST}/images/shutterstock_1022031916_cut.jpeg`,
+          `${process.env.STATIC_HOST}/images/shutterstock_1022031916_cut.jpg`,
           `${process.env.STATIC_HOST}/images/shutterstock_9076668_cut.jpeg`,
-          `${process.env.STATIC_HOST}/images/shutterstock_1022031889_cut.jpeg`
+          `${process.env.STATIC_HOST}/images/shutterstock_1022031889_cut.jpg`
         ],
         item: ['1', '2']
       },
@@ -236,7 +236,7 @@ export default {
         description:
           'コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。',
         sub_image_urls: [
-          `${process.env.STATIC_HOST}/images/shutterstock_535600783_cut.jpeg`,
+          `${process.env.STATIC_HOST}/images/shutterstock_535600783_cut.jpg`,
           `${process.env.STATIC_HOST}/images/shutterstock_66613034_cut.jpeg`,
           `${process.env.STATIC_HOST}/images/shutterstock_723637684_cut.jpeg`
         ],
@@ -245,13 +245,13 @@ export default {
       {
         main_image_url: `${
           process.env.STATIC_HOST
-        }/images/shutterstock_1022031901_cut.jpeg`,
+        }/images/shutterstock_1022031901_cut.jpg`,
         description:
           'コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。',
         sub_image_urls: [
-          `${process.env.STATIC_HOST}/images/shutterstock_1022031916_cut.jpeg`,
+          `${process.env.STATIC_HOST}/images/shutterstock_1022031916_cut.jpg`,
           `${process.env.STATIC_HOST}/images/shutterstock_9076668_cut.jpeg`,
-          `${process.env.STATIC_HOST}/images/shutterstock_1022031889_cut.jpeg`
+          `${process.env.STATIC_HOST}/images/shutterstock_1022031889_cut.jpg`
         ],
         item: ['1', '2']
       },
@@ -262,7 +262,7 @@ export default {
         description:
           'コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。',
         sub_image_urls: [
-          `${process.env.STATIC_HOST}/images/shutterstock_535600783_cut.jpeg`,
+          `${process.env.STATIC_HOST}/images/shutterstock_535600783_cut.jpg`,
           `${process.env.STATIC_HOST}/images/shutterstock_66613034_cut.jpeg`,
           `${process.env.STATIC_HOST}/images/shutterstock_723637684_cut.jpeg`
         ],
