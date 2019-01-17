@@ -55,7 +55,7 @@ const StyledSNSServices = styled(SNSServices)`
       font-size: 1em;
     }
 
-    img {
+    svg {
       width: 50px;
       height: 50px;
       position: relative;
