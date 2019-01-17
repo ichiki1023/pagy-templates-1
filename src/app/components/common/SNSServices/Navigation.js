@@ -5,14 +5,15 @@ import SNSServices, { BackgroundIcon } from './SNSServices'
 
 const Contents = styled.div`
   position: fixed;
-  top: 0;
+  top: calc(50% + 32px); // headerの半分を追加して調整
+  transform: translateY(-50%);
   right: 0;
   margin-right: 10%;
   display: flex;
+  height: auto;
   flex-direction: column;
-  justify-subimageurls: center;
+  justify-content: center;
   align-items: center;
-  height: 100vh;
   @media (max-width: 500px) {
     /* SP時はSNSNavを非表示 */
     display: none;
@@ -27,29 +28,35 @@ const StyledSNSServices = styled(SNSServices)`
   ${BackgroundIcon} {
     background-color: rgba(84, 84, 84, 0.6);
     border-radius: 50%;
-    margin: 12px 0;
+    margin-bottom: 24px;
     min-width: 48px;
     min-height: 48px;
   }
 `
 
-const StyledText = styled.div`
+const WrapperText = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 110px;
+  height: 110px;
+`
+
+const StyledText = styled.p`
+  display: block;
   font-size: 1.2em;
   color: #545454;
-  padding: 12px;
-
-  p {
-    display: flex;
-    align-items: center;
-    transform: rotate(-90deg);
-    height: 120px;
-  }
+  transform: rotate(-90deg);
 `
 
 const Line = styled.div`
-  height: 15vh;
-  max-height: 150px;
-  border: 0.5px solid #545454;
+  height: 100px;
+  width: 2px;
+  background-color: #545454;
+`
+
+const FirstLine = styled(Line)`
+  margin: 24px 0;
 `
 
 export default class Navigation extends React.Component {
@@ -67,10 +74,10 @@ export default class Navigation extends React.Component {
 
     return (
       <Contents {...props}>
-        <StyledText>
-          <p>FOLLOW US</p>
-        </StyledText>
-        <Line />
+        <WrapperText>
+          <StyledText>FOLLOW US</StyledText>
+        </WrapperText>
+        <FirstLine />
         <StyledSNSServices
           services={services}
           iconSize={48}

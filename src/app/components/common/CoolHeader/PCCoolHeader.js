@@ -8,7 +8,7 @@ import LanguageDropDown from 'app/components/common/LanguageDropDown'
 const Header = styled.div`
   background-color: #000000;
   width: 100%;
-  height: 54px;
+  height: 64px;
   position: -webkit-sticky; /* Safari */
   position: sticky;
 `
