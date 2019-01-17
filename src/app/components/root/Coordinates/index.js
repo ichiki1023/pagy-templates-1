@@ -5,9 +5,10 @@ import Link from 'next/link'
 import ArrowForwardIcon from '@material-ui/icons/ArrowForwardIos'
 import MediaQuery from 'react-responsive'
 
+const screenSize = 640
+
 const Section = styled.div`
-  height: 60vh;
-  min-height: 400px;
+  height: ${screenSize}px;
   margin-top: 224px;
   position: relative;
   overflow: hidden;
@@ -71,9 +72,10 @@ const StyledLink = styled.a`
 
 const BackgroundImages = styled.div`
   position: absolute;
-  top: 0;
   display: flex;
-  width: calc(100vw + (100vh / 4));
+  width: calc(100vw + (1200px / 4));
+  height: ${screenSize}px;
+  top: 0;
   left: -6%;
 
   &::before {
@@ -89,7 +91,7 @@ const BackgroundImages = styled.div`
 `
 
 const BackgroundImage = styled.div`
-  width: calc(25%);
+  width: 25%;
   height: auto;
   margin: 0 4px;
   display: inline-block;
@@ -105,7 +107,9 @@ const BackgroundImage = styled.div`
 
 const StyledImage = styled.img`
   width: 100%;
+  height: ${screenSize}px;
   transform: skewX(15deg) scale(2);
+  object-fit: cover;
 
   @media (max-width: 500px) {
     transform: none;
