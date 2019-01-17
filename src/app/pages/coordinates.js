@@ -86,7 +86,7 @@ export default class Coordinates extends React.Component {
     const host = req ? req.headers.host : window.location.host
 
     // POSTから取得したデータを利用する
-    if (req.body && req.body.site) {
+    if (req && req.body && req.body.site) {
       return { site: req.body.site }
     }
 
@@ -95,8 +95,7 @@ export default class Coordinates extends React.Component {
       try {
         const site = await SitesApi.getSiteWithDomain(host)
         return { site: site }
-      } catch (error) {
-        console.log(error)
+      } catch {
         // なければdefaultの値
         return { site: defaultData.site }
       }
