@@ -13,7 +13,7 @@ import Contact from 'app/components/root/Contact'
 import defaultData from 'app/data/default'
 import SitesApi from 'app/api/SitesApi'
 import getConfig from 'next/config'
-import { scroller } from 'react-scroll'
+import { animateScroll as scroll, scroller } from 'react-scroll'
 
 const headerHeight = 64
 const padding = 40
@@ -124,31 +124,46 @@ const Wrapper = styled.div`
 
 export default class Index extends React.Component {
   static async getInitialProps ({ req, asPath }) {
-    console.log(asPath)
+    const anchor = req ? null : asPath
     const publicRuntimeConfig = getConfig().publicRuntimeConfig
     const host = req ? req.headers.host : window.location.host
 
     // POSTから取得したデータを利用する
     if (req && req.body && req.body.site) {
-      return { site: req.body.site }
+      return { site: req.body.site, anchor }
     }
 
     // 登録済みのサイトの情報を取得する
     if (host !== publicRuntimeConfig.host) {
       try {
         const site = await SitesApi.getSiteWithDomain(host)
-        return { site: site }
+        return { site: site, anchor }
       } catch {
         // なければdefaultの値
-        return { site: defaultData.site }
+        return { site: defaultData.site, anchor }
       }
     }
     // なければdefaultの値
-    return { site: defaultData.site }
+    return { site: defaultData.site, anchor }
   }
 
   componentDidMount () {
-    scroller.scrollTo('news')
+    if (this.props.anchor) {
+      try {
+        const element = this.props.anchor.split('/#')[1]
+        if (element) {
+          scroller.scrollTo(element)
+          return
+        }
+        scroll.scrollToTop()
+        return
+      } catch (error) {
+        // splitできない場合はtopへ送る
+        scroll.scrollToTop()
+        return
+      }
+    }
+    scroll.scrollToTop()
   }
 
   render () {
