@@ -13,6 +13,7 @@ import Contact from 'app/components/root/Contact'
 import defaultData from 'app/data/default'
 import SitesApi from 'app/api/SitesApi'
 import getConfig from 'next/config'
+import { scroller } from 'react-scroll'
 
 const headerHeight = 64
 const padding = 40
@@ -122,7 +123,8 @@ const Wrapper = styled.div`
 `
 
 export default class Index extends React.Component {
-  static async getInitialProps ({ req }) {
+  static async getInitialProps ({ req, asPath }) {
+    console.log(asPath)
     const publicRuntimeConfig = getConfig().publicRuntimeConfig
     const host = req ? req.headers.host : window.location.host
 
@@ -143,6 +145,10 @@ export default class Index extends React.Component {
     }
     // なければdefaultの値
     return { site: defaultData.site }
+  }
+
+  componentDidMount () {
+    scroller.scrollTo('news')
   }
 
   render () {
@@ -169,7 +175,7 @@ export default class Index extends React.Component {
           />
           <Home site={site} />
           {site.posts && site.posts.length !== 0 ? (
-            <StyledNews posts={site.posts} />
+            <StyledNews containerId={'news'} posts={site.posts} />
           ) : null}
           {site.items && site.items.length !== 0 ? (
             <StyledSelection items={site.items} userAgent={userAgent} />

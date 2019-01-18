@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 import { Link as ScrollLink } from 'react-scroll'
+import Link from 'next/link'
 import LanguageIcon from '@material-ui/icons/Language'
 import LanguageDropDown from 'app/components/common/LanguageDropDown'
 
@@ -56,7 +57,7 @@ const headerHeight = 64
 const scrollDuration = 500
 
 const PCCoolHeader = props => {
-  const { site, ...otherProps } = props
+  const { site, ...custom } = props
   const { posts, items, coordinates } = site
   const languageOptions = [
     { value: 'ja', label: 'Japanese' },
@@ -64,7 +65,7 @@ const PCCoolHeader = props => {
   ]
 
   return (
-    <Header {...otherProps}>
+    <Header {...custom}>
       <HeaderLists>
         <HeaderList key={'home'} isTitle>
           <ScrollLink
@@ -79,15 +80,9 @@ const PCCoolHeader = props => {
         {/* News */}
         {posts && posts.length !== 0 ? (
           <HeaderList key={'news'}>
-            <ScrollLink
-              to={'news'}
-              smooth
-              spy
-              hashSpy
-              duration={scrollDuration}
-            >
-              NEWS
-            </ScrollLink>
+            <Link href={'/#news'}>
+              <a>NEWS</a>
+            </Link>
           </HeaderList>
         ) : null}
         {/* Selection */}
