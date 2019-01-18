@@ -52,6 +52,10 @@ const StyledLanguageIcon = styled(LanguageIcon)`
   color: #ffffff;
 `
 
+const headerHeight = 64
+const offset = 40
+const scrollOffset = -(headerHeight + offset)
+
 const PCCoolHeader = props => {
   const { site, ...otherProps } = props
   const { posts, items, coordinates } = site
@@ -72,7 +76,12 @@ const PCCoolHeader = props => {
         {/* News */}
         {posts && posts.length !== 0 ? (
           <HeaderList key={'news'}>
-            <ScrollLink to={'news'} smooth duration={scrollDuration}>
+            <ScrollLink
+              to={'news'}
+              offset={scrollOffset}
+              smooth
+              duration={scrollDuration}
+            >
               NEWS
             </ScrollLink>
           </HeaderList>
@@ -80,7 +89,12 @@ const PCCoolHeader = props => {
         {/* Selection */}
         {items && items.length !== 0 ? (
           <HeaderList key={'selection'}>
-            <ScrollLink to={'selection'} smooth duration={scrollDuration}>
+            <ScrollLink
+              to={'selection'}
+              offset={scrollOffset}
+              smooth
+              duration={scrollDuration}
+            >
               SELECTION
             </ScrollLink>
           </HeaderList>
@@ -88,20 +102,35 @@ const PCCoolHeader = props => {
         {/* Coordinates */}
         {coordinates && coordinates.length !== 0 ? (
           <HeaderList key={'coordinates'}>
-            <ScrollLink to={'coordinates'} smooth duration={scrollDuration}>
+            <ScrollLink
+              to={'coordinates'}
+              offset={scrollOffset}
+              smooth
+              duration={scrollDuration}
+            >
               COORDINATES
             </ScrollLink>
           </HeaderList>
         ) : null}
         <HeaderList key={'about'}>
-          <ScrollLink to={'about'} smooth duration={scrollDuration}>
+          <ScrollLink
+            to={'about'}
+            offset={scrollOffset}
+            smooth
+            duration={scrollDuration}
+          >
             ABOUT US
           </ScrollLink>
         </HeaderList>
         {/* Contact */}
         {site.contact_email ? (
           <HeaderList key={'contact'}>
-            <ScrollLink to={'contact'} smooth duration={scrollDuration}>
+            <ScrollLink
+              to={'contact'}
+              offset={-offset}
+              smooth
+              duration={scrollDuration}
+            >
               CONTACT
             </ScrollLink>
           </HeaderList>
