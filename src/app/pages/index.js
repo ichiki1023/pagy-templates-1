@@ -14,9 +14,25 @@ import defaultData from 'app/data/default'
 import SitesApi from 'app/api/SitesApi'
 import getConfig from 'next/config'
 
+const headerHeight = 64
+const padding = 40
+const sectionMargin = 224
+const paddingTop = headerHeight + padding
+const marginTop = sectionMargin - (headerHeight + padding)
+
+const spHeaderHeight = 48
+const spPadding = 20
+const spSectionMargin = 180
+const spPaddingTop = spHeaderHeight + spPadding
+const spMarginTop = spSectionMargin - (spHeaderHeight + spPadding)
+
 const StyledHeader = styled(CoolHeader)`
   z-index: 4;
   top: 0;
+  height: ${headerHeight}px;
+  @media (max-width: 500px) {
+    height: ${spHeaderHeight}px;
+  }
 `
 
 const Page = styled.div`
@@ -24,55 +40,69 @@ const Page = styled.div`
 `
 
 const StyledNews = styled(News)`
-  padding-top: 224px;
+  padding-top: ${paddingTop}px;
+  margin-top: ${marginTop}px;
   @media (max-width: 500px) {
-    padding-top: 180px;
+    padding-top: ${spPaddingTop}px;
+    margin-top: ${spMarginTop}px;
   }
 `
 
 const StyledSelection = styled(Selection)`
   position: relative;
   z-index: 3;
-  padding-top: 224px;
+  padding-top: ${paddingTop}px;
+  margin-top: ${marginTop}px;
   @media (max-width: 500px) {
-    padding-top: 180px;
+    padding-top: ${spPaddingTop}px;
+    margin-top: ${spMarginTop}px;
   }
 `
 
 const StyledCoordinates = styled(Coordinates)`
   position: relative;
   z-index: 3;
-  padding-top: 224px;
+  padding-top: ${paddingTop}px;
+  margin-top: ${marginTop}px;
   @media (max-width: 500px) {
-    padding-top: 180px;
+    padding-top: ${spPaddingTop}px;
+    margin-top: ${spMarginTop}px;
   }
 `
 
 const StyledAbout = styled(About)`
-  padding-top: 224px;
+  padding-top: ${paddingTop}px;
+  margin-top: ${marginTop}px;
   @media (max-width: 500px) {
-    padding-top: 180px;
+    padding-top: ${spPaddingTop}px;
+    margin-top: ${spMarginTop}px;
   }
 `
 
 const StyledSocialMedia = styled(SocialMedia)`
-  padding-top: 224px;
+  padding-top: ${paddingTop}px;
+  margin-top: ${marginTop}px;
   @media (max-width: 500px) {
-    padding-top: 180px;
+    padding-top: ${spPaddingTop}px;
+    margin-top: ${spMarginTop}px;
   }
 `
 
 const StyledContact = styled(Contact)`
-  padding-top: 224px;
+  padding-top: ${paddingTop - headerHeight}px;
+  margin-top: ${marginTop + headerHeight}px;
   @media (max-width: 500px) {
-    padding-top: 180px;
+    padding-top: ${spPaddingTop}px;
+    margin-top: ${spMarginTop}px;
   }
 `
 
 const FooterWrapper = styled.div`
-  padding-top: 224px;
+  padding-top: ${paddingTop}px;
+  margin-top: ${marginTop}px;
   @media (max-width: 500px) {
-    padding-top: 180px;
+    padding-top: ${spPaddingTop}px;
+    margin-top: ${spMarginTop}px;
   }
 `
 
@@ -145,7 +175,10 @@ export default class Index extends React.Component {
             <StyledSelection items={site.items} userAgent={userAgent} />
           ) : null}
           {site.items && site.coordinates.length !== 0 ? (
-            <StyledCoordinates coordinates={site.coordinates} />
+            <StyledCoordinates
+              coordinates={site.coordinates}
+              marginTop={paddingTop}
+            />
           ) : null}
           <StyledAbout site={site} />
           {services ? <StyledSocialMedia services={services} /> : null}

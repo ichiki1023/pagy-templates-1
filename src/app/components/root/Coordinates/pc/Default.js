@@ -73,10 +73,10 @@ const BackgroundImages = styled.div`
   position: absolute;
   display: flex;
   width: calc(100vw + (${screenSize}px / 4));
-  margin-top: 224px;
   height: ${screenSize}px;
   top: 0;
   left: -6%;
+  margin-top: ${props => props.marginTop}px;
 
   &::before {
     z-index: 1;
@@ -121,11 +121,11 @@ const StyledArrowForwardIcon = styled(ArrowForwardIcon)`
 `
 
 const CoordinatesPC = props => {
-  const { images, ...custom } = props
+  const { images, marginTop, ...custom } = props
 
   return (
     <Section name={'coordinates'} {...custom}>
-      <BackgroundImages>
+      <BackgroundImages marginTop={marginTop}>
         {images.map((image, index) => {
           return (
             <BackgroundImage key={index}>
@@ -153,7 +153,8 @@ const CoordinatesPC = props => {
 }
 
 CoordinatesPC.propTypes = {
-  images: PropTypes.array.isRequired
+  images: PropTypes.array.isRequired,
+  marginTop: PropTypes.number.isRequired
 }
 
 export default CoordinatesPC

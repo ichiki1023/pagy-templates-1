@@ -67,7 +67,6 @@ const BackgroundImages = styled.div`
   height: 100%;
   top: 0;
   left: 0;
-  margin-top: 180px;
 
   &::before {
     z-index: 1;

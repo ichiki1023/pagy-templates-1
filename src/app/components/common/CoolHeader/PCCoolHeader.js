@@ -53,8 +53,6 @@ const StyledLanguageIcon = styled(LanguageIcon)`
 `
 
 const headerHeight = 64
-const offset = 40
-const scrollOffset = -(headerHeight + offset)
 const scrollDuration = 500
 
 const PCCoolHeader = props => {
@@ -83,7 +81,6 @@ const PCCoolHeader = props => {
           <HeaderList key={'news'}>
             <ScrollLink
               to={'news'}
-              offset={scrollOffset}
               smooth
               spy
               hashSpy
@@ -98,7 +95,6 @@ const PCCoolHeader = props => {
           <HeaderList key={'selection'}>
             <ScrollLink
               to={'selection'}
-              offset={scrollOffset}
               smooth
               spy
               hashSpy
@@ -113,7 +109,6 @@ const PCCoolHeader = props => {
           <HeaderList key={'coordinates'}>
             <ScrollLink
               to={'coordinates'}
-              offset={scrollOffset}
               smooth
               spy
               hashSpy
@@ -124,14 +119,7 @@ const PCCoolHeader = props => {
           </HeaderList>
         ) : null}
         <HeaderList key={'about'}>
-          <ScrollLink
-            to={'about'}
-            offset={scrollOffset}
-            smooth
-            spy
-            hashSpy
-            duration={scrollDuration}
-          >
+          <ScrollLink to={'about'} smooth spy hashSpy duration={scrollDuration}>
             ABOUT US
           </ScrollLink>
         </HeaderList>
@@ -140,7 +128,6 @@ const PCCoolHeader = props => {
           <HeaderList key={'contact'}>
             <ScrollLink
               to={'contact'}
-              offset={-offset}
               smooth
               spy
               hashSpy
