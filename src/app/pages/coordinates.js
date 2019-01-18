@@ -15,6 +15,13 @@ const StyledHeader = styled(CoolHeader)`
   z-index: 4;
 `
 
+const FooterWrapper = styled.div`
+  margin-top: 224px;
+  @media (max-width: 500px) {
+    margin-top: 180px;
+  }
+`
+
 const StyledFooter = styled(CoolFooter)`
   z-index: 4;
   position: relative;
@@ -149,11 +156,13 @@ export default class Coordinates extends React.Component {
             </div>
           ) : null}
         </Contents>
-        <StyledFooter
-          userAgent={userAgent}
-          site={site}
-          isEmptyCoordinates={isEmptyCoordinates}
-        />
+        <FooterWrapper>
+          <StyledFooter
+            userAgent={userAgent}
+            site={site}
+            isEmptyCoordinates={isEmptyCoordinates}
+          />
+        </FooterWrapper>
       </div>
     )
   }
