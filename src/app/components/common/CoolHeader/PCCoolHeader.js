@@ -55,11 +55,11 @@ const StyledLanguageIcon = styled(LanguageIcon)`
 const headerHeight = 64
 const offset = 40
 const scrollOffset = -(headerHeight + offset)
+const scrollDuration = 500
 
 const PCCoolHeader = props => {
   const { site, ...otherProps } = props
   const { posts, items, coordinates } = site
-  const scrollDuration = 500
   const languageOptions = [
     { value: 'ja', label: 'Japanese' },
     { value: 'en', label: 'English' }
@@ -69,7 +69,12 @@ const PCCoolHeader = props => {
     <Header {...otherProps}>
       <HeaderLists>
         <HeaderList key={'home'} isTitle>
-          <ScrollLink to={'home'} smooth duration={scrollDuration}>
+          <ScrollLink
+            to={'home'}
+            smooth
+            offset={-headerHeight}
+            duration={scrollDuration}
+          >
             {site.name}
           </ScrollLink>
         </HeaderList>
@@ -80,6 +85,8 @@ const PCCoolHeader = props => {
               to={'news'}
               offset={scrollOffset}
               smooth
+              spy
+              hashSpy
               duration={scrollDuration}
             >
               NEWS
@@ -93,6 +100,8 @@ const PCCoolHeader = props => {
               to={'selection'}
               offset={scrollOffset}
               smooth
+              spy
+              hashSpy
               duration={scrollDuration}
             >
               SELECTION
@@ -106,6 +115,8 @@ const PCCoolHeader = props => {
               to={'coordinates'}
               offset={scrollOffset}
               smooth
+              spy
+              hashSpy
               duration={scrollDuration}
             >
               COORDINATES
@@ -117,6 +128,8 @@ const PCCoolHeader = props => {
             to={'about'}
             offset={scrollOffset}
             smooth
+            spy
+            hashSpy
             duration={scrollDuration}
           >
             ABOUT US
@@ -129,6 +142,8 @@ const PCCoolHeader = props => {
               to={'contact'}
               offset={-offset}
               smooth
+              spy
+              hashSpy
               duration={scrollDuration}
             >
               CONTACT

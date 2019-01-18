@@ -7,7 +7,6 @@ import ArrowForwardIcon from '@material-ui/icons/ArrowForwardIos'
 
 const Section = styled.div`
   height: 100vh;
-  margin-top: 224px;
   position: relative;
   overflow: hidden;
   @media (max-width: 500px) {
@@ -68,6 +67,7 @@ const BackgroundImages = styled.div`
   height: 100%;
   top: 0;
   left: 0;
+  margin-top: 180px;
 
   &::before {
     z-index: 1;

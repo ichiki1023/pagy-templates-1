@@ -8,7 +8,6 @@ import ArrowForwardIcon from '@material-ui/icons/ArrowForwardIos'
 const Section = styled.div`
   width: 54%;
   margin: 0 auto;
-  margin-top: 224px;
 `
 
 const Contents = styled.div`

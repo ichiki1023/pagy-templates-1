@@ -6,11 +6,6 @@ import ArrowForwardIcon from '@material-ui/icons/ArrowForwardIos'
 
 const Section = styled.div`
   position: relative;
-  margin-top: 224px;
-
-  @media (max-width: 500px) {
-    margin-top: 128px;
-  }
 `
 
 const Contents = styled.div`
@@ -79,34 +74,36 @@ const StyledArrowForwardIcon = styled(ArrowForwardIcon)`
   color: #9b9b9b;
 `
 
-export default class News extends React.Component {
-  static propTypes = {
-    posts: PropTypes.array.isRequired
-  }
+const News = props => {
+  const { posts, ...custom } = props
 
-  render () {
-    return (
-      <Section name={'news'}>
-        <Contents>
-          <div>
-            <SectionTitle backgroundText={'NEWS'} titleText={'ニュース'} />
-          </div>
-          <StyledTable>
-            {this.props.posts.map((post, index) => {
-              return (
-                <StyledTableBlock key={index}>
-                  <StyledDateText>{post.created_at}</StyledDateText>
-                  <StyledDescriptionText>{post.title}</StyledDescriptionText>
-                </StyledTableBlock>
-              )
-            })}
-          </StyledTable>
-          <MoreLink href={`#`}>
-            一覧を見る
-            <StyledArrowForwardIcon />
-          </MoreLink>
-        </Contents>
-      </Section>
-    )
-  }
+  return (
+    <Section name={'news'} {...custom}>
+      <Contents>
+        <div>
+          <SectionTitle backgroundText={'NEWS'} titleText={'ニュース'} />
+        </div>
+        <StyledTable>
+          {posts.map((post, index) => {
+            return (
+              <StyledTableBlock key={index}>
+                <StyledDateText>{post.created_at}</StyledDateText>
+                <StyledDescriptionText>{post.title}</StyledDescriptionText>
+              </StyledTableBlock>
+            )
+          })}
+        </StyledTable>
+        <MoreLink href={`#`}>
+          一覧を見る
+          <StyledArrowForwardIcon />
+        </MoreLink>
+      </Contents>
+    </Section>
+  )
 }
+
+News.propTypes = {
+  posts: PropTypes.array.isRequired
+}
+
+export default News

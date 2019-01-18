@@ -12,19 +12,19 @@ import Default from './Default'
  * @constructor
  */
 const CoordinatesPC = props => {
-  const { coordinates, images } = props
+  const { coordinates, images, ...custom } = props
 
   switch (images.length) {
     case 1:
-      return <One coordinate={coordinates[0]} image={images[0]} />
+      return <One coordinate={coordinates[0]} image={images[0]} {...custom} />
     case 2:
-      return <Two images={images.slice(0, 2)} />
+      return <Two images={images.slice(0, 2)} {...custom} />
     case 3:
-      return <Three images={images.slice(0, 3)} />
+      return <Three images={images.slice(0, 3)} {...custom} />
     case 4:
-      return <Default images={images.slice(0, 4)} />
+      return <Default images={images.slice(0, 4)} {...custom} />
     default:
-      return <Default images={images.slice(0, 5)} />
+      return <Default images={images.slice(0, 5)} {...custom} />
   }
 }
 

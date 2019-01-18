@@ -8,7 +8,6 @@ import BusinessHour from './BusinessHour'
 
 const Section = styled.div`
   position: relative;
-  margin: 180px 0;
 `
 
 const Contents = styled.div`
@@ -103,142 +102,143 @@ const HOLIDAYS = {
   holiday: '祝日'
 }
 
-export default class About extends React.Component {
-  static propTypes = {
-    site: PropTypes.shape({
-      description: PropTypes.string.isRequired,
-      open: PropTypes.string,
-      contact_email: PropTypes.string,
-      contact_phone: PropTypes.string,
-      photos: PropTypes.array,
-      holiday: PropTypes.shape({
-        mon: PropTypes.bool,
-        tue: PropTypes.bool,
-        wed: PropTypes.bool,
-        thu: PropTypes.bool,
-        fri: PropTypes.bool,
-        sat: PropTypes.bool,
-        sun: PropTypes.bool,
-        holiday: PropTypes.bool
-      }),
-      business_hour: PropTypes.shape({
-        mon_start: PropTypes.string,
-        mon_end: PropTypes.string,
-        tue_start: PropTypes.string,
-        tue_end: PropTypes.string,
-        wed_start: PropTypes.string,
-        wed_end: PropTypes.string,
-        thu_start: PropTypes.string,
-        thu_end: PropTypes.string,
-        fri_start: PropTypes.string,
-        fri_end: PropTypes.string,
-        sat_start: PropTypes.string,
-        sat_end: PropTypes.string,
-        sun_start: PropTypes.string,
-        sun_end: PropTypes.string,
-        hol_start: PropTypes.string,
-        hol_end: PropTypes.string
-      }),
-      address: PropTypes.shape({
-        postcode: PropTypes.string,
-        latitude: PropTypes.string,
-        longitude: PropTypes.string,
-        country: PropTypes.string,
-        station: PropTypes.string,
-        address1: PropTypes.string,
-        address2: PropTypes.string,
-        address3: PropTypes.string,
-        address4: PropTypes.string,
-        address5: PropTypes.string
-      })
-    }).isRequired
-  }
+const About = props => {
+  const {
+    site,
+    site: { address, holiday },
+    ...custom
+  } = props
 
-  render () {
-    const {
-      site,
-      site: { address, holiday }
-    } = this.props
+  const holidays = Object.keys(holiday).filter(key => holiday[key])
+  const holidayText =
+    holidays.length !== 0
+      ? holidays.map(key => HOLIDAYS[key]).join(', ')
+      : 'なし'
 
-    const holidays = Object.keys(holiday).filter(key => holiday[key])
-    const holidayText =
-      holidays.length !== 0
-        ? holidays.map(key => HOLIDAYS[key]).join(', ')
-        : 'なし'
-
-    return (
-      <Section name={'about'}>
-        <Contents>
-          <StyledTexts>
-            <SectionTitle
-              backgroundText={'ABOUT US'}
-              titleText={'私たちについて'}
-            />
-            <StyledDescription>{site.description}</StyledDescription>
-          </StyledTexts>
-          {site.photos && site.photos.length !== 0 ? (
-            <StyledAboutImages photos={site.photos} />
-          ) : null}
-          <StyledTable>
-            <tbody>
+  return (
+    <Section name={'about'} {...custom}>
+      <Contents>
+        <StyledTexts>
+          <SectionTitle
+            backgroundText={'ABOUT US'}
+            titleText={'私たちについて'}
+          />
+          <StyledDescription>{site.description}</StyledDescription>
+        </StyledTexts>
+        {site.photos && site.photos.length !== 0 ? (
+          <StyledAboutImages photos={site.photos} />
+        ) : null}
+        <StyledTable>
+          <tbody>
+            <tr>
+              <th valign={'top'}>営業時間</th>
+              <td>
+                <BusinessHour businessHour={site.business_hour} />
+              </td>
+            </tr>
+            <tr>
+              <th>定休日</th>
+              <td>{holidayText}</td>
+            </tr>
+            {address && address.postcode ? (
               <tr>
-                <th valign={'top'}>営業時間</th>
+                <th valign={'top'}>住所</th>
                 <td>
-                  <BusinessHour businessHour={site.business_hour} />
+                  <AddressText>〒{address.postcode}</AddressText>
+                  {address.address1 && (
+                    <AddressText>{address.address1}</AddressText>
+                  )}
+                  {address.address2 && (
+                    <AddressText>{address.address2}</AddressText>
+                  )}
+                  {address.address3 && (
+                    <AddressText>{address.address3}</AddressText>
+                  )}
+                  {address.address4 && (
+                    <AddressText>{address.address4}</AddressText>
+                  )}
+                  {address.address5 && (
+                    <AddressText>{address.address5}</AddressText>
+                  )}
                 </td>
               </tr>
+            ) : null}
+            {site.contact_phone ? (
               <tr>
-                <th>定休日</th>
-                <td>{holidayText}</td>
+                <th>電話</th>
+                <td>{site.contact_phone}</td>
               </tr>
-              {address && address.postcode ? (
-                <tr>
-                  <th valign={'top'}>住所</th>
-                  <td>
-                    <AddressText>〒{address.postcode}</AddressText>
-                    {address.address1 && (
-                      <AddressText>{address.address1}</AddressText>
-                    )}
-                    {address.address2 && (
-                      <AddressText>{address.address2}</AddressText>
-                    )}
-                    {address.address3 && (
-                      <AddressText>{address.address3}</AddressText>
-                    )}
-                    {address.address4 && (
-                      <AddressText>{address.address4}</AddressText>
-                    )}
-                    {address.address5 && (
-                      <AddressText>{address.address5}</AddressText>
-                    )}
-                  </td>
-                </tr>
-              ) : null}
-              {site.contact_phone ? (
-                <tr>
-                  <th>電話</th>
-                  <td>{site.contact_phone}</td>
-                </tr>
-              ) : null}
-              {site.contact_email ? (
-                <tr>
-                  <th>EMAIL</th>
-                  <td>{site.contact_email}</td>
-                </tr>
-              ) : null}
-            </tbody>
-          </StyledTable>
-          {site.address && address.latitude && address.longitude ? (
-            <StyledGoogleMap
-              center={{
-                lat: Number(address.latitude),
-                lng: Number(address.longitude)
-              }}
-              name={'map'}
-            />
-          ) : null}
-        </Contents>
-      </Section>
-    )
-  }
+            ) : null}
+            {site.contact_email ? (
+              <tr>
+                <th>EMAIL</th>
+                <td>{site.contact_email}</td>
+              </tr>
+            ) : null}
+          </tbody>
+        </StyledTable>
+        {site.address && address.latitude && address.longitude ? (
+          <StyledGoogleMap
+            center={{
+              lat: Number(address.latitude),
+              lng: Number(address.longitude)
+            }}
+            name={'map'}
+          />
+        ) : null}
+      </Contents>
+    </Section>
+  )
 }
+
+About.propTypes = {
+  site: PropTypes.shape({
+    description: PropTypes.string.isRequired,
+    open: PropTypes.string,
+    contact_email: PropTypes.string,
+    contact_phone: PropTypes.string,
+    photos: PropTypes.array,
+    holiday: PropTypes.shape({
+      mon: PropTypes.bool,
+      tue: PropTypes.bool,
+      wed: PropTypes.bool,
+      thu: PropTypes.bool,
+      fri: PropTypes.bool,
+      sat: PropTypes.bool,
+      sun: PropTypes.bool,
+      holiday: PropTypes.bool
+    }),
+    business_hour: PropTypes.shape({
+      mon_start: PropTypes.string,
+      mon_end: PropTypes.string,
+      tue_start: PropTypes.string,
+      tue_end: PropTypes.string,
+      wed_start: PropTypes.string,
+      wed_end: PropTypes.string,
+      thu_start: PropTypes.string,
+      thu_end: PropTypes.string,
+      fri_start: PropTypes.string,
+      fri_end: PropTypes.string,
+      sat_start: PropTypes.string,
+      sat_end: PropTypes.string,
+      sun_start: PropTypes.string,
+      sun_end: PropTypes.string,
+      hol_start: PropTypes.string,
+      hol_end: PropTypes.string
+    }),
+    address: PropTypes.shape({
+      postcode: PropTypes.string,
+      latitude: PropTypes.string,
+      longitude: PropTypes.string,
+      country: PropTypes.string,
+      station: PropTypes.string,
+      address1: PropTypes.string,
+      address2: PropTypes.string,
+      address3: PropTypes.string,
+      address4: PropTypes.string,
+      address5: PropTypes.string
+    })
+  }).isRequired
+}
+
+export default About

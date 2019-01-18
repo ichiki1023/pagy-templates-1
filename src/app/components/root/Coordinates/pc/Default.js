@@ -9,7 +9,6 @@ const screenSize = 640
 
 const Section = styled.div`
   height: ${screenSize}px;
-  margin-top: 224px;
   position: relative;
   overflow: hidden;
   @media (max-width: 500px) {
@@ -74,6 +73,7 @@ const BackgroundImages = styled.div`
   position: absolute;
   display: flex;
   width: calc(100vw + (${screenSize}px / 4));
+  margin-top: 224px;
   height: ${screenSize}px;
   top: 0;
   left: -6%;

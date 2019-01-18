@@ -19,23 +19,66 @@ const StyledHeader = styled(CoolHeader)`
   top: 0;
 `
 
-const StyledFooter = styled(CoolFooter)`
-  z-index: 4;
+const Page = styled.div`
   position: relative;
 `
 
-const Page = styled.div`
-  position: relative;
+const StyledNews = styled(News)`
+  padding-top: 224px;
+  @media (max-width: 500px) {
+    padding-top: 180px;
+  }
 `
 
 const StyledSelection = styled(Selection)`
   position: relative;
   z-index: 3;
+  padding-top: 224px;
+  @media (max-width: 500px) {
+    padding-top: 180px;
+  }
 `
 
 const StyledCoordinates = styled(Coordinates)`
   position: relative;
   z-index: 3;
+  padding-top: 224px;
+  @media (max-width: 500px) {
+    padding-top: 180px;
+  }
+`
+
+const StyledAbout = styled(About)`
+  padding-top: 224px;
+  @media (max-width: 500px) {
+    padding-top: 180px;
+  }
+`
+
+const StyledSocialMedia = styled(SocialMedia)`
+  padding-top: 224px;
+  @media (max-width: 500px) {
+    padding-top: 180px;
+  }
+`
+
+const StyledContact = styled(Contact)`
+  padding-top: 224px;
+  @media (max-width: 500px) {
+    padding-top: 180px;
+  }
+`
+
+const FooterWrapper = styled.div`
+  padding-top: 224px;
+  @media (max-width: 500px) {
+    padding-top: 180px;
+  }
+`
+
+const StyledFooter = styled(CoolFooter)`
+  z-index: 4;
+  position: relative;
 `
 
 const StyledSNSNavigation = styled(SNSNavigation)`
@@ -96,7 +139,7 @@ export default class Index extends React.Component {
           />
           <Home site={site} />
           {site.posts && site.posts.length !== 0 ? (
-            <News posts={site.posts} />
+            <StyledNews posts={site.posts} />
           ) : null}
           {site.items && site.items.length !== 0 ? (
             <StyledSelection items={site.items} userAgent={userAgent} />
@@ -104,12 +147,14 @@ export default class Index extends React.Component {
           {site.items && site.coordinates.length !== 0 ? (
             <StyledCoordinates coordinates={site.coordinates} />
           ) : null}
-          <About site={site} />
-          {services ? <SocialMedia services={services} /> : null}
+          <StyledAbout site={site} />
+          {services ? <StyledSocialMedia services={services} /> : null}
         </Wrapper>
-        {site.contact_email ? <Contact site={site} /> : null}
+        {site.contact_email ? <StyledContact site={site} /> : null}
         {services ? <StyledSNSNavigation services={services} /> : null}
-        <StyledFooter userAgent={userAgent} site={site} />
+        <FooterWrapper>
+          <StyledFooter userAgent={userAgent} site={site} />
+        </FooterWrapper>
       </Page>
     )
   }

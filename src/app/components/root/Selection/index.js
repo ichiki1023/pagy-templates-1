@@ -5,13 +5,7 @@ import SectionTitle from 'app/components/common/SectionTitle'
 import Items from './Items'
 import Modal from './Modal'
 
-const Section = styled.div`
-  margin-top: 224px;
-
-  @media (max-width: 500px) {
-    margin-top: 128px;
-  }
-`
+const Section = styled.div``
 
 // Contents幅に合わせて幅の調整を行っている(54% + 100%-contents size)
 const StyledSectionTitle = styled(SectionTitle)`
@@ -66,9 +60,9 @@ class Selection extends React.Component {
   }
 
   render () {
-    const { items, userAgent, ...props } = this.props
+    const { items, userAgent, ...custom } = this.props
     return (
-      <Section name={'selection'} {...props}>
+      <Section name={'selection'} {...custom}>
         <Contents>
           <StyledSectionTitle
             backgroundText={'SELECTION'}

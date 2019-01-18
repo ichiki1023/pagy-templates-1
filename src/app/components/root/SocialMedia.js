@@ -6,9 +6,7 @@ import SNSServices, {
   BackgroundIcon
 } from 'app/components/common/SNSServices/SNSServices'
 
-const Section = styled.div`
-  margin: 80px 0;
-`
+const Section = styled.div``
 
 const StyledSectionTitle = styled(SectionTitle)`
   h1 {
@@ -85,8 +83,9 @@ const FollowUs = styled.div`
 `
 
 const SocialMedia = props => {
+  const { services, ...custom } = props
   return (
-    <Section name={'socialMedia'}>
+    <Section name={'socialMedia'} {...custom}>
       <Contents>
         <StyledSectionTitle
           backgroundText={'SOCIAL MEDIA'}
@@ -95,7 +94,7 @@ const SocialMedia = props => {
         <FollowUs>
           <span>FOLLOW US</span>
           <StyledSNSServices
-            services={props.services}
+            services={services}
             iconSize={48}
             iconColor={'gray'}
             hasText
