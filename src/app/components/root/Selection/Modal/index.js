@@ -11,6 +11,8 @@ const ModalHeader = styled.div`
 `
 
 const ModalContents = styled.div`
+  max-height: calc(100vh - 210px);
+  overflow-y: auto;
   width: 50vw;
   max-width: 1024px;
   height: 85vh;
