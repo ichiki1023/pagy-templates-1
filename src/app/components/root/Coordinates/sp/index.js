@@ -5,10 +5,8 @@ import SectionTitle from 'app/components/common/SectionTitle'
 import Link from 'next/link'
 import ArrowForwardIcon from '@material-ui/icons/ArrowForwardIos'
 
-const screenSize = 640
-
 const Section = styled.div`
-  height: ${screenSize}px;
+  height: 100vh;
   margin-top: 224px;
   position: relative;
   overflow: hidden;
@@ -19,7 +17,7 @@ const Section = styled.div`
 
 const Contents = styled.div`
   z-index: 2;
-  width: 90%;
+  width: 100%;
   height: 100%;
   margin: 0 auto;
   position: relative;
@@ -66,10 +64,10 @@ const StyledLink = styled.a`
 const BackgroundImages = styled.div`
   position: absolute;
   display: flex;
-  width: calc(100vw + (${screenSize}px / 4));
-  height: ${screenSize}px;
+  width: 100%;
+  height: 100%;
   top: 0;
-  left: -6%;
+  left: 0;
 
   &::before {
     z-index: 1;
@@ -94,13 +92,9 @@ const BackgroundImage = styled.div`
 
 const StyledImage = styled.img`
   width: 100%;
-  height: ${screenSize}px;
-  transform: skewX(15deg) scale(2);
+  height: 100%;
+  transform: none;
   object-fit: cover;
-
-  @media (max-width: 500px) {
-    transform: none;
-  }
 `
 
 const StyledArrowForwardIcon = styled(ArrowForwardIcon)`
