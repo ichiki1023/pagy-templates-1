@@ -79,11 +79,11 @@ const StyledAboutImages = styled(AboutImages)`
 `
 
 const StyledGoogleMap = styled(GoogleMap)`
-  height: 80vh;
+  height: calc(54vw * (724 / 1024));
 
   @media (max-width: 500px) {
     width: 100%;
-    height: 50vh;
+    height: 375px;
   }
 `
 
