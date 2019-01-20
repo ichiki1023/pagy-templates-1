@@ -28,7 +28,7 @@ const spPaddingTop = spHeaderHeight + spPadding
 const spMarginTop = spSectionMargin - (spHeaderHeight + spPadding)
 
 const StyledHeader = styled(CoolHeader)`
-  z-index: 4;
+  z-index: 1000;
   top: 0;
   height: ${headerHeight}px;
   @media (max-width: 500px) {
@@ -108,12 +108,12 @@ const FooterWrapper = styled.div`
 `
 
 const StyledFooter = styled(CoolFooter)`
-  z-index: 4;
+  z-index: 1000;
   position: relative;
 `
 
 const StyledSNSNavigation = styled(SNSNavigation)`
-  z-index: 2;
+  z-index: 999;
 `
 
 // PCのHeaderを表示させる領域. wrapperより下の領域はheaderを表示させない

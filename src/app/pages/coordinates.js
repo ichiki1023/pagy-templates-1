@@ -12,7 +12,7 @@ import SitesApi from '../api/SitesApi'
 
 const StyledHeader = styled(CoolHeader)`
   top: 0;
-  z-index: 4;
+  z-index: 1000;
 `
 
 const FooterWrapper = styled.div`
@@ -23,7 +23,7 @@ const FooterWrapper = styled.div`
 `
 
 const StyledFooter = styled(CoolFooter)`
-  z-index: 4;
+  z-index: 1000;
   position: relative;
   ${props =>
     props.isEmptyCoordinates &&
