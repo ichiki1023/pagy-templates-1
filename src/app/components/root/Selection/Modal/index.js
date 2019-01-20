@@ -2,41 +2,48 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import MaterialModal from '@material-ui/core/Modal'
-import CloseIcon from '@material-ui/icons/Close'
+import CloseIcon from '@material-ui/icons/CloseOutlined'
 import Items from './Items'
 
-const ModalHeader = styled.div`
-  width: 100%;
-  height: 32px;
-`
-
-const ModalContents = styled.div`
-  max-height: calc(100vh - 210px);
-  overflow-y: auto;
+const ModalContainer = styled.div`
+  background-color: #fff;
+  outline: none;
+  border-radius: 8px;
+  box-sizing: border-box;
   width: 50vw;
   max-width: 1024px;
   height: 85vh;
-  border-radius: 8px;
-  box-sizing: border-box;
+  max-height: calc(100vh - 32px);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+`
+
+const ModalHeader = styled.div`
+  width: 100%;
+`
+
+const StyledCloseIcon = styled(CloseIcon)`
+  && {
+    color: #888888;
+    cursor: pointer;
+    font-size: 32px;
+    padding: 12px;
+    margin: 12px;
+    float: right;
+  }
+`
+
+const ModalContents = styled.div`
+  width: 100%;
   padding: 48px;
-  margin: auto;
-  top: 30%;
-  background-color: #fff;
-  outline: none;
+  overflow-y: auto;
+  box-sizing: border-box;
 `
 
 const ModalSlick = styled.div`
   height: calc(100% - 32px);
-`
-
-const StyledCloseIcon = styled(CloseIcon)`
-  color: #888888;
-  float: right;
-  cursor: pointer;
-
-  svg {
-    font-size: 32px;
-  }
 `
 
 const Modal = props => {
@@ -49,20 +56,19 @@ const Modal = props => {
         alignItems: 'center'
       }}
     >
-      <ModalContents>
+      <ModalContainer>
         <ModalHeader>
-          <StyledCloseIcon
-            style={{ fontSize: 32 }}
-            onClick={props.handleClose}
-          />
+          <StyledCloseIcon onClick={props.handleClose} />
         </ModalHeader>
-        <ModalSlick>
-          <Items
-            items={props.items}
-            selectedImageIndex={props.selectedImageIndex}
-          />
-        </ModalSlick>
-      </ModalContents>
+        <ModalContents>
+          <ModalSlick>
+            <Items
+              items={props.items}
+              selectedImageIndex={props.selectedImageIndex}
+            />
+          </ModalSlick>
+        </ModalContents>
+      </ModalContainer>
     </MaterialModal>
   )
 }
