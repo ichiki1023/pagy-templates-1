@@ -117,7 +117,7 @@ const StyledImage = styled.img`
 `
 
 const StyledArrowForwardIcon = styled(ArrowForwardIcon)`
-  color: #fff;
+  color: #ffffff;
 `
 
 const CoordinatesPC = props => {

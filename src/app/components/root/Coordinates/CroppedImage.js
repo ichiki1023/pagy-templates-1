@@ -2,12 +2,6 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 import PropTypes from 'prop-types'
 
-const Wrapper = styled.div`
-  position: relative;
-  height: 100%;
-  width: 100%;
-`
-
 const StyledSVG = styled.svg`
   position: absolute;
   top: 0;
@@ -85,13 +79,11 @@ export default class CroppedImage extends React.Component {
     const { src, croppedSide, ...props } = this.props
 
     return (
-      <Wrapper>
-        <StyledSVG croppedSide={croppedSide} viewBox={'0 0 480 320'} {...props}>
-          <g height='100%' width='100%'>
-            <image xlinkHref={src} />
-          </g>
-        </StyledSVG>
-      </Wrapper>
+      <StyledSVG croppedSide={croppedSide} viewBox={'0 0 320 480'} {...props}>
+        <g height='100%' width='100%'>
+          <image xlinkHref={src} />
+        </g>
+      </StyledSVG>
     )
   }
 }

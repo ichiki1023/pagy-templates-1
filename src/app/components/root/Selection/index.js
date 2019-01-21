@@ -9,7 +9,7 @@ const Section = styled.div``
 
 // Contents幅に合わせて幅の調整を行っている(54% + 100%-contents size)
 const StyledSectionTitle = styled(SectionTitle)`
-  width: 59%;
+  width: 54vw;
   margin: 0 auto 80px auto;
 
   @media (max-width: 500px) {

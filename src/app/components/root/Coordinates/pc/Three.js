@@ -15,32 +15,53 @@ const Contents = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+  position: relative;
+`
+
+const TextWrapper = styled.div`
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 `
 
 const StyledSectionTitle = styled(SectionTitle)`
-  width: 100%;
+  h1 {
+    color: rgba(240, 240, 240, 0.5);
+  }
+
+  h3 {
+    color: #ffffff;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    width: 100%;
+    text-align: center;
+  }
 `
 
 const StyledLink = styled.a`
+  z-index: 2;
   width: 32%;
   height: 68px;
   margin-top: 30px;
   max-width: 400px;
   min-width: 300px;
-  border: 1px solid #545454;
+  border: 1px solid #ffffff;
   border-radius: 50px;
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
-
-  @media (max-width: 500px) {
-    height: 48px;
-  }
 
   p {
     text-decoration: none;
-    color: #545454;
+    color: #ffffff;
     font-size: 1.2em;
   }
 `
@@ -48,6 +69,17 @@ const StyledLink = styled.a`
 const BackgroundImages = styled.div`
   width: 150%;
   position: relative;
+
+  &::before {
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    content: ' ';
+  }
   left: -7%;
 `
 
@@ -69,19 +101,12 @@ const StyledImage = styled.img`
 `
 
 const ImageWrapper = styled.div`
-  margin-top: 40px;
   width: 100%;
   overflow: hidden;
 `
 
-const LinkWrapper = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-`
-
 const StyledArrowForwardIcon = styled(ArrowForwardIcon)`
-  color: #545454;
+  color: #ffffff;
 `
 
 const CoordinatesPC = props => {
@@ -89,10 +114,6 @@ const CoordinatesPC = props => {
 
   return (
     <Section name={'coordinates'} {...custom}>
-      <StyledSectionTitle
-        backgroundText={'COORDINATES'}
-        titleText={'おすすめコーディネート'}
-      />
       <Contents>
         <ImageWrapper>
           <BackgroundImages>
@@ -105,14 +126,18 @@ const CoordinatesPC = props => {
             })}
           </BackgroundImages>
         </ImageWrapper>
-        <LinkWrapper>
+        <TextWrapper>
+          <StyledSectionTitle
+            backgroundText={'COORDINATES'}
+            titleText={'おすすめコーディネート'}
+          />
           <Link href={'/coordinates'}>
             <StyledLink>
               <p>さらに詳しく</p>
               <StyledArrowForwardIcon />
             </StyledLink>
           </Link>
-        </LinkWrapper>
+        </TextWrapper>
       </Contents>
     </Section>
   )

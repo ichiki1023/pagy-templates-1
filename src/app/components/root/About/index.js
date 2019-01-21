@@ -24,7 +24,7 @@ const Contents = styled.div`
 `
 
 const StyledTexts = styled.div`
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
 `
 
@@ -39,8 +39,6 @@ const StyledTable = styled.table`
     color: #9b9b9b;
     font-size: 18px;
     font-weight: normal;
-    padding-left: 8px;
-    padding-right: 8px;
     padding-bottom: 1.5em;
 
     @media (max-width: 500px) {
