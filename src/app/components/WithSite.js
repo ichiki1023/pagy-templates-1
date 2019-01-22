@@ -1,6 +1,6 @@
 import React from 'react'
 import defaultData from 'app/data/default'
-import SitesApi from 'app/api/SitesApi'
+import GetSiteInfoApi from 'app/api/GetSiteInfoApi'
 import getConfig from 'next/config'
 
 const WithSite = Page =>
@@ -19,8 +19,8 @@ const WithSite = Page =>
       // 登録済みのサイトの情報を取得する
       if (host !== publicRuntimeConfig.host) {
         try {
-          site = await SitesApi.getSiteWithDomain(host)
-        } catch {
+          site = await GetSiteInfoApi.get({ domain: host })
+        } catch (error) {
           // なければdefaultの値
           site = defaultData.site
         }
