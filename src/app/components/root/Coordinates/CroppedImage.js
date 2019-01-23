@@ -36,22 +36,26 @@ export const DefaultSVGClipPath = () => {
   )
 }
 
+const getClipPath = croppedSide => {
+  switch (croppedSide) {
+    case 'left':
+      return "url('#clipPathLeft')"
+    case 'right':
+      return "url('#clipPathRight')"
+    default:
+      return null
+  }
+}
+
 /**
  * clip-pathはIE、Edgeでは対応していないため、svgとして読み込で形を変えるようにする
  */
 const CroppedImage = props => {
   const { src, width, height, croppedSide, ...custom } = props
+  const clipPath = getClipPath(croppedSide)
 
   return (
-    <svg
-      clipPath={
-        croppedSide === 'left'
-          ? "url('#clipPathLeft')"
-          : "url('#clipPathRight')"
-      }
-      viewBox={`0 0 ${width} ${height}`}
-      {...custom}
-    >
+    <svg clipPath={clipPath} viewBox={`0 0 ${width} ${height}`} {...custom}>
       <image xlinkHref={src} width={'100%'} height={'100%'} />
     </svg>
   )
