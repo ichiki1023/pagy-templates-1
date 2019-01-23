@@ -18,6 +18,12 @@ const StyledImage = styled.img`
   }
 `
 
+const StyledMultipleImage = styled.div`
+  height: calc((54vw * (320 / 480)) / 2);
+  position: relative;
+  overflow-y: hidden;
+`
+
 const StyledCroppedImg = styled(CroppedImage)`
   width: 55%;
   height: auto;
@@ -51,10 +57,10 @@ const AboutImages = props => {
 
   const MultipleImages = props => {
     return (
-      <div>
+      <StyledMultipleImage>
         <StyledCroppedImg src={props.photos[0].url} croppedSide={'right'} />
         <StyledCroppedImg src={props.photos[1].url} croppedSide={'left'} />
-      </div>
+      </StyledMultipleImage>
     )
   }
 
