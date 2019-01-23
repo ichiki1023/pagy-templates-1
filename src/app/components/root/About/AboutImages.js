@@ -47,8 +47,6 @@ const StyledCroppedImg = styled(CroppedImage)`
 const AboutImages = props => {
   const { photos, ...photosProps } = props
   const imageWidth = window.innerWidth * 0.54 * 0.6
-  console.log(window.innerWidth)
-  console.log(imageWidth)
 
   const Image = props => {
     return <StyledImage src={props.photo.url} />

@@ -16,6 +16,8 @@ const Section = styled.div`
 const Contents = styled.div`
   z-index: 2;
   width: 100%;
+  height: 400px;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -71,9 +73,6 @@ const StyledLink = styled.a`
 
 const BackgroundImages = styled.div`
   width: 100%;
-  overflow-y: hidden;
-  position: relative;
-  height: calc(54vw * (320 / 480));
 
   &::before {
     z-index: 1;
@@ -92,7 +91,7 @@ const StyledArrowForwardIcon = styled(ArrowForwardIcon)`
 `
 
 const StyledCroppedImg = styled(CroppedImage)`
-  width: 55%;
+  width: 60%;
   height: auto;
 
   ${props =>
@@ -112,6 +111,7 @@ const StyledCroppedImg = styled(CroppedImage)`
 
 const CoordinatesPC = props => {
   const { images, ...custom } = props
+  const imageWidth = window.innerWidth * 0.54 * 0.6
 
   return (
     <Section name={'coordinates'} {...custom}>
@@ -123,6 +123,8 @@ const CoordinatesPC = props => {
               <StyledCroppedImg
                 key={index}
                 src={image}
+                width={imageWidth}
+                height={(imageWidth * 4) / 3}
                 croppedSide={index === 0 ? 'right' : 'left'}
               />
             )
