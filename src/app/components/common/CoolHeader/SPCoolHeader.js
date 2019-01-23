@@ -94,6 +94,10 @@ const LanguageArea = styled.div`
   align-items: center;
 `
 
+const headerHeight = 64
+const offset = 20
+const scrollOffset = -(headerHeight + offset)
+
 export default class SPCoolHeader extends React.Component {
   constructor (props) {
     super(props)
@@ -150,18 +154,33 @@ export default class SPCoolHeader extends React.Component {
             <Close onClick={this.handleCloseMenu} />
             <MenuList>
               <FirstSectionTitle>MENU</FirstSectionTitle>
-              <ScrollLink to={'home'} smooth duration={scrollDuration}>
+              <ScrollLink
+                to={'home'}
+                offset={scrollOffset}
+                smooth
+                duration={scrollDuration}
+              >
                 <MenuTitle>HOME</MenuTitle>
               </ScrollLink>
               {/* News */}
               {posts && posts.length !== 0 ? (
-                <ScrollLink to={'NEWS'} smooth duration={scrollDuration}>
+                <ScrollLink
+                  to={'news'}
+                  offset={scrollOffset}
+                  smooth
+                  duration={scrollDuration}
+                >
                   <MenuTitle>NEWS</MenuTitle>
                 </ScrollLink>
               ) : null}
               {/* Selection */}
               {items && items.length !== 0 ? (
-                <ScrollLink to={'selection'} smooth duration={scrollDuration}>
+                <ScrollLink
+                  to={'selection'}
+                  offset={scrollOffset}
+                  smooth
+                  duration={scrollDuration}
+                >
                   <MenuTitle>SELECTION</MenuTitle>
                 </ScrollLink>
               ) : null}
@@ -171,7 +190,12 @@ export default class SPCoolHeader extends React.Component {
                   <MenuTitle>COORDINATES</MenuTitle>
                 </ScrollLink>
               ) : null}
-              <ScrollLink to={'about'} smooth duration={scrollDuration}>
+              <ScrollLink
+                to={'about'}
+                smooth
+                offset={scrollOffset}
+                duration={scrollDuration}
+              >
                 <MenuTitle>ABOUT</MenuTitle>
               </ScrollLink>
               <ChildMenuTitle>
@@ -184,7 +208,12 @@ export default class SPCoolHeader extends React.Component {
               </ChildMenuTitle>
               {/* Contact */}
               {site.contact_email ? (
-                <ScrollLink to={'contact'} smooth duration={scrollDuration}>
+                <ScrollLink
+                  to={'contact'}
+                  offset={scrollOffset}
+                  smooth
+                  duration={scrollDuration}
+                >
                   <MenuTitle>CONTACT</MenuTitle>
                 </ScrollLink>
               ) : null}

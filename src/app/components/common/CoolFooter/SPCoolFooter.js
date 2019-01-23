@@ -10,7 +10,6 @@ const Footer = styled.div`
   height: 192px;
   display: flex;
   flex-direction: column;
-  margin-top: 126px;
 `
 
 const FooterList = styled.li`

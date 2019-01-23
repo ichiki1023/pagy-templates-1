@@ -12,7 +12,6 @@ const Footer = styled.div`
   display: flex;
   flex-direction: column;
   bottom: 0;
-  margin-top: 224px;
 `
 
 const Contents = styled.div`

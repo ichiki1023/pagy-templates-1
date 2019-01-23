@@ -3,12 +3,7 @@ import styled from 'styled-components'
 import SectionTitle from 'app/components/common/SectionTitle'
 import Input from 'app/components/common/Input'
 
-const Section = styled.div`
-  margin-top: 224px;
-  @media (max-width: 500px) {
-    margin-top: 128px;
-  }
-`
+const Section = styled.div``
 
 const Contents = styled.div`
   width: 54%;
@@ -44,8 +39,9 @@ const StyledSubmitButton = styled.input`
 
 export default class Contact extends React.Component {
   render () {
+    const { site, ...custom } = this.props
     return (
-      <Section name={'contact'}>
+      <Section name={'contact'} {...custom}>
         <Contents>
           <SectionTitle backgroundText={'CONTACT'} titleText={'お問い合わせ'} />
           <Input title={'お名前'} type={'text'} placeholder={'本上まなみ'} />

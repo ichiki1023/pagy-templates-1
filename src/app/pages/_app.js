@@ -1,6 +1,10 @@
 import React from 'react'
 import App, { Container } from 'next/app'
+import Head from 'next/head'
 import withUserAgent from 'app/helpers/withUserAgent'
+import slick from 'slick-carousel/slick/slick.css'
+import slickTheme from 'slick-carousel/slick/slick-theme.css'
+import slickCustom from 'app/components/slick-custom.css'
 import { MuiThemeProvider } from '@material-ui/core/styles'
 import getPageContext from 'app/helpers/getPageContext'
 import { createGlobalStyle } from 'styled-components'
@@ -61,6 +65,11 @@ class TemplateApp extends App {
     return (
       <Container>
         <GlobalStyle />
+        <Head>
+          <style dangerouslySetInnerHTML={{ __html: slick }} />
+          <style dangerouslySetInnerHTML={{ __html: slickTheme }} />
+          <style dangerouslySetInnerHTML={{ __html: slickCustom }} />
+        </Head>
         <MuiThemeProvider
           theme={pageContext.theme}
           sheetsManager={pageContext.sheetsManager}

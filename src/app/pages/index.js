@@ -10,36 +10,108 @@ import About from 'app/components/root/About'
 import Coordinates from 'app/components/root/Coordinates'
 import SocialMedia from 'app/components/root/SocialMedia'
 import Contact from 'app/components/root/Contact'
-import defaultData from 'app/data/default'
-import SitesApi from 'app/api/SitesApi'
-import getConfig from 'next/config'
+import { animateScroll as scroll, scroller } from 'react-scroll'
+import WithSite from 'app/components/WithSite'
+
+const headerHeight = 64
+const padding = 40
+const sectionMargin = 224
+const paddingTop = headerHeight + padding
+const marginTop = sectionMargin - (headerHeight + padding)
+
+const spHeaderHeight = 48
+const spPadding = 20
+const spSectionMargin = 180
+const spPaddingTop = spHeaderHeight + spPadding
+const spMarginTop = spSectionMargin - (spHeaderHeight + spPadding)
 
 const StyledHeader = styled(CoolHeader)`
-  z-index: 4;
+  z-index: 1000;
   top: 0;
-`
-
-const StyledFooter = styled(CoolFooter)`
-  z-index: 4;
-  position: relative;
+  height: ${headerHeight}px;
+  @media (max-width: 500px) {
+    height: ${spHeaderHeight}px;
+  }
 `
 
 const Page = styled.div`
   position: relative;
 `
 
+const StyledNews = styled(News)`
+  padding-top: ${paddingTop}px;
+  margin-top: ${marginTop}px;
+  @media (max-width: 500px) {
+    padding-top: ${spPaddingTop}px;
+    margin-top: ${spMarginTop}px;
+  }
+`
+
 const StyledSelection = styled(Selection)`
   position: relative;
   z-index: 3;
+  padding-top: ${paddingTop}px;
+  margin-top: ${marginTop}px;
+  @media (max-width: 500px) {
+    padding-top: ${spPaddingTop}px;
+    margin-top: ${spMarginTop}px;
+  }
 `
 
 const StyledCoordinates = styled(Coordinates)`
   position: relative;
   z-index: 3;
+  padding-top: ${paddingTop}px;
+  margin-top: ${marginTop}px;
+  @media (max-width: 500px) {
+    padding-top: ${spPaddingTop}px;
+    margin-top: ${spMarginTop}px;
+  }
+`
+
+const StyledAbout = styled(About)`
+  padding-top: ${paddingTop}px;
+  margin-top: ${marginTop}px;
+  @media (max-width: 500px) {
+    padding-top: ${spPaddingTop}px;
+    margin-top: ${spMarginTop}px;
+  }
+`
+
+const StyledSocialMedia = styled(SocialMedia)`
+  padding-top: ${paddingTop}px;
+  margin-top: ${marginTop}px;
+  @media (max-width: 500px) {
+    padding-top: ${spPaddingTop}px;
+    margin-top: ${spMarginTop}px;
+  }
+`
+
+const StyledContact = styled(Contact)`
+  padding-top: ${paddingTop - headerHeight}px;
+  margin-top: ${marginTop + headerHeight}px;
+  @media (max-width: 500px) {
+    padding-top: ${spPaddingTop}px;
+    margin-top: ${spMarginTop}px;
+  }
+`
+
+const FooterWrapper = styled.div`
+  padding-top: ${paddingTop}px;
+  margin-top: ${marginTop}px;
+  @media (max-width: 500px) {
+    padding-top: ${spPaddingTop}px;
+    margin-top: ${spMarginTop}px;
+  }
+`
+
+const StyledFooter = styled(CoolFooter)`
+  z-index: 1000;
+  position: relative;
 `
 
 const StyledSNSNavigation = styled(SNSNavigation)`
-  z-index: 2;
+  z-index: 999;
 `
 
 // PCのHeaderを表示させる領域. wrapperより下の領域はheaderを表示させない
@@ -48,29 +120,29 @@ const Wrapper = styled.div`
   position: relative;
 `
 
-export default class Index extends React.Component {
-  static async getInitialProps ({ req }) {
-    const publicRuntimeConfig = getConfig().publicRuntimeConfig
-    const host = req ? req.headers.host : window.location.host
+class Index extends React.Component {
+  static async getInitialProps ({ req, asPath }) {
+    const anchor = req ? null : asPath
+    return { anchor }
+  }
 
-    // POSTから取得したデータを利用する
-    if (req.body && req.body.site) {
-      return { site: req.body.site }
-    }
-
-    // 登録済みのサイトの情報を取得する
-    if (host !== publicRuntimeConfig.host) {
+  componentDidMount () {
+    if (this.props.anchor) {
       try {
-        const site = await SitesApi.getSiteWithDomain(host)
-        return { site: site }
+        const element = this.props.anchor.split('/#')[1]
+        if (element) {
+          scroller.scrollTo(element)
+          return
+        }
+        scroll.scrollToTop()
+        return
       } catch (error) {
-        console.log(error)
-        // なければdefaultの値
-        return { site: defaultData.site }
+        // splitできない場合はtopへ送る
+        scroll.scrollToTop()
+        return
       }
     }
-    // なければdefaultの値
-    return { site: defaultData.site }
+    scroll.scrollToTop()
   }
 
   render () {
@@ -97,21 +169,28 @@ export default class Index extends React.Component {
           />
           <Home site={site} />
           {site.posts && site.posts.length !== 0 ? (
-            <News posts={site.posts} />
+            <StyledNews containerId={'news'} posts={site.posts} />
           ) : null}
           {site.items && site.items.length !== 0 ? (
             <StyledSelection items={site.items} userAgent={userAgent} />
           ) : null}
           {site.items && site.coordinates.length !== 0 ? (
-            <StyledCoordinates coordinates={site.coordinates} />
+            <StyledCoordinates
+              coordinates={site.coordinates}
+              marginTop={paddingTop}
+            />
           ) : null}
-          <About site={site} />
-          {services ? <SocialMedia services={services} /> : null}
+          <StyledAbout site={site} />
+          {services ? <StyledSocialMedia services={services} /> : null}
         </Wrapper>
-        {site.contact_email ? <Contact site={site} /> : null}
+        {site.contact_email ? <StyledContact site={site} /> : null}
         {services ? <StyledSNSNavigation services={services} /> : null}
-        <StyledFooter userAgent={userAgent} site={site} />
+        <FooterWrapper>
+          <StyledFooter userAgent={userAgent} site={site} />
+        </FooterWrapper>
       </Page>
     )
   }
 }
+
+export default WithSite(Index)

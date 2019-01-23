@@ -19,21 +19,20 @@ const StyledImage = styled.img`
 `
 
 const StyledCroppedImg = styled(CroppedImage)`
-  position: relative;
-  width: 50%;
+  width: 55%;
   height: auto;
 
   ${props =>
     props.croppedSide === 'left' &&
     css`
+      position: relative;
       float: right;
-      left: -4.6%;
     `};
 
   ${props =>
     props.croppedSide === 'right' &&
     css`
-      left: 4.6%;
+      position: absolute;
       float: left;
     `};
 

@@ -5,18 +5,23 @@ import CoolFooter from 'app/components/common/CoolFooter'
 import SectionTitle from 'app/components/common/SectionTitle'
 import SNSNavigation from 'app/components/common/SNSServices/Navigation'
 import Items from 'app/components/coordinates/Items'
-import defaultData from 'app/data/default'
 import AddIcon from '@material-ui/icons/Add'
-import getConfig from 'next/config'
-import SitesApi from '../api/SitesApi'
+import WithSite from 'app/components/WithSite'
 
 const StyledHeader = styled(CoolHeader)`
   top: 0;
-  z-index: 4;
+  z-index: 1000;
+`
+
+const FooterWrapper = styled.div`
+  margin-top: 224px;
+  @media (max-width: 500px) {
+    margin-top: 180px;
+  }
 `
 
 const StyledFooter = styled(CoolFooter)`
-  z-index: 4;
+  z-index: 1000;
   position: relative;
   ${props =>
     props.isEmptyCoordinates &&
@@ -80,32 +85,7 @@ const StyledAddIcon = styled(AddIcon)`
   margin-right: 12px;
 `
 
-export default class Coordinates extends React.Component {
-  static async getInitialProps ({ req }) {
-    const publicRuntimeConfig = getConfig().publicRuntimeConfig
-    const host = req ? req.headers.host : window.location.host
-
-    // POSTから取得したデータを利用する
-    if (req.body && req.body.site) {
-      return { site: req.body.site }
-    }
-
-    // 登録済みのサイトの情報を取得する
-    if (host !== publicRuntimeConfig.host) {
-      try {
-        const site = await SitesApi.getSiteWithDomain(host)
-        return { site: site }
-      } catch (error) {
-        console.log(error)
-        // なければdefaultの値
-        return { site: defaultData.site }
-      }
-    }
-
-    // なければdefaultの値
-    return { site: defaultData.site }
-  }
-
+class Coordinates extends React.Component {
   render () {
     const {
       site,
@@ -150,12 +130,16 @@ export default class Coordinates extends React.Component {
             </div>
           ) : null}
         </Contents>
-        <StyledFooter
-          userAgent={userAgent}
-          site={site}
-          isEmptyCoordinates={isEmptyCoordinates}
-        />
+        <FooterWrapper>
+          <StyledFooter
+            userAgent={userAgent}
+            site={site}
+            isEmptyCoordinates={isEmptyCoordinates}
+          />
+        </FooterWrapper>
       </div>
     )
   }
 }
+
+export default WithSite(Coordinates)

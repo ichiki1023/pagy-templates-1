@@ -2,13 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 import { Link as ScrollLink } from 'react-scroll'
+import Link from 'next/link'
 import LanguageIcon from '@material-ui/icons/Language'
 import LanguageDropDown from 'app/components/common/LanguageDropDown'
 
 const Header = styled.div`
   background-color: #000000;
   width: 100%;
-  height: 54px;
+  height: 64px;
   position: -webkit-sticky; /* Safari */
   position: sticky;
 `
@@ -52,58 +53,120 @@ const StyledLanguageIcon = styled(LanguageIcon)`
   color: #ffffff;
 `
 
+const headerHeight = 64
+const scrollDuration = 500
+
 const PCCoolHeader = props => {
-  const { site, ...otherProps } = props
+  const { site, pageName, ...custom } = props
   const { posts, items, coordinates } = site
-  const scrollDuration = 500
   const languageOptions = [
     { value: 'ja', label: 'Japanese' },
     { value: 'en', label: 'English' }
   ]
+  const isHome = pageName === 'home'
 
   return (
-    <Header {...otherProps}>
+    <Header {...custom}>
       <HeaderLists>
         <HeaderList key={'home'} isTitle>
-          <ScrollLink to={'home'} smooth duration={scrollDuration}>
-            {site.name}
-          </ScrollLink>
+          {isHome ? (
+            <ScrollLink
+              to={'home'}
+              smooth
+              offset={-headerHeight}
+              duration={scrollDuration}
+            >
+              {site.name}
+            </ScrollLink>
+          ) : (
+            <Link href={'/'}>
+              <a>{site.name}</a>
+            </Link>
+          )}
         </HeaderList>
         {/* News */}
         {posts && posts.length !== 0 ? (
           <HeaderList key={'news'}>
-            <ScrollLink to={'news'} smooth duration={scrollDuration}>
-              NEWS
-            </ScrollLink>
+            {isHome ? (
+              <ScrollLink
+                to={'news'}
+                smooth
+                spy
+                hashSpy
+                duration={scrollDuration}
+              >
+                NEWS
+              </ScrollLink>
+            ) : (
+              <Link href={'/#news'}>
+                <a>NEWS</a>
+              </Link>
+            )}
           </HeaderList>
         ) : null}
         {/* Selection */}
         {items && items.length !== 0 ? (
           <HeaderList key={'selection'}>
-            <ScrollLink to={'selection'} smooth duration={scrollDuration}>
-              SELECTION
-            </ScrollLink>
+            {isHome ? (
+              <ScrollLink
+                to={'selection'}
+                smooth
+                spy
+                hashSpy
+                duration={scrollDuration}
+              >
+                SELECTION
+              </ScrollLink>
+            ) : (
+              <Link href={'/#selection'}>
+                <a>SELECTION</a>
+              </Link>
+            )}
           </HeaderList>
         ) : null}
         {/* Coordinates */}
         {coordinates && coordinates.length !== 0 ? (
           <HeaderList key={'coordinates'}>
-            <ScrollLink to={'coordinates'} smooth duration={scrollDuration}>
-              COORDINATES
-            </ScrollLink>
+            <Link href={'/coordinates'}>
+              <a>COORDINATES</a>
+            </Link>
           </HeaderList>
         ) : null}
         <HeaderList key={'about'}>
-          <ScrollLink to={'about'} smooth duration={scrollDuration}>
-            ABOUT US
-          </ScrollLink>
+          {isHome ? (
+            <ScrollLink
+              to={'about'}
+              smooth
+              spy
+              hashSpy
+              duration={scrollDuration}
+            >
+              ABOUT US
+            </ScrollLink>
+          ) : (
+            <Link href={'/#about'}>
+              <a>ABOUT US</a>
+            </Link>
+          )}
         </HeaderList>
         {/* Contact */}
         {site.contact_email ? (
           <HeaderList key={'contact'}>
-            <ScrollLink to={'contact'} smooth duration={scrollDuration}>
-              CONTACT
-            </ScrollLink>
+            {isHome ? (
+              <ScrollLink
+                to={'contact'}
+                smooth
+                spy
+                hashSpy
+                duration={scrollDuration}
+              >
+                CONTACT
+              </ScrollLink>
+            ) : (
+              <Link href={'/#contact'}>
+                <a>CONTACT</a>
+              </Link>
+            )}
           </HeaderList>
         ) : null}
         <HeaderList key={'language'}>
