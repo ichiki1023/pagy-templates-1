@@ -6,7 +6,7 @@ import CroppedImage, {
 } from 'app/components/root/Coordinates/CroppedImage'
 
 const StyledImage = styled.img`
-  width: 60%;
+  width: 54%;
   min-width: 400px;
   height: auto;
   display: block;
@@ -18,14 +18,10 @@ const StyledImage = styled.img`
   }
 `
 
-const StyledMultipleImage = styled.div`
-  height: calc((54vw * (320 / 480)) / 2);
-  position: relative;
-  overflow-y: hidden;
-`
+const StyledMultipleImage = styled.div``
 
 const StyledCroppedImg = styled(CroppedImage)`
-  width: 55%;
+  width: 60%;
   height: auto;
 
   ${props =>
@@ -50,6 +46,9 @@ const StyledCroppedImg = styled(CroppedImage)`
 
 const AboutImages = props => {
   const { photos, ...photosProps } = props
+  const imageWidth = window.innerWidth * 0.54 * 0.6
+  console.log(window.innerWidth)
+  console.log(imageWidth)
 
   const Image = props => {
     return <StyledImage src={props.photo.url} />
@@ -58,8 +57,18 @@ const AboutImages = props => {
   const MultipleImages = props => {
     return (
       <StyledMultipleImage>
-        <StyledCroppedImg src={props.photos[0].url} croppedSide={'right'} />
-        <StyledCroppedImg src={props.photos[1].url} croppedSide={'left'} />
+        <StyledCroppedImg
+          src={props.photos[0].url}
+          croppedSide={'right'}
+          width={imageWidth}
+          height={(imageWidth * 3) / 4}
+        />
+        <StyledCroppedImg
+          src={props.photos[1].url}
+          croppedSide={'left'}
+          width={imageWidth}
+          height={(imageWidth * 3) / 4}
+        />
       </StyledMultipleImage>
     )
   }
