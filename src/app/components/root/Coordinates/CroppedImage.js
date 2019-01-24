@@ -1,36 +1,6 @@
 import React from 'react'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import PropTypes from 'prop-types'
-
-const StyledSVG = styled.svg`
-  position: absolute;
-  top: 0;
-  left: 0;
-
-  g > image {
-    width: 100%;
-    height: auto;
-    top: 0;
-    left: 0;
-  }
-
-  @media (min-width: 501px) {
-    ${props =>
-    props.croppedSide === 'left' &&
-      css`
-        g {
-          clip-path: url('#clipPathLeft');
-        }
-      `};
-    ${props =>
-    props.croppedSide === 'right' &&
-      css`
-        g {
-          clip-path: url('#clipPathRight');
-        }
-      `};
-  }
-`
 
 const StyldDefaultSVG = styled.svg`
   width: 0;
@@ -50,15 +20,15 @@ export const DefaultSVGClipPath = () => {
     <div>
       <StyldDefaultSVG>
         <defs>
-          <clipPath id={'clipPathLeft'} clipPathUnits='objectBoundingBox'>
-            <polygon points='0.2 0, 1 0, 1 1, 0 1' />
+          <clipPath id={'clipPathLeft'} clipPathUnits={'objectBoundingBox'}>
+            <polygon points='0.35 0, 1 0, 1 1, 0 1' />
           </clipPath>
         </defs>
       </StyldDefaultSVG>
       <StyldDefaultSVG>
         <defs>
-          <clipPath id={'clipPathRight'} clipPathUnits='objectBoundingBox'>
-            <polygon points='0 0, 1 0, 0.8 1, 0 1' />
+          <clipPath id={'clipPathRight'} clipPathUnits={'objectBoundingBox'}>
+            <polygon points='0 0, 1 0, 0.65 1, 0 1' />
           </clipPath>
         </defs>
       </StyldDefaultSVG>
@@ -66,24 +36,41 @@ export const DefaultSVGClipPath = () => {
   )
 }
 
+const getClipPath = croppedSide => {
+  switch (croppedSide) {
+    case 'left':
+      return "url('#clipPathLeft')"
+    case 'right':
+      return "url('#clipPathRight')"
+    default:
+      return null
+  }
+}
+
 /**
  * clip-pathはIE、Edgeでは対応していないため、svgとして読み込で形を変えるようにする
  */
-export default class CroppedImage extends React.Component {
-  static propTypes = {
-    croppedSide: PropTypes.string,
-    src: PropTypes.string.isRequired
-  }
+const CroppedImage = props => {
+  const { src, width, height, croppedSide, ...custom } = props
+  const clipPath = getClipPath(croppedSide)
 
-  render () {
-    const { src, croppedSide, ...props } = this.props
-
-    return (
-      <StyledSVG croppedSide={croppedSide} viewBox={'0 0 320 480'} {...props}>
-        <g height='100%' width='100%'>
-          <image xlinkHref={src} />
-        </g>
-      </StyledSVG>
-    )
-  }
+  return (
+    <svg clipPath={clipPath} viewBox={`0 0 ${width} ${height}`} {...custom}>
+      <image xlinkHref={src} width={'100%'} height={'100%'} />
+    </svg>
+  )
 }
+
+CroppedImage.propTypes = {
+  width: PropTypes.number,
+  height: PropTypes.number,
+  croppedSide: PropTypes.string,
+  src: PropTypes.string.isRequired
+}
+
+CroppedImage.defaultProps = {
+  width: 480,
+  height: 360
+}
+
+export default CroppedImage

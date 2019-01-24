@@ -134,15 +134,24 @@ class Index extends React.Component {
           scroller.scrollTo(element)
           return
         }
-        scroll.scrollToTop()
+        scroll.scrollToTop({
+          smooth: false,
+          duration: 0
+        })
         return
       } catch (error) {
         // splitできない場合はtopへ送る
-        scroll.scrollToTop()
+        scroll.scrollToTop({
+          smooth: false,
+          duration: 0
+        })
         return
       }
     }
-    scroll.scrollToTop()
+    scroll.scrollToTop({
+      smooth: false,
+      duration: 0
+    })
   }
 
   render () {

@@ -4,9 +4,10 @@ import styled, { css } from 'styled-components'
 import CroppedImage, {
   DefaultSVGClipPath
 } from 'app/components/root/Coordinates/CroppedImage'
+import MediaQuery from 'react-responsive'
 
 const StyledImage = styled.img`
-  width: 60%;
+  width: 54%;
   min-width: 400px;
   height: auto;
   display: block;
@@ -18,8 +19,10 @@ const StyledImage = styled.img`
   }
 `
 
+const StyledMultipleImage = styled.div``
+
 const StyledCroppedImg = styled(CroppedImage)`
-  width: 55%;
+  width: 60%;
   height: auto;
 
   ${props =>
@@ -38,12 +41,13 @@ const StyledCroppedImg = styled(CroppedImage)`
 
   @media (max-width: 500px) {
     width: 100%;
-    left: 0;
+    position: relative;
   }
 `
 
 const AboutImages = props => {
   const { photos, ...photosProps } = props
+  const imageWidth = window.innerWidth * 0.54 * 0.6
 
   const Image = props => {
     return <StyledImage src={props.photo.url} />
@@ -51,10 +55,28 @@ const AboutImages = props => {
 
   const MultipleImages = props => {
     return (
-      <div>
-        <StyledCroppedImg src={props.photos[0].url} croppedSide={'right'} />
-        <StyledCroppedImg src={props.photos[1].url} croppedSide={'left'} />
-      </div>
+      <StyledMultipleImage>
+        <MediaQuery minWidth={500} values={{ width: 1200 }}>
+          {matches => {
+            return (
+              <React.Fragment>
+                <StyledCroppedImg
+                  src={props.photos[0].url}
+                  croppedSide={matches ? 'right' : null}
+                  width={imageWidth}
+                  height={(imageWidth * 3) / 4}
+                />
+                <StyledCroppedImg
+                  src={props.photos[1].url}
+                  croppedSide={matches ? 'left' : null}
+                  width={imageWidth}
+                  height={(imageWidth * 3) / 4}
+                />
+              </React.Fragment>
+            )
+          }}
+        </MediaQuery>
+      </StyledMultipleImage>
     )
   }
 
