@@ -133,6 +133,7 @@ const PCCoolHeader = props => {
             </Link>
           </HeaderList>
         ) : null}
+        {/* About */}
         <HeaderList key={'about'}>
           {isHome ? (
             <ScrollLink

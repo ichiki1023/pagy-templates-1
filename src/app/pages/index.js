@@ -196,7 +196,12 @@ class Index extends React.Component {
         {site.contact_email ? <StyledContact site={site} /> : null}
         {services ? <StyledSNSNavigation services={services} /> : null}
         <FooterWrapper>
-          <StyledFooter userAgent={userAgent} site={site} fashion={fashion} />
+          <StyledFooter
+            userAgent={userAgent}
+            site={site}
+            fashion={fashion}
+            pageName={'home'}
+          />
         </FooterWrapper>
       </Page>
     )

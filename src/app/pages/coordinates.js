@@ -137,6 +137,7 @@ class Coordinates extends React.Component {
             userAgent={userAgent}
             site={site}
             fashion={fashion}
+            pageName={'coordinates'}
             isEmptyCoordinates={isEmptyCoordinates}
           />
         </FooterWrapper>
