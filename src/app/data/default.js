@@ -132,7 +132,9 @@ export default {
         created_at: '2019/01/03',
         update_at: ''
       }
-    ],
+    ]
+  },
+  fashion: {
     items: [
       {
         title: 'New Item1',

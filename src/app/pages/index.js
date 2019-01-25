@@ -155,7 +155,7 @@ class Index extends React.Component {
   }
 
   render () {
-    const { site, userAgent } = this.props
+    const { site, fashion, userAgent } = this.props
 
     const services =
       site.facebook || site.twitter || site.instagram || site.pinterest
@@ -173,6 +173,7 @@ class Index extends React.Component {
           <StyledHeader
             userAgent={userAgent}
             site={site}
+            fashion={fashion}
             services={services}
             pageName={'home'}
           />
@@ -180,12 +181,12 @@ class Index extends React.Component {
           {site.posts && site.posts.length !== 0 ? (
             <StyledNews containerId={'news'} posts={site.posts} />
           ) : null}
-          {site.items && site.items.length !== 0 ? (
-            <StyledSelection items={site.items} userAgent={userAgent} />
+          {fashion.items && fashion.items.length !== 0 ? (
+            <StyledSelection items={fashion.items} userAgent={userAgent} />
           ) : null}
-          {site.items && site.coordinates.length !== 0 ? (
+          {fashion.coordinates && fashion.coordinates.length !== 0 ? (
             <StyledCoordinates
-              coordinates={site.coordinates}
+              coordinates={fashion.coordinates}
               marginTop={paddingTop}
             />
           ) : null}
@@ -195,7 +196,7 @@ class Index extends React.Component {
         {site.contact_email ? <StyledContact site={site} /> : null}
         {services ? <StyledSNSNavigation services={services} /> : null}
         <FooterWrapper>
-          <StyledFooter userAgent={userAgent} site={site} />
+          <StyledFooter userAgent={userAgent} site={site} fashion={fashion} />
         </FooterWrapper>
       </Page>
     )

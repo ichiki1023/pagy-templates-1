@@ -89,8 +89,9 @@ const StyledLanguageIcon = styled(LanguageIcon)`
 `
 
 const PCCoolFooter = props => {
-  const { site, ...otherProps } = props
-  const { posts, items, coordinates } = site
+  const { site, fashion, ...otherProps } = props
+  const { posts = [] } = site
+  const { items = [], coordinates = [] } = fashion
   const scrollDuration = 500
   const languageOptions = [
     { value: 'ja', label: 'Japanese' },
