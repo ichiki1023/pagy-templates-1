@@ -4,6 +4,7 @@ import styled, { css } from 'styled-components'
 import { Link as ScrollLink } from 'react-scroll/modules'
 import LanguageIcon from '@material-ui/icons/Language'
 import LanguageDropDown from 'app/components/common/LanguageDropDown'
+import Link from 'next/link'
 
 const Footer = styled.div`
   background-color: rgba(240, 240, 240, 0.8);
@@ -89,13 +90,15 @@ const StyledLanguageIcon = styled(LanguageIcon)`
 `
 
 const PCCoolFooter = props => {
-  const { site, ...otherProps } = props
-  const { posts, items, coordinates } = site
+  const { site, fashion, pageName, ...otherProps } = props
+  const { posts = [] } = site
+  const { items = [], coordinates = [] } = fashion
   const scrollDuration = 500
   const languageOptions = [
     { value: 'ja', label: 'Japanese' },
     { value: 'en', label: 'English' }
   ]
+  const isHome = pageName === 'home'
 
   return (
     <Footer {...otherProps}>
@@ -109,38 +112,86 @@ const PCCoolFooter = props => {
           {/* News */}
           {posts && posts.length !== 0 ? (
             <FooterList key={'news'}>
-              <ScrollLink to={'news'} smooth duration={scrollDuration}>
-                NEWS
-              </ScrollLink>
+              {isHome ? (
+                <ScrollLink
+                  to={'news'}
+                  smooth
+                  spy
+                  hashSpy
+                  duration={scrollDuration}
+                >
+                  NEWS
+                </ScrollLink>
+              ) : (
+                <Link href={'/#news'}>
+                  <a>NEWS</a>
+                </Link>
+              )}
             </FooterList>
           ) : null}
           {/* Selection */}
           {items && items.length !== 0 ? (
             <FooterList key={'selection'}>
-              <ScrollLink to={'selection'} smooth duration={scrollDuration}>
-                SELECTION
-              </ScrollLink>
+              {isHome ? (
+                <ScrollLink
+                  to={'selection'}
+                  smooth
+                  spy
+                  hashSpy
+                  duration={scrollDuration}
+                >
+                  SELECTION
+                </ScrollLink>
+              ) : (
+                <Link href={'/#selection'}>
+                  <a>SELECTION</a>
+                </Link>
+              )}
             </FooterList>
           ) : null}
           {/* Coordinates */}
           {coordinates && coordinates.length !== 0 ? (
             <FooterList key={'coordinates'}>
-              <ScrollLink to={'coordinates'} smooth duration={scrollDuration}>
-                COORDINATES
-              </ScrollLink>
+              <Link href={'/coordinates'}>
+                <a>COORDINATES</a>
+              </Link>
             </FooterList>
           ) : null}
           <FooterList key={'about'}>
-            <ScrollLink to={'about'} smooth duration={scrollDuration}>
-              ABOUT US
-            </ScrollLink>
+            {isHome ? (
+              <ScrollLink
+                to={'about'}
+                smooth
+                spy
+                hashSpy
+                duration={scrollDuration}
+              >
+                ABOUT US
+              </ScrollLink>
+            ) : (
+              <Link href={'/#about'}>
+                <a>ABOUT US</a>
+              </Link>
+            )}
           </FooterList>
           {/* Contact */}
           {site.contact_email ? (
             <FooterList key={'contact'}>
-              <ScrollLink to={'contact'} smooth duration={scrollDuration}>
-                CONTACT
-              </ScrollLink>
+              {isHome ? (
+                <ScrollLink
+                  to={'contact'}
+                  smooth
+                  spy
+                  hashSpy
+                  duration={scrollDuration}
+                >
+                  CONTACT
+                </ScrollLink>
+              ) : (
+                <Link href={'/#contact'}>
+                  <a>CONTACT</a>
+                </Link>
+              )}
             </FooterList>
           ) : null}
           <LanguageFooterList key={'language'}>

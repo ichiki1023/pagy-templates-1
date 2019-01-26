@@ -89,7 +89,8 @@ class Coordinates extends React.Component {
   render () {
     const {
       site,
-      site: { coordinates },
+      fashion,
+      fashion: { coordinates },
       userAgent
     } = this.props
 
@@ -111,6 +112,7 @@ class Coordinates extends React.Component {
         <StyledHeader
           userAgent={userAgent}
           site={site}
+          fashion={fashion}
           services={services}
           pageName={'coordinates'}
         />
@@ -134,6 +136,8 @@ class Coordinates extends React.Component {
           <StyledFooter
             userAgent={userAgent}
             site={site}
+            fashion={fashion}
+            pageName={'coordinates'}
             isEmptyCoordinates={isEmptyCoordinates}
           />
         </FooterWrapper>

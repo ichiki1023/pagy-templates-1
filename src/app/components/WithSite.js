@@ -1,6 +1,7 @@
 import React from 'react'
 import defaultData from 'app/data/default'
-import GetSiteInfoApi from 'app/api/GetSiteInfoApi'
+import SiteApi from 'app/api/SiteApi'
+import FashionApi from 'app/api/FashionApi'
 import getConfig from 'next/config'
 
 const WithSite = Page =>
@@ -9,28 +10,66 @@ const WithSite = Page =>
       const { req } = ctx
       const publicRuntimeConfig = getConfig().publicRuntimeConfig
       const host = req ? req.headers.host : window.location.host
-      let site = defaultData.site
+      let props = {}
 
-      // POSTから取得したデータを利用する
-      if (req && req.body && req.body.site) {
-        site = req.body.site
+      // Page上でgetInitialPropsが定義されていれば読み込む
+      if (Page.getInitialProps) {
+        props = await Page.getInitialProps(ctx)
       }
 
-      // 登録済みのサイトの情報を取得する
-      if (host !== publicRuntimeConfig.host) {
-        try {
-          site = await GetSiteInfoApi.get({ domain: host })
-        } catch (error) {
-          // なければdefaultの値
-          site = defaultData.site
+      // POSTでデータを取得するケース
+      if (req && req.body && req.body.site) {
+        const site = req.body.site
+
+        // ファッションの情報を持っているか
+        if (
+          req.body.fashion &&
+          req.body.fashion.items &&
+          req.body.fashion.coordinates
+        ) {
+          const fashion = req.body.fashion
+          return {
+            ...props,
+            site,
+            fashion
+          }
+        }
+        return {
+          ...props,
+          site,
+          fashion: {
+            items: [],
+            coordinates: []
+          }
         }
       }
 
-      if (Page.getInitialProps) {
-        const props = await Page.getInitialProps(ctx)
-        return { ...props, site: site }
+      // 登録済みの店舗用サイトのケース
+      if (host !== publicRuntimeConfig.host) {
+        try {
+          const site = await SiteApi.getByDomain({ domain: host })
+          const fashion = await FashionApi.getBySiteId({ siteId: site.id })
+          return {
+            ...props,
+            site: site,
+            fashion: {
+              items: fashion['fashion_items'],
+              coordinates: fashion['fashion_coordinates']
+            }
+          }
+        } catch (error) {
+          // TODO: なければ404 error
+          return {
+            ...props,
+            ...defaultData
+          }
+        }
       }
-      return { site }
+
+      return {
+        ...props,
+        ...defaultData
+      }
     }
 
     render () {

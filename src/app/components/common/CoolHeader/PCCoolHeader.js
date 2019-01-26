@@ -57,8 +57,9 @@ const headerHeight = 64
 const scrollDuration = 500
 
 const PCCoolHeader = props => {
-  const { site, pageName, ...custom } = props
-  const { posts, items, coordinates } = site
+  const { site, fashion, pageName, ...custom } = props
+  const { posts = [] } = site
+  const { items = [], coordinates = [] } = fashion
   const languageOptions = [
     { value: 'ja', label: 'Japanese' },
     { value: 'en', label: 'English' }
@@ -132,6 +133,7 @@ const PCCoolHeader = props => {
             </Link>
           </HeaderList>
         ) : null}
+        {/* About */}
         <HeaderList key={'about'}>
           {isHome ? (
             <ScrollLink

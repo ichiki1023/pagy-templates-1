@@ -123,8 +123,9 @@ export default class SPCoolHeader extends React.Component {
   }
 
   render () {
-    const { site, services, ...props } = this.props
-    const { posts, items, coordinates } = site
+    const { site, fashion, services, ...props } = this.props
+    const { posts = [] } = site
+    const { items = [], coordinates = [] } = fashion
     const scrollDuration = 500
     const languageOptions = [
       { value: 'ja', label: 'Japanese' },
