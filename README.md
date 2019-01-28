@@ -1,6 +1,13 @@
 ## Setup
+
+### install modules
 ```bash
  npm install
+```
+
+### copy env
+```bash
+cp env.sample .env
 ```
 
 ## Run
@@ -9,13 +16,7 @@
 npm run dev
 ```
 
-### production
-```bash
-npm run build
-npm run start
-```
-
 ## Access
 ```
-http://localhost:3000
+http://localhost:5000
 ```
