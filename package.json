@@ -18,7 +18,7 @@
     "build:func": "babel src/functions --out-dir dist/functions",
     "build:public": "cpx \"src/public/**/*.*\" \"dist/public\" -C && npm run copy-static",
     "copy-static": "cpx \"src/app/static/**/*.*\" \"dist/public/static\"",
-    "build": "run-p build:*",
+    "build": "run-s build:*",
     "copy-deps": "cpx \"*{package.json,yarn.lock}\" \"dist/functions\"",
     "install-deps": "cd dist/functions && npm install",
     "deploy": "firebase deploy",
