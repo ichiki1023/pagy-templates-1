@@ -1,3 +1,7 @@
+const staticPath = process.env.PROXY_PATH
+  ? `${process.env.PROXY_PATH}/static`
+  : '/static'
+
 export default {
   site: {
     name: 'Leimo SELECT SHOP',
@@ -32,8 +36,8 @@ export default {
       sun: true,
       holiday: true
     },
-    store_front_image_url: '/static/images/store/shutterstock_46325692.jpg',
-    interior_image_url: '/static/images/store/shutterstock_773749615.jpg',
+    store_front_image_url: `${staticPath}/images/store/shutterstock_46325692.jpg`,
+    interior_image_url: `${staticPath}/images/store/shutterstock_773749615.jpg`,
     twitter: 'ichiki_sato',
     instagram: 'ichiki1023',
     facebook: 'sato.ichiki',
@@ -41,7 +45,7 @@ export default {
     contact_email: 'pagy@example.com',
     contact_phone: '03-1234-5678',
     address: {
-      postcode: '100-6690',
+      postcode: '1006690',
       latitude: '35.681167',
       longitude: '139.767052',
       country: 'Japan',
@@ -54,18 +58,19 @@ export default {
     },
     photos: [
       {
-        url: '/static/images/store/shutterstock_479222686.jpg'
+        url: `${staticPath}/images/store/shutterstock_479222686.jpg`
       },
       {
-        url: '/static/images/store/shutterstock_479221186.jpg'
+        url: `${staticPath}/images/store/shutterstock_479221186.jpg`
       }
     ],
     posts: [
       {
         id: 1,
-        title: 'UR CLUB Members Limited Campaign　11月30日(金)正午～',
+        title:
+          'ここにお知らせのタイトルが入ります。ここにお知らせのタイトルが入ります。',
         description:
-          'いつもUR ONLINE STOREをご愛顧いただき誠にありがとうございます。\nこの度アーバンリサーチ公式オンラインストア「UR ONLINE STORE」にて、\n冬のセールに先駆けてUR CLUB会員様限定の先行セールを開催いたします。\nぜひこの機会にお買い求めください。',
+          'ここにお知らせの詳細が入ります。ここにお知らせの詳細が入ります。ここにお知らせの詳細が入ります。ここにお知らせの詳細が入ります。',
         main_image_url: '',
         sub_image_url: '',
         created_at: '2019/02/04',
@@ -73,9 +78,10 @@ export default {
       },
       {
         id: 2,
-        title: 'atone翌月後払い(コンビニ)導入のお知らせ',
+        title:
+          'ここにお知らせのタイトルが入ります。ここにお知らせのタイトルが入ります。',
         description:
-          '新たに「atone」で商品をご購入いただけるようになりました。\n\n「atone」とは、クレジットカードはいらない、スマホだけで翌月払いができる、新しい後払い決済サービスです。\n今月のご利用分を翌月20日までに、コンビニでまとめてお支払いいただけます。ポイントが貯まる・使える、お得な支払い方法です。',
+          'ここにお知らせの詳細が入ります。ここにお知らせの詳細が入ります。ここにお知らせの詳細が入ります。ここにお知らせの詳細が入ります。',
         main_image_url: '',
         sub_image_url: '',
         created_at: '2019/01/26',
@@ -83,9 +89,10 @@ export default {
       },
       {
         id: 3,
-        title: '【d払い】魔法のスーパーチャンス!dポイント最大20倍のチャンス',
+        title:
+          'ここにお知らせのタイトルが入ります。ここにお知らせのタイトルが入ります。',
         description:
-          'キャンペーン期間中にエントリーをして、d払いをご利用してお買い物していただくと通常の5倍dポイントを進呈致します。\nさらに、買い回り企画に応じて最大+15倍となります。\n※エントリーが必須となるキャンペーンとなります。\n\nキャンペーン期間:2018年11月23日(金) ～2019年1月6日(日) ',
+          'ここにお知らせの詳細が入ります。ここにお知らせの詳細が入ります。ここにお知らせの詳細が入ります。ここにお知らせの詳細が入ります。',
         main_image_url: '',
         sub_image_url: '',
         created_at: '2019/01/18',
@@ -94,9 +101,9 @@ export default {
       {
         id: 4,
         title:
-          'オンラインストア　ポイントアップキャンペーン　11月30日(金)午前9時59分まで',
+          'ここにお知らせのタイトルが入ります。ここにお知らせのタイトルが入ります。',
         description:
-          'URBAN RESEARCH ONLINE STOREにて「ポイントアップキャンペーン」を2018年11月22日(木) 正午〜11月30日(金)午前9時59分の期間開催します。\n期間中にお買い物いただいたお客様には、会員ステージ・お買い物金額(税抜)に応じてUR CLUBポイントをプラス10%プレゼントいたします。\n皆様のご来店を心よりお待ちしております。\n▼特典内容\nMEMBERS会員様は、11%ポイント還元\nPLUS会員様は、13%ポイント還元\nPREMIER会員様は、15%ポイント還元\nVIP会員様は、20%ポイント還元\n',
+          'ここにお知らせの詳細が入ります。ここにお知らせの詳細が入ります。ここにお知らせの詳細が入ります。ここにお知らせの詳細が入ります。',
         main_image_url: '',
         sub_image_url: '',
         created_at: '2019/01/12',
@@ -105,8 +112,9 @@ export default {
       {
         id: 5,
         title:
-          '今月のおすすめ情報やセールなどお店に関する情報を記載してください。今月のおすすめ情報',
-        description: '',
+          'ここにお知らせのタイトルが入ります。ここにお知らせのタイトルが入ります。',
+        description:
+          'ここにお知らせの詳細が入ります。ここにお知らせの詳細が入ります。ここにお知らせの詳細が入ります。ここにお知らせの詳細が入ります。',
         main_image_url: '',
         sub_image_url: '',
         created_at: '2019/01/10',
@@ -115,8 +123,9 @@ export default {
       {
         id: 6,
         title:
-          '今月のおすすめ情報やセールなどお店に関する情報を記載してください。今月のおすすめ情報',
-        description: '',
+          'ここにお知らせのタイトルが入ります。ここにお知らせのタイトルが入ります。',
+        description:
+          'ここにお知らせの詳細が入ります。ここにお知らせの詳細が入ります。ここにお知らせの詳細が入ります。ここにお知らせの詳細が入ります。',
         main_image_url: '',
         sub_image_url: '',
         created_at: '2019/01/03',
@@ -128,7 +137,7 @@ export default {
     items: [
       {
         title: 'アイテム 1',
-        main_image_url: '/static/images/items/shutterstock_207690136_15.jpg',
+        main_image_url: `${staticPath}/images/items/shutterstock_207690136_15.jpg`,
         description:
           'セレクトしたアイテムの紹介やおすすめのポイントなどを記載してください',
         sub_image_urls: [],
@@ -136,7 +145,7 @@ export default {
       },
       {
         title: 'アイテム 2',
-        main_image_url: '/static/images/items/shutterstock_207690136_03.jpg',
+        main_image_url: `${staticPath}/images/items/shutterstock_207690136_03.jpg`,
         description:
           'セレクトしたアイテムの紹介やおすすめのポイントなどを記載してください',
         sub_image_urls: [],
@@ -144,7 +153,7 @@ export default {
       },
       {
         title: 'アイテム 3',
-        main_image_url: '/static/images/items/shutterstock_207690136_06.jpg',
+        main_image_url: `${staticPath}/images/items/shutterstock_207690136_06.jpg`,
         description:
           'セレクトしたアイテムの紹介やおすすめのポイントなどを記載してください',
         sub_image_urls: [],
@@ -152,7 +161,7 @@ export default {
       },
       {
         title: 'アイテム 4',
-        main_image_url: '/static/images/items/shutterstock_207690136_10.jpg',
+        main_image_url: `${staticPath}/images/items/shutterstock_207690136_10.jpg`,
         description:
           'セレクトしたアイテムの紹介やおすすめのポイントなどを記載してください',
         sub_image_urls: [],
@@ -160,7 +169,7 @@ export default {
       },
       {
         title: 'アイテム 5',
-        main_image_url: '/static/images/items/shutterstock_9076668.jpg',
+        main_image_url: `${staticPath}/images/items/shutterstock_9076668.jpg`,
         description:
           'セレクトしたアイテムの紹介やおすすめのポイントなどを記載してください',
         sub_image_urls: [],
@@ -169,36 +178,35 @@ export default {
     ],
     coordinates: [
       {
-        main_image_url: '/static/images/coordinates/shutterstock_730631257.jpg',
+        main_image_url: `${staticPath}/images/coordinates/shutterstock_730631257.jpg`,
         description:
           'コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。',
         sub_image_urls: [],
         items: []
       },
       {
-        main_image_url: '/static/images/coordinates/shutterstock_342317609.jpg',
+        main_image_url: `${staticPath}/images/coordinates/shutterstock_342317609.jpg`,
         description:
           'コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。',
         sub_image_urls: [],
         items: []
       },
       {
-        main_image_url: '/static/images/coordinates/shutterstock_793633075.jpg',
+        main_image_url: `${staticPath}/images/coordinates/shutterstock_793633075.jpg`,
         description:
           'コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。',
         sub_image_urls: [],
         items: []
       },
       {
-        main_image_url: '/static/images/coordinates/shutterstock_713504557.jpg',
+        main_image_url: `${staticPath}/images/coordinates/shutterstock_713504557.jpg`,
         description:
           'コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。',
         sub_image_urls: [],
         items: []
       },
       {
-        main_image_url:
-          '/static/images/coordinates/shutterstock_1182188362.jpg',
+        main_image_url: `${staticPath}/images/coordinates/shutterstock_1182188362.jpg`,
         description:
           'コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。',
         sub_image_urls: [],
