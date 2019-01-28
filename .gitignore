@@ -1,6 +1,7 @@
 .idea
 node_modules
 dist/
+.env
 # Firebase cache
 .firebase/
-.env
+firebase-debug.log
