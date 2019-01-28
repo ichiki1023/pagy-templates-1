@@ -58,15 +58,7 @@ const TitleContents = styled.div`
 const Home = props => {
   const { site } = props
   return (
-    <Section
-      name={'home'}
-      store_front_image_url={
-        site.store_front_image_url ||
-        `${
-          process.env.STATIC_HOST
-        }/images/templates/fashions/cool/shutterstock_46325692.jpeg`
-      }
-    >
+    <Section name={'home'} store_front_image_url={site.store_front_image_url}>
       <Page>
         <Contents>
           <TitleContents>

@@ -3,8 +3,6 @@ import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 import ReactSVG from 'react-svg'
 
-const staticPath = process.env.STATIC_HOST
-
 const StyledSVG = styled(ReactSVG)`
   & path {
     ${props =>
@@ -16,11 +14,11 @@ const StyledSVG = styled(ReactSVG)`
 `
 
 export const iconPaths = {
-  facebook: `${staticPath}/icons/facebook.svg`,
-  google: `${staticPath}/icons/google.svg`,
-  twitter: `${staticPath}/icons/twitter.svg`,
-  pinterest: `${staticPath}/icons/pinterest.svg`,
-  instagram: `${staticPath}/icons/instagram.svg`
+  facebook: '/static/icons/facebook.svg',
+  google: '/static/icons/google.svg',
+  twitter: '/static/icons/twitter.svg',
+  pinterest: '/static/icons/pinterest.svg',
+  instagram: '/static/icons/instagram.svg'
 }
 
 const Icon = props => {
