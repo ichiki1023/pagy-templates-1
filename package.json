@@ -21,6 +21,7 @@
     "build": "run-s build:*",
     "copy-deps": "cpx \"*{package.json,yarn.lock}\" \"dist/functions\"",
     "install-deps": "cd dist/functions && npm install",
+    "set-env": "firebase functions:config:set app.host=\"$HOST\" app.apihost=\"$API_HOST\" app.proxypath=\"$PROXY_PATH\"",
     "deploy": "firebase deploy",
     "logs": "firebase functions:log",
     "format": "run-s format:*",
