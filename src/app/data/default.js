@@ -127,7 +127,7 @@ export default {
   fashion: {
     items: [
       {
-        title: 'New Item1',
+        title: 'アイテム 1',
         main_image_url: '/static/images/items/shutterstock_207690136_15.jpg',
         description:
           'セレクトしたアイテムの紹介やおすすめのポイントなどを記載してください',
@@ -135,7 +135,7 @@ export default {
         coordinates: []
       },
       {
-        title: 'New Item2',
+        title: 'アイテム 2',
         main_image_url: '/static/images/items/shutterstock_207690136_03.jpg',
         description:
           'セレクトしたアイテムの紹介やおすすめのポイントなどを記載してください',
@@ -143,7 +143,7 @@ export default {
         coordinates: []
       },
       {
-        title: 'New Item3',
+        title: 'アイテム 3',
         main_image_url: '/static/images/items/shutterstock_207690136_06.jpg',
         description:
           'セレクトしたアイテムの紹介やおすすめのポイントなどを記載してください',
@@ -151,7 +151,7 @@ export default {
         coordinates: []
       },
       {
-        title: 'New Item4',
+        title: 'アイテム 4',
         main_image_url: '/static/images/items/shutterstock_207690136_10.jpg',
         description:
           'セレクトしたアイテムの紹介やおすすめのポイントなどを記載してください',
@@ -159,7 +159,7 @@ export default {
         coordinates: []
       },
       {
-        title: 'New Item5',
+        title: 'アイテム 5',
         main_image_url: '/static/images/items/shutterstock_9076668.jpg',
         description:
           'セレクトしたアイテムの紹介やおすすめのポイントなどを記載してください',
@@ -171,56 +171,37 @@ export default {
       {
         main_image_url: '/static/images/coordinates/shutterstock_730631257.jpg',
         description:
-          'コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。',
-        sub_image_urls: [
-          '/static/images/shutterstock_1022031916.jpg',
-          '/static/images/shutterstock_9076668.jpg',
-          '/static/images/shutterstock_1022031889.jpg'
-        ],
+          'コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。',
+        sub_image_urls: [],
         items: []
       },
       {
         main_image_url: '/static/images/coordinates/shutterstock_342317609.jpg',
         description:
-          'コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。',
-        sub_image_urls: [
-          '/static/images/shutterstock_535600783.jpg',
-          '/static/images/shutterstock_66613034.jpg',
-          '/static/images/shutterstock_723637684.jpg'
-        ],
+          'コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。',
+        sub_image_urls: [],
         items: []
       },
       {
         main_image_url: '/static/images/coordinates/shutterstock_793633075.jpg',
         description:
-          'コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。',
-        sub_image_urls: [
-          '/static/images/shutterstock_535600783.jpg',
-          '/static/images/shutterstock_66613034.jpg',
-          '/static/images/shutterstock_723637684.jpg'
-        ],
+          'コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。',
+        sub_image_urls: [],
         items: []
       },
       {
         main_image_url: '/static/images/coordinates/shutterstock_713504557.jpg',
         description:
-          'コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。',
-        sub_image_urls: [
-          '/static/images/shutterstock_535600783.jpg',
-          '/static/images/shutterstock_66613034.jpg',
-          '/static/images/shutterstock_723637684.jpg'
-        ],
+          'コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。',
+        sub_image_urls: [],
         items: []
       },
       {
-        main_image_url: '/static/images/coordinates/shutterstock_1182188362.jpg',
+        main_image_url:
+          '/static/images/coordinates/shutterstock_1182188362.jpg',
         description:
-          'コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。',
-        sub_image_urls: [
-          '/static/images/shutterstock_535600783.jpg',
-          '/static/images/shutterstock_66613034.jpg',
-          '/static/images/shutterstock_723637684.jpg'
-        ],
+          'コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。',
+        sub_image_urls: [],
         items: []
       }
     ]
