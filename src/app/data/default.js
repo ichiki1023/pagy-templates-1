@@ -34,10 +34,10 @@ export default {
     },
     store_front_image_url: `${
       process.env.STATIC_HOST
-    }/images/shutterstock_46325692.jpg`,
+    }/images/store/shutterstock_46325692.jpg`,
     interior_image_url: `${
       process.env.STATIC_HOST
-    }/images/shutterstock_773749615.jpg`,
+    }/images/store/shutterstock_773749615.jpg`,
     twitter: 'ichiki_sato',
     instagram: 'ichiki1023',
     facebook: 'sato.ichiki',
@@ -58,10 +58,10 @@ export default {
     },
     photos: [
       {
-        url: `${process.env.STATIC_HOST}/images/shutterstock_479222686.jpg`
+        url: `${process.env.STATIC_HOST}/images/store/shutterstock_479222686.jpg`
       },
       {
-        url: `${process.env.STATIC_HOST}/images/shutterstock_479221186.jpg`
+        url: `${process.env.STATIC_HOST}/images/store/shutterstock_479221186.jpg`
       }
     ],
     posts: [
@@ -70,9 +70,7 @@ export default {
         title: 'UR CLUB Members Limited Campaign　11月30日(金)正午～',
         description:
           'いつもUR ONLINE STOREをご愛顧いただき誠にありがとうございます。\nこの度アーバンリサーチ公式オンラインストア「UR ONLINE STORE」にて、\n冬のセールに先駆けてUR CLUB会員様限定の先行セールを開催いたします。\nぜひこの機会にお買い求めください。',
-        main_image_url: `${
-          process.env.STATIC_HOST
-        }/images/shutterstock_1022031901.jpg`,
+        main_image_url: '',
         sub_image_url: '',
         created_at: '2019/02/04',
         update_at: ''
@@ -82,9 +80,7 @@ export default {
         title: 'atone翌月後払い(コンビニ)導入のお知らせ',
         description:
           '新たに「atone」で商品をご購入いただけるようになりました。\n\n「atone」とは、クレジットカードはいらない、スマホだけで翌月払いができる、新しい後払い決済サービスです。\n今月のご利用分を翌月20日までに、コンビニでまとめてお支払いいただけます。ポイントが貯まる・使える、お得な支払い方法です。',
-        main_image_url: `${
-          process.env.STATIC_HOST
-        }/images/shutterstock_324688757.jpg`,
+        main_image_url: '',
         sub_image_url: '',
         created_at: '2019/01/26',
         update_at: ''
@@ -94,9 +90,7 @@ export default {
         title: '【d払い】魔法のスーパーチャンス!dポイント最大20倍のチャンス',
         description:
           'キャンペーン期間中にエントリーをして、d払いをご利用してお買い物していただくと通常の5倍dポイントを進呈致します。\nさらに、買い回り企画に応じて最大+15倍となります。\n※エントリーが必須となるキャンペーンとなります。\n\nキャンペーン期間:2018年11月23日(金) ～2019年1月6日(日) ',
-        main_image_url: `${
-          process.env.STATIC_HOST
-        }/images/shutterstock_1022031901.jpg`,
+        main_image_url: '',
         sub_image_url: '',
         created_at: '2019/01/18',
         update_at: ''
@@ -140,7 +134,7 @@ export default {
         title: 'New Item1',
         main_image_url: `${
           process.env.STATIC_HOST
-        }/images/shutterstock_207690136_15.jpg`,
+        }/images/items/shutterstock_207690136_15.jpg`,
         description:
           'セレクトしたアイテムの紹介やおすすめのポイントなどを記載してください',
         sub_image_urls: [
@@ -150,13 +144,13 @@ export default {
           'https://example.com/example4.jpg',
           'https://example.com/example5.jpg'
         ],
-        coordinates: ['1', '2']
+        coordinates: [1, 2]
       },
       {
         title: 'New Item2',
         main_image_url: `${
           process.env.STATIC_HOST
-        }/images/shutterstock_207690136_03.jpg`,
+        }/images/items/shutterstock_207690136_03.jpg`,
         description:
           'セレクトしたアイテムの紹介やおすすめのポイントなどを記載してください',
         sub_image_urls: [
@@ -166,13 +160,13 @@ export default {
           'https://example.com/example4.jpg',
           'https://example.com/example5.jpg'
         ],
-        coordinates: ['1', '2']
+        coordinates: [1, 2]
       },
       {
         title: 'New Item3',
         main_image_url: `${
           process.env.STATIC_HOST
-        }/images/shutterstock_207690136_06.jpg`,
+        }/images/items/shutterstock_207690136_06.jpg`,
         description:
           'セレクトしたアイテムの紹介やおすすめのポイントなどを記載してください',
         sub_image_urls: [
@@ -182,13 +176,13 @@ export default {
           'https://example.com/example4.jpg',
           'https://example.com/example5.jpg'
         ],
-        coordinates: ['1', '2']
+        coordinates: [1, 2]
       },
       {
         title: 'New Item4',
         main_image_url: `${
           process.env.STATIC_HOST
-        }/images/shutterstock_207690136_10.jpg`,
+        }/images/items/shutterstock_207690136_10.jpg`,
         description:
           'セレクトしたアイテムの紹介やおすすめのポイントなどを記載してください',
         sub_image_urls: [
@@ -198,13 +192,13 @@ export default {
           'https://example.com/example4.jpg',
           'https://example.com/example5.jpg'
         ],
-        coordinates: ['1', '2']
+        coordinates: [1, 2]
       },
       {
         title: 'New Item5',
         main_image_url: `${
           process.env.STATIC_HOST
-        }/images/shutterstock_9076668.jpg`,
+        }/images/items/shutterstock_9076668.jpg`,
         description:
           'セレクトしたアイテムの紹介やおすすめのポイントなどを記載してください',
         sub_image_urls: [
@@ -214,14 +208,14 @@ export default {
           'https://example.com/example4.jpg',
           'https://example.com/example5.jpg'
         ],
-        coordinates: ['1', '2']
+        coordinates: [1, 2]
       }
     ],
     coordinates: [
       {
         main_image_url: `${
           process.env.STATIC_HOST
-        }/images/shutterstock_730631257.jpg`,
+        }/images/coordinates/shutterstock_730631257.jpg`,
         description:
           'コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。',
         sub_image_urls: [
@@ -229,12 +223,12 @@ export default {
           `${process.env.STATIC_HOST}/images/shutterstock_9076668.jpg`,
           `${process.env.STATIC_HOST}/images/shutterstock_1022031889.jpg`
         ],
-        item: ['1', '2']
+        items: [1, 2]
       },
       {
         main_image_url: `${
           process.env.STATIC_HOST
-        }/images/shutterstock_342317609.jpg`,
+        }/images/coordinates/shutterstock_342317609.jpg`,
         description:
           'コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。',
         sub_image_urls: [
@@ -242,7 +236,46 @@ export default {
           `${process.env.STATIC_HOST}/images/shutterstock_66613034.jpg`,
           `${process.env.STATIC_HOST}/images/shutterstock_723637684.jpg`
         ],
-        item: ['1', '2']
+        items: [1, 2]
+      },
+      {
+        main_image_url: `${
+          process.env.STATIC_HOST
+          }/images/coordinates/shutterstock_793633075.jpg`,
+        description:
+          'コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。',
+        sub_image_urls: [
+          `${process.env.STATIC_HOST}/images/shutterstock_535600783.jpg`,
+          `${process.env.STATIC_HOST}/images/shutterstock_66613034.jpg`,
+          `${process.env.STATIC_HOST}/images/shutterstock_723637684.jpg`
+        ],
+        items: [1, 2]
+      },
+      {
+        main_image_url: `${
+          process.env.STATIC_HOST
+          }/images/coordinates/shutterstock_713504557.jpg`,
+        description:
+          'コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。',
+        sub_image_urls: [
+          `${process.env.STATIC_HOST}/images/shutterstock_535600783.jpg`,
+          `${process.env.STATIC_HOST}/images/shutterstock_66613034.jpg`,
+          `${process.env.STATIC_HOST}/images/shutterstock_723637684.jpg`
+        ],
+        items: [1, 2]
+      },
+      {
+        main_image_url: `${
+          process.env.STATIC_HOST
+          }/images/coordinates/shutterstock_1182188362.jpg`,
+        description:
+          'コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。',
+        sub_image_urls: [
+          `${process.env.STATIC_HOST}/images/shutterstock_535600783.jpg`,
+          `${process.env.STATIC_HOST}/images/shutterstock_66613034.jpg`,
+          `${process.env.STATIC_HOST}/images/shutterstock_723637684.jpg`
+        ],
+        items: [1, 2]
       }
     ]
   }
