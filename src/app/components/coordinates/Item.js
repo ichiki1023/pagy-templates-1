@@ -3,7 +3,6 @@ import styled, { css } from 'styled-components'
 import PropTypes from 'prop-types'
 
 const StyledItem = styled.div`
-  position: relative;
   display: flex;
   margin-bottom: 80px;
   ${props =>
@@ -50,9 +49,11 @@ const StyledSubPhotoImages = styled.div`
   ${props =>
     props.imagePosition === 'right' &&
     css`
-      margin-left: 0px;
-      margin-right: -50px;
-    `} @media (max-width: 500px) {
+      flex-direction: row-reverse;
+      margin-left: 50px;
+    `}
+
+  @media (max-width: 500px) {
     margin: 0 auto;
     justify-content: center;
     position: absolute;
@@ -87,6 +88,7 @@ const StyledSubPhotoImage = styled.img`
 
 const Contents = styled.div`
   position: relative;
+  width: calc(100% - 300px);
 `
 
 const Bottom = styled.div`
