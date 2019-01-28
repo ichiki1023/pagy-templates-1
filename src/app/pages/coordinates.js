@@ -22,7 +22,6 @@ const FooterWrapper = styled.div`
 
 const StyledFooter = styled(CoolFooter)`
   z-index: 1000;
-  position: relative;
   ${props =>
     props.isEmptyCoordinates &&
     css`
@@ -34,7 +33,6 @@ const StyledFooter = styled(CoolFooter)`
 const Contents = styled.div`
   width: 54%;
   margin: 100px auto 0 auto;
-  position: relative;
 
   @media (max-width: 500px) {
     width: 100%;
@@ -108,7 +106,6 @@ class Coordinates extends React.Component {
 
     return (
       <div>
-        {/* FIXME: 画面遷移をする */}
         <StyledHeader
           userAgent={userAgent}
           site={site}
