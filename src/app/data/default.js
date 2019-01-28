@@ -32,12 +32,8 @@ export default {
       sun: true,
       holiday: true
     },
-    store_front_image_url: `${
-      process.env.STATIC_HOST
-    }/images/store/shutterstock_46325692.jpg`,
-    interior_image_url: `${
-      process.env.STATIC_HOST
-    }/images/store/shutterstock_773749615.jpg`,
+    store_front_image_url: '/static/images/store/shutterstock_46325692.jpg',
+    interior_image_url: '/static/images/store/shutterstock_773749615.jpg',
     twitter: 'ichiki_sato',
     instagram: 'ichiki1023',
     facebook: 'sato.ichiki',
@@ -58,10 +54,10 @@ export default {
     },
     photos: [
       {
-        url: `${process.env.STATIC_HOST}/images/store/shutterstock_479222686.jpg`
+        url: '/static/images/store/shutterstock_479222686.jpg'
       },
       {
-        url: `${process.env.STATIC_HOST}/images/store/shutterstock_479221186.jpg`
+        url: '/static/images/store/shutterstock_479221186.jpg'
       }
     ],
     posts: [
@@ -132,150 +128,100 @@ export default {
     items: [
       {
         title: 'New Item1',
-        main_image_url: `${
-          process.env.STATIC_HOST
-        }/images/items/shutterstock_207690136_15.jpg`,
+        main_image_url: '/static/images/items/shutterstock_207690136_15.jpg',
         description:
           'セレクトしたアイテムの紹介やおすすめのポイントなどを記載してください',
-        sub_image_urls: [
-          'https://example.com/example1.jpg',
-          'https://example.com/example2.jpg',
-          'https://example.com/example3.jpg',
-          'https://example.com/example4.jpg',
-          'https://example.com/example5.jpg'
-        ],
-        coordinates: [1, 2]
+        sub_image_urls: [],
+        coordinates: []
       },
       {
         title: 'New Item2',
-        main_image_url: `${
-          process.env.STATIC_HOST
-        }/images/items/shutterstock_207690136_03.jpg`,
+        main_image_url: '/static/images/items/shutterstock_207690136_03.jpg',
         description:
           'セレクトしたアイテムの紹介やおすすめのポイントなどを記載してください',
-        sub_image_urls: [
-          'https://example.com/example1.jpg',
-          'https://example.com/example2.jpg',
-          'https://example.com/example3.jpg',
-          'https://example.com/example4.jpg',
-          'https://example.com/example5.jpg'
-        ],
-        coordinates: [1, 2]
+        sub_image_urls: [],
+        coordinates: []
       },
       {
         title: 'New Item3',
-        main_image_url: `${
-          process.env.STATIC_HOST
-        }/images/items/shutterstock_207690136_06.jpg`,
+        main_image_url: '/static/images/items/shutterstock_207690136_06.jpg',
         description:
           'セレクトしたアイテムの紹介やおすすめのポイントなどを記載してください',
-        sub_image_urls: [
-          'https://example.com/example1.jpg',
-          'https://example.com/example2.jpg',
-          'https://example.com/example3.jpg',
-          'https://example.com/example4.jpg',
-          'https://example.com/example5.jpg'
-        ],
-        coordinates: [1, 2]
+        sub_image_urls: [],
+        coordinates: []
       },
       {
         title: 'New Item4',
-        main_image_url: `${
-          process.env.STATIC_HOST
-        }/images/items/shutterstock_207690136_10.jpg`,
+        main_image_url: '/static/images/items/shutterstock_207690136_10.jpg',
         description:
           'セレクトしたアイテムの紹介やおすすめのポイントなどを記載してください',
-        sub_image_urls: [
-          'https://example.com/example1.jpg',
-          'https://example.com/example2.jpg',
-          'https://example.com/example3.jpg',
-          'https://example.com/example4.jpg',
-          'https://example.com/example5.jpg'
-        ],
-        coordinates: [1, 2]
+        sub_image_urls: [],
+        coordinates: []
       },
       {
         title: 'New Item5',
-        main_image_url: `${
-          process.env.STATIC_HOST
-        }/images/items/shutterstock_9076668.jpg`,
+        main_image_url: '/static/images/items/shutterstock_9076668.jpg',
         description:
           'セレクトしたアイテムの紹介やおすすめのポイントなどを記載してください',
-        sub_image_urls: [
-          'https://example.com/example1.jpg',
-          'https://example.com/example2.jpg',
-          'https://example.com/example3.jpg',
-          'https://example.com/example4.jpg',
-          'https://example.com/example5.jpg'
-        ],
-        coordinates: [1, 2]
+        sub_image_urls: [],
+        coordinates: []
       }
     ],
     coordinates: [
       {
-        main_image_url: `${
-          process.env.STATIC_HOST
-        }/images/coordinates/shutterstock_730631257.jpg`,
+        main_image_url: '/static/images/coordinates/shutterstock_730631257.jpg',
         description:
           'コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。',
         sub_image_urls: [
-          `${process.env.STATIC_HOST}/images/shutterstock_1022031916.jpg`,
-          `${process.env.STATIC_HOST}/images/shutterstock_9076668.jpg`,
-          `${process.env.STATIC_HOST}/images/shutterstock_1022031889.jpg`
+          '/static/images/shutterstock_1022031916.jpg',
+          '/static/images/shutterstock_9076668.jpg',
+          '/static/images/shutterstock_1022031889.jpg'
         ],
-        items: [1, 2]
+        items: []
       },
       {
-        main_image_url: `${
-          process.env.STATIC_HOST
-        }/images/coordinates/shutterstock_342317609.jpg`,
+        main_image_url: '/static/images/coordinates/shutterstock_342317609.jpg',
         description:
           'コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。',
         sub_image_urls: [
-          `${process.env.STATIC_HOST}/images/shutterstock_535600783.jpg`,
-          `${process.env.STATIC_HOST}/images/shutterstock_66613034.jpg`,
-          `${process.env.STATIC_HOST}/images/shutterstock_723637684.jpg`
+          '/static/images/shutterstock_535600783.jpg',
+          '/static/images/shutterstock_66613034.jpg',
+          '/static/images/shutterstock_723637684.jpg'
         ],
-        items: [1, 2]
+        items: []
       },
       {
-        main_image_url: `${
-          process.env.STATIC_HOST
-          }/images/coordinates/shutterstock_793633075.jpg`,
+        main_image_url: '/static/images/coordinates/shutterstock_793633075.jpg',
         description:
           'コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。',
         sub_image_urls: [
-          `${process.env.STATIC_HOST}/images/shutterstock_535600783.jpg`,
-          `${process.env.STATIC_HOST}/images/shutterstock_66613034.jpg`,
-          `${process.env.STATIC_HOST}/images/shutterstock_723637684.jpg`
+          '/static/images/shutterstock_535600783.jpg',
+          '/static/images/shutterstock_66613034.jpg',
+          '/static/images/shutterstock_723637684.jpg'
         ],
-        items: [1, 2]
+        items: []
       },
       {
-        main_image_url: `${
-          process.env.STATIC_HOST
-          }/images/coordinates/shutterstock_713504557.jpg`,
+        main_image_url: '/static/images/coordinates/shutterstock_713504557.jpg',
         description:
           'コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。',
         sub_image_urls: [
-          `${process.env.STATIC_HOST}/images/shutterstock_535600783.jpg`,
-          `${process.env.STATIC_HOST}/images/shutterstock_66613034.jpg`,
-          `${process.env.STATIC_HOST}/images/shutterstock_723637684.jpg`
+          '/static/images/shutterstock_535600783.jpg',
+          '/static/images/shutterstock_66613034.jpg',
+          '/static/images/shutterstock_723637684.jpg'
         ],
-        items: [1, 2]
+        items: []
       },
       {
-        main_image_url: `${
-          process.env.STATIC_HOST
-          }/images/coordinates/shutterstock_1182188362.jpg`,
+        main_image_url: '/static/images/coordinates/shutterstock_1182188362.jpg',
         description:
           'コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。',
         sub_image_urls: [
-          `${process.env.STATIC_HOST}/images/shutterstock_535600783.jpg`,
-          `${process.env.STATIC_HOST}/images/shutterstock_66613034.jpg`,
-          `${process.env.STATIC_HOST}/images/shutterstock_723637684.jpg`
+          '/static/images/shutterstock_535600783.jpg',
+          '/static/images/shutterstock_66613034.jpg',
+          '/static/images/shutterstock_723637684.jpg'
         ],
-        items: [1, 2]
+        items: []
       }
     ]
   }
