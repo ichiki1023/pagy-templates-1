@@ -5,8 +5,8 @@ import CoolFooter from 'app/components/common/CoolFooter'
 import SectionTitle from 'app/components/common/SectionTitle'
 import SNSNavigation from 'app/components/common/SNSServices/Navigation'
 import Items from 'app/components/coordinates/Items'
-import AddIcon from '@material-ui/icons/Add'
 import WithSite from 'app/components/WithSite'
+// import AddIcon from '@material-ui/icons/Add'
 
 const StyledHeader = styled(CoolHeader)`
   top: 0;
@@ -60,30 +60,30 @@ const StyledCoordinateItems = styled(Items)`
   margin-top: 50px;
 `
 
-const NextLink = styled.a`
-  width: 80%;
-  max-width: 384px;
-  height: 80px;
-  font-size: 24px;
-  margin: 0 auto;
-  color: #545454;
-  text-decoration: none;
-  border: 1px solid #545454;
-  border-radius: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  @media (max-width: 500px) {
-    height: 48px;
-    font-size: 16px;
-  }
-`
-
-const StyledAddIcon = styled(AddIcon)`
-  color: #545454;
-  margin-right: 12px;
-`
+// const NextLink = styled.a`
+//   width: 80%;
+//   max-width: 384px;
+//   height: 80px;
+//   font-size: 24px;
+//   margin: 0 auto;
+//   color: #545454;
+//   text-decoration: none;
+//   border: 1px solid #545454;
+//   border-radius: 50px;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//
+//   @media (max-width: 500px) {
+//     height: 48px;
+//     font-size: 16px;
+//   }
+// `
+//
+// const StyledAddIcon = styled(AddIcon)`
+//   color: #545454;
+//   margin-right: 12px;
+// `
 
 class Coordinates extends React.Component {
   render () {
@@ -125,10 +125,11 @@ class Coordinates extends React.Component {
           {!isEmptyCoordinates ? (
             <div>
               <StyledCoordinateItems coordinates={coordinates} />
-              <NextLink href={'#'}>
-                <StyledAddIcon width={24} height={24} />
-                もっと見る
-              </NextLink>
+              {/* FIXME: paginationができるまでは外す */}
+              {/* <NextLink href={'#'}> */}
+              {/* <StyledAddIcon width={24} height={24} /> */}
+              {/* もっと見る */}
+              {/* </NextLink> */}
             </div>
           ) : null}
         </Contents>
