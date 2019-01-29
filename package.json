@@ -21,7 +21,7 @@
     "predeploy": "run-s build copy-deps",
     "deploy": "firebase deploy",
     "deploy:ci": "firebase deploy --token=\"$FIREBASE_TOKEN\"",
-    "copy-static": "cpx \"src/app/static/**/*.*\" \"dist/public/static\"",
+    "copy-static": "cpx \"src/app/static/**/*.*\" \"dist/public$PROXY_PATH/static\"",
     "copy-deps": "cpx \"*{package.json,yarn.lock}\" \"dist/functions\"",
     "install-deps": "cd dist/functions && npm install",
     "set-env": "firebase functions:config:set app.host=\"$HOST\" app.apihost=\"$API_HOST\" app.proxypath=\"$PROXY_PATH\"",
