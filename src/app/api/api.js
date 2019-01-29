@@ -1,6 +1,8 @@
 import axios from 'axios'
+import getConfig from 'next/config'
 
-const apiHost = process.env.API_HOST
+const publicRuntimeConfig = getConfig().publicRuntimeConfig
+const apiHost = publicRuntimeConfig.apiHost
 
 axios.defaults.baseURL = `http://${apiHost}`
 axios.defaults.timeout = 5000

@@ -2,6 +2,9 @@ import React from 'react'
 import defaultData from 'app/data/default'
 import SiteApi from 'app/api/SiteApi'
 import FashionApi from 'app/api/FashionApi'
+import getConfig from 'next/config'
+
+const publicRuntimeConfig = getConfig().publicRuntimeConfig
 
 const WithSite = Page =>
   class WithSitePage extends React.Component {
@@ -43,7 +46,7 @@ const WithSite = Page =>
       }
 
       // 登録済みの店舗用サイトのケース
-      if (host !== process.env.HOST) {
+      if (host !== publicRuntimeConfig.host) {
         try {
           const site = await SiteApi.getByDomain({ domain: host })
           const fashion = await FashionApi.getBySiteId({ siteId: site.id })

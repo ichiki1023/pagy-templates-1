@@ -2,10 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 import ReactSVG from 'react-svg'
+import getConfig from 'next/config'
 
-const staticPath = process.env.PROXY_PATH
-  ? `${process.env.PROXY_PATH}/static`
-  : '/static'
+const publicRuntimeConfig = getConfig().publicRuntimeConfig
+const staticPath = `${publicRuntimeConfig.proxyPath}/static`
 
 const StyledSVG = styled(ReactSVG)`
   & path {

@@ -1,6 +1,7 @@
-const staticPath = process.env.PROXY_PATH
-  ? `${process.env.PROXY_PATH}/static`
-  : '/static'
+import getConfig from 'next/config'
+
+const publicRuntimeConfig = getConfig().publicRuntimeConfig
+const staticPath = `${publicRuntimeConfig.proxyPath}/static`
 
 export default {
   site: {
