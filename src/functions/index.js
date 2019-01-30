@@ -7,8 +7,21 @@ process.env.HOST = functions.config().app.host
 process.env.API_HOST = functions.config().app.apihost
 process.env.PROXY_PATH = functions.config().app.proxypath
 
+const publicRuntimeConfig = {
+  host: process.env.HOST,
+  apiHost: process.env.API_HOST,
+  proxyPath: process.env.PROXY_PATH || ''
+}
+
 const dev = process.env.NODE_ENV !== 'production'
-const app = next({ conf: { distDir: 'next' }, dev })
+const app = next({
+  conf: {
+    distDir: 'next',
+    publicRuntimeConfig: publicRuntimeConfig,
+    assetPrefix: publicRuntimeConfig.proxyPath
+  },
+  dev
+})
 const handle = app.getRequestHandler()
 
 exports.next = functions.https.onRequest((request, response) => {
