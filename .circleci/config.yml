@@ -3,6 +3,7 @@ version: 2
 jobs:
   build:
     docker:
+      # cloud functionsがv8までしかサポートしていないためv8にしておく
       - image: node:8.15.0-alpine
     working_directory: ~/repo
 
