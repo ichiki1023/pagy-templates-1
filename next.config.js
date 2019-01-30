@@ -6,13 +6,14 @@ const Dotenv = require('dotenv-webpack')
 
 const publicRuntimeConfig = {
   host: process.env.HOST,
-  apiHost: process.env.API_HOST
+  apiHost: process.env.API_HOST,
+  proxyPath: process.env.PROXY_PATH || ''
 }
 
 module.exports = withCSS({
   distDir: '../../dist/functions/next',
   publicRuntimeConfig: publicRuntimeConfig,
-  assetPrefix: process.env.PROXY_PATH ? `${process.env.PROXY_PATH}` : '',
+  assetPrefix: publicRuntimeConfig.proxyPath,
   webpack: function (config) {
     config.plugins = config.plugins || []
 

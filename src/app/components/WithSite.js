@@ -4,11 +4,12 @@ import SiteApi from 'app/api/SiteApi'
 import FashionApi from 'app/api/FashionApi'
 import getConfig from 'next/config'
 
+const publicRuntimeConfig = getConfig().publicRuntimeConfig
+
 const WithSite = Page =>
   class WithSitePage extends React.Component {
     static async getInitialProps (ctx) {
       const { req } = ctx
-      const publicRuntimeConfig = getConfig().publicRuntimeConfig
       const host = req ? req.headers.host : window.location.host
       let props = {}
 
