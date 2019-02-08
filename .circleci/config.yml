@@ -40,10 +40,10 @@ jobs:
     working_directory: ~/repo
 
     steps:
-      - attach_workspace:
-          at: .
       - run:
           command: apk add --no-cache ca-certificates
+      - attach_workspace:
+          at: .
       - run:
           name: set environment variables
           command: npm run set-env
