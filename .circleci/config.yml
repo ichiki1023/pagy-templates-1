@@ -43,6 +43,8 @@ jobs:
       - attach_workspace:
           at: .
       - run:
+          command: apk add --no-cache ca-certificates
+      - run:
           name: set environment variables
           command: npm run set-env
       - run:
