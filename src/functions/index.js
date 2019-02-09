@@ -3,6 +3,8 @@ const express = require('express')
 const next = require('next')
 const bodyParser = require('body-parser')
 const requestIp = require('request-ip')
+const ipRangeCheck = require('ip-range-check')
+const is = require('is_js')
 
 process.env.HOST = functions.config().app.host
 process.env.API_HOST = functions.config().app.apihost
@@ -30,8 +32,23 @@ exports.next = functions.https.onRequest((request, response) => {
   console.log('File: ' + request.originalUrl)
   return app.prepare().then(() => {
     const server = express()
-    const clientIp = requestIp.getClientIp(request)
-    console.log('ip', clientIp)
+
+    // IP Auth
+    server.all('*', (req, res, next) => {
+      if (process.env.ALLOWED_IP) {
+        const allowedIp = process.env.ALLOWED_IP.split(',')
+        const clientIp = is.ip(req.headers['fastly-client-ip'])
+          ? req.headers['fastly-client-ip']
+          : requestIp.getClientIp(req)
+        console.log('ip', clientIp)
+        const isAllowed = ipRangeCheck(clientIp, allowedIp)
+        if (!isAllowed) {
+          res.status(400).send('Not Allowed')
+          return
+        }
+      }
+      next()
+    })
 
     server.use(bodyParser.json()) // for parsing application/json
     server.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
@@ -51,16 +68,6 @@ exports.next = functions.https.onRequest((request, response) => {
     })
 
     server.get('*', (req, res) => {
-      if (process.env.ALLOWED_IP) {
-        const allowedIp = process.env.ALLOWED_IP.split(',')
-        console.log('allowedIp', allowedIp)
-        const isAllowed = allowedIp.indexOf(clientIp) !== -1
-        if (!isAllowed) {
-          response.status(400).json({ error: 'not allowed' })
-          return
-        }
-      }
-
       if (process.env.PROXY_PATH) {
         req.url = req.url.replace(`${process.env.PROXY_PATH}`, '')
       }
