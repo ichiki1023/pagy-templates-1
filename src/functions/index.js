@@ -30,15 +30,6 @@ exports.next = functions.https.onRequest((request, response) => {
   console.log('File: ' + request.originalUrl)
   return app.prepare().then(() => {
     const server = express()
-    if (process.env.ALLOWED_IP) {
-      const clientIp = requestIp.getClientIp(request)
-      const allowedIp = process.env.ALLOW_IP.split(',')
-      const isAllowed = allowedIp.indexOf(clientIp) !== -1
-      if (!isAllowed) {
-        response.status(400).json({ error: 'not allowed' })
-        return
-      }
-    }
 
     server.use(bodyParser.json()) // for parsing application/json
     server.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
@@ -58,6 +49,16 @@ exports.next = functions.https.onRequest((request, response) => {
     })
 
     server.get('*', (req, res) => {
+      if (process.env.ALLOWED_IP) {
+        const clientIp = requestIp.getClientIp(request)
+        const allowedIp = process.env.ALLOWED_IP.split(',')
+        const isAllowed = allowedIp.indexOf(clientIp) !== -1
+        if (!isAllowed) {
+          response.status(400).json({ error: 'not allowed' })
+          return
+        }
+      }
+
       if (process.env.PROXY_PATH) {
         req.url = req.url.replace(`${process.env.PROXY_PATH}`, '')
       }
