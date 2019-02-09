@@ -30,6 +30,8 @@ exports.next = functions.https.onRequest((request, response) => {
   console.log('File: ' + request.originalUrl)
   return app.prepare().then(() => {
     const server = express()
+    const clientIp = requestIp.getClientIp(request)
+    console.log('ip', clientIp)
 
     server.use(bodyParser.json()) // for parsing application/json
     server.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
@@ -50,8 +52,8 @@ exports.next = functions.https.onRequest((request, response) => {
 
     server.get('*', (req, res) => {
       if (process.env.ALLOWED_IP) {
-        const clientIp = requestIp.getClientIp(request)
         const allowedIp = process.env.ALLOWED_IP.split(',')
+        console.log('allowedIp', allowedIp)
         const isAllowed = allowedIp.indexOf(clientIp) !== -1
         if (!isAllowed) {
           response.status(400).json({ error: 'not allowed' })
