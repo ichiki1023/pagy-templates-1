@@ -24,7 +24,7 @@
     "copy-static": "cpx \"src/app/static/**/*.*\" \"dist/public$PROXY_PATH/static\"",
     "copy-deps": "cpx \"*{package.json,yarn.lock}\" \"dist/functions\"",
     "install-deps": "cd dist/functions && npm install",
-    "set-env": "firebase functions:config:set app.host=\"$HOST\" app.apihost=\"$API_HOST\" app.proxypath=\"$PROXY_PATH\"",
+    "set-env": "firebase functions:config:set app.host=\"$HOST\" app.apihost=\"$API_HOST\" app.proxypath=\"$PROXY_PATH\" app.allowedip=\"$ALLOWED_IP\"",
     "remove:func": "firebase functions:delete pagy-development",
     "remove:hosting": "firebase hosting:disable",
     "remove": "run-s remove:*",
@@ -55,6 +55,7 @@
     "react-scroll": "^1.7.10",
     "react-slick": "^0.23.2",
     "react-svg": "^7.2.3",
+    "request-ip": "^2.1.3",
     "slick-carousel": "^1.8.1",
     "styled-components": "^4.1.3",
     "url-loader": "^1.1.2"
