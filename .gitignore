@@ -5,3 +5,4 @@ dist/
 # Firebase cache
 .firebase/
 firebase-debug.log
+.vscode/
