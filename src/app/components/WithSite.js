@@ -13,7 +13,7 @@ const WithSite = Page =>
   class WithSitePage extends React.Component {
     static async getInitialProps (ctx) {
       const { req } = ctx
-      const host = req ? req.headers.host : window.location.host
+      const host = req ? req.headers.host : window.location.hostname
       let props = {}
 
       // Page上でgetInitialPropsが定義されていれば読み込む
