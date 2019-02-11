@@ -5,6 +5,7 @@ import FashionApi from 'app/api/FashionApi'
 import SitePhotosApi from 'app/api/SitePhotosApi'
 import SitePostsApi from 'app/api/SitePostsApi'
 import getConfig from 'next/config'
+import moment from 'moment'
 
 const publicRuntimeConfig = getConfig().publicRuntimeConfig
 
@@ -53,13 +54,20 @@ const WithSite = Page =>
           const site = await SiteApi.getByDomain({ domain: host })
           const photos = await SitePhotosApi.get({ siteId: site.id })
           const posts = await SitePostsApi.get({ siteId: site.id })
+          const formattedPosts = posts.map(post => {
+            return {
+              ...post,
+              created_at: moment(post.created_at).format('YYYY/MM/DD'),
+              updated_at: moment(post.updated_at).format('YYYY/MM/DD')
+            }
+          })
           const fashion = await FashionApi.getBySiteId({ siteId: site.id })
           return {
             ...props,
             site: {
               ...site,
               photos,
-              posts
+              posts: formattedPosts
             },
             fashion: {
               items: fashion['fashion_items'],
