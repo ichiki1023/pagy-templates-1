@@ -2,6 +2,7 @@ import React from 'react'
 import defaultData from 'app/data/default'
 import SiteApi from 'app/api/SiteApi'
 import FashionApi from 'app/api/FashionApi'
+import SitePhotosApi from 'app/api/SitePhotosApi'
 import getConfig from 'next/config'
 
 const publicRuntimeConfig = getConfig().publicRuntimeConfig
@@ -49,10 +50,14 @@ const WithSite = Page =>
       if (host !== publicRuntimeConfig.host) {
         try {
           const site = await SiteApi.getByDomain({ domain: host })
+          const photos = await SitePhotosApi.get({ siteId: site.id })
           const fashion = await FashionApi.getBySiteId({ siteId: site.id })
           return {
             ...props,
-            site: site,
+            site: {
+              ...site,
+              photos
+            },
             fashion: {
               items: fashion['fashion_items'],
               coordinates: fashion['fashion_coordinates']
