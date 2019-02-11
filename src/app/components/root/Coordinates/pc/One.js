@@ -83,9 +83,9 @@ const CoordinatesPC = props => {
       <Contents>
         <Texts>
           <Description>
-            {description.split('\n').map(desc => {
+            {description.split('\n').map((desc, index) => {
               return (
-                <span>
+                <span key={index}>
                   {desc}
                   <br />
                 </span>
