@@ -73,7 +73,11 @@ const CoolSlider = props => {
     ...props.settings
   }
 
-  return <Slider {...settings}>{props.children}</Slider>
+  return (
+    <Slider {...settings} className={props.className}>
+      {props.children}
+    </Slider>
+  )
 }
 
 CoolSlider.propTypes = {

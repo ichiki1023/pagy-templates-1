@@ -43,6 +43,12 @@ const Title = styled.span`
   }
 `
 
+const StyledCoolSlider = styled(CoolSlider)`
+  & > .slick-list > .slick-track {
+    min-width: 54vw;
+  }
+`
+
 class Items extends React.Component {
   static propTypes = {
     items: PropTypes.array.isRequired,
@@ -84,7 +90,7 @@ class Items extends React.Component {
     }
 
     return (
-      <CoolSlider settings={settings} arrowIconSize={52}>
+      <StyledCoolSlider settings={settings} arrowIconSize={52}>
         {items.map((item, index) => {
           return (
             <Item key={index}>
@@ -100,7 +106,7 @@ class Items extends React.Component {
             </Item>
           )
         })}
-      </CoolSlider>
+      </StyledCoolSlider>
     )
   }
 }
