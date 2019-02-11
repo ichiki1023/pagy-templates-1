@@ -29,7 +29,7 @@ const Line = styled.div`
   }
 `
 
-const Description = styled.span`
+const Title = styled.span`
   width: 300px;
   display: block;
   color: #545454;
@@ -96,7 +96,7 @@ class Items extends React.Component {
                 }}
               />
               <Line />
-              <Description>{item.description}</Description>
+              <Title>{item.title}</Title>
             </Item>
           )
         })}
