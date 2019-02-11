@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 import { Link as ScrollLink } from 'react-scroll'
-import Link from 'next/link'
+import Link from 'app/components/common/MyLink'
 import LanguageIcon from '@material-ui/icons/Language'
 import LanguageDropDown from 'app/components/common/LanguageDropDown'
 

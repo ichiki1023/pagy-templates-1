@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components'
 import { Link as ScrollLink } from 'react-scroll/modules'
 import LanguageIcon from '@material-ui/icons/Language'
 import LanguageDropDown from 'app/components/common/LanguageDropDown'
-import Link from 'next/link'
+import Link from 'app/components/common/MyLink'
 
 const Footer = styled.div`
   background-color: rgba(240, 240, 240, 0.8);

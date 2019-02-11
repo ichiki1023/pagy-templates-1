@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import SectionTitle from 'app/components/common/SectionTitle'
-import Link from 'next/link'
+import Link from 'app/components/common/MyLink'
 import ArrowForwardIcon from '@material-ui/icons/ArrowForwardIos'
 
 const Section = styled.div`
