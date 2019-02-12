@@ -7,12 +7,13 @@ const publicRuntimeConfig = getConfig().publicRuntimeConfig
 
 const MyLink = props => {
   const { href, ...custom } = props
+  const host = window.location.hostname
+  // テンプレートのpreviewの場合はproxyPathを付ける
+  const asPath =
+    host === publicRuntimeConfig.host &&
+    `${publicRuntimeConfig.proxyPath}${href}`
   return (
-    <Link
-      href={href}
-      as={`${publicRuntimeConfig.proxyPath}${href}`}
-      {...custom}
-    >
+    <Link href={href} as={asPath} {...custom}>
       {props.children}
     </Link>
   )
