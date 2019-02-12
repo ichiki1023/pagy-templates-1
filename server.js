@@ -15,30 +15,27 @@ app.prepare().then(() => {
   server.use(bodyParser.json()) // for parsing application/json
   server.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
+  // prefix middleware
+  server.use((req, res, next) => {
+    // prefixの指定がある場合はreplaceする
+    if (process.env.PROXY_PATH) {
+      req.url = req.url.replace(`${process.env.PROXY_PATH}`, '')
+    }
+    // ルートか判定
+    if (!req.url) {
+      req.url = '/'
+    }
+    next()
+  })
+
   server.post('*', (req, res) => {
     if (req.body && req.body.formData) {
       req.body = JSON.parse(req.body.formData)
     }
-
-    if (process.env.PROXY_PATH) {
-      req.url = req.url.replace(`${process.env.PROXY_PATH}`, '')
-    }
-    // ルートか判定
-    if (!req.url) {
-      req.url = '/'
-    }
-
     app.render(req, res, req.url)
   })
 
   server.get('*', (req, res) => {
-    if (process.env.PROXY_PATH) {
-      req.url = req.url.replace(`${process.env.PROXY_PATH}`, '')
-    }
-    // ルートか判定
-    if (!req.url) {
-      req.url = '/'
-    }
     return handle(req, res)
   })
 

@@ -29,7 +29,7 @@ const Line = styled.div`
   }
 `
 
-const Description = styled.span`
+const Title = styled.span`
   width: 300px;
   display: block;
   color: #545454;
@@ -40,6 +40,12 @@ const Description = styled.span`
   @media (max-width: 500px) {
     width: 180px;
     font-size: 14px;
+  }
+`
+
+const StyledCoolSlider = styled(CoolSlider)`
+  & > .slick-list > .slick-track {
+    min-width: 54vw;
   }
 `
 
@@ -84,7 +90,7 @@ class Items extends React.Component {
     }
 
     return (
-      <CoolSlider settings={settings} arrowIconSize={52}>
+      <StyledCoolSlider settings={settings} arrowIconSize={52}>
         {items.map((item, index) => {
           return (
             <Item key={index}>
@@ -96,11 +102,11 @@ class Items extends React.Component {
                 }}
               />
               <Line />
-              <Description>{item.description}</Description>
+              <Title>{item.title}</Title>
             </Item>
           )
         })}
-      </CoolSlider>
+      </StyledCoolSlider>
     )
   }
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import SectionTitle from 'app/components/common/SectionTitle'
-import Link from 'next/link'
+import Link from 'app/components/common/MyLink'
 import ArrowForwardIcon from '@material-ui/icons/ArrowForwardIos'
 
 const Section = styled.div`
@@ -54,11 +54,12 @@ const StyledImage = styled.img`
 `
 
 const Texts = styled.div`
-  margin-top: 30px;
-  margin-right: 20px;
+  padding: 30px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
+  width: calc(100% - 300px);
 `
 
 const Description = styled.p`
@@ -81,7 +82,16 @@ const CoordinatesPC = props => {
       />
       <Contents>
         <Texts>
-          <Description>{description}</Description>
+          <Description>
+            {description.split('\n').map((desc, index) => {
+              return (
+                <span key={index}>
+                  {desc}
+                  <br />
+                </span>
+              )
+            })}
+          </Description>
           <Link href={'/coordinates'}>
             <StyledLink>
               <p>さらに詳しく</p>

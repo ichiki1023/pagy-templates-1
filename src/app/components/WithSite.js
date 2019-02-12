@@ -2,7 +2,10 @@ import React from 'react'
 import defaultData from 'app/data/default'
 import SiteApi from 'app/api/SiteApi'
 import FashionApi from 'app/api/FashionApi'
+import SitePhotosApi from 'app/api/SitePhotosApi'
+import SitePostsApi from 'app/api/SitePostsApi'
 import getConfig from 'next/config'
+import moment from 'moment'
 
 const publicRuntimeConfig = getConfig().publicRuntimeConfig
 
@@ -10,7 +13,7 @@ const WithSite = Page =>
   class WithSitePage extends React.Component {
     static async getInitialProps (ctx) {
       const { req } = ctx
-      const host = req ? req.headers.host : window.location.host
+      const host = req ? req.headers.host : window.location.hostname
       let props = {}
 
       // Page上でgetInitialPropsが定義されていれば読み込む
@@ -49,10 +52,23 @@ const WithSite = Page =>
       if (host !== publicRuntimeConfig.host) {
         try {
           const site = await SiteApi.getByDomain({ domain: host })
+          const photos = await SitePhotosApi.get({ siteId: site.id })
+          const posts = await SitePostsApi.get({ siteId: site.id })
+          const formattedPosts = posts.map(post => {
+            return {
+              ...post,
+              created_at: moment(post.created_at).format('YYYY/MM/DD'),
+              updated_at: moment(post.updated_at).format('YYYY/MM/DD')
+            }
+          })
           const fashion = await FashionApi.getBySiteId({ siteId: site.id })
           return {
             ...props,
-            site: site,
+            site: {
+              ...site,
+              photos,
+              posts: formattedPosts
+            },
             fashion: {
               items: fashion['fashion_items'],
               coordinates: fashion['fashion_coordinates']
