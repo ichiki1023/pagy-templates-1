@@ -13,12 +13,22 @@ const WithSite = Page =>
   class WithSitePage extends React.Component {
     static async getInitialProps (ctx) {
       const { req } = ctx
-      const host = req ? req.headers.host : window.location.hostname
+      const host = req
+        ? req.headers['x-forwarded-host']
+        : window.location.hostname
+
       let props = {}
 
       // Page上でgetInitialPropsが定義されていれば読み込む
       if (Page.getInitialProps) {
         props = await Page.getInitialProps(ctx)
+      }
+
+      if (!host) {
+        return {
+          ...props,
+          ...defaultData
+        }
       }
 
       // POSTでデータを取得するケース
