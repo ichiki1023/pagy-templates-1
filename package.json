@@ -10,8 +10,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\"",
     "dev": "node server.js",
-    "build": "NODE_ENV=production next build app",
+    "build:app": "next build app",
+    "build": "NODE_ENV=production run-s build:app copy-static",
     "start": "NODE_ENV=production node server.js",
+    "copy-static": "cpx \"app/static/**/*.*\" \"static\"",
     "format": "run-s format:*",
     "format:js": "prettier-standard ./app/**/*.js",
     "format:others": "prettier --write ./app/**/*.{css,json}",

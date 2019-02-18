@@ -1,8 +1,11 @@
+require('dotenv').config()
+
 const express = require('express')
 const next = require('next')
 const bodyParser = require('body-parser')
 
 const dev = process.env.NODE_ENV !== 'production'
+const proxyPath = process.env.PROXY_PATH || ''
 const PORT = process.env.PORT || 5000
 const app = next({ dir: dev ? './app' : './build', dev })
 const handle = app.getRequestHandler()
@@ -14,6 +17,8 @@ app.prepare().then(() => {
 
   server.use(bodyParser.json()) // for parsing application/json
   server.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
+
+  server.use(`${proxyPath}/static`, express.static(`${__dirname}/static`))
 
   // prefix middleware
   server.use((req, res, next) => {
