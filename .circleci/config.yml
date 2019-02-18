@@ -1,64 +1,47 @@
 version: 2
-
 jobs:
   build:
     docker:
-      # cloud functionsがv8までしかサポートしていないためv8にしておく
-      - image: node:8.15.0-alpine
+      - image: alpine:latest
+
     working_directory: ~/repo
 
     steps:
       - checkout
-      - run:
-          command: apk add --no-cache ca-certificates
-      - restore_cache:
-          keys:
-            - v2-npm-deps-{{ checksum "package.json" }}
-            # Find the most recent cache used from any branch
-            - v2-npm-deps-
-      - run:
-          name: install dependencies
-          command: npm install
-      - run:
-          name: clean dist dir
-          command: npm run clean
-      - run:
-          name: build
-          command: npm run predeploy
-      - save_cache:
-          key: v2-npm-deps-{{ checksum "package.json" }}
-          paths:
-            - ~/repo/node_modules
-      - persist_to_workspace:
-          root: .
-          paths:
-            - .
 
   deploy:
     docker:
-      - image: node:8.15.0-alpine
-    working_directory: ~/repo
-
+      - image: google/cloud-sdk:alpine
     steps:
-      - run:
-          command: apk add --no-cache ca-certificates
-      - attach_workspace:
-          at: .
-      - run:
-          name: set environment variables
-          command: npm run set-env
-      - run:
-          name: deploy to firebase
-          command: npm run deploy:ci
+      - checkout
 
+      - setup_remote_docker:
+          docker_layer_caching: true
+
+      - run:
+          name: Install Docker
+          command: |
+            apk upgrade --no-cache
+            apk add --update --no-cache docker
+      - run:
+          name: Authenticating to GCR
+          command: |
+            echo ${GCLOUD_SERVICE_KEY} > ${HOME}/gcloud-service-key.json
+            gcloud auth activate-service-account --key-file ${HOME}/gcloud-service-key.json
+            gcloud --quiet config set project ${PROJECT_ID}
+            gcloud auth configure-docker
+      - run:
+          name: Build and push image
+          command: |
+            IMAGE_NAME="gcr.io/${PROJECT_ID}/${CIRCLE_PROJECT_REPONAME}"
+            docker build -t ${IMAGE_NAME}:${CIRCLE_BUILD_NUM} .
+            docker tag ${IMAGE_NAME}:${CIRCLE_BUILD_NUM} ${IMAGE_NAME}:latest
+            docker push ${IMAGE_NAME}
 workflows:
   version: 2
   build_and_deploy:
     jobs:
-      - build:
-          filters:
-            branches:
-              only: master
+      - build
       - deploy:
           requires:
             - build
