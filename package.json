@@ -9,30 +9,13 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\"",
-    "func": "functions start",
     "dev": "node server.js",
-    "clean": "rimraf dist/functions",
-    "preserve": "run-s build copy-deps install-deps",
-    "serve": "firebase serve",
-    "build:app": "NODE_ENV=production next build src/app",
-    "build:func": "babel src/functions --out-dir dist/functions",
-    "build:public": "cpx \"src/public/**/*.*\" \"dist/public\" -C && npm run copy-static",
-    "build": "run-s build:*",
-    "predeploy": "run-s build copy-deps",
-    "deploy": "firebase deploy",
-    "deploy:ci": "firebase deploy --token=\"$FIREBASE_TOKEN\"",
-    "copy-static": "cpx \"src/app/static/**/*.*\" \"dist/public$PROXY_PATH/static\"",
-    "copy-deps": "cpx \"*{package.json,yarn.lock}\" \"dist/functions\"",
-    "install-deps": "cd dist/functions && npm install",
-    "set-env": "firebase functions:config:set app.host=\"$HOST\" app.apihost=\"$API_HOST\" app.proxypath=\"$PROXY_PATH\" app.allowedip=\"$ALLOWED_IP\"",
-    "remove:func": "firebase functions:delete pagy-development",
-    "remove:hosting": "firebase hosting:disable",
-    "remove": "run-s remove:*",
-    "logs": "firebase functions:log",
+    "build": "NODE_ENV=production next build app",
+    "start": "NODE_ENV=production node server.js",
     "format": "run-s format:*",
-    "format:js": "prettier-standard ./src/**/*.js",
-    "format:others": "prettier --write ./src/**/*.{css,json}",
-    "lint": "standard .src/**/*.js"
+    "format:js": "prettier-standard ./app/**/*.js",
+    "format:others": "prettier --write ./app/**/*.{css,json}",
+    "lint": "standard .app/**/*.js"
   },
   "dependencies": {
     "@material-ui/core": "^3.6.1",
@@ -41,8 +24,6 @@
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
-    "firebase-admin": "^6.4.0",
-    "firebase-functions": "^2.1.0",
     "google-map-react": "^1.1.2",
     "ip-range-check": "0.0.2",
     "is_js": "^0.9.0",
@@ -70,7 +51,6 @@
     "babel-plugin-module-resolver": "^3.1.1",
     "cpx": "^1.5.0",
     "dotenv-webpack": "^1.6.0",
-    "firebase-tools": "^6.2.2",
     "husky": "^1.3.1",
     "lint-staged": "^8.1.0",
     "npm-run-all": "^4.1.5",
@@ -86,13 +66,13 @@
   },
   "lint-staged": {
     "linters": {
-      "src/**/*.js": [
-        "prettier-standard ./src/**/*.js",
-        "standard ./src/**/*.js",
+      "app/**/*.js": [
+        "prettier-standard ./app/**/*.js",
+        "standard ./app/**/*.js",
         "git add"
       ],
-      "src/**/*.css": [
-        "prettier --write ./src/**/*.css",
+      "app/**/*.css": [
+        "prettier --write ./app/**/*.css",
         "git add"
       ]
     }

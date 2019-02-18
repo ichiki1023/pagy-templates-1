@@ -1,8 +1,6 @@
-.idea
 node_modules
-dist/
 .env
-# Firebase cache
-.firebase/
-firebase-debug.log
+build
+.next
+.idea
 .vscode/
