@@ -8,10 +8,10 @@
       "module-resolver",
       {
         "root": [
-          "./src"
+          "./app"
         ],
         "alias": {
-          "app": "./src/app"
+          "app": "./app"
         }
       }
     ]

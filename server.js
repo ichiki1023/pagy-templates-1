@@ -4,7 +4,7 @@ const bodyParser = require('body-parser')
 
 const dev = process.env.NODE_ENV !== 'production'
 const PORT = process.env.PORT || 5000
-const app = next({ dir: './src/app', dev })
+const app = next({ dir: dev ? './app' : './build', dev })
 const handle = app.getRequestHandler()
 
 // ローカルのPOST TEST用にserver.jsを用意
