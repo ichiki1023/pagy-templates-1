@@ -20,6 +20,10 @@ app.prepare().then(() => {
 
   server.use(`${proxyPath}/static`, express.static(`${__dirname}/static`))
 
+  server.get('/health_check', (req, res) => {
+    return res.json({ status: 'running' })
+  })
+
   // prefix middleware
   server.use((req, res, next) => {
     // prefixの指定がある場合はreplaceする
