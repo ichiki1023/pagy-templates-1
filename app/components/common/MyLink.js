@@ -10,7 +10,7 @@ const MyLink = props => {
   const host = window.location.hostname
   // テンプレートのpreviewの場合はproxyPathを付ける
   const asPath =
-    host === publicRuntimeConfig.host &&
+    host === publicRuntimeConfig.webHost &&
     `${publicRuntimeConfig.proxyPath}${href}`
   return (
     <Link href={href} as={asPath} {...custom}>
