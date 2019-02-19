@@ -7,7 +7,7 @@ const Dotenv = require('dotenv-webpack')
 const dev = process.env.NODE_ENV !== 'production'
 
 const publicRuntimeConfig = {
-  host: process.env.HOST,
+  webHost: process.env.WEB_HOST,
   apiHost: process.env.API_HOST,
   proxyPath: process.env.PROXY_PATH || ''
 }

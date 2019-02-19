@@ -59,7 +59,7 @@ const WithSite = Page =>
       }
 
       // 登録済みの店舗用サイトのケース
-      if (host !== publicRuntimeConfig.host) {
+      if (host !== publicRuntimeConfig.webHost) {
         try {
           const site = await SiteApi.getByDomain({ domain: host })
           const photos = await SitePhotosApi.get({ siteId: site.id })
