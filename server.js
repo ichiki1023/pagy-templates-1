@@ -9,7 +9,25 @@ const bodyParser = require('body-parser')
 const dev = process.env.NODE_ENV !== 'production'
 const proxyPath = process.env.PROXY_PATH || ''
 const PORT = process.env.PORT || 5000
-const app = next({ dir: dev ? './app' : './build', dev })
+
+const devNextOpts = {
+  dir: './app',
+  dev: true
+}
+const nextOps = {
+  conf: {
+    distDir: './build',
+    publicRuntimeConfig: {
+      webHost: process.env.WEB_HOST,
+      apiHost: process.env.API_HOST,
+      proxyPath: process.env.PROXY_PATH || ''
+    }
+  },
+  dev: false
+}
+
+const opts = dev ? devNextOpts : nextOps
+const app = next(opts)
 const handle = app.getRequestHandler()
 
 // ローカルのPOST TEST用にserver.jsを用意
