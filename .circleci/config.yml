@@ -12,6 +12,8 @@ jobs:
   deploy:
     docker:
       - image: google/cloud-sdk:alpine
+        environment:
+          CLOUDSDK_CORE_DISABLE_PROMPTS: 1
     steps:
       - checkout
 
@@ -37,6 +39,13 @@ jobs:
             docker build -t ${IMAGE_NAME}:${CIRCLE_BUILD_NUM} .
             docker tag ${IMAGE_NAME}:${CIRCLE_BUILD_NUM} ${IMAGE_NAME}:latest
             docker push ${IMAGE_NAME}
+      - run:
+          name: Deploy new image to development k8s cluster
+          command: |
+            IMAGE_NAME="gcr.io/${PROJECT_ID}/${CIRCLE_PROJECT_REPONAME}"
+            gcloud components install kubectl
+            gcloud container clusters get-credentials --region asia-northeast1-a gke-dev-cluster
+            kubectl set image deployment.v1.apps/api-deployment api=${IMAGE_NAME}:${CIRCLE_BUILD_NUM}
 workflows:
   version: 2
   build_and_deploy:
@@ -45,6 +54,6 @@ workflows:
       - deploy:
           requires:
             - build
-          filters:
-            branches:
-              only: develop
+          # filters:
+          #   branches:
+          #     only: develop
