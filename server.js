@@ -21,7 +21,8 @@ const nextOps = {
       webHost: process.env.WEB_HOST,
       apiHost: process.env.API_HOST,
       proxyPath: process.env.PROXY_PATH || ''
-    }
+    },
+    assetPrefix: process.env.PROXY_PATH || ''
   },
   dev: false
 }
