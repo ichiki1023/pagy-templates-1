@@ -8,7 +8,7 @@ const bodyParser = require('body-parser')
 
 const dev = process.env.NODE_ENV !== 'production'
 const proxyPath = process.env.PROXY_PATH || ''
-const PORT = process.env.PORT || 5000
+const PORT = process.env.SERVER_PORT || 5001
 
 const devNextOpts = {
   dir: './app',
