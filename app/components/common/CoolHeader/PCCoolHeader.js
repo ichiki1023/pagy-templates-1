@@ -152,7 +152,7 @@ const PCCoolHeader = props => {
           )}
         </HeaderList>
         {/* Contact */}
-        {site.contact_email ? (
+        {site.contact_email && site.contact_email.email ? (
           <HeaderList key={'contact'}>
             {isHome ? (
               <ScrollLink

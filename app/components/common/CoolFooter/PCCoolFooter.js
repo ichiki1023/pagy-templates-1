@@ -175,7 +175,7 @@ const PCCoolFooter = props => {
             )}
           </FooterList>
           {/* Contact */}
-          {site.contact_email ? (
+          {site.contact_email && site.contact_email.email ? (
             <FooterList key={'contact'}>
               {isHome ? (
                 <ScrollLink

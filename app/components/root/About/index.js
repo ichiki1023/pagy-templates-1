@@ -167,10 +167,10 @@ const About = props => {
                 <td>{site.contact_phone}</td>
               </tr>
             ) : null}
-            {site.contact_email ? (
+            {site.contact_email && site.contact_email.email ? (
               <tr>
                 <th>EMAIL</th>
-                <td>{site.contact_email}</td>
+                <td>{site.contact_email.email}</td>
               </tr>
             ) : null}
           </tbody>
