@@ -193,7 +193,9 @@ class Index extends React.Component {
           <StyledAbout site={site} />
           {services ? <StyledSocialMedia services={services} /> : null}
         </Wrapper>
-        {site.contact_email ? <StyledContact site={site} /> : null}
+        {site.contact_email && site.contact_email.email ? (
+          <StyledContact site={site} />
+        ) : null}
         {services ? <StyledSNSNavigation services={services} /> : null}
         <FooterWrapper>
           <StyledFooter

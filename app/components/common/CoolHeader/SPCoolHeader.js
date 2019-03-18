@@ -208,7 +208,7 @@ export default class SPCoolHeader extends React.Component {
                 </ScrollLink>
               </ChildMenuTitle>
               {/* Contact */}
-              {site.contact_email ? (
+              {site.contact_email && site.contact_email.email ? (
                 <ScrollLink
                   to={'contact'}
                   offset={scrollOffset}

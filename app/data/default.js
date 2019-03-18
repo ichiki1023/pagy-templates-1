@@ -43,7 +43,10 @@ export default {
     instagram: 'ichiki1023',
     facebook: 'sato.ichiki',
     pinterest: 'itennis0210',
-    contact_email: 'pagy@example.com',
+    contact_email: {
+      id: 1,
+      email: 'pagy@example.com'
+    },
     contact_phone: '03-1234-5678',
     address: {
       postcode: '1006690',
