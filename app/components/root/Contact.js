@@ -48,10 +48,6 @@ export default class Contact extends React.Component {
     }
   }
 
-  componentDidUpdate () {
-    console.log(this.state)
-  }
-
   handleSubmit = async event => {
     event.preventDefault()
     const { site } = this.props
