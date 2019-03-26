@@ -51,7 +51,7 @@ export default class Contact extends React.Component {
   handleSubmit = async event => {
     event.preventDefault()
     const { site } = this.props
-    if (!site.id) {
+    if (site.id) {
       const data = {
         siteId: site.id,
         name: event.target.name.value,
