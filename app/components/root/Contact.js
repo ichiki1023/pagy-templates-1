@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import SectionTitle from 'app/components/common/SectionTitle'
 import Input from 'app/components/common/Input'
+import SendContactMessageApi from 'app/api/SendContactMessageApi'
 
 const Section = styled.div``
 
@@ -38,25 +39,82 @@ const StyledSubmitButton = styled.input`
 `
 
 export default class Contact extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      loading: false,
+      requestSuccess: false,
+      requestError: null
+    }
+  }
+
+  componentDidUpdate () {
+    console.log(this.state)
+  }
+
+  handleSubmit = async event => {
+    event.preventDefault()
+    const { site } = this.props
+    if (!site.id) {
+      const data = {
+        siteId: site.id,
+        name: event.target.name.value,
+        email: event.target.email.value,
+        content: event.target.content.value
+      }
+
+      try {
+        this.setState({
+          loading: true,
+          requestSuccess: false,
+          requestError: null
+        })
+        await SendContactMessageApi.post({ ...data })
+        this.setState({ loading: false, requestSuccess: true })
+      } catch (error) {
+        console.debug(error)
+        this.setState({ loading: false, requestError: '送信に失敗しました' })
+      }
+    }
+  }
+
   render () {
     const { site, ...custom } = this.props
     return (
       <Section name={'contact'} {...custom}>
-        <Contents>
-          <SectionTitle backgroundText={'CONTACT'} titleText={'お問い合わせ'} />
-          <Input title={'お名前'} type={'text'} placeholder={'本上まなみ'} />
-          <Input
-            title={'メールアドレス'}
-            type={'text'}
-            placeholder={'sample@sample.com'}
-          />
-          <Input
-            title={'どういたしましたか？'}
-            type={'textarea'}
-            placeholder={'ご質問・ご用件などお気軽にお問い合わせください。'}
-          />
-          <StyledSubmitButton type={'submit'} value={'メッセージを送る'} />
-        </Contents>
+        <form onSubmit={this.handleSubmit}>
+          <Contents>
+            <SectionTitle
+              backgroundText={'CONTACT'}
+              titleText={'お問い合わせ'}
+            />
+            <Input
+              name={'name'}
+              title={'お名前'}
+              type={'text'}
+              placeholder={'あなたのお名前'}
+              required
+              maxLength={128}
+            />
+            <Input
+              name={'email'}
+              title={'メールアドレス'}
+              type={'email'}
+              placeholder={'sample@sample.com'}
+              required
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" // eslint-disable-line
+            />
+            <Input
+              name={'content'}
+              title={'どういたしましたか？'}
+              type={'textarea'}
+              placeholder={'ご質問・ご用件などお気軽にお問い合わせください。'}
+              required
+              maxLength={1000}
+            />
+            <StyledSubmitButton type={'submit'} value={'メッセージを送る'} />
+          </Contents>
+        </form>
       </Section>
     )
   }

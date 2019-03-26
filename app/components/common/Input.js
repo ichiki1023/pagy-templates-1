@@ -82,29 +82,43 @@ const StyledTextArea = styled.textarea`
   }
 `
 
-export default class Input extends React.Component {
-  static propTypes = {
-    title: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired,
-    placeholder: PropTypes.string
-  }
+const Input = props => {
+  const { title, name, type, placeholder, required, ...custom } = props
 
-  static defaultProps = {
-    type: 'text'
-  }
-
-  render () {
-    const { title, type, placeholder } = this.props
-
-    return (
-      <div>
-        <StyledText>{title}</StyledText>
-        {type === 'textarea' ? (
-          <StyledTextArea placeholder={placeholder} />
-        ) : (
-          <StyledInput type={type} placeholder={placeholder} />
-        )}
-      </div>
-    )
-  }
+  return (
+    <div>
+      <StyledText>{title}</StyledText>
+      {type === 'textarea' ? (
+        <StyledTextArea
+          name={name}
+          placeholder={placeholder}
+          required={required}
+          {...custom}
+        />
+      ) : (
+        <StyledInput
+          type={type}
+          name={name}
+          placeholder={placeholder}
+          required={required}
+          {...custom}
+        />
+      )}
+    </div>
+  )
 }
+
+Input.propTypes = {
+  name: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  placeholder: PropTypes.string,
+  required: PropTypes.bool
+}
+
+Input.defaultProps = {
+  type: 'text',
+  required: false
+}
+
+export default Input
