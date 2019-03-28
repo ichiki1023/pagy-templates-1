@@ -4,12 +4,7 @@ import PropTypes from 'prop-types'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import DoneIcon from '@material-ui/icons/DoneOutlined'
 import ErrorIcon from '@material-ui/icons/ErrorOutlined'
-
-const StyledCircularProgress = styled(CircularProgress)`
-  && {
-    color: #9b9b9b;
-  }
-`
+import Button from '@material-ui/core/Button'
 
 const StyledDoneIcon = styled(DoneIcon)`
   && {
@@ -24,34 +19,46 @@ const StyledErrorIcon = styled(ErrorIcon)`
   }
 `
 
-const StyledSubmitButton = styled.button`
-  cursor: pointer;
-  outline: none;
-  appearance: none;
-  width: 280px;
-  height: 60px;
-  background-color: white;
-  color: #9b9b9b;
-  font-size: 16px;
-  padding: 0;
-  margin: 50px auto 0 auto;
-  border: 1px solid #9b9b9b;
-  border-radius: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+const StyledSubmitButton = styled(Button)`
+  && {
+    width: 280px;
+    height: 60px;
+    padding: 0;
+    margin: 50px auto 0 auto;
+    color: #545454;
+    background-color: #fff;
+    border: 1px solid #545454;
+    border-radius: 50px;
+    cursor: pointer;
+    outline: none;
+    appearance: none;
+    font-size: 16px;
 
-  &:hover {
-    border: 1px solid #f00;
+    &:hover {
+      color: #fff;
+      background-color: #545454;
+      border: 1px solid #545454;
+    }
+
+    &:disabled {
+      border: 1px solid
+        ${props => (props.success ? '#545454' : 'rgba(84, 84, 84, 0.54)')};
+    }
+
+    @media (max-width: 500px) {
+      margin: 24px auto 0 auto;
+      width: 100%;
+    }
   }
+`
 
-  &:active {
-    border: 1px solid #00f;
-  }
+const StyledCircularProgress = styled(CircularProgress)`
+  && {
+    color: #9b9b9b;
 
-  @media (max-width: 500px) {
-    margin: 24px auto 0 auto;
-    width: 100%;
+    ${StyledSubmitButton}:hover {
+      color: #fff;
+    }
   }
 `
 
@@ -67,6 +74,7 @@ const ErrorMessage = styled.span`
 
 const ButtonComponent = styled.div`
   margin: 0 auto;
+  text-align: center;
 `
 
 const SuccessText = styled.span`
@@ -75,6 +83,7 @@ const SuccessText = styled.span`
   justify-content: center;
   animation-name: fadein;
   animation-duration: 0.8s;
+  color: #545454;
 
   @keyframes fadein {
     from {
@@ -106,7 +115,14 @@ const SubmitButton = props => {
   const message = textMessage()
   return (
     <ButtonComponent>
-      <StyledSubmitButton type={'submit'}>{message}</StyledSubmitButton>
+      <StyledSubmitButton
+        type={'submit'}
+        variant={'outlined'}
+        disabled={props.success || props.disabled}
+        success={props.success}
+      >
+        {message}
+      </StyledSubmitButton>
       {props.error && (
         <ErrorMessage>
           <StyledErrorIcon />
@@ -120,7 +136,13 @@ const SubmitButton = props => {
 SubmitButton.propTypes = {
   loading: PropTypes.bool.isRequired,
   success: PropTypes.bool.isRequired,
-  error: PropTypes.string
+  error: PropTypes.string,
+  disabled: PropTypes.bool.isRequired
+}
+
+SubmitButton.defaultProps = {
+  loading: false,
+  disabled: false
 }
 
 export default SubmitButton

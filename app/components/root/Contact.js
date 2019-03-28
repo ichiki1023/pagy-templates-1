@@ -73,6 +73,11 @@ export default class Contact extends React.Component {
   }
 
   handleChange = field => event => {
+    if (this.state.requestSuccess) {
+      this.setState({
+        requestSuccess: false
+      })
+    }
     this.setState({
       [field]: {
         ...this.state[field],
@@ -144,6 +149,11 @@ export default class Contact extends React.Component {
 
   render () {
     const { site, ...custom } = this.props
+    const disabled =
+      !this.state.name.value ||
+      !this.state.email.value ||
+      !this.state.content.value
+
     return (
       <Section name={'contact'} {...custom}>
         <form onSubmit={this.validate} noValidate>
@@ -189,6 +199,7 @@ export default class Contact extends React.Component {
               loading={this.state.loading}
               success={this.state.requestSuccess}
               error={this.state.requestError}
+              disabled={disabled}
             />
           </Contents>
         </form>
