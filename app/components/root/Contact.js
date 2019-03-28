@@ -6,6 +6,10 @@ import SendContactMessageApi from 'app/api/SendContactMessageApi'
 
 const Section = styled.div``
 
+const StyledSectionTitle = styled(SectionTitle)`
+  margin-bottom: 50px;
+`
+
 const Contents = styled.div`
   width: 54%;
   margin: 0 auto;
@@ -80,7 +84,7 @@ export default class Contact extends React.Component {
       <Section name={'contact'} {...custom}>
         <form onSubmit={this.handleSubmit}>
           <Contents>
-            <SectionTitle
+            <StyledSectionTitle
               backgroundText={'CONTACT'}
               titleText={'お問い合わせ'}
             />
