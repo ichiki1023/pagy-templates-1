@@ -69,16 +69,35 @@ const ButtonComponent = styled.div`
   margin: 0 auto;
 `
 
+const SuccessText = styled.span`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation-name: fadein;
+  animation-duration: 0.8s;
+
+  @keyframes fadein {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+`
+
 const SubmitButton = props => {
   const textMessage = () => {
     if (props.loading) {
       return <StyledCircularProgress style={{ width: 24, height: 24 }} />
     } else if (props.success) {
       return (
-        <React.Fragment>
+        <SuccessText>
           <StyledDoneIcon />
           送信が完了しました
-        </React.Fragment>
+        </SuccessText>
       )
     } else {
       return 'メッセージを送る'

@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components'
 import PropTypes from 'prop-types'
 
 const Input = props => {
-  const { className, label, type, placeholder, error } = props
+  const { className, label, type, placeholder, value, error } = props
 
   return (
     <div className={className}>
@@ -13,6 +13,7 @@ const Input = props => {
           <StyledTextArea
             type={type}
             placeholder={placeholder}
+            value={value}
             error={!!error}
             onFocus={props.onFocus}
             onBlur={props.onBlur}
@@ -22,6 +23,7 @@ const Input = props => {
           <StyledInput
             type={type}
             placeholder={placeholder}
+            value={value}
             error={!!error}
             onFocus={props.onFocus}
             onBlur={props.onBlur}
@@ -37,13 +39,11 @@ const Input = props => {
 Input.propTypes = {
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  placeholder: PropTypes.string,
-  required: PropTypes.bool
+  placeholder: PropTypes.string
 }
 
 Input.defaultProps = {
-  type: 'text',
-  required: false
+  type: 'text'
 }
 
 const inputStyle = css`

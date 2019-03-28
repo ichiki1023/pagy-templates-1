@@ -84,12 +84,17 @@ export default class Contact extends React.Component {
 
   validate = async event => {
     event.preventDefault()
+    this.setState({
+      requestSuccess: false,
+      requestError: null
+    })
     const validates = ['name', 'email', 'content']
       .map(key => {
         const errorMessage = contactFormValidate(key, this.state[key].value)
         if (errorMessage) {
           this.setState({
             [key]: {
+              ...this.state[key],
               error: errorMessage
             }
           })
@@ -117,9 +122,7 @@ export default class Contact extends React.Component {
 
       try {
         this.setState({
-          loading: true,
-          requestSuccess: false,
-          requestError: null
+          loading: true
         })
         await SendContactMessageApi.post({ ...data })
         this.setState({
@@ -154,6 +157,7 @@ export default class Contact extends React.Component {
               label={'お名前'}
               type={'text'}
               placeholder={'あなたのお名前'}
+              value={this.state.name.value}
               onFocus={this.handleFocus('name')}
               onBlur={this.handleBlur('name')}
               onChange={this.handleChange('name')}
@@ -163,6 +167,7 @@ export default class Contact extends React.Component {
               name={'email'}
               label={'メールアドレス'}
               type={'email'}
+              value={this.state.email.value}
               placeholder={'sample@sample.com'}
               onFocus={this.handleFocus('email')}
               onBlur={this.handleBlur('email')}
@@ -173,6 +178,7 @@ export default class Contact extends React.Component {
               type={'textarea'}
               name={'content'}
               label={'どういたしましたか？'}
+              value={this.state.content.value}
               placeholder={'ご質問・ご用件などお気軽にお問い合わせください。'}
               onFocus={this.handleFocus('content')}
               onBlur={this.handleBlur('content')}
