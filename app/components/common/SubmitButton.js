@@ -42,7 +42,8 @@ const StyledSubmitButton = styled(Button)`
 
     &:disabled {
       border: 1px solid
-        ${props => (props.success ? '#545454' : 'rgba(84, 84, 84, 0.54)')};
+        ${props =>
+    props.success === 'true' ? '#545454' : 'rgba(84, 84, 84, 0.54)'};
     }
 
     @media (max-width: 500px) {
@@ -75,6 +76,7 @@ const ErrorMessage = styled.span`
 const ButtonComponent = styled.div`
   margin: 0 auto;
   text-align: center;
+  width: 100%;
 `
 
 const SuccessText = styled.span`
@@ -119,7 +121,7 @@ const SubmitButton = props => {
         type={'submit'}
         variant={'outlined'}
         disabled={props.success || props.disabled}
-        success={props.success}
+        success={props.success.toString()}
       >
         {message}
       </StyledSubmitButton>

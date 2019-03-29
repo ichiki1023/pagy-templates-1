@@ -1,40 +1,76 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 import PropTypes from 'prop-types'
+import ErrorIcon from '@material-ui/icons/ErrorOutlined'
 
 const Input = props => {
   const { className, label, type, placeholder, value, error } = props
 
   return (
     <div className={className}>
-      <Label>{label}</Label>
+      <Label error={error}>{label}</Label>
       <FormControl type={type}>
         {type === 'textarea' ? (
-          <StyledTextArea
-            type={type}
-            placeholder={placeholder}
-            value={value}
-            error={!!error}
-            onFocus={props.onFocus}
-            onBlur={props.onBlur}
-            onChange={props.onChange}
-          />
+          <InputWrapper>
+            <StyledTextArea
+              type={type}
+              placeholder={placeholder}
+              value={value}
+              error={!!error}
+              onFocus={props.onFocus}
+              onBlur={props.onBlur}
+              onChange={props.onChange}
+            />
+            {!!error && <StyledTextAreaErrorIcon />}
+          </InputWrapper>
         ) : (
-          <StyledInput
-            type={type}
-            placeholder={placeholder}
-            value={value}
-            error={!!error}
-            onFocus={props.onFocus}
-            onBlur={props.onBlur}
-            onChange={props.onChange}
-          />
+          <InputWrapper>
+            <StyledInput
+              type={type}
+              placeholder={placeholder}
+              value={value}
+              error={!!error}
+              onFocus={props.onFocus}
+              onBlur={props.onBlur}
+              onChange={props.onChange}
+            />
+            {!!error && <StyledTextErrorIcon />}
+          </InputWrapper>
         )}
         {!!error && <ErrorMessage>{error}</ErrorMessage>}
       </FormControl>
     </div>
   )
 }
+
+const InputWrapper = styled.div`
+  position: relative;
+`
+
+const StyledErrorIcon = styled(ErrorIcon)`
+  && {
+    position: absolute;
+    font-size: 24px;
+    color: #f44336;
+    right: 0;
+  }
+`
+
+const StyledTextErrorIcon = styled(StyledErrorIcon)`
+  && {
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0 14px;
+  }
+`
+
+const StyledTextAreaErrorIcon = styled(StyledErrorIcon)`
+  && {
+    bottom: 0;
+    padding: 14px;
+    transform: none;
+  }
+`
 
 Input.propTypes = {
   label: PropTypes.string.isRequired,
@@ -49,7 +85,7 @@ Input.defaultProps = {
 const inputStyle = css`
   width: 100%;
   height: 60px;
-  padding-left: 10px;
+  padding: 0 14px;
   box-sizing: border-box;
   border-radius: 8px;
   font-size: 18px;
@@ -69,6 +105,7 @@ const inputStyle = css`
     props.error &&
     css`
       border-color: #f44336;
+      padding-right: 52px;
 
       &:hover,
       &:focus {
@@ -107,6 +144,12 @@ const Label = styled.p`
   color: #9b9b9b;
   margin-bottom: 15px;
 
+  ${props =>
+    props.error &&
+    css`
+      color: #f44336;
+    `}
+
   @media (max-width: 500px) {
     font-size: 18px;
   }
@@ -123,6 +166,11 @@ const FormControl = styled.div`
       width: 100%;
       min-width: 400px;
     `}
+
+  @media (max-width: 500px) {
+    width: 100%;
+    min-width: auto;
+  }
 `
 
 const ErrorMessage = styled.span`

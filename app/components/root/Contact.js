@@ -62,10 +62,12 @@ export default class Contact extends React.Component {
       }
     })
   }
-  handleBlur = field => () => {
+  handleBlur = field => event => {
+    const errorMessage = contactFormValidate(field, event.target.value)
     this.setState({
       [field]: {
         ...this.state[field],
+        error: errorMessage,
         touched: true,
         focus: false
       }
@@ -78,11 +80,13 @@ export default class Contact extends React.Component {
         requestSuccess: false
       })
     }
+    const errorMessage = contactFormValidate(field, event.target.value)
+    const touched = this.state[field].touched
     this.setState({
       [field]: {
         ...this.state[field],
         value: event.target.value,
-        error: null
+        error: touched ? errorMessage : null
       }
     })
   }
