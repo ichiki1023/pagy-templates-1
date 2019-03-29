@@ -193,7 +193,7 @@ About.propTypes = {
   site: PropTypes.shape({
     description: PropTypes.string.isRequired,
     open: PropTypes.string,
-    contact_email: PropTypes.string,
+    contact_email: PropTypes.object,
     contact_phone: PropTypes.string,
     photos: PropTypes.array,
     holiday: PropTypes.shape({

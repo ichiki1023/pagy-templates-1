@@ -36,6 +36,7 @@ const StyledHeader = styled(CoolHeader)`
 
 const Page = styled.div`
   position: relative;
+  background-color: #fcfcfa;
 `
 
 const StyledNews = styled(News)`

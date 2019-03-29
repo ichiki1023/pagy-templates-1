@@ -8,6 +8,10 @@ import Items from 'app/components/coordinates/Items'
 import WithSite from 'app/components/WithSite'
 // import AddIcon from '@material-ui/icons/Add'
 
+const Page = styled.div`
+  background-color: #fcfcfa;
+`
+
 const StyledHeader = styled(CoolHeader)`
   top: 0;
   z-index: 1000;
@@ -105,7 +109,7 @@ class Coordinates extends React.Component {
     const isEmptyCoordinates = !coordinates || coordinates.length === 0
 
     return (
-      <div>
+      <Page>
         <StyledHeader
           userAgent={userAgent}
           site={site}
@@ -139,7 +143,7 @@ class Coordinates extends React.Component {
             isEmptyCoordinates={isEmptyCoordinates}
           />
         </FooterWrapper>
-      </div>
+      </Page>
     )
   }
 }
