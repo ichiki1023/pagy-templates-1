@@ -68,7 +68,7 @@ export default {
         url: `${staticPath}/images/store/shutterstock_479221186.jpg`
       }
     ],
-    posts: [
+    articles: [
       {
         id: 1,
         title:
