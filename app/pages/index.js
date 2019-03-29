@@ -179,8 +179,8 @@ class Index extends React.Component {
             pageName={'home'}
           />
           <Home site={site} />
-          {site.posts && site.posts.length !== 0 ? (
-            <StyledNews containerId={'news'} posts={site.posts} />
+          {site.articles && site.articles.length !== 0 ? (
+            <StyledNews containerId={'news'} articles={site.articles} />
           ) : null}
           {fashion.items && fashion.items.length !== 0 ? (
             <StyledSelection items={fashion.items} userAgent={userAgent} />

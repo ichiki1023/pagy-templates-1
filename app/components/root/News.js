@@ -75,7 +75,7 @@ const StyledArrowForwardIcon = styled(ArrowForwardIcon)`
 `
 
 const News = props => {
-  const { posts, ...custom } = props
+  const { articles, ...custom } = props
 
   return (
     <Section name={'news'} {...custom}>
@@ -84,11 +84,11 @@ const News = props => {
           <SectionTitle backgroundText={'NEWS'} titleText={'ニュース'} />
         </div>
         <StyledTable>
-          {posts.map((post, index) => {
+          {articles.map((article, index) => {
             return (
               <StyledTableBlock key={index}>
-                <StyledDateText>{post.created_at}</StyledDateText>
-                <StyledDescriptionText>{post.title}</StyledDescriptionText>
+                <StyledDateText>{article.created_at}</StyledDateText>
+                <StyledDescriptionText>{article.title}</StyledDescriptionText>
               </StyledTableBlock>
             )
           })}
@@ -103,7 +103,7 @@ const News = props => {
 }
 
 News.propTypes = {
-  posts: PropTypes.array.isRequired
+  articles: PropTypes.array.isRequired
 }
 
 export default News

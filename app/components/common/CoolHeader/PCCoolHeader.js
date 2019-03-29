@@ -58,7 +58,7 @@ const scrollDuration = 500
 
 const PCCoolHeader = props => {
   const { site, fashion, pageName, ...custom } = props
-  const { posts = [] } = site
+  const { articles = [] } = site
   const { items = [], coordinates = [] } = fashion
   const languageOptions = [
     { value: 'ja', label: 'Japanese' },
@@ -86,7 +86,7 @@ const PCCoolHeader = props => {
           )}
         </HeaderList>
         {/* News */}
-        {posts && posts.length !== 0 ? (
+        {articles && articles.length !== 0 ? (
           <HeaderList key={'news'}>
             {isHome ? (
               <ScrollLink

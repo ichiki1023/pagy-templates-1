@@ -31,8 +31,6 @@ const opts = dev ? devNextOpts : nextOps
 const app = next(opts)
 const handle = app.getRequestHandler()
 
-// ローカルのPOST TEST用にserver.jsを用意
-// nextApp.jsとほぼ同じ
 app.prepare().then(() => {
   const server = express()
 

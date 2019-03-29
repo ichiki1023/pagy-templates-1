@@ -124,7 +124,7 @@ export default class SPCoolHeader extends React.Component {
 
   render () {
     const { site, fashion, services, ...props } = this.props
-    const { posts = [] } = site
+    const { articles = [] } = site
     const { items = [], coordinates = [] } = fashion
     const scrollDuration = 500
     const languageOptions = [
@@ -164,7 +164,7 @@ export default class SPCoolHeader extends React.Component {
                 <MenuTitle>HOME</MenuTitle>
               </ScrollLink>
               {/* News */}
-              {posts && posts.length !== 0 ? (
+              {articles && articles.length !== 0 ? (
                 <ScrollLink
                   to={'news'}
                   offset={scrollOffset}
