@@ -3,7 +3,7 @@ import defaultData from 'app/data/default'
 import SiteApi from 'app/api/SiteApi'
 import FashionApi from 'app/api/FashionApi'
 import SitePhotosApi from 'app/api/SitePhotosApi'
-import SitePostsApi from 'app/api/SitePostsApi'
+import SiteArticlesApi from 'app/api/SiteArticlesApi'
 import getConfig from 'next/config'
 import moment from 'moment'
 
@@ -63,8 +63,8 @@ const WithSite = Page =>
         try {
           const site = await SiteApi.getByDomain({ domain: host })
           const photos = await SitePhotosApi.get({ siteId: site.id })
-          const posts = await SitePostsApi.get({ siteId: site.id })
-          const formattedPosts = posts.map(post => {
+          const posts = await SiteArticlesApi.get({ siteId: site.id })
+          const formattedArticles = posts.map(post => {
             return {
               ...post,
               created_at: moment(post.created_at).format('YYYY/MM/DD'),
@@ -77,7 +77,7 @@ const WithSite = Page =>
             site: {
               ...site,
               photos,
-              posts: formattedPosts
+              posts: formattedArticles
             },
             fashion: {
               items: fashion['fashion_items'],
