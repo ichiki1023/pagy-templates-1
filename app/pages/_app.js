@@ -1,20 +1,22 @@
 import React from 'react'
 import App, { Container } from 'next/app'
-import Head from 'next/head'
-import withUserAgent from 'app/helpers/withUserAgent'
-import slick from 'slick-carousel/slick/slick.css'
-import slickTheme from 'slick-carousel/slick/slick-theme.css'
-import slickCustom from 'app/components/slick-custom.css'
+import { getUserAgent } from 'app/helpers/userAgent'
 import { MuiThemeProvider } from '@material-ui/core/styles'
 import getPageContext from 'app/helpers/getPageContext'
 import { createGlobalStyle } from 'styled-components'
+import { getData } from 'app/helpers/data'
+import Error from 'next/error'
+
+// next.jsのバグ。_app.jsでcssを読み込まないとcssをimportしている画面へ遷移できない
+// https://spectrum.chat/next-js/general/bounty-for-issues~2183fc55-236d-42cb-92b9-3ab10acc6303?m=MTUzODU2NDg2ODA2Mg==
+import 'app/css/empty.css'
 
 const GlobalStyle = createGlobalStyle`
   * {
     margin: 0;
     padding: 0;
     font-family: -apple-system, 'BlinkMacSystemFont',  Sans-Serif;
-    
+
     input[type="button"], input[type="submit"] {
       -webkit-appearance: none;
     }
@@ -31,14 +33,42 @@ const GlobalStyle = createGlobalStyle`
 
 class TemplateApp extends App {
   pageContext = null
-  static async getInitialProps ({ Component, router, ctx }) {
+  static async getInitialProps ({ Component, ctx }) {
+    const { req } = ctx
     let pageProps = {}
 
-    if (Component.getInitialProps) {
-      pageProps = await Component.getInitialProps(ctx)
-    }
+    const hostName = req
+      ? req.headers['x-forwarded-host']
+      : window.location.hostname
 
-    return { pageProps }
+    // userAgent取得
+    const ua = req ? req.headers['user-agent'] : window.navigator.userAgent
+    const userAgent = getUserAgent(ua)
+
+    try {
+      const data = await getData(ctx, hostName)
+
+      if (Component.getInitialProps) {
+        pageProps = await Component.getInitialProps({ ...ctx, data: data })
+      }
+
+      return {
+        pageProps: {
+          ...data,
+          ...pageProps,
+          userAgent
+        },
+        hostName: hostName
+      }
+    } catch (error) {
+      console.debug(error)
+      return {
+        pageProps: {
+          ...pageProps,
+          statusCode: 500
+        }
+      }
+    }
   }
 
   componentWillMount () {
@@ -52,33 +82,47 @@ class TemplateApp extends App {
     if (jssStyles && jssStyles.parentNode) {
       jssStyles.parentNode.removeChild(jssStyles)
     }
+    const { site, fashion } = this.props.pageProps
+    window['__SITE_DATA__'] = {
+      site,
+      fashion
+    }
   }
 
   render () {
-    const { Component, pageProps, userAgent } = this.props
+    const { Component, pageProps } = this.props
     const { pageContext } = this
-    const props = {
-      ...pageProps,
-      userAgent
+
+    // エラー画面の表示
+    if (this.props.pageProps.statusCode) {
+      return (
+        <Container>
+          <Error statusCode={this.props.pageProps.statusCode} />
+        </Container>
+      )
+    }
+
+    // 非公開に設定されている場合は404にする
+    if (!pageProps.site.release) {
+      return (
+        <Container>
+          <Error statusCode={404} />
+        </Container>
+      )
     }
 
     return (
       <Container>
         <GlobalStyle />
-        <Head>
-          <style dangerouslySetInnerHTML={{ __html: slick }} />
-          <style dangerouslySetInnerHTML={{ __html: slickTheme }} />
-          <style dangerouslySetInnerHTML={{ __html: slickCustom }} />
-        </Head>
         <MuiThemeProvider
           theme={pageContext.theme}
           sheetsManager={pageContext.sheetsManager}
         >
-          <Component {...props} />
+          <Component {...pageProps} />
         </MuiThemeProvider>
       </Container>
     )
   }
 }
 
-export default withUserAgent(TemplateApp)
+export default TemplateApp

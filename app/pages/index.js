@@ -11,7 +11,6 @@ import Coordinates from 'app/components/root/Coordinates'
 import SocialMedia from 'app/components/root/SocialMedia'
 import Contact from 'app/components/root/Contact'
 import { animateScroll as scroll, scroller } from 'react-scroll'
-import WithSite from 'app/components/WithSite'
 
 const headerHeight = 64
 const padding = 40
@@ -211,4 +210,4 @@ class Index extends React.Component {
   }
 }
 
-export default WithSite(Index)
+export default Index

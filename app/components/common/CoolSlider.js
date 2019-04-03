@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
-import 'app/components/slick-custom.css'
+import 'app/css/slick-custom.css'
 import ArrowBackIos from '@material-ui/icons/ArrowBackIos'
 import ArrowForwardIos from '@material-ui/icons/ArrowForwardIos'
 

@@ -5,7 +5,6 @@ import CoolFooter from 'app/components/common/CoolFooter'
 import SectionTitle from 'app/components/common/SectionTitle'
 import SNSNavigation from 'app/components/common/SNSServices/Navigation'
 import Items from 'app/components/coordinates/Items'
-import WithSite from 'app/components/WithSite'
 // import AddIcon from '@material-ui/icons/Add'
 
 const Page = styled.div`
@@ -148,4 +147,4 @@ class Coordinates extends React.Component {
   }
 }
 
-export default WithSite(Coordinates)
+export default Coordinates

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import SectionTitle from 'app/components/common/SectionTitle'
 import ArrowForwardIcon from '@material-ui/icons/ArrowForwardIos'
+import moment from 'moment'
 
 const Section = styled.div`
   position: relative;
@@ -87,7 +88,9 @@ const News = props => {
           {articles.map((article, index) => {
             return (
               <StyledTableBlock key={index}>
-                <StyledDateText>{article.created_at}</StyledDateText>
+                <StyledDateText>
+                  {moment(new Date(article.created_at)).format('YYYY/MM/DD')}
+                </StyledDateText>
                 <StyledDescriptionText>{article.title}</StyledDescriptionText>
               </StyledTableBlock>
             )
