@@ -89,7 +89,7 @@ const News = props => {
             return (
               <StyledTableBlock key={index}>
                 <StyledDateText>
-                  {moment(article.created_at).format('YYYY/MM/DD')}
+                  {moment(new Date(article.created_at)).format('YYYY/MM/DD')}
                 </StyledDateText>
                 <StyledDescriptionText>{article.title}</StyledDescriptionText>
               </StyledTableBlock>

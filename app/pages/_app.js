@@ -90,6 +90,9 @@ class TemplateApp extends App {
   }
 
   render () {
+    const { Component, pageProps } = this.props
+    const { pageContext } = this
+
     // エラー画面の表示
     if (this.props.pageProps.statusCode) {
       return (
@@ -99,8 +102,14 @@ class TemplateApp extends App {
       )
     }
 
-    const { Component, pageProps } = this.props
-    const { pageContext } = this
+    // 非公開に設定されている場合は404にする
+    if (!pageProps.site.release) {
+      return (
+        <Container>
+          <Error statusCode={404} />
+        </Container>
+      )
+    }
 
     return (
       <Container>
