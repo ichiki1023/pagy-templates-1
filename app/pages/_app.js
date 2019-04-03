@@ -1,20 +1,17 @@
 import React from 'react'
 import App, { Container } from 'next/app'
-import Head from 'next/head'
-import withUserAgent from 'app/helpers/withUserAgent'
-import slick from 'slick-carousel/slick/slick.css'
-import slickTheme from 'slick-carousel/slick/slick-theme.css'
-import slickCustom from 'app/components/slick-custom.css'
+import { getUserAgent } from 'app/helpers/userAgent'
 import { MuiThemeProvider } from '@material-ui/core/styles'
 import getPageContext from 'app/helpers/getPageContext'
 import { createGlobalStyle } from 'styled-components'
+import 'app/css/empty.css'
 
 const GlobalStyle = createGlobalStyle`
   * {
     margin: 0;
     padding: 0;
     font-family: -apple-system, 'BlinkMacSystemFont',  Sans-Serif;
-    
+
     input[type="button"], input[type="submit"] {
       -webkit-appearance: none;
     }
@@ -31,14 +28,24 @@ const GlobalStyle = createGlobalStyle`
 
 class TemplateApp extends App {
   pageContext = null
-  static async getInitialProps ({ Component, router, ctx }) {
+  static async getInitialProps ({ Component, ctx }) {
+    const { req } = ctx
     let pageProps = {}
+
+    // userAgent取得
+    const ua = req ? req.headers['user-agent'] : window.navigator.userAgent
+    const userAgent = getUserAgent(ua)
 
     if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps(ctx)
     }
 
-    return { pageProps }
+    return {
+      pageProps: {
+        ...pageProps,
+        userAgent
+      }
+    }
   }
 
   componentWillMount () {
@@ -55,30 +62,21 @@ class TemplateApp extends App {
   }
 
   render () {
-    const { Component, pageProps, userAgent } = this.props
+    const { Component, pageProps } = this.props
     const { pageContext } = this
-    const props = {
-      ...pageProps,
-      userAgent
-    }
 
     return (
       <Container>
         <GlobalStyle />
-        <Head>
-          <style dangerouslySetInnerHTML={{ __html: slick }} />
-          <style dangerouslySetInnerHTML={{ __html: slickTheme }} />
-          <style dangerouslySetInnerHTML={{ __html: slickCustom }} />
-        </Head>
         <MuiThemeProvider
           theme={pageContext.theme}
           sheetsManager={pageContext.sheetsManager}
         >
-          <Component {...props} />
+          <Component {...pageProps} />
         </MuiThemeProvider>
       </Container>
     )
   }
 }
 
-export default withUserAgent(TemplateApp)
+export default TemplateApp
