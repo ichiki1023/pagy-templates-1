@@ -9,13 +9,6 @@ import validate from 'app/helpers/validate'
 
 const isServer = typeof window === 'undefined'
 const publicRuntimeConfig = getConfig().publicRuntimeConfig
-const escapedHost = publicRuntimeConfig.webHost.replace(
-  /[-\/\\^$*+?.()|[\]{}]/g, // eslint-disable-line
-  '\\$&'
-)
-const typeSubDomainRegex = new RegExp(
-  `^((fashion)\.)??${escapedHost}$` // eslint-disable-line
-)
 
 export async function getData (ctx, hostName) {
   const { req } = ctx
@@ -40,8 +33,17 @@ export async function getData (ctx, hostName) {
     }
   }
 
+  // [POST]のテンプレート表示
+  if (req && req.body && Object.keys(req.body).length !== 0) {
+    if (!validate({ ...req.body })) throw new Error('bodyが正しくありません')
+    const postData = mapper({ ...req.body })
+    return {
+      ...postData
+    }
+  }
+
   // 登録済みのサイト表示
-  if (!typeSubDomainRegex.test(hostName)) {
+  if (publicRuntimeConfig.host !== hostName) {
     const site = await SiteApi.getByDomain({ domain: hostName })
     const photos = await SitePhotosApi.get({ siteId: site.id })
     const articles = await SiteArticlesApi.get({ siteId: site.id })
@@ -60,15 +62,6 @@ export async function getData (ctx, hostName) {
     })
     return {
       ...apiData
-    }
-  }
-
-  // [POST]のテンプレート表示
-  if (req && req.body && Object.keys(req.body).length !== 0) {
-    if (!validate({ ...req.body })) throw new Error('bodyが正しくありません')
-    const articleData = mapper({ ...req.body })
-    return {
-      ...articleData
     }
   }
 

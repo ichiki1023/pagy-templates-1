@@ -5,7 +5,7 @@ export default function mapper ({ site, fashion }) {
       name: site.name || '',
       catch_phrase: site.catch_phrase || undefined,
       description: site.description || '',
-      release: site.release,
+      release: typeof site.release === 'boolean' ? site.release : true,
       store_front_image_url: site.store_front_image_url || '',
       interior_image_url: site.interior_image_url || '',
       business_hour: {
