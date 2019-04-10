@@ -43,7 +43,7 @@ export async function getData (ctx, hostName) {
   }
 
   // 登録済みのサイト表示
-  if (publicRuntimeConfig.host !== hostName) {
+  if (publicRuntimeConfig.webHost !== hostName) {
     const site = await SiteApi.getByDomain({ domain: hostName })
     const photos = await SitePhotosApi.get({ siteId: site.id })
     const articles = await SiteArticlesApi.get({ siteId: site.id })
