@@ -5,6 +5,7 @@ import { Link as ScrollLink } from 'react-scroll/modules'
 import LanguageIcon from '@material-ui/icons/Language'
 import LanguageDropDown from 'app/components/common/LanguageDropDown'
 import Link from 'app/components/common/MyLink'
+import PlanType from 'app/helpers/planType'
 
 const Footer = styled.div`
   background-color: rgba(240, 240, 240, 0.8);
@@ -175,7 +176,7 @@ const PCCoolFooter = props => {
             )}
           </FooterList>
           {/* Contact */}
-          {site.contact_email && site.contact_email.email ? (
+          {site.plan.id !== PlanType.trial && (
             <FooterList key={'contact'}>
               {isHome ? (
                 <ScrollLink
@@ -193,7 +194,7 @@ const PCCoolFooter = props => {
                 </Link>
               )}
             </FooterList>
-          ) : null}
+          )}
           <LanguageFooterList key={'language'}>
             <StyledLanguageIcon width={24} height={24} />
             <LanguageDropDown

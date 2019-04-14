@@ -5,6 +5,7 @@ import { Link as ScrollLink } from 'react-scroll'
 import Link from 'app/components/common/MyLink'
 import LanguageIcon from '@material-ui/icons/Language'
 import LanguageDropDown from 'app/components/common/LanguageDropDown'
+import PlanType from 'app/helpers/planType'
 
 const Header = styled.div`
   background-color: #000000;
@@ -152,7 +153,7 @@ const PCCoolHeader = props => {
           )}
         </HeaderList>
         {/* Contact */}
-        {site.contact_email && site.contact_email.email ? (
+        {site.plan.id !== PlanType.trial && (
           <HeaderList key={'contact'}>
             {isHome ? (
               <ScrollLink
@@ -170,7 +171,7 @@ const PCCoolHeader = props => {
               </Link>
             )}
           </HeaderList>
-        ) : null}
+        )}
         <HeaderList key={'language'}>
           <Languages>
             <StyledLanguageIcon width={24} height={24} />

@@ -7,6 +7,7 @@ import CloseIcon from '@material-ui/icons/Close'
 import LanguageIcon from '@material-ui/icons/Language'
 import Drawer from '@material-ui/core/Drawer'
 import SNSServicesBtns from 'app/components/common/SNSServices/Buttons'
+import PlanType from 'app/helpers/planType'
 
 const Header = styled.div`
   background-color: #000000;
@@ -208,7 +209,7 @@ export default class SPCoolHeader extends React.Component {
                 </ScrollLink>
               </ChildMenuTitle>
               {/* Contact */}
-              {site.contact_email && site.contact_email.email ? (
+              {site.plan.id !== PlanType.trial && (
                 <ScrollLink
                   to={'contact'}
                   offset={scrollOffset}
@@ -217,7 +218,7 @@ export default class SPCoolHeader extends React.Component {
                 >
                   <MenuTitle>CONTACT</MenuTitle>
                 </ScrollLink>
-              ) : null}
+              )}
               <SectionTitle>LANGUAGE</SectionTitle>
               <LanguageArea>
                 <StyledLanguageIcon width={'28px'} height={'28px'} />

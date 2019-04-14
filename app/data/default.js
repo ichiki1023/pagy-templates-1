@@ -61,6 +61,9 @@ export default {
       address4: '',
       address5: ''
     },
+    plan: {
+      id: null
+    },
     photos: [
       {
         url: `${staticPath}/images/store/shutterstock_479222686.jpg`
