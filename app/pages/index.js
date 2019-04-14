@@ -11,6 +11,7 @@ import Coordinates from 'app/components/root/Coordinates'
 import SocialMedia from 'app/components/root/SocialMedia'
 import Contact from 'app/components/root/Contact'
 import { animateScroll as scroll, scroller } from 'react-scroll'
+import PlanType from 'app/helpers/planType'
 
 const headerHeight = 64
 const padding = 40
@@ -193,9 +194,7 @@ class Index extends React.Component {
           <StyledAbout site={site} />
           {services ? <StyledSocialMedia services={services} /> : null}
         </Wrapper>
-        {site.contact_email && site.contact_email.email ? (
-          <StyledContact site={site} />
-        ) : null}
+        {site.plan.id !== PlanType.trial && <StyledContact site={site} />}
         {services ? <StyledSNSNavigation services={services} /> : null}
         <FooterWrapper>
           <StyledFooter

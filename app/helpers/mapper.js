@@ -29,6 +29,9 @@ export default function mapper ({ site, fashion }) {
       articles: Array.isArray(site.articles) ? site.articles : [],
       address: {
         ...addressMapper(site.address)
+      },
+      plan: {
+        id: site.plan ? site.plan.id : null
       }
     },
     fashion: {

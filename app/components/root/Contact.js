@@ -120,7 +120,6 @@ export default class Contact extends React.Component {
 
   handleSubmit = async () => {
     const { site } = this.props
-    site.id = 2
     if (site.id) {
       const data = {
         siteId: site.id,
