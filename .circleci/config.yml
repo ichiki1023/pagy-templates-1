@@ -3,9 +3,7 @@ jobs:
   build:
     docker:
       - image: alpine:latest
-
     working_directory: ~/repo
-
     steps:
       - checkout
 
@@ -16,10 +14,8 @@ jobs:
           CLOUDSDK_CORE_DISABLE_PROMPTS: 1
     steps:
       - checkout
-
       - setup_remote_docker:
           docker_layer_caching: true
-
       - run:
           name: Install Docker
           command: |
@@ -28,24 +24,61 @@ jobs:
       - run:
           name: Authenticating to GCR
           command: |
-            echo ${GCLOUD_SERVICE_KEY} > ${HOME}/gcloud-service-key.json
+            echo ${GCLOUD_SERVICE_KEY_DEV} > ${HOME}/gcloud-service-key.json
             gcloud auth activate-service-account --key-file ${HOME}/gcloud-service-key.json
-            gcloud --quiet config set project ${PROJECT_ID}
+            gcloud --quiet config set project ${PROJECT_ID_DEV}
             gcloud auth configure-docker
       - run:
           name: Build and push image
           command: |
-            IMAGE_NAME="gcr.io/${PROJECT_ID}/${CIRCLE_PROJECT_REPONAME}"
-            docker build -t ${IMAGE_NAME}:${CIRCLE_BUILD_NUM} .
-            docker tag ${IMAGE_NAME}:${CIRCLE_BUILD_NUM} ${IMAGE_NAME}:latest
-            docker push ${IMAGE_NAME}
+            IMAGE_NAME="gcr.io/${PROJECT_ID_DEV}/${CIRCLE_PROJECT_REPONAME}"
+            docker image build -t ${IMAGE_NAME}:${CIRCLE_BUILD_NUM} .
+            docker image tag ${IMAGE_NAME}:${CIRCLE_BUILD_NUM} ${IMAGE_NAME}:latest
+            docker image push ${IMAGE_NAME}
       - run:
           name: Deploy new image to development k8s cluster
           command: |
-            IMAGE_NAME="gcr.io/${PROJECT_ID}/${CIRCLE_PROJECT_REPONAME}"
+            IMAGE_NAME="gcr.io/${PROJECT_ID_DEV}/${CIRCLE_PROJECT_REPONAME}"
             gcloud components install kubectl
             gcloud container clusters get-credentials --region asia-northeast1-a pagy-dev
             kubectl set image deployment.v1.apps/template1-deployment-dev template1=${IMAGE_NAME}:${CIRCLE_BUILD_NUM}
+
+  release:
+    docker:
+      - image: google/cloud-sdk:alpine
+        environment:
+          CLOUDSDK_CORE_DISABLE_PROMPTS: 1
+    steps:
+      - checkout
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - run:
+          name: Install Docker
+          command: |
+            apk upgrade --no-cache
+            apk add --update --no-cache docker
+      - run:
+          name: Authenticating to GCR
+          command: |
+            echo ${GCLOUD_SERVICE_KEY_PROD} > ${HOME}/gcloud-service-key.json
+            gcloud auth activate-service-account --key-file ${HOME}/gcloud-service-key.json
+            gcloud --quiet config set project ${PROJECT_ID_PROD}
+            gcloud auth configure-docker
+      - run:
+          name: Build and push image
+          command: |
+            IMAGE_NAME="gcr.io/${PROJECT_ID_PROD}/${CIRCLE_PROJECT_REPONAME}"
+            docker image build -t ${IMAGE_NAME}:${CIRCLE_BUILD_NUM} .
+            docker image tag ${IMAGE_NAME}:${CIRCLE_BUILD_NUM} ${IMAGE_NAME}:latest
+            docker image push ${IMAGE_NAME}
+      - run:
+          name: Deploy new image to development k8s cluster
+          command: |
+            IMAGE_NAME="gcr.io/${PROJECT_ID_PROD}/${CIRCLE_PROJECT_REPONAME}"
+            gcloud components install kubectl
+            gcloud container clusters get-credentials --region asia-northeast1-a pagy-dev
+            kubectl set image deployment.v1.apps/template1-deployment-dev template1=${IMAGE_NAME}:${CIRCLE_BUILD_NUM}
+
 workflows:
   version: 2
   build_and_deploy:
@@ -57,3 +90,9 @@ workflows:
           filters:
             branches:
               only: develop
+      - release:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
