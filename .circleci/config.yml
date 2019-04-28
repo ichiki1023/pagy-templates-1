@@ -41,7 +41,7 @@ jobs:
             IMAGE_NAME="gcr.io/${PROJECT_ID_DEV}/${CIRCLE_PROJECT_REPONAME}"
             gcloud components install kubectl
             gcloud container clusters get-credentials --region asia-northeast1-a pagy-dev
-            kubectl set image deployment.v1.apps/template1-deployment-dev template1=${IMAGE_NAME}:${CIRCLE_BUILD_NUM}
+            kubectl set image deployment.v1.apps/template1-deployment-dev template1=${IMAGE_NAME}:${CIRCLE_BUILD_NUM} --namespace=pagy-dev
 
   release:
     docker:
@@ -77,7 +77,7 @@ jobs:
             IMAGE_NAME="gcr.io/${PROJECT_ID_PROD}/${CIRCLE_PROJECT_REPONAME}"
             gcloud components install kubectl
             gcloud container clusters get-credentials --region asia-northeast1-a pagy-prod
-            kubectl set image deployment.v1.apps/template1-deployment-prod template1=${IMAGE_NAME}:${CIRCLE_BUILD_NUM}
+            kubectl set image deployment.v1.apps/template1-deployment-prod template1=${IMAGE_NAME}:${CIRCLE_BUILD_NUM} --namespace=pagy-prod
 
 workflows:
   version: 2
