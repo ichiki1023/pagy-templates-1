@@ -1,4 +1,4 @@
-FROM node:10.15.0-alpine as build-stage
+FROM node:10.15.3-alpine as build-stage
 
 WORKDIR /tmp
 COPY . .
@@ -15,7 +15,7 @@ RUN mkdir /app && \
   mv /tmp/static /app/static && \
   mv /tmp/package.json /app/package.json
 
-FROM node:10.15.0-alpine
+FROM node:10.15.3-alpine
 
 WORKDIR /app
 COPY --from=build-stage /app /app
