@@ -1,33 +1,30 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 
-class GoogleMap extends Component {
-  static propTypes = {
-    center: PropTypes.shape({
-      lat: PropTypes.number,
-      lng: PropTypes.number
-    })
-  }
+const GoogleMap = props => {
+  const { center, className } = props
 
-  static defaultProps = {
-    center: {
-      lat: 35.678634,
-      lng: 139.767374
-    }
-  }
+  return (
+    <iframe
+      className={className}
+      frameborder='0'
+      src={`https://maps.google.co.jp/maps?output=embed&q=${center.lat},${
+        center.lng
+      }`}
+    />
+  )
+}
+GoogleMap.propTypes = {
+  center: PropTypes.shape({
+    lat: PropTypes.number,
+    lng: PropTypes.number
+  })
+}
 
-  render () {
-    const { center, className } = this.props
-
-    return (
-      <iframe
-        className={className}
-        frameborder='0'
-        src={`https://maps.google.co.jp/maps?output=embed&q=${center.lat},${
-          center.lng
-        }`}
-      />
-    )
+GoogleMap.defaultProps = {
+  center: {
+    lat: 35.678634,
+    lng: 139.767374
   }
 }
 
