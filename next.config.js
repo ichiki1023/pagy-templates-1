@@ -1,31 +1,16 @@
 require('dotenv').config()
 const local = process.env.NODE_ENV === 'local'
-const path = require('path')
 const withCSS = require('@zeit/next-css')
-const Dotenv = require('dotenv-webpack')
-
-const publicRuntimeConfig = {
-  webHost: process.env.WEB_HOST,
-  apiHost: process.env.API_HOST,
-  proxyPath: process.env.PROXY_PATH || ''
-}
 
 module.exports = withCSS({
   distDir: local ? '../.next' : '../build',
-  publicRuntimeConfig: publicRuntimeConfig,
-  assetPrefix: publicRuntimeConfig.proxyPath,
+  env: {
+    WEB_HOST: process.env.WEB_HOST,
+    API_HOST: process.env.API_HOST,
+    PROXY_PATH: process.env.PROXY_PATH || ''
+  },
+  assetPrefix: process.env.PROXY_PATH || '',
   webpack: function (config) {
-    config.plugins = config.plugins || []
-
-    config.plugins = [
-      ...config.plugins,
-
-      // Read the .env file
-      new Dotenv({
-        path: path.join(__dirname, '.env'),
-        systemvars: true
-      })
-    ]
     config.module.rules.push({
       test: /\.(eot|woff|woff2|ttf|svg|png|jpg|gif)$/,
       use: {

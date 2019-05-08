@@ -3,12 +3,10 @@ import FashionApi from 'app/api/FashionApi'
 import SitePhotosApi from 'app/api/SitePhotosApi'
 import SiteArticlesApi from 'app/api/SiteArticlesApi'
 import defaultData from 'app/data/default'
-import getConfig from 'next/config'
 import mapper from 'app/helpers/mapper'
 import validate from 'app/helpers/validate'
 
 const isServer = typeof window === 'undefined'
-const publicRuntimeConfig = getConfig().publicRuntimeConfig
 
 export async function getData (ctx, hostName) {
   const { req } = ctx
@@ -43,7 +41,7 @@ export async function getData (ctx, hostName) {
   }
 
   // 登録済みのサイト表示
-  if (publicRuntimeConfig.webHost !== hostName) {
+  if (process.env.WEB_HOST !== hostName) {
     const site = await SiteApi.getByDomain({ domain: hostName })
     const photos = await SitePhotosApi.get({ siteId: site.id })
     const articles = await SiteArticlesApi.get({ siteId: site.id })
