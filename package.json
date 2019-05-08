@@ -10,6 +10,7 @@
     "build": "run-s build:app copy-static",
     "start": "node server.js",
     "copy-static": "cpx \"app/static/**/*.*\" \"static\"",
+    "import-env": "node ./misc/import-kubernetes-env.js",
     "format": "run-s format:*",
     "format:js": "prettier-standard ./app/**/*.js",
     "format:others": "prettier --write ./app/**/*.{css,json}",
