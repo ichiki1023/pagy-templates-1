@@ -22,7 +22,6 @@
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
-    "google-map-react": "^1.1.2",
     "ip-range-check": "0.0.2",
     "is_js": "^0.9.0",
     "jss": "^9.8.7",

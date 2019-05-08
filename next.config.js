@@ -1,12 +1,8 @@
-if (process.env.NODE_ENV !== 'production') {
-  require('dotenv').config()
-}
-
+require('dotenv').config()
+const local = process.env.NODE_ENV === 'local'
 const path = require('path')
 const withCSS = require('@zeit/next-css')
 const Dotenv = require('dotenv-webpack')
-
-const dev = process.env.NODE_ENV !== 'production'
 
 const publicRuntimeConfig = {
   webHost: process.env.WEB_HOST,
@@ -15,7 +11,7 @@ const publicRuntimeConfig = {
 }
 
 module.exports = withCSS({
-  distDir: dev ? '../.next' : '../build',
+  distDir: local ? '../.next' : '../build',
   publicRuntimeConfig: publicRuntimeConfig,
   assetPrefix: publicRuntimeConfig.proxyPath,
   webpack: function (config) {

@@ -6,28 +6,20 @@ const express = require('express')
 const next = require('next')
 const bodyParser = require('body-parser')
 
-const dev = process.env.NODE_ENV !== 'production'
+const local = process.env.NODE_ENV === 'local'
 const proxyPath = process.env.PROXY_PATH || ''
 const PORT = process.env.SERVER_PORT || 5001
 
-const devNextOpts = {
-  dir: './app',
-  dev: true
+const opts = {
+  dir: local ? './app' : './',
+  dev: local
 }
-const nextOps = {
-  conf: {
-    distDir: './build',
-    publicRuntimeConfig: {
-      webHost: process.env.WEB_HOST,
-      apiHost: process.env.API_HOST,
-      proxyPath: process.env.PROXY_PATH || ''
-    },
-    assetPrefix: process.env.PROXY_PATH || ''
-  },
-  dev: false
+if (!local) {
+  opts.conf = {
+    distDir: 'build'
+  }
 }
 
-const opts = dev ? devNextOpts : nextOps
 const app = next(opts)
 const handle = app.getRequestHandler()
 
