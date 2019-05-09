@@ -26,5 +26,5 @@ FROM node:10.15.3-alpine
 
 WORKDIR /app
 COPY --from=build-stage /app /app
-EXPOSE 5000
+EXPOSE 5001
 CMD npm start
