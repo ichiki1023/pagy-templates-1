@@ -53,10 +53,11 @@ jobs:
       - setup_remote_docker:
           docker_layer_caching: true
       - run:
-          name: Install Docker
+          name: Install Docker and Git and Clone kubernetes repository
           command: |
             apk upgrade --no-cache
-            apk add --update --no-cache docker
+            apk add --update --no-cache docker git
+            git clone https://github.com/leimo/pagy-kubernetes.git
       - run:
           name: Authenticating to GCR
           command: |
