@@ -1,47 +1,30 @@
-import React, { Component } from 'react'
-import GoogleMapReact from 'google-map-react'
+import React from 'react'
 import PropTypes from 'prop-types'
 
-class GoogleMap extends Component {
-  static propTypes = {
-    center: PropTypes.shape({
-      lat: PropTypes.number,
-      lng: PropTypes.number
-    }),
-    zoom: PropTypes.number
-  }
+const GoogleMap = props => {
+  const { center, className } = props
 
-  static defaultProps = {
-    center: {
-      lat: 35.678634,
-      lng: 139.767374
-    },
-    zoom: 16
-  }
+  return (
+    <iframe
+      className={className}
+      frameborder='0'
+      src={`https://maps.google.co.jp/maps?output=embed&q=${center.lat},${
+        center.lng
+      }`}
+    />
+  )
+}
+GoogleMap.propTypes = {
+  center: PropTypes.shape({
+    lat: PropTypes.number,
+    lng: PropTypes.number
+  })
+}
 
-  renderMarkers (map, maps) {
-    const { lat, lng } = this.props.center
-    const latLng = new maps.LatLng(lat, lng)
-    let marker = new maps.Marker({
-      position: latLng,
-      map
-    })
-    marker.setMap(map)
-  }
-
-  render () {
-    const { center, zoom, ...props } = this.props
-
-    return (
-      <div {...props}>
-        <GoogleMapReact
-          defaultCenter={center}
-          defaultZoom={zoom}
-          onGoogleApiLoaded={({ map, maps }) => this.renderMarkers(map, maps)}
-          yesIWantToUseGoogleMapApiInternals
-        />
-      </div>
-    )
+GoogleMap.defaultProps = {
+  center: {
+    lat: 35.678634,
+    lng: 139.767374
   }
 }
 

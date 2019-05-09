@@ -1,8 +1,15 @@
 FROM node:10.15.3-alpine as build-stage
 
+ARG ENV
+ENV ENV $ENV
+ENV SERVICE template1
+
 WORKDIR /tmp
 COPY . .
+
 RUN npm install
+RUN npm run import-env -- $SERVICE $ENV
+
 ENV NODE_ENV=production
 
 RUN npm run build && \
