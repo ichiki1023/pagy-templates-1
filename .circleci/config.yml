@@ -33,7 +33,9 @@ jobs:
           name: Build and push image
           command: |
             IMAGE_NAME="gcr.io/${PROJECT_ID_DEV}/${CIRCLE_PROJECT_REPONAME}"
-            docker image build -t ${IMAGE_NAME}:${CIRCLE_BUILD_NUM} .
+            docker image build \
+            --build-arg ENV=development \
+            -t ${IMAGE_NAME}:${CIRCLE_BUILD_NUM} .
             docker image tag ${IMAGE_NAME}:${CIRCLE_BUILD_NUM} ${IMAGE_NAME}:latest
             docker image push ${IMAGE_NAME}
       - run:
@@ -70,7 +72,9 @@ jobs:
           name: Build and push image
           command: |
             IMAGE_NAME="gcr.io/${PROJECT_ID_PROD}/${CIRCLE_PROJECT_REPONAME}"
-            docker image build -t ${IMAGE_NAME}:${CIRCLE_BUILD_NUM} .
+            docker image build \
+            --build-arg ENV=production \
+            -t ${IMAGE_NAME}:${CIRCLE_BUILD_NUM} .
             docker image tag ${IMAGE_NAME}:${CIRCLE_BUILD_NUM} ${IMAGE_NAME}:latest
             docker image push ${IMAGE_NAME}
       - run:
