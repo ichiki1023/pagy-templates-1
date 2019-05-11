@@ -7,7 +7,7 @@ const GoogleMap = props => {
   return (
     <iframe
       className={className}
-      frameborder='0'
+      frameBorder='0'
       src={`https://maps.google.co.jp/maps?output=embed&q=${center.lat},${
         center.lng
       }`}
