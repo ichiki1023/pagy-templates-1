@@ -33,7 +33,7 @@ const StyledSNSServices = styled(SNSServices)`
   width: 100%;
   display: flex;
 
-  @media (max-width: 750px) {
+  @media (max-width: 1024px) {
     flex-direction: column;
   }
 
@@ -41,7 +41,7 @@ const StyledSNSServices = styled(SNSServices)`
     width: 160px;
     margin: 0 20px;
 
-    @media (max-width: 750px) {
+    @media (max-width: 1024px) {
       margin: 20px 0;
     }
 

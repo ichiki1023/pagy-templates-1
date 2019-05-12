@@ -18,15 +18,11 @@ const StyledSectionTitle = styled(SectionTitle)`
 `
 
 const Contents = styled.div`
-  width: 95%;
+  width: 100%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
-
-  @media (max-width: 750px) {
-    width: 100%;
-  }
 `
 
 class Selection extends React.Component {

@@ -53,6 +53,7 @@ const ShopName = styled.div`
     display: inline-block;
     box-sizing: border-box;
     color: #ffffff;
+    text-decoration: none;
   }
 
   &::after {

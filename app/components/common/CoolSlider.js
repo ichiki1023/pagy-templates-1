@@ -12,6 +12,8 @@ const ArrowForward = styled.div`
   width: auto;
   height: auto;
   cursor: pointer;
+  top: auto;
+  bottom: 10%;
 
   &::before {
     font-size: 0;
@@ -22,6 +24,8 @@ const ArrowBack = styled.div`
   width: auto;
   height: auto;
   cursor: pointer;
+  top: auto;
+  bottom: 10%;
 
   &::before {
     font-size: 0;
@@ -34,7 +38,7 @@ const StyledArrowBackIcon = styled(ArrowBackIos)`
 
 const StyledArrowForwardIcon = styled(ArrowForwardIos)`
   color: ${props =>
-    props.slides + props.current === props.count ? '#D1D3CF' : '#9B9B9B'};
+    props.slides + props.current >= props.count ? '#D1D3CF' : '#9B9B9B'};
 `
 
 const NextArrow = function (props) {
@@ -42,7 +46,7 @@ const NextArrow = function (props) {
     <ArrowForward className='slick-next'>
       <StyledArrowForwardIcon
         style={{ fontSize: props.arrowIconSize }}
-        slides={props.settings.slidesToShow}
+        slides={props.slidesToShow}
         current={props.currentSlide}
         count={props.slideCount}
         onClick={props.onClick}
@@ -63,21 +67,54 @@ const PrevArrow = function (props) {
   )
 }
 
-const CoolSlider = props => {
-  const settings = {
-    dots: false,
-    infinite: false,
-    speed: 500,
-    nextArrow: <NextArrow {...props} />,
-    prevArrow: <PrevArrow {...props} />,
-    ...props.settings
+class CoolSlider extends React.Component {
+  sliderRef = null
+
+  constructor (props) {
+    super(props)
+    const settings = props.settings
+    this.state = {
+      currentSlide: 0,
+      slidesToScroll: settings.slidesToScroll,
+      slidesToShow: settings.slidesToShow
+    }
   }
 
-  return (
-    <Slider {...settings} className={props.className}>
-      {props.children}
-    </Slider>
-  )
+  render () {
+    const settings = {
+      dots: false,
+      infinite: false,
+      speed: 500,
+      nextArrow: <NextArrow {...this.props} {...this.state} />,
+      prevArrow: <PrevArrow {...this.props} />,
+      beforeChange: (oldIndex, newIndex) => {
+        const responsive = this.props.settings.responsive
+        const result = responsive.filter(
+          res => res.breakpoint === this.sliderRef.state.breakpoint
+        )
+        const setting =
+          result[0] && result[0].settings
+            ? result[0].settings
+            : this.props.settings
+        this.setState({
+          currentSlide: newIndex,
+          slidesToScroll: setting.slidesToScroll,
+          slidesToShow: setting.slidesToShow
+        })
+      },
+      ...this.props.settings
+    }
+
+    return (
+      <Slider
+        ref={el => (this.sliderRef = el)}
+        {...settings}
+        className={this.props.className}
+      >
+        {this.props.children}
+      </Slider>
+    )
+  }
 }
 
 CoolSlider.propTypes = {
