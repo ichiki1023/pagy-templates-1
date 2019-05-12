@@ -1,5 +1,5 @@
 import React from 'react'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { Link as ScrollLink } from 'react-scroll'
 import Link from 'app/components/common/MyLink'
 import PlanType from 'app/helpers/planType'
@@ -10,37 +10,56 @@ import withAppContext from 'app/components/wrapper/withAppContext'
 const Header = styled.div`
   background-color: #000000;
   width: 100%;
-  height: 64px;
   position: -webkit-sticky; /* Safari */
   position: sticky;
+  display: table;
+`
+
+const HeaderContent = styled.div`
+  height: 64px;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+  & > * {
+    margin: 0 4vw;
+  }
+`
+
+const HeaderLists = styled.ul`
+  display: inline-block;
+  list-style-type: none;
 `
 
 const HeaderList = styled.li`
   cursor: pointer;
+  display: inline-block;
+  padding: 0px 12px;
 
   a {
     font-size: 18px;
-    padding: 4px 12px;
+    display: inline-block;
+    text-align: center;
     text-decoration: none;
     color: #ffffff;
   }
-
-  ${props =>
-    props.isTitle &&
-    css`
-      a {
-        font-size: 24px;
-        margin-right: calc(6vw + 8px);
-      }
-    `};
 `
 
-const HeaderLists = styled.ul`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  list-style-type: none;
+const ShopName = styled.div`
+  cursor: pointer;
+  display: inline-block;
+
+  a {
+    font-size: 24px;
+    display: inline-block;
+    box-sizing: border-box;
+    color: #ffffff;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    padding-right: 8vw !important;
+  }
 `
 
 // const Languages = styled.div`
@@ -69,8 +88,8 @@ const PCCoolHeader = props => {
 
   return (
     <Header className={className}>
-      <HeaderLists>
-        <HeaderList key={'home'} isTitle>
+      <HeaderContent>
+        <ShopName key={'home'} isTitle>
           {isHome ? (
             <ScrollLink
               to={'home'}
@@ -85,95 +104,96 @@ const PCCoolHeader = props => {
               <a>{site.name}</a>
             </Link>
           )}
-        </HeaderList>
-        {/* News */}
-        {articles && articles.length !== 0 ? (
-          <HeaderList key={'news'}>
+        </ShopName>
+        <HeaderLists>
+          {/* News */}
+          {articles && articles.length !== 0 ? (
+            <HeaderList key={'news'}>
+              {isHome ? (
+                <ScrollLink
+                  to={'news'}
+                  smooth
+                  spy
+                  hashSpy
+                  duration={scrollDuration}
+                >
+                  NEWS
+                </ScrollLink>
+              ) : (
+                <Link href={'/#news'}>
+                  <a>NEWS</a>
+                </Link>
+              )}
+            </HeaderList>
+          ) : null}
+          {/* Selection */}
+          {items && items.length !== 0 ? (
+            <HeaderList key={'selection'}>
+              {isHome ? (
+                <ScrollLink
+                  to={'selection'}
+                  smooth
+                  spy
+                  hashSpy
+                  duration={scrollDuration}
+                >
+                  SELECTION
+                </ScrollLink>
+              ) : (
+                <Link href={'/#selection'}>
+                  <a>SELECTION</a>
+                </Link>
+              )}
+            </HeaderList>
+          ) : null}
+          {/* Coordinates */}
+          {coordinates && coordinates.length !== 0 ? (
+            <HeaderList key={'coordinates'}>
+              <Link href={'/coordinates'}>
+                <a>COORDINATES</a>
+              </Link>
+            </HeaderList>
+          ) : null}
+          {/* About */}
+          <HeaderList key={'about'}>
             {isHome ? (
               <ScrollLink
-                to={'news'}
+                to={'about'}
                 smooth
                 spy
                 hashSpy
                 duration={scrollDuration}
               >
-                NEWS
+                ABOUT US
               </ScrollLink>
             ) : (
-              <Link href={'/#news'}>
-                <a>NEWS</a>
+              <Link href={'/#about'}>
+                <a>ABOUT US</a>
               </Link>
             )}
           </HeaderList>
-        ) : null}
-        {/* Selection */}
-        {items && items.length !== 0 ? (
-          <HeaderList key={'selection'}>
-            {isHome ? (
-              <ScrollLink
-                to={'selection'}
-                smooth
-                spy
-                hashSpy
-                duration={scrollDuration}
-              >
-                SELECTION
-              </ScrollLink>
-            ) : (
-              <Link href={'/#selection'}>
-                <a>SELECTION</a>
-              </Link>
-            )}
-          </HeaderList>
-        ) : null}
-        {/* Coordinates */}
-        {coordinates && coordinates.length !== 0 ? (
-          <HeaderList key={'coordinates'}>
-            <Link href={'/coordinates'}>
-              <a>COORDINATES</a>
-            </Link>
-          </HeaderList>
-        ) : null}
-        {/* About */}
-        <HeaderList key={'about'}>
-          {isHome ? (
-            <ScrollLink
-              to={'about'}
-              smooth
-              spy
-              hashSpy
-              duration={scrollDuration}
-            >
-              ABOUT US
-            </ScrollLink>
-          ) : (
-            <Link href={'/#about'}>
-              <a>ABOUT US</a>
-            </Link>
+          {/* Contact */}
+          {site.plan.id !== PlanType.trial && (
+            <HeaderList key={'contact'}>
+              {isHome ? (
+                <ScrollLink
+                  to={'contact'}
+                  smooth
+                  spy
+                  hashSpy
+                  duration={scrollDuration}
+                >
+                  CONTACT
+                </ScrollLink>
+              ) : (
+                <Link href={'/#contact'}>
+                  <a>CONTACT</a>
+                </Link>
+              )}
+            </HeaderList>
           )}
-        </HeaderList>
-        {/* Contact */}
-        {site.plan.id !== PlanType.trial && (
-          <HeaderList key={'contact'}>
-            {isHome ? (
-              <ScrollLink
-                to={'contact'}
-                smooth
-                spy
-                hashSpy
-                duration={scrollDuration}
-              >
-                CONTACT
-              </ScrollLink>
-            ) : (
-              <Link href={'/#contact'}>
-                <a>CONTACT</a>
-              </Link>
-            )}
-          </HeaderList>
-        )}
-        {/* TODO: 多言語対応が実装されるまで非表示にする */}
-        {/* <HeaderList key={'language'}>
+          {/* TODO: 多言語対応が実装されるまで非表示にする */}
+          {/* <HeaderList key={'language'}>
           <Languages>
             <StyledLanguageIcon width={24} height={24} />
             <LanguageDropDown
@@ -187,7 +207,8 @@ const PCCoolHeader = props => {
             />
           </Languages>
         </HeaderList> */}
-      </HeaderLists>
+        </HeaderLists>
+      </HeaderContent>
     </Header>
   )
 }

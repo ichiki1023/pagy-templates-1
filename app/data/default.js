@@ -2,7 +2,7 @@ const staticPath = `${process.env.PROXY_PATH}/static`
 
 export default {
   site: {
-    name: 'Leimo SELECT SHOP',
+    name: 'Leimo SELECT SHOP Leimo SELECT SHOP',
     catch_phrase: 'お客様に一番伝えたいメッセージを記載してください。',
     description:
       'お店の基本情報を記載してください。お店の基本情報を記載してください。お店の基本情報を記載してください。お店の基本情報を記載してください。お店の基本情報を記載してください。お店の基本情報を記載してください。 お店の基本情報を記載してください。お店の基本情報を記載してください。お店の基本情報を記載してください。',
