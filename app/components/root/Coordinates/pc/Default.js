@@ -11,7 +11,7 @@ const Section = styled.div`
   height: ${screenSize}px;
   position: relative;
   overflow: hidden;
-  @media (max-width: 480px) {
+  @media (max-width: 750px) {
     height: 100vh;
   }
 `
@@ -26,7 +26,7 @@ const Contents = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  @media (max-width: 480px) {
+  @media (max-width: 750px) {
     width: 90%;
   }
 `
@@ -58,7 +58,7 @@ const StyledLink = styled.a`
   align-items: center;
   cursor: pointer;
 
-  @media (max-width: 480px) {
+  @media (max-width: 750px) {
     height: 48px;
   }
 
@@ -99,7 +99,7 @@ const BackgroundImage = styled.div`
   transform: skewX(-15deg);
   overflow: hidden;
 
-  @media (max-width: 480px) {
+  @media (max-width: 750px) {
     width: 100%;
     transform: none;
   }
@@ -111,7 +111,7 @@ const StyledImage = styled.img`
   transform: skewX(15deg) scale(2);
   object-fit: cover;
 
-  @media (max-width: 480px) {
+  @media (max-width: 750px) {
     transform: none;
   }
 `

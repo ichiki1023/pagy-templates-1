@@ -13,7 +13,7 @@ const StyledImage = styled.img`
   display: block;
   margin: 0 auto;
 
-  @media (max-width: 480px) {
+  @media (max-width: 750px) {
     width: 100%;
     min-width: auto;
   }
@@ -39,7 +39,7 @@ const StyledCroppedImg = styled(CroppedImage)`
       float: left;
     `};
 
-  @media (max-width: 480px) {
+  @media (max-width: 750px) {
     width: 100%;
     position: relative;
   }
@@ -56,7 +56,7 @@ const AboutImages = props => {
   const MultipleImages = props => {
     return (
       <StyledMultipleImage>
-        <IsSp maxWidth={480}>
+        <IsSp>
           {matches => {
             return (
               <React.Fragment>

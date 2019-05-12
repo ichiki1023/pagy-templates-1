@@ -13,7 +13,7 @@ const StyledImage = styled.img`
   margin: 0 auto;
   cursor: pointer;
 
-  @media (max-width: 480px) {
+  @media (max-width: 750px) {
     cursor: default;
     width: 180px;
   }
@@ -24,7 +24,7 @@ const Line = styled.div`
   margin: 64px auto 48px auto;
   width: 80px;
 
-  @media (max-width: 480px) {
+  @media (max-width: 750px) {
     margin: 40px auto 32px auto;
     width: 64px;
   }
@@ -38,7 +38,7 @@ const Title = styled.span`
   text-align: center;
   font-size: 18px;
 
-  @media (max-width: 480px) {
+  @media (max-width: 750px) {
     width: 180px;
     font-size: 14px;
   }

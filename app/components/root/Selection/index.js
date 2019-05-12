@@ -11,7 +11,7 @@ const StyledSectionTitle = styled(SectionTitle)`
   width: 54vw;
   margin: 0 auto 80px auto;
 
-  @media (max-width: 480px) {
+  @media (max-width: 750px) {
     width: 90%;
     margin: 0 auto 48px auto;
   }
@@ -24,7 +24,7 @@ const Contents = styled.div`
   flex-direction: column;
   justify-content: center;
 
-  @media (max-width: 480px) {
+  @media (max-width: 750px) {
     width: 100%;
   }
 `

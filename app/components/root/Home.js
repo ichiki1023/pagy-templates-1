@@ -33,7 +33,7 @@ const Contents = styled.div`
   display: flex;
   align-items: center;
 
-  @media (max-width: 480px) {
+  @media (max-width: 750px) {
     width: 90%;
   }
 `
@@ -43,14 +43,14 @@ const TitleContents = styled.div`
   h1 {
     font-size: 48px;
 
-    @media (max-width: 480px) {
+    @media (max-width: 750px) {
       font-size: 22px;
     }
   }
   h3 {
     font-size: 24px;
     font-weight: normal;
-    @media (max-width: 480px) {
+    @media (max-width: 750px) {
       font-size: 18px;
     }
   }
