@@ -12,7 +12,6 @@ import SocialMedia from 'app/components/root/SocialMedia'
 import Contact from 'app/components/root/Contact'
 import { animateScroll as scroll, scroller } from 'react-scroll'
 import PlanType from 'app/helpers/planType'
-import IsSp from 'app/components/IsSp'
 
 const headerHeight = 64
 const padding = 40
@@ -187,11 +186,7 @@ class Index extends React.Component {
             />
           ) : null}
           <StyledAbout />
-          {services ? (
-            <IsSp>
-              {matches => !matches && <StyledSocialMedia services={services} />}
-            </IsSp>
-          ) : null}
+          {services && <StyledSocialMedia services={services} />}
         </Wrapper>
         {site.plan.id !== PlanType.trial && <StyledContact />}
         {services ? <StyledSNSNavigation services={services} /> : null}

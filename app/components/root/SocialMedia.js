@@ -46,7 +46,7 @@ const StyledSNSServices = styled(SNSServices)`
     }
 
     a {
-      display: inline-block;
+      display: flex;
       width: 100%;
       text-decoration: none;
       color: #545454;
@@ -54,8 +54,8 @@ const StyledSNSServices = styled(SNSServices)`
     }
 
     svg {
-      width: 50px;
-      height: 50px;
+      width: 48px;
+      height: 48px;
       position: relative;
       float: left;
     }

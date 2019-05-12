@@ -60,7 +60,7 @@ const Navigation = props => {
   const { services, className } = props
 
   return (
-    <IsSp>
+    <IsSp maxWidth={1024}>
       {matches =>
         !matches && (
           <Contents className={className}>

@@ -16,6 +16,9 @@ export const BackgroundIcon = styled.div`
       width: ${props.iconSize}px;
       height: ${props.iconSize}px;
     `};
+
+  & > p {
+  }
 `
 
 export const StyledIcon = styled(Icon)`
@@ -51,7 +54,7 @@ const snsServices = {
 }
 
 const SNSServices = props => {
-  const { iconSize, iconColor, services, hasText, ...otherProps } = props
+  const { iconSize, iconColor, services, hasText, className } = props
 
   // service objectから指定されているidのみ抽出
   const formattedServices = Object.keys(services)
@@ -70,7 +73,7 @@ const SNSServices = props => {
     .filter(service => service)
 
   return (
-    <div {...otherProps}>
+    <div className={className}>
       {formattedServices.map(service => {
         return (
           <BackgroundIcon key={service.id} iconSize={iconSize}>
