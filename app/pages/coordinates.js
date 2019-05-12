@@ -90,9 +90,7 @@ class Coordinates extends React.Component {
   render () {
     const {
       site,
-      fashion,
-      fashion: { coordinates },
-      userAgent
+      fashion: { coordinates }
     } = this.props
 
     const services =
@@ -109,13 +107,7 @@ class Coordinates extends React.Component {
 
     return (
       <Page>
-        <StyledHeader
-          userAgent={userAgent}
-          site={site}
-          fashion={fashion}
-          services={services}
-          pageName={'coordinates'}
-        />
+        <StyledHeader services={services} pageName={'coordinates'} />
         {services ? <StyledSNSNavigation services={services} /> : null}
         <Contents>
           <StyledSectionTitle
@@ -135,9 +127,6 @@ class Coordinates extends React.Component {
         </Contents>
         <FooterWrapper>
           <StyledFooter
-            userAgent={userAgent}
-            site={site}
-            fashion={fashion}
             pageName={'coordinates'}
             isEmptyCoordinates={isEmptyCoordinates}
           />

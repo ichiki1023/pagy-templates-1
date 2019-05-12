@@ -6,6 +6,7 @@ import CloseIcon from '@material-ui/icons/Close'
 import Drawer from '@material-ui/core/Drawer'
 import SNSServicesBtns from 'app/components/common/SNSServices/Buttons'
 import PlanType from 'app/helpers/planType'
+import withAppContext from 'app/components/wrapper/withAppContext'
 // import LanguageDropDown from 'app/components/common/LanguageDropDown'
 // import LanguageIcon from '@material-ui/icons/Language'
 
@@ -98,7 +99,7 @@ const headerHeight = 64
 const offset = 20
 const scrollOffset = -(headerHeight + offset)
 
-export default class SPCoolHeader extends React.Component {
+class SPCoolHeader extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -254,3 +255,5 @@ export default class SPCoolHeader extends React.Component {
     )
   }
 }
+
+export default withAppContext(SPCoolHeader)

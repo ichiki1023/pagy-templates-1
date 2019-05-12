@@ -5,8 +5,7 @@ import Input from 'app/components/common/Input'
 import SendContactMessageApi from 'app/api/SendContactMessageApi'
 import contactFormValidate from 'app/helpers/contactFormValidate'
 import SubmitButton from 'app/components/common/SubmitButton'
-
-const Section = styled.div``
+import withAppContext from 'app/components/wrapper/withAppContext'
 
 const StyledSectionTitle = styled(SectionTitle)`
   margin-bottom: 50px;
@@ -35,7 +34,7 @@ const initialInputState = {
   error: null
 }
 
-export default class Contact extends React.Component {
+class Contact extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -151,14 +150,14 @@ export default class Contact extends React.Component {
   }
 
   render () {
-    const { site, ...custom } = this.props
+    const { className } = this.props
     const disabled =
       !this.state.name.value ||
       !this.state.email.value ||
       !this.state.content.value
 
     return (
-      <Section name={'contact'} {...custom}>
+      <div name={'contact'} className={className}>
         <form onSubmit={this.validate} noValidate>
           <Contents>
             <StyledSectionTitle
@@ -206,7 +205,9 @@ export default class Contact extends React.Component {
             />
           </Contents>
         </form>
-      </Section>
+      </div>
     )
   }
 }
+
+export default withAppContext(Contact)

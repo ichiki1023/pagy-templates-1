@@ -156,7 +156,7 @@ class Index extends React.Component {
   }
 
   render () {
-    const { site, fashion, userAgent } = this.props
+    const { site, fashion } = this.props
 
     const services =
       site.facebook || site.twitter || site.instagram || site.pinterest
@@ -171,19 +171,13 @@ class Index extends React.Component {
     return (
       <Page>
         <Wrapper>
-          <StyledHeader
-            userAgent={userAgent}
-            site={site}
-            fashion={fashion}
-            services={services}
-            pageName={'home'}
-          />
-          <Home site={site} />
+          <StyledHeader services={services} pageName={'home'} />
+          <Home />
           {site.articles && site.articles.length !== 0 ? (
             <StyledNews containerId={'news'} articles={site.articles} />
           ) : null}
           {fashion.items && fashion.items.length !== 0 ? (
-            <StyledSelection items={fashion.items} userAgent={userAgent} />
+            <StyledSelection items={fashion.items} />
           ) : null}
           {fashion.coordinates && fashion.coordinates.length !== 0 ? (
             <StyledCoordinates
@@ -191,18 +185,13 @@ class Index extends React.Component {
               marginTop={paddingTop}
             />
           ) : null}
-          <StyledAbout site={site} />
+          <StyledAbout />
           {services ? <StyledSocialMedia services={services} /> : null}
         </Wrapper>
-        {site.plan.id !== PlanType.trial && <StyledContact site={site} />}
+        {site.plan.id !== PlanType.trial && <StyledContact />}
         {services ? <StyledSNSNavigation services={services} /> : null}
         <FooterWrapper>
-          <StyledFooter
-            userAgent={userAgent}
-            site={site}
-            fashion={fashion}
-            pageName={'home'}
-          />
+          <StyledFooter pageName={'home'} />
         </FooterWrapper>
       </Page>
     )

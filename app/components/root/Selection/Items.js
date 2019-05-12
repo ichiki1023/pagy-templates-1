@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import CoolSlider from 'app/components/common/CoolSlider'
+import withAppContext from 'app/components/wrapper/withAppContext'
 
 const Item = styled.div`
   margin: auto;
@@ -111,4 +112,4 @@ class Items extends React.Component {
   }
 }
 
-export default Items
+export default withAppContext(Items)

@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import withAppContext from 'app/components/wrapper/withAppContext'
 
 const Section = styled.div`
   background: url(${props => props.store_front_image_url}) no-repeat center;
@@ -79,4 +80,4 @@ Home.propTypes = {
   }).isRequired
 }
 
-export default Home
+export default withAppContext(Home)

@@ -4,8 +4,7 @@ import styled from 'styled-components'
 import SectionTitle from 'app/components/common/SectionTitle'
 import Items from './Items'
 import Modal from './Modal'
-
-const Section = styled.div``
+import withAppContext from 'app/components/wrapper/withAppContext'
 
 // Contents幅に合わせて幅の調整を行っている(54% + 100%-contents size)
 const StyledSectionTitle = styled(SectionTitle)`
@@ -60,9 +59,9 @@ class Selection extends React.Component {
   }
 
   render () {
-    const { items, userAgent, ...custom } = this.props
+    const { items, userAgent, className } = this.props
     return (
-      <Section name={'selection'} {...custom}>
+      <div name={'selection'} className={className}>
         <Contents>
           <StyledSectionTitle
             backgroundText={'SELECTION'}
@@ -82,9 +81,9 @@ class Selection extends React.Component {
             />
           )}
         </Contents>
-      </Section>
+      </div>
     )
   }
 }
 
-export default Selection
+export default withAppContext(Selection)
