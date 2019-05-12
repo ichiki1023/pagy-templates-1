@@ -2,10 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 import { Link as ScrollLink } from 'react-scroll/modules'
-import LanguageIcon from '@material-ui/icons/Language'
-import LanguageDropDown from 'app/components/common/LanguageDropDown'
 import Link from 'app/components/common/MyLink'
 import PlanType from 'app/helpers/planType'
+// import LanguageIcon from '@material-ui/icons/Language'
+// import LanguageDropDown from 'app/components/common/LanguageDropDown'
 
 const Footer = styled.div`
   background-color: rgba(240, 240, 240, 0.8);
@@ -58,13 +58,6 @@ const FooterLists = styled.ul`
   }
 `
 
-const LanguageFooterList = styled(FooterList)`
-  padding: 12px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-`
-
 const CopyRights = styled.ul`
   color: #9b9b9b;
   margin: 16px 0;
@@ -86,19 +79,26 @@ const Line = styled.li`
   margin: 0 8px;
 `
 
-const StyledLanguageIcon = styled(LanguageIcon)`
-  color: #9b9b9b;
-`
+// const LanguageFooterList = styled(FooterList)`
+//   padding: 12px;
+//   display: flex;
+//   flex-direction: row;
+//   align-items: center;
+// `
+
+// const StyledLanguageIcon = styled(LanguageIcon)`
+//   color: #9b9b9b;
+// `
 
 const PCCoolFooter = props => {
   const { site, fashion, pageName, ...otherProps } = props
   const { articles = [] } = site
   const { items = [], coordinates = [] } = fashion
   const scrollDuration = 500
-  const languageOptions = [
-    { value: 'ja', label: 'Japanese' },
-    { value: 'en', label: 'English' }
-  ]
+  // const languageOptions = [
+  //   { value: 'ja', label: 'Japanese' },
+  //   { value: 'en', label: 'English' }
+  // ]
   const isHome = pageName === 'home'
 
   return (
@@ -195,7 +195,8 @@ const PCCoolFooter = props => {
               )}
             </FooterList>
           )}
-          <LanguageFooterList key={'language'}>
+          {/* TODO: 多言語対応が実装されるまで非表示にする */}
+          {/* <LanguageFooterList key={'language'}>
             <StyledLanguageIcon width={24} height={24} />
             <LanguageDropDown
               options={languageOptions}
@@ -208,7 +209,7 @@ const PCCoolFooter = props => {
               backgroundColor={'transparent'}
               color={'#9B9B9B'}
             />
-          </LanguageFooterList>
+          </LanguageFooterList> */}
         </FooterLists>
         <CopyRights>
           <li>プライバシーポリシー</li>
