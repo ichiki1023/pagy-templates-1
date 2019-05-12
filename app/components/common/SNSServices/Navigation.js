@@ -26,8 +26,6 @@ const StyledSNSServices = styled(SNSServices)`
     background-color: rgba(84, 84, 84, 0.6);
     border-radius: 50%;
     margin-bottom: 24px;
-    min-width: 48px;
-    min-height: 48px;
   }
 `
 
@@ -47,7 +45,9 @@ const StyledText = styled.p`
 `
 
 const Line = styled.div`
-  height: 100px;
+  height: 6vw;
+  min-height: 50px;
+  max-height: 120px;
   width: 2px;
   background-color: #545454;
 `
