@@ -18,7 +18,7 @@ const StyledHeader = styled(CoolHeader)`
 
 const FooterWrapper = styled.div`
   margin-top: 224px;
-  @media (max-width: 500px) {
+  @media (max-width: 480px) {
     margin-top: 180px;
   }
 `
@@ -37,13 +37,13 @@ const Contents = styled.div`
   width: 54%;
   margin: 100px auto 0 auto;
 
-  @media (max-width: 500px) {
+  @media (max-width: 480px) {
     width: 100%;
   }
 `
 
 const StyledSectionTitle = styled(SectionTitle)`
-  @media (max-width: 500px) {
+  @media (max-width: 480px) {
     width: 90%;
     margin: 0 auto;
 
@@ -75,7 +75,7 @@ const StyledCoordinateItems = styled(Items)`
 //   align-items: center;
 //   justify-content: center;
 //
-//   @media (max-width: 500px) {
+//   @media (max-width: 480px) {
 //     height: 48px;
 //     font-size: 16px;
 //   }

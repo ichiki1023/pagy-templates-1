@@ -58,7 +58,7 @@ const headerHeight = 64
 const scrollDuration = 500
 
 const PCCoolHeader = props => {
-  const { site, fashion, pageName, ...custom } = props
+  const { site, fashion, pageName, className } = props
   const { articles = [] } = site
   const { items = [], coordinates = [] } = fashion
   // const languageOptions = [
@@ -68,7 +68,7 @@ const PCCoolHeader = props => {
   const isHome = pageName === 'home'
 
   return (
-    <Header {...custom}>
+    <Header className={className}>
       <HeaderLists>
         <HeaderList key={'home'} isTitle>
           {isHome ? (

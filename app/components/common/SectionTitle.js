@@ -8,7 +8,7 @@ const StyledSectionTitle = styled.div`
     color: #f0f0f0;
     font-size: 54px;
     margin: 0;
-    @media (max-width: 500px) {
+    @media (max-width: 480px) {
       font-size: 44px;
     }
   }
@@ -22,7 +22,7 @@ const StyledSectionTitle = styled.div`
     top: 50%;
     left: 20px;
     transform: translateY(-50%);
-    @media (max-width: 500px) {
+    @media (max-width: 480px) {
       font-size: 16px;
     }
   }

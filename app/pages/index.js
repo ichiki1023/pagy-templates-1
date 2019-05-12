@@ -12,6 +12,7 @@ import SocialMedia from 'app/components/root/SocialMedia'
 import Contact from 'app/components/root/Contact'
 import { animateScroll as scroll, scroller } from 'react-scroll'
 import PlanType from 'app/helpers/planType'
+import IsSp from 'app/components/IsSp'
 
 const headerHeight = 64
 const padding = 40
@@ -29,7 +30,7 @@ const StyledHeader = styled(CoolHeader)`
   z-index: 1000;
   top: 0;
   height: ${headerHeight}px;
-  @media (max-width: 500px) {
+  @media (max-width: 750px) {
     height: ${spHeaderHeight}px;
   }
 `
@@ -42,7 +43,7 @@ const Page = styled.div`
 const StyledNews = styled(News)`
   padding-top: ${paddingTop}px;
   margin-top: ${marginTop}px;
-  @media (max-width: 500px) {
+  @media (max-width: 750px) {
     padding-top: ${spPaddingTop}px;
     margin-top: ${spMarginTop}px;
   }
@@ -53,7 +54,7 @@ const StyledSelection = styled(Selection)`
   z-index: 3;
   padding-top: ${paddingTop}px;
   margin-top: ${marginTop}px;
-  @media (max-width: 500px) {
+  @media (max-width: 750px) {
     padding-top: ${spPaddingTop}px;
     margin-top: ${spMarginTop}px;
   }
@@ -64,7 +65,7 @@ const StyledCoordinates = styled(Coordinates)`
   z-index: 3;
   padding-top: ${paddingTop}px;
   margin-top: ${marginTop}px;
-  @media (max-width: 500px) {
+  @media (max-width: 750px) {
     padding-top: ${spPaddingTop}px;
     margin-top: ${spMarginTop}px;
   }
@@ -73,7 +74,7 @@ const StyledCoordinates = styled(Coordinates)`
 const StyledAbout = styled(About)`
   padding-top: ${paddingTop}px;
   margin-top: ${marginTop}px;
-  @media (max-width: 500px) {
+  @media (max-width: 750px) {
     padding-top: ${spPaddingTop}px;
     margin-top: ${spMarginTop}px;
   }
@@ -82,7 +83,7 @@ const StyledAbout = styled(About)`
 const StyledSocialMedia = styled(SocialMedia)`
   padding-top: ${paddingTop}px;
   margin-top: ${marginTop}px;
-  @media (max-width: 500px) {
+  @media (max-width: 750px) {
     padding-top: ${spPaddingTop}px;
     margin-top: ${spMarginTop}px;
   }
@@ -91,7 +92,7 @@ const StyledSocialMedia = styled(SocialMedia)`
 const StyledContact = styled(Contact)`
   padding-top: ${paddingTop - headerHeight}px;
   margin-top: ${marginTop + headerHeight}px;
-  @media (max-width: 500px) {
+  @media (max-width: 750px) {
     padding-top: ${spPaddingTop}px;
     margin-top: ${spMarginTop}px;
   }
@@ -100,7 +101,7 @@ const StyledContact = styled(Contact)`
 const FooterWrapper = styled.div`
   padding-top: ${paddingTop}px;
   margin-top: ${marginTop}px;
-  @media (max-width: 500px) {
+  @media (max-width: 750px) {
     padding-top: ${spPaddingTop}px;
     margin-top: ${spMarginTop}px;
   }
@@ -186,7 +187,11 @@ class Index extends React.Component {
             />
           ) : null}
           <StyledAbout />
-          {services ? <StyledSocialMedia services={services} /> : null}
+          {services ? (
+            <IsSp>
+              {matches => !matches && <StyledSocialMedia services={services} />}
+            </IsSp>
+          ) : null}
         </Wrapper>
         {site.plan.id !== PlanType.trial && <StyledContact />}
         {services ? <StyledSNSNavigation services={services} /> : null}

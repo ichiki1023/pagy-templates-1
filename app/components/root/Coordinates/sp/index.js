@@ -9,7 +9,7 @@ const Section = styled.div`
   height: 100vh;
   position: relative;
   overflow: hidden;
-  @media (max-width: 500px) {
+  @media (max-width: 480px) {
     height: 100vh;
   }
 `

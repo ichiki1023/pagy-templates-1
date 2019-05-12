@@ -9,7 +9,7 @@ import withAppContext from 'app/components/wrapper/withAppContext'
 
 const StyledSectionTitle = styled(SectionTitle)`
   margin-bottom: 50px;
-  @media (max-width: 500px) {
+  @media (max-width: 480px) {
     margin-bottom: 24px;
   }
 `
@@ -22,7 +22,7 @@ const Contents = styled.div`
   justify-content: center;
   position: relative;
 
-  @media (max-width: 500px) {
+  @media (max-width: 480px) {
     width: 90%;
   }
 `

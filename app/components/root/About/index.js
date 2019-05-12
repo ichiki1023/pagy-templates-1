@@ -18,7 +18,7 @@ const Contents = styled.div`
   justify-content: center;
   position: relative;
 
-  @media (max-width: 500px) {
+  @media (max-width: 480px) {
     width: 100%;
   }
 `
@@ -30,7 +30,7 @@ const StyledTexts = styled.div`
 
 const StyledTable = styled.table`
   margin: 50px 0;
-  @media (max-width: 500px) {
+  @media (max-width: 480px) {
     width: 90%;
     margin: 30px auto;
   }
@@ -41,7 +41,7 @@ const StyledTable = styled.table`
     font-weight: normal;
     padding-bottom: 1.5em;
 
-    @media (max-width: 500px) {
+    @media (max-width: 480px) {
       display: inline-block;
       font-size: 14px;
       padding: 4px 0;
@@ -53,7 +53,7 @@ const StyledTable = styled.table`
     font-size: 18px;
     padding-bottom: 1.5em;
 
-    @media (max-width: 500px) {
+    @media (max-width: 480px) {
       display: block;
       font-size: 16px;
       padding: 0;
@@ -65,7 +65,7 @@ const StyledTable = styled.table`
 const StyledDescription = styled.div`
   color: #545454;
   margin-top: 40px;
-  @media (max-width: 500px) {
+  @media (max-width: 480px) {
     margin-top: 24px;
   }
 `
@@ -79,7 +79,7 @@ const StyledAboutImages = styled(AboutImages)`
 const StyledGoogleMap = styled(GoogleMap)`
   height: calc(54vw * (724 / 1024));
 
-  @media (max-width: 500px) {
+  @media (max-width: 480px) {
     width: 100%;
     height: 375px;
   }

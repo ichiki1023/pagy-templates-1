@@ -17,14 +17,14 @@ const Contents = styled.div`
   flex-direction: column;
   justify-content: center;
 
-  @media (max-width: 500px) {
+  @media (max-width: 480px) {
     width: 90%;
   }
 `
 
 const StyledTable = styled.div`
   margin-top: 40px;
-  @media (max-width: 500px) {
+  @media (max-width: 480px) {
     margin-top: 24px;
   }
 `
@@ -41,7 +41,7 @@ const StyledDateText = styled.p`
   padding: 0.6em 0;
   display: inline;
   margin-right: 38px;
-  @media (max-width: 500px) {
+  @media (max-width: 480px) {
     font-size: 14px;
   }
 `
@@ -56,7 +56,7 @@ const StyledDescriptionText = styled.p`
   text-overflow: ellipsis;
   white-space: nowrap;
 
-  @media (max-width: 500px) {
+  @media (max-width: 480px) {
     font-size: 16px;
   }
 `
