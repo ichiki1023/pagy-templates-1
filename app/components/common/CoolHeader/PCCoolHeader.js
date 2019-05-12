@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 import { Link as ScrollLink } from 'react-scroll'
 import Link from 'app/components/common/MyLink'
-import LanguageIcon from '@material-ui/icons/Language'
-import LanguageDropDown from 'app/components/common/LanguageDropDown'
 import PlanType from 'app/helpers/planType'
+// import LanguageIcon from '@material-ui/icons/Language'
+// import LanguageDropDown from 'app/components/common/LanguageDropDown'
 
 const Header = styled.div`
   background-color: #000000;
@@ -43,16 +43,16 @@ const HeaderLists = styled.ul`
   list-style-type: none;
 `
 
-const Languages = styled.div`
-  padding: 0 12px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-`
+// const Languages = styled.div`
+//   padding: 0 12px;
+//   display: flex;
+//   flex-direction: row;
+//   align-items: center;
+// `
 
-const StyledLanguageIcon = styled(LanguageIcon)`
-  color: #ffffff;
-`
+// const StyledLanguageIcon = styled(LanguageIcon)`
+//   color: #ffffff;
+// `
 
 const headerHeight = 64
 const scrollDuration = 500
@@ -61,10 +61,10 @@ const PCCoolHeader = props => {
   const { site, fashion, pageName, ...custom } = props
   const { articles = [] } = site
   const { items = [], coordinates = [] } = fashion
-  const languageOptions = [
-    { value: 'ja', label: 'Japanese' },
-    { value: 'en', label: 'English' }
-  ]
+  // const languageOptions = [
+  //   { value: 'ja', label: 'Japanese' },
+  //   { value: 'en', label: 'English' }
+  // ]
   const isHome = pageName === 'home'
 
   return (
@@ -172,7 +172,8 @@ const PCCoolHeader = props => {
             )}
           </HeaderList>
         )}
-        <HeaderList key={'language'}>
+        {/* TODO: 多言語対応が実装されるまで非表示にする */}
+        {/* <HeaderList key={'language'}>
           <Languages>
             <StyledLanguageIcon width={24} height={24} />
             <LanguageDropDown
@@ -185,7 +186,7 @@ const PCCoolHeader = props => {
               }}
             />
           </Languages>
-        </HeaderList>
+        </HeaderList> */}
       </HeaderLists>
     </Header>
   )

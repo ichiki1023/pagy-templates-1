@@ -1,13 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link as ScrollLink } from 'react-scroll'
-import LanguageDropDown from 'app/components/common/LanguageDropDown'
 import MenuIcon from '@material-ui/icons/Menu'
 import CloseIcon from '@material-ui/icons/Close'
-import LanguageIcon from '@material-ui/icons/Language'
 import Drawer from '@material-ui/core/Drawer'
 import SNSServicesBtns from 'app/components/common/SNSServices/Buttons'
 import PlanType from 'app/helpers/planType'
+// import LanguageDropDown from 'app/components/common/LanguageDropDown'
+// import LanguageIcon from '@material-ui/icons/Language'
 
 const Header = styled.div`
   background-color: #000000;
@@ -33,10 +33,6 @@ const Close = styled(CloseIcon)`
   float: right;
   height: 16px;
   margin: 16px 16px 18px 0;
-`
-
-const StyledLanguageIcon = styled(LanguageIcon)`
-  color: #ffffff;
 `
 
 const MenuText = styled.p`
@@ -89,11 +85,14 @@ const ChildMenuTitle = styled.div`
   margin-left: 16px;
 `
 
-const LanguageArea = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-`
+// const LanguageArea = styled.div`
+//   display: flex;
+//   flex-direction: row;
+//   align-items: center;
+// `
+// const StyledLanguageIcon = styled(LanguageIcon)`
+//   color: #ffffff;
+// `
 
 const headerHeight = 64
 const offset = 20
@@ -128,10 +127,10 @@ export default class SPCoolHeader extends React.Component {
     const { articles = [] } = site
     const { items = [], coordinates = [] } = fashion
     const scrollDuration = 500
-    const languageOptions = [
-      { value: 'ja', label: 'Japanese' },
-      { value: 'en', label: 'English' }
-    ]
+    // const languageOptions = [
+    //   { value: 'ja', label: 'Japanese' },
+    //   { value: 'en', label: 'English' }
+    // ]
 
     return (
       <Header {...props}>
@@ -219,7 +218,8 @@ export default class SPCoolHeader extends React.Component {
                   <MenuTitle>CONTACT</MenuTitle>
                 </ScrollLink>
               )}
-              <SectionTitle>LANGUAGE</SectionTitle>
+              {/* TODO: 多言語対応が実装されるまで非表示にする */}
+              {/* <SectionTitle>LANGUAGE</SectionTitle>
               <LanguageArea>
                 <StyledLanguageIcon width={'28px'} height={'28px'} />
                 <LanguageDropDown
@@ -233,7 +233,7 @@ export default class SPCoolHeader extends React.Component {
                   backgroundColor={'transparent'}
                   color={'#FCFCFA'}
                 />
-              </LanguageArea>
+              </LanguageArea> */}
               {services ? (
                 <div>
                   <SectionTitle>FOLLOW US</SectionTitle>
