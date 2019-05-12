@@ -1,5 +1,5 @@
 import React from 'react'
-import MediaQuery from 'react-responsive'
+import IsSp from 'app/components/IsSp'
 import CoordinatesPC from 'app/components/root/Coordinates/pc'
 import CoordinatesSP from 'app/components/root/Coordinates/sp'
 
@@ -8,7 +8,7 @@ const Coordinates = props => {
   const images = coordinates.map(coordinate => coordinate['main_image_url'])
 
   return (
-    <MediaQuery maxWidth={500} values={{ width: 1200 }}>
+    <IsSp>
       {matches =>
         matches ? (
           <CoordinatesSP
@@ -25,7 +25,7 @@ const Coordinates = props => {
           />
         )
       }
-    </MediaQuery>
+    </IsSp>
   )
 }
 

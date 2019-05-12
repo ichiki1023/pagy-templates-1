@@ -4,30 +4,25 @@ import styled from 'styled-components'
 import SectionTitle from 'app/components/common/SectionTitle'
 import Items from './Items'
 import Modal from './Modal'
-
-const Section = styled.div``
+import withAppContext from 'app/components/wrapper/withAppContext'
 
 // Contents幅に合わせて幅の調整を行っている(54% + 100%-contents size)
 const StyledSectionTitle = styled(SectionTitle)`
   width: 54vw;
   margin: 0 auto 80px auto;
 
-  @media (max-width: 500px) {
+  @media (max-width: 750px) {
     width: 90%;
     margin: 0 auto 48px auto;
   }
 `
 
 const Contents = styled.div`
-  width: 95%;
+  width: 100%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
-
-  @media (max-width: 500px) {
-    width: 100%;
-  }
 `
 
 class Selection extends React.Component {
@@ -60,9 +55,9 @@ class Selection extends React.Component {
   }
 
   render () {
-    const { items, userAgent, ...custom } = this.props
+    const { items, userAgent, className } = this.props
     return (
-      <Section name={'selection'} {...custom}>
+      <div name={'selection'} className={className}>
         <Contents>
           <StyledSectionTitle
             backgroundText={'SELECTION'}
@@ -82,9 +77,9 @@ class Selection extends React.Component {
             />
           )}
         </Contents>
-      </Section>
+      </div>
     )
   }
 }
 
-export default Selection
+export default withAppContext(Selection)

@@ -46,7 +46,7 @@ const StyledSubmitButton = styled(Button)`
     props.success === 'true' ? '#545454' : 'rgba(84, 84, 84, 0.54)'};
     }
 
-    @media (max-width: 500px) {
+    @media (max-width: 750px) {
       margin: 24px auto 0 auto;
       width: 100%;
     }

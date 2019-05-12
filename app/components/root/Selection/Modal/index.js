@@ -18,6 +18,10 @@ const ModalContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin: 0 auto;
+
+  @media (max-width: 750px) {
+    width: 80%;
+  }
 `
 
 const ModalHeader = styled.div`

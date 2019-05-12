@@ -2,30 +2,32 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import CoolSlider from 'app/components/common/CoolSlider'
+import withAppContext from 'app/components/wrapper/withAppContext'
 
 const Item = styled.div`
   margin: auto;
 `
 
 const StyledImage = styled.img`
-  width: 300px;
-  margin: 0 auto;
+  width: 100%;
+  display: block;
+  padding: 24px;
+  box-sizing: border-box;
   cursor: pointer;
 
-  @media (max-width: 500px) {
+  @media (max-width: 750px) {
     cursor: default;
-    width: 180px;
   }
 `
 
 const Line = styled.div`
   border: 1px solid #9b9b9b;
-  margin: 64px auto 48px auto;
+  margin: 0 auto;
   width: 80px;
 
-  @media (max-width: 500px) {
-    margin: 40px auto 32px auto;
-    width: 64px;
+  @media (max-width: 750px) {
+    margin: 0 auto;
+    width: 48px;
   }
 `
 
@@ -33,19 +35,13 @@ const Title = styled.span`
   width: 300px;
   display: block;
   color: #545454;
-  margin: 0 auto;
+  margin: 24px auto;
   text-align: center;
   font-size: 18px;
 
-  @media (max-width: 500px) {
+  @media (max-width: 750px) {
     width: 180px;
     font-size: 14px;
-  }
-`
-
-const StyledCoolSlider = styled(CoolSlider)`
-  & > .slick-list > .slick-track {
-    min-width: 54vw;
   }
 `
 
@@ -57,17 +53,15 @@ class Items extends React.Component {
 
   render () {
     const { items, onClickImage } = this.props
-    const { userAgent } = this.props
-    const isMobile = userAgent.isMobile
 
     const settings = {
-      arrows: !isMobile,
       slidesToShow: 4,
       slidesToScroll: 1,
       responsive: [
         {
           breakpoint: 1248,
           settings: {
+            arrows: true,
             slidesToShow: 3,
             slidesToScroll: 1
           }
@@ -75,6 +69,7 @@ class Items extends React.Component {
         {
           breakpoint: 936,
           settings: {
+            arrows: true,
             slidesToShow: 2,
             slidesToScroll: 1
           }
@@ -82,6 +77,7 @@ class Items extends React.Component {
         {
           breakpoint: 624,
           settings: {
+            arrows: false,
             slidesToShow: 1.5,
             swipeToSlide: true
           }
@@ -90,7 +86,7 @@ class Items extends React.Component {
     }
 
     return (
-      <StyledCoolSlider settings={settings} arrowIconSize={52}>
+      <CoolSlider settings={settings} arrowIconSize={52}>
         {items.map((item, index) => {
           return (
             <Item key={index}>
@@ -106,9 +102,9 @@ class Items extends React.Component {
             </Item>
           )
         })}
-      </StyledCoolSlider>
+      </CoolSlider>
     )
   }
 }
 
-export default Items
+export default withAppContext(Items)

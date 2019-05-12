@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import Link from 'app/components/common/MyLink'
 import { Link as ScrollLink } from 'react-scroll/modules'
+import withAppContext from 'app/components/wrapper/withAppContext'
 
 const Footer = styled.div`
   background-color: rgba(240, 240, 240, 0.8);
@@ -102,4 +103,4 @@ SPCoolFooter.propTypes = {
   site: PropTypes.object.isRequired
 }
 
-export default SPCoolFooter
+export default withAppContext(SPCoolFooter)

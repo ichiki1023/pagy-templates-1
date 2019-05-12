@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import withAppContext from 'app/components/wrapper/withAppContext'
 
 const Section = styled.div`
   background: url(${props => props.store_front_image_url}) no-repeat center;
@@ -32,7 +33,7 @@ const Contents = styled.div`
   display: flex;
   align-items: center;
 
-  @media (max-width: 500px) {
+  @media (max-width: 750px) {
     width: 90%;
   }
 `
@@ -42,14 +43,14 @@ const TitleContents = styled.div`
   h1 {
     font-size: 48px;
 
-    @media (max-width: 500px) {
+    @media (max-width: 750px) {
       font-size: 22px;
     }
   }
   h3 {
     font-size: 24px;
     font-weight: normal;
-    @media (max-width: 500px) {
+    @media (max-width: 750px) {
       font-size: 18px;
     }
   }
@@ -79,4 +80,4 @@ Home.propTypes = {
   }).isRequired
 }
 
-export default Home
+export default withAppContext(Home)

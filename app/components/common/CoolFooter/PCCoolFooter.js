@@ -1,9 +1,9 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 import { Link as ScrollLink } from 'react-scroll/modules'
 import Link from 'app/components/common/MyLink'
 import PlanType from 'app/helpers/planType'
+import withAppContext from 'app/components/wrapper/withAppContext'
 // import LanguageIcon from '@material-ui/icons/Language'
 // import LanguageDropDown from 'app/components/common/LanguageDropDown'
 
@@ -222,8 +222,4 @@ const PCCoolFooter = props => {
   )
 }
 
-PCCoolFooter.propTypes = {
-  site: PropTypes.object.isRequired
-}
-
-export default PCCoolFooter
+export default withAppContext(PCCoolFooter)

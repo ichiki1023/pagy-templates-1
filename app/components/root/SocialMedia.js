@@ -10,7 +10,7 @@ const Section = styled.div``
 
 const StyledSectionTitle = styled(SectionTitle)`
   h1 {
-    @media (max-width: 500px) {
+    @media (max-width: 750px) {
       font-size: 40px;
     }
   }
@@ -23,7 +23,7 @@ const Contents = styled.div`
   flex-direction: column;
   justify-content: center;
 
-  @media (max-width: 500px) {
+  @media (max-width: 750px) {
     width: 90%;
   }
 `
@@ -33,7 +33,7 @@ const StyledSNSServices = styled(SNSServices)`
   width: 100%;
   display: flex;
 
-  @media (max-width: 500px) {
+  @media (max-width: 1024px) {
     flex-direction: column;
   }
 
@@ -41,12 +41,12 @@ const StyledSNSServices = styled(SNSServices)`
     width: 160px;
     margin: 0 20px;
 
-    @media (max-width: 500px) {
+    @media (max-width: 1024px) {
       margin: 20px 0;
     }
 
     a {
-      display: inline-block;
+      display: flex;
       width: 100%;
       text-decoration: none;
       color: #545454;
@@ -54,8 +54,8 @@ const StyledSNSServices = styled(SNSServices)`
     }
 
     svg {
-      width: 50px;
-      height: 50px;
+      width: 48px;
+      height: 48px;
       position: relative;
       float: left;
     }

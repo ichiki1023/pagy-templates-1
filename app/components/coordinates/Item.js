@@ -9,7 +9,7 @@ const StyledItem = styled.div`
     props.imagePosition === 'right' &&
     css`
       flex-direction: row-reverse;
-    `} @media (max-width: 500px) {
+    `} @media (max-width: 750px) {
     flex-direction: column;
     margin-bottom: 60px;
   }
@@ -21,7 +21,7 @@ const StyledDescription = styled.p`
   padding: 0 30px;
   margin-bottom: 60px;
 
-  @media (max-width: 500px) {
+  @media (max-width: 750px) {
     padding: 80px 16px 0 16px;
     margin-bottom: 0;
   }
@@ -33,7 +33,7 @@ const StyledMainImage = styled.img`
   object-fit: cover;
   border-radius: 8px;
 
-  @media (max-width: 500px) {
+  @media (max-width: 750px) {
     width: 100vw;
     height: calc((100vw * 4) / 3);
     border-radius: 0;
@@ -53,7 +53,7 @@ const StyledSubPhotoImages = styled.div`
       margin-left: 50px;
     `}
 
-  @media (max-width: 500px) {
+  @media (max-width: 750px) {
     margin: 0 auto;
     justify-content: center;
     position: absolute;
@@ -67,7 +67,7 @@ const ImageFilter = styled.p`
   margin: 0 12px;
   border-radius: 8px;
   cursor: pointer;
-  @media (max-width: 500px) {
+  @media (max-width: 750px) {
     margin: 0 6px;
   }
 `
@@ -80,7 +80,7 @@ const StyledSubPhotoImage = styled.img`
   display: block;
   opacity: ${props => (props.isSelectedImage ? '1' : '0.5')};
 
-  @media (max-width: 500px) {
+  @media (max-width: 750px) {
     width: 76px;
     height: 76px;
   }
@@ -100,7 +100,7 @@ const Bottom = styled.div`
     props.imagePosition === 'right' &&
     css`
       right: 0px;
-    `} @media (max-width: 500px) {
+    `} @media (max-width: 750px) {
     position: inherit;
   }
 `

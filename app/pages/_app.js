@@ -1,5 +1,6 @@
 import React from 'react'
 import App, { Container } from 'next/app'
+import AppContext from 'app/context/AppContext'
 import { getUserAgent } from 'app/helpers/userAgent'
 import { MuiThemeProvider } from '@material-ui/core/styles'
 import getPageContext from 'app/helpers/getPageContext'
@@ -23,6 +24,7 @@ const GlobalStyle = createGlobalStyle`
   }
   html, #__next {
     height: 100%;
+    font-size: 100%;
   }
   body {
     height: 100%;
@@ -55,9 +57,9 @@ class TemplateApp extends App {
       return {
         pageProps: {
           ...data,
-          ...pageProps,
-          userAgent
+          ...pageProps
         },
+        userAgent,
         hostName: hostName
       }
     } catch (error) {
@@ -90,7 +92,8 @@ class TemplateApp extends App {
   }
 
   render () {
-    const { Component, pageProps } = this.props
+    const { Component, pageProps, userAgent, hostName } = this.props
+    const { site, fashion } = pageProps
     const { pageContext } = this
 
     // エラー画面の表示
@@ -113,13 +116,15 @@ class TemplateApp extends App {
 
     return (
       <Container>
-        <GlobalStyle />
-        <MuiThemeProvider
-          theme={pageContext.theme}
-          sheetsManager={pageContext.sheetsManager}
-        >
-          <Component {...pageProps} />
-        </MuiThemeProvider>
+        <AppContext.Provider value={{ site, fashion, hostName, userAgent }}>
+          <GlobalStyle />
+          <MuiThemeProvider
+            theme={pageContext.theme}
+            sheetsManager={pageContext.sheetsManager}
+          >
+            <Component {...pageProps} />
+          </MuiThemeProvider>
+        </AppContext.Provider>
       </Container>
     )
   }

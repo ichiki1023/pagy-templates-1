@@ -120,7 +120,7 @@ const inputStyle = css`
     color: #d1d3cf;
   }
 
-  @media (max-width: 500px) {
+  @media (max-width: 750px) {
     width: 100%;
     min-width: auto;
     font-size: 16px;
@@ -150,7 +150,7 @@ const Label = styled.p`
       color: #f44336;
     `}
 
-  @media (max-width: 500px) {
+  @media (max-width: 750px) {
     font-size: 18px;
   }
 `
@@ -167,7 +167,7 @@ const FormControl = styled.div`
       min-width: 400px;
     `}
 
-  @media (max-width: 500px) {
+  @media (max-width: 750px) {
     width: 100%;
     min-width: auto;
   }

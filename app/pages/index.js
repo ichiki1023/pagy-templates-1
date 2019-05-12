@@ -29,7 +29,7 @@ const StyledHeader = styled(CoolHeader)`
   z-index: 1000;
   top: 0;
   height: ${headerHeight}px;
-  @media (max-width: 500px) {
+  @media (max-width: 750px) {
     height: ${spHeaderHeight}px;
   }
 `
@@ -42,7 +42,7 @@ const Page = styled.div`
 const StyledNews = styled(News)`
   padding-top: ${paddingTop}px;
   margin-top: ${marginTop}px;
-  @media (max-width: 500px) {
+  @media (max-width: 750px) {
     padding-top: ${spPaddingTop}px;
     margin-top: ${spMarginTop}px;
   }
@@ -53,7 +53,7 @@ const StyledSelection = styled(Selection)`
   z-index: 3;
   padding-top: ${paddingTop}px;
   margin-top: ${marginTop}px;
-  @media (max-width: 500px) {
+  @media (max-width: 750px) {
     padding-top: ${spPaddingTop}px;
     margin-top: ${spMarginTop}px;
   }
@@ -64,7 +64,7 @@ const StyledCoordinates = styled(Coordinates)`
   z-index: 3;
   padding-top: ${paddingTop}px;
   margin-top: ${marginTop}px;
-  @media (max-width: 500px) {
+  @media (max-width: 750px) {
     padding-top: ${spPaddingTop}px;
     margin-top: ${spMarginTop}px;
   }
@@ -73,7 +73,7 @@ const StyledCoordinates = styled(Coordinates)`
 const StyledAbout = styled(About)`
   padding-top: ${paddingTop}px;
   margin-top: ${marginTop}px;
-  @media (max-width: 500px) {
+  @media (max-width: 750px) {
     padding-top: ${spPaddingTop}px;
     margin-top: ${spMarginTop}px;
   }
@@ -82,7 +82,7 @@ const StyledAbout = styled(About)`
 const StyledSocialMedia = styled(SocialMedia)`
   padding-top: ${paddingTop}px;
   margin-top: ${marginTop}px;
-  @media (max-width: 500px) {
+  @media (max-width: 750px) {
     padding-top: ${spPaddingTop}px;
     margin-top: ${spMarginTop}px;
   }
@@ -91,7 +91,7 @@ const StyledSocialMedia = styled(SocialMedia)`
 const StyledContact = styled(Contact)`
   padding-top: ${paddingTop - headerHeight}px;
   margin-top: ${marginTop + headerHeight}px;
-  @media (max-width: 500px) {
+  @media (max-width: 750px) {
     padding-top: ${spPaddingTop}px;
     margin-top: ${spMarginTop}px;
   }
@@ -100,7 +100,7 @@ const StyledContact = styled(Contact)`
 const FooterWrapper = styled.div`
   padding-top: ${paddingTop}px;
   margin-top: ${marginTop}px;
-  @media (max-width: 500px) {
+  @media (max-width: 750px) {
     padding-top: ${spPaddingTop}px;
     margin-top: ${spMarginTop}px;
   }
@@ -156,7 +156,7 @@ class Index extends React.Component {
   }
 
   render () {
-    const { site, fashion, userAgent } = this.props
+    const { site, fashion } = this.props
 
     const services =
       site.facebook || site.twitter || site.instagram || site.pinterest
@@ -171,19 +171,13 @@ class Index extends React.Component {
     return (
       <Page>
         <Wrapper>
-          <StyledHeader
-            userAgent={userAgent}
-            site={site}
-            fashion={fashion}
-            services={services}
-            pageName={'home'}
-          />
-          <Home site={site} />
+          <StyledHeader services={services} pageName={'home'} />
+          <Home />
           {site.articles && site.articles.length !== 0 ? (
             <StyledNews containerId={'news'} articles={site.articles} />
           ) : null}
           {fashion.items && fashion.items.length !== 0 ? (
-            <StyledSelection items={fashion.items} userAgent={userAgent} />
+            <StyledSelection items={fashion.items} />
           ) : null}
           {fashion.coordinates && fashion.coordinates.length !== 0 ? (
             <StyledCoordinates
@@ -191,18 +185,13 @@ class Index extends React.Component {
               marginTop={paddingTop}
             />
           ) : null}
-          <StyledAbout site={site} />
-          {services ? <StyledSocialMedia services={services} /> : null}
+          <StyledAbout />
+          {services && <StyledSocialMedia services={services} />}
         </Wrapper>
-        {site.plan.id !== PlanType.trial && <StyledContact site={site} />}
+        {site.plan.id !== PlanType.trial && <StyledContact />}
         {services ? <StyledSNSNavigation services={services} /> : null}
         <FooterWrapper>
-          <StyledFooter
-            userAgent={userAgent}
-            site={site}
-            fashion={fashion}
-            pageName={'home'}
-          />
+          <StyledFooter pageName={'home'} />
         </FooterWrapper>
       </Page>
     )

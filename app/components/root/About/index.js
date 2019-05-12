@@ -1,10 +1,10 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import SectionTitle from 'app/components/common/SectionTitle'
 import GoogleMap from 'app/components/GoogleMap'
 import AboutImages from './AboutImages'
 import BusinessHour from './BusinessHour'
+import withAppContext from 'app/components/wrapper/withAppContext'
 
 const Section = styled.div`
   position: relative;
@@ -18,7 +18,7 @@ const Contents = styled.div`
   justify-content: center;
   position: relative;
 
-  @media (max-width: 500px) {
+  @media (max-width: 750px) {
     width: 100%;
   }
 `
@@ -30,7 +30,7 @@ const StyledTexts = styled.div`
 
 const StyledTable = styled.table`
   margin: 50px 0;
-  @media (max-width: 500px) {
+  @media (max-width: 750px) {
     width: 90%;
     margin: 30px auto;
   }
@@ -41,7 +41,7 @@ const StyledTable = styled.table`
     font-weight: normal;
     padding-bottom: 1.5em;
 
-    @media (max-width: 500px) {
+    @media (max-width: 750px) {
       display: inline-block;
       font-size: 14px;
       padding: 4px 0;
@@ -53,7 +53,7 @@ const StyledTable = styled.table`
     font-size: 18px;
     padding-bottom: 1.5em;
 
-    @media (max-width: 500px) {
+    @media (max-width: 750px) {
       display: block;
       font-size: 16px;
       padding: 0;
@@ -65,7 +65,7 @@ const StyledTable = styled.table`
 const StyledDescription = styled.div`
   color: #545454;
   margin-top: 40px;
-  @media (max-width: 500px) {
+  @media (max-width: 750px) {
     margin-top: 24px;
   }
 `
@@ -79,7 +79,7 @@ const StyledAboutImages = styled(AboutImages)`
 const StyledGoogleMap = styled(GoogleMap)`
   height: calc(54vw * (724 / 1024));
 
-  @media (max-width: 500px) {
+  @media (max-width: 750px) {
     width: 100%;
     height: 375px;
   }
@@ -104,7 +104,7 @@ const About = props => {
   const {
     site,
     site: { address, holiday },
-    ...custom
+    className
   } = props
 
   const holidays = Object.keys(holiday).filter(key => holiday[key])
@@ -114,7 +114,7 @@ const About = props => {
       : 'なし'
 
   return (
-    <Section name={'about'} {...custom}>
+    <Section name={'about'} className={className}>
       <Contents>
         <StyledTexts>
           <SectionTitle
@@ -189,54 +189,4 @@ const About = props => {
   )
 }
 
-About.propTypes = {
-  site: PropTypes.shape({
-    description: PropTypes.string.isRequired,
-    open: PropTypes.string,
-    contact_email: PropTypes.object,
-    contact_phone: PropTypes.string,
-    photos: PropTypes.array,
-    holiday: PropTypes.shape({
-      mon: PropTypes.bool,
-      tue: PropTypes.bool,
-      wed: PropTypes.bool,
-      thu: PropTypes.bool,
-      fri: PropTypes.bool,
-      sat: PropTypes.bool,
-      sun: PropTypes.bool,
-      holiday: PropTypes.bool
-    }),
-    business_hour: PropTypes.shape({
-      mon_start: PropTypes.string,
-      mon_end: PropTypes.string,
-      tue_start: PropTypes.string,
-      tue_end: PropTypes.string,
-      wed_start: PropTypes.string,
-      wed_end: PropTypes.string,
-      thu_start: PropTypes.string,
-      thu_end: PropTypes.string,
-      fri_start: PropTypes.string,
-      fri_end: PropTypes.string,
-      sat_start: PropTypes.string,
-      sat_end: PropTypes.string,
-      sun_start: PropTypes.string,
-      sun_end: PropTypes.string,
-      hol_start: PropTypes.string,
-      hol_end: PropTypes.string
-    }),
-    address: PropTypes.shape({
-      postcode: PropTypes.string,
-      latitude: PropTypes.string,
-      longitude: PropTypes.string,
-      country: PropTypes.string,
-      station: PropTypes.string,
-      address1: PropTypes.string,
-      address2: PropTypes.string,
-      address3: PropTypes.string,
-      address4: PropTypes.string,
-      address5: PropTypes.string
-    })
-  }).isRequired
-}
-
-export default About
+export default withAppContext(About)

@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import SNSServices, { BackgroundIcon } from './SNSServices'
+import IsSp from 'app/components/IsSp'
 
 const Contents = styled.div`
   position: fixed;
@@ -14,10 +15,6 @@ const Contents = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  @media (max-width: 500px) {
-    /* SP時はSNSNavを非表示 */
-    display: none;
-  }
 `
 
 const StyledSNSServices = styled(SNSServices)`
@@ -29,8 +26,6 @@ const StyledSNSServices = styled(SNSServices)`
     background-color: rgba(84, 84, 84, 0.6);
     border-radius: 50%;
     margin-bottom: 24px;
-    min-width: 48px;
-    min-height: 48px;
   }
 `
 
@@ -50,7 +45,9 @@ const StyledText = styled.p`
 `
 
 const Line = styled.div`
-  height: 100px;
+  height: 6vw;
+  min-height: 50px;
+  max-height: 120px;
   width: 2px;
   background-color: #545454;
 `
@@ -59,32 +56,38 @@ const FirstLine = styled(Line)`
   margin: 24px 0;
 `
 
-export default class Navigation extends React.Component {
-  static propTypes = {
-    services: PropTypes.shape({
-      twitter: PropTypes.string,
-      facebook: PropTypes.string,
-      instagram: PropTypes.string,
-      pinterest: PropTypes.string
-    }).isRequired
-  }
+const Navigation = props => {
+  const { services, className } = props
 
-  render () {
-    const { services, ...props } = this.props
-
-    return (
-      <Contents {...props}>
-        <WrapperText>
-          <StyledText>FOLLOW US</StyledText>
-        </WrapperText>
-        <FirstLine />
-        <StyledSNSServices
-          services={services}
-          iconSize={48}
-          iconColor={'white'}
-        />
-        <Line />
-      </Contents>
-    )
-  }
+  return (
+    <IsSp maxWidth={1024}>
+      {matches =>
+        !matches && (
+          <Contents className={className}>
+            <WrapperText>
+              <StyledText>FOLLOW US</StyledText>
+            </WrapperText>
+            <FirstLine />
+            <StyledSNSServices
+              services={services}
+              iconSize={48}
+              iconColor={'white'}
+            />
+            <Line />
+          </Contents>
+        )
+      }
+    </IsSp>
+  )
 }
+
+Navigation.propTypes = {
+  services: PropTypes.shape({
+    twitter: PropTypes.string,
+    facebook: PropTypes.string,
+    instagram: PropTypes.string,
+    pinterest: PropTypes.string
+  }).isRequired
+}
+
+export default Navigation

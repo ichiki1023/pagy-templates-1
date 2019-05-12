@@ -18,7 +18,7 @@ const StyledHeader = styled(CoolHeader)`
 
 const FooterWrapper = styled.div`
   margin-top: 224px;
-  @media (max-width: 500px) {
+  @media (max-width: 750px) {
     margin-top: 180px;
   }
 `
@@ -37,13 +37,13 @@ const Contents = styled.div`
   width: 54%;
   margin: 100px auto 0 auto;
 
-  @media (max-width: 500px) {
+  @media (max-width: 750px) {
     width: 100%;
   }
 `
 
 const StyledSectionTitle = styled(SectionTitle)`
-  @media (max-width: 500px) {
+  @media (max-width: 750px) {
     width: 90%;
     margin: 0 auto;
 
@@ -75,7 +75,7 @@ const StyledCoordinateItems = styled(Items)`
 //   align-items: center;
 //   justify-content: center;
 //
-//   @media (max-width: 500px) {
+//   @media (max-width: 750px) {
 //     height: 48px;
 //     font-size: 16px;
 //   }
@@ -90,9 +90,7 @@ class Coordinates extends React.Component {
   render () {
     const {
       site,
-      fashion,
-      fashion: { coordinates },
-      userAgent
+      fashion: { coordinates }
     } = this.props
 
     const services =
@@ -109,13 +107,7 @@ class Coordinates extends React.Component {
 
     return (
       <Page>
-        <StyledHeader
-          userAgent={userAgent}
-          site={site}
-          fashion={fashion}
-          services={services}
-          pageName={'coordinates'}
-        />
+        <StyledHeader services={services} pageName={'coordinates'} />
         {services ? <StyledSNSNavigation services={services} /> : null}
         <Contents>
           <StyledSectionTitle
@@ -135,9 +127,6 @@ class Coordinates extends React.Component {
         </Contents>
         <FooterWrapper>
           <StyledFooter
-            userAgent={userAgent}
-            site={site}
-            fashion={fashion}
             pageName={'coordinates'}
             isEmptyCoordinates={isEmptyCoordinates}
           />

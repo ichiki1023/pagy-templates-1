@@ -36,7 +36,7 @@ const StyledLink = styled.a`
   align-items: center;
   cursor: pointer;
 
-  @media (max-width: 500px) {
+  @media (max-width: 750px) {
     height: 48px;
   }
 
