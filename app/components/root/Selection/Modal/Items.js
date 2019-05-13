@@ -32,7 +32,7 @@ const ModalItems = props => {
   }
 
   return (
-    <CoolSlider settings={settings} arrowIconSize={32}>
+    <CoolSlider settings={settings} isModal arrowIconSize={32}>
       {props.items.map((item, index) => {
         return (
           <Item key={index}>

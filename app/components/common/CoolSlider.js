@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
@@ -12,8 +12,12 @@ const ArrowForward = styled.div`
   width: auto;
   height: auto;
   cursor: pointer;
-  top: auto;
-  bottom: 10%;
+  ${props =>
+    !props.isModal &&
+    css`
+      top: auto;
+      bottom: 10%;
+    `}
 
   &::before {
     font-size: 0;
@@ -24,8 +28,13 @@ const ArrowBack = styled.div`
   width: auto;
   height: auto;
   cursor: pointer;
-  top: auto;
-  bottom: 10%;
+
+  ${props =>
+    !props.isModal &&
+    css`
+      top: auto;
+      bottom: 10%;
+    `}
 
   &::before {
     font-size: 0;
@@ -43,7 +52,7 @@ const StyledArrowForwardIcon = styled(ArrowForwardIos)`
 
 const NextArrow = function (props) {
   return (
-    <ArrowForward className='slick-next'>
+    <ArrowForward className='slick-next' isModal={props.isModal}>
       <StyledArrowForwardIcon
         style={{ fontSize: props.arrowIconSize }}
         slides={props.slidesToShow}
@@ -57,7 +66,7 @@ const NextArrow = function (props) {
 
 const PrevArrow = function (props) {
   return (
-    <ArrowBack className='slick-prev'>
+    <ArrowBack className='slick-prev' isModal={props.isModal}>
       <StyledArrowBackIcon
         style={{ fontSize: props.arrowIconSize }}
         current={props.currentSlide}
@@ -89,18 +98,20 @@ class CoolSlider extends React.Component {
       prevArrow: <PrevArrow {...this.props} />,
       beforeChange: (oldIndex, newIndex) => {
         const responsive = this.props.settings.responsive
-        const result = responsive.filter(
-          res => res.breakpoint === this.sliderRef.state.breakpoint
-        )
-        const setting =
-          result[0] && result[0].settings
-            ? result[0].settings
-            : this.props.settings
-        this.setState({
-          currentSlide: newIndex,
-          slidesToScroll: setting.slidesToScroll,
-          slidesToShow: setting.slidesToShow
-        })
+        if (responsive) {
+          const result = responsive.filter(
+            res => res.breakpoint === this.sliderRef.state.breakpoint
+          )
+          const setting =
+            result[0] && result[0].settings
+              ? result[0].settings
+              : this.props.settings
+          this.setState({
+            currentSlide: newIndex,
+            slidesToScroll: setting.slidesToScroll,
+            slidesToShow: setting.slidesToShow
+          })
+        }
       },
       ...this.props.settings
     }

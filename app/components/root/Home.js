@@ -63,8 +63,8 @@ const Home = props => {
       <Page>
         <Contents>
           <TitleContents>
-            <h1>{site.name}</h1>
-            <h3>{site.catch_phrase}</h3>
+            <h3>{site.name}</h3>
+            <span>{site.catch_phrase}</span>
           </TitleContents>
         </Contents>
       </Page>
