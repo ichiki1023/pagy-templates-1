@@ -40,14 +40,14 @@ const Contents = styled.div`
 
 const TitleContents = styled.div`
   color: #ffffff;
-  h1 {
+  h3 {
     font-size: 48px;
 
     @media (max-width: 750px) {
       font-size: 22px;
     }
   }
-  h3 {
+  span {
     font-size: 24px;
     font-weight: normal;
     @media (max-width: 750px) {

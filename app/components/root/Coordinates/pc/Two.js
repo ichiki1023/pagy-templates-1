@@ -37,11 +37,11 @@ const TextWrapper = styled.div`
 `
 
 const StyledSectionTitle = styled(SectionTitle)`
-  h1 {
+  h3 {
     color: rgba(240, 240, 240, 0.5);
   }
 
-  h3 {
+  span {
     color: #ffffff;
     left: 50%;
     transform: translateY(-50%) translateX(-50%);

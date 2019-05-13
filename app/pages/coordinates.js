@@ -47,7 +47,7 @@ const StyledSectionTitle = styled(SectionTitle)`
     width: 90%;
     margin: 0 auto;
 
-    h1 {
+    h3 {
       font-size: 42px;
     }
   }

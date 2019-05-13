@@ -9,7 +9,7 @@ import SNSServices, {
 const Section = styled.div``
 
 const StyledSectionTitle = styled(SectionTitle)`
-  h1 {
+  h3 {
     @media (max-width: 750px) {
       font-size: 40px;
     }
