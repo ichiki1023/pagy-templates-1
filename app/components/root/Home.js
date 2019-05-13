@@ -40,14 +40,14 @@ const Contents = styled.div`
 
 const TitleContents = styled.div`
   color: #ffffff;
-  h1 {
+  h3 {
     font-size: 48px;
 
     @media (max-width: 750px) {
       font-size: 22px;
     }
   }
-  h3 {
+  span {
     font-size: 24px;
     font-weight: normal;
     @media (max-width: 750px) {
@@ -63,8 +63,8 @@ const Home = props => {
       <Page>
         <Contents>
           <TitleContents>
-            <h1>{site.name}</h1>
-            <h3>{site.catch_phrase}</h3>
+            <h3>{site.name}</h3>
+            <span>{site.catch_phrase}</span>
           </TitleContents>
         </Contents>
       </Page>

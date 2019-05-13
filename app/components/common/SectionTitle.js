@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 const StyledSectionTitle = styled.div`
   position: relative;
-  h1 {
+  h3 {
     color: #f0f0f0;
     font-size: 54px;
     margin: 0;
@@ -13,7 +13,7 @@ const StyledSectionTitle = styled.div`
     }
   }
 
-  h3 {
+  span {
     color: #545454;
     font-size: 24px;
     font-weight: normal;
@@ -38,8 +38,8 @@ export default class SectionTitle extends React.Component {
     const { backgroundText, titleText, ...props } = this.props
     return (
       <StyledSectionTitle {...props}>
-        <h1>{backgroundText}</h1>
-        <h3>{titleText}</h3>
+        <h3>{backgroundText}</h3>
+        <span>{titleText}</span>
       </StyledSectionTitle>
     )
   }

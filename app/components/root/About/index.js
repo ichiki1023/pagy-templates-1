@@ -10,6 +10,13 @@ const Section = styled.div`
   position: relative;
 `
 
+const StyledSectionTitle = styled(SectionTitle)`
+  @media (max-width: 750px) {
+    width: 90%;
+    margin: 0 auto 48px auto;
+  }
+`
+
 const Contents = styled.div`
   width: 54%;
   margin: 0 auto;
@@ -66,7 +73,8 @@ const StyledDescription = styled.div`
   color: #545454;
   margin-top: 40px;
   @media (max-width: 750px) {
-    margin-top: 24px;
+    width: 90%;
+    margin: 24px auto auto;
   }
 `
 
@@ -117,7 +125,7 @@ const About = props => {
     <Section name={'about'} className={className}>
       <Contents>
         <StyledTexts>
-          <SectionTitle
+          <StyledSectionTitle
             backgroundText={'ABOUT US'}
             titleText={'私たちについて'}
           />
