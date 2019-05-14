@@ -2,7 +2,7 @@ const staticPath = `${process.env.PROXY_PATH}/static`
 
 export default {
   site: {
-    name: 'Leimo SELECT SHOP Leimo SELECT SHOP',
+    name: 'Leimo SELECT SHOP',
     catch_phrase: 'お客様に一番伝えたいメッセージを記載してください。',
     description:
       'お店の基本情報を記載してください。お店の基本情報を記載してください。お店の基本情報を記載してください。お店の基本情報を記載してください。お店の基本情報を記載してください。お店の基本情報を記載してください。 お店の基本情報を記載してください。お店の基本情報を記載してください。お店の基本情報を記載してください。',
@@ -37,24 +37,24 @@ export default {
     },
     store_front_image_url: `${staticPath}/images/store/shutterstock_46325692.jpg`,
     interior_image_url: `${staticPath}/images/store/shutterstock_773749615.jpg`,
-    twitter: 'ichiki_sato',
-    instagram: 'ichiki1023',
-    facebook: 'sato.ichiki',
-    pinterest: 'itennis0210',
+    twitter: '#',
+    instagram: '#',
+    facebook: '#',
+    pinterest: '#',
     contact_email: {
       id: 1,
       email: 'pagy@example.com'
     },
-    contact_phone: '03-1234-5678',
+    contact_phone: '000-0000-0000',
     address: {
-      postcode: '1006690',
+      postcode: '1000005',
       latitude: '35.681167',
       longitude: '139.767052',
-      country: 'Japan',
+      country: 'JP',
       station: '東京駅',
-      address1: '千葉県浦安市入船 4-5-9 シエラフォートA',
-      address2: '',
-      address3: '',
+      address1: '東京都',
+      address2: '千代田区',
+      address3: '丸の内1丁目',
       address4: '',
       address5: ''
     },
