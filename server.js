@@ -38,8 +38,9 @@ app.prepare().then(() => {
   // prefix middleware
   server.use((req, res, next) => {
     // prefixの指定がある場合はreplaceする
-    if (process.env.PROXY_PATH) {
-      req.url = req.url.replace(`${process.env.PROXY_PATH}`, '')
+    if (proxyPath) {
+      app.setAssetPrefix(proxyPath)
+      req.url = req.url.replace(proxyPath, '')
     }
     // ルートか判定
     if (!req.url) {
