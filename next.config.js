@@ -6,7 +6,7 @@ module.exports = withCSS({
   distDir: local ? '../.next' : '../build',
   env: {
     WEB_HOST: process.env.WEB_HOST,
-    API_HOST: process.env.API_HOST,
+    CLIENT_API_URL: process.env.CLIENT_API_URL,
     PROXY_PATH: process.env.PROXY_PATH || ''
   },
   assetPrefix: process.env.PROXY_PATH || '',

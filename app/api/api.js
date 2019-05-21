@@ -1,12 +1,11 @@
 import axios from 'axios'
 
 const isServer = typeof window === 'undefined'
-const clientApiHost = process.env.API_HOST
-const serverApiHost = process.env.SERVER_API_HOST
-const protocol = process.env.ENV !== 'production' ? 'http' : 'https'
-const apiHost = isServer ? serverApiHost : clientApiHost
+const clientApiUrl = process.env.CLIENT_API_URL
+const serverApiUrl = process.env.SERVER_API_URL
+const apiUrl = isServer ? serverApiUrl : clientApiUrl
 
-axios.defaults.baseURL = `${protocol}://${apiHost}`
+axios.defaults.baseURL = apiUrl
 axios.defaults.timeout = 5000
 
 // Add a request interceptor
