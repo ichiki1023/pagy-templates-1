@@ -18,6 +18,10 @@ RUN mkdir /app && \
 FROM node:10.15.0-alpine
 
 WORKDIR /app
+RUN apk add --update --no-cache tzdata && \
+  cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime && \
+  echo "Asia/Tokyo" > /etc/timezone && \
+  apk del tzdata
 COPY --from=build-stage /app /app
 EXPOSE 5000
 CMD npm start
