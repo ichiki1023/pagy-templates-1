@@ -4,6 +4,7 @@ import { Link as ScrollLink } from 'react-scroll/modules'
 import Link from 'app/components/common/MyLink'
 import PlanType from 'app/helpers/planType'
 import withAppContext from 'app/components/wrapper/withAppContext'
+import moment from 'moment'
 // import LanguageIcon from '@material-ui/icons/Language'
 // import LanguageDropDown from 'app/components/common/LanguageDropDown'
 
@@ -75,10 +76,6 @@ const CopyRights = styled.ul`
   }
 `
 
-const Line = styled.li`
-  margin: 0 8px;
-`
-
 // const LanguageFooterList = styled(FooterList)`
 //   padding: 12px;
 //   display: flex;
@@ -100,6 +97,7 @@ const PCCoolFooter = props => {
   //   { value: 'en', label: 'English' }
   // ]
   const isHome = pageName === 'home'
+  const createdYear = moment(site.created_at).year()
 
   return (
     <Footer {...otherProps}>
@@ -212,10 +210,9 @@ const PCCoolFooter = props => {
           </LanguageFooterList> */}
         </FooterLists>
         <CopyRights>
-          <li>プライバシーポリシー</li>
-          <Line>|</Line>
-          <li>利用規約</li>
-          <li>Copyright © 2018 Limo SELECT SHOP. All rights reserved.</li>
+          <li>
+            Copyright © {createdYear} {site.name}. All rights reserved.
+          </li>
         </CopyRights>
       </Contents>
     </Footer>
