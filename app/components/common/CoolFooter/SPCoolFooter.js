@@ -1,14 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import Link from 'app/components/common/MyLink'
 import { Link as ScrollLink } from 'react-scroll/modules'
 import withAppContext from 'app/components/wrapper/withAppContext'
+import moment from 'moment'
 
 const Footer = styled.div`
   background-color: rgba(240, 240, 240, 0.8);
   width: 100%;
-  height: 192px;
+  height: 130px;
   display: flex;
   flex-direction: column;
 `
@@ -41,33 +41,17 @@ const FooterLists = styled.ul`
   }
 `
 
-const CopyRights = styled.ul`
-  color: #9b9b9b;
-  width: 90%;
-  margin: 12px auto 30px auto;
-  display: flex;
-  list-style: none;
-  font-size: 12px;
-`
-
-const Line = styled.li`
-  margin: 0 8px;
-`
-
-const StyledCopyRightText = styled.span`
-  font-size: 12px;
-  padding-bottom: 12px;
-  color: #9b9b9b;
+const StyledCopyRightText = styled.p`
   text-align: center;
-`
-
-const StyledLinkText = styled.a`
-  text-decoration: none;
-  cursor: pointer;
+  font-size: 12px;
+  padding: 24px 0;
+  box-sizing: border-box;
+  color: #9b9b9b;
 `
 
 const SPCoolFooter = props => {
   const { site, ...otherProps } = props
+  const createdYear = moment(site.created_at).year()
 
   return (
     <Footer {...otherProps}>
@@ -78,22 +62,8 @@ const SPCoolFooter = props => {
           </ScrollLink>
         </FooterList>
       </FooterLists>
-      <CopyRights>
-        <li>
-          <Link href={'#'}>
-            <StyledLinkText>プライバシーポリシー</StyledLinkText>
-          </Link>
-        </li>
-        <Line>|</Line>
-        <li>
-          <Link href={'#'}>
-            <StyledLinkText>利用規約</StyledLinkText>
-          </Link>
-        </li>
-      </CopyRights>
       <StyledCopyRightText>
-        Copyright © 2018 Limo SELECT SHOP. <br />
-        All rights reserved.
+        Copyright © {createdYear} {site.name}. All rights reserved.
       </StyledCopyRightText>
     </Footer>
   )
