@@ -58,6 +58,8 @@ export default {
       address4: '',
       address5: ''
     },
+    created_at: '2018-12-03 13:07:23',
+    updated_at: '2018-12-04 13:07:23',
     plan: {
       id: null
     },
