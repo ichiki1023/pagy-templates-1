@@ -169,6 +169,12 @@ const About = props => {
                 </td>
               </tr>
             ) : null}
+            {address && address.station ? (
+              <tr>
+                <th>最寄り駅</th>
+                <td>{address.station}</td>
+              </tr>
+            ) : null}
             {site.contact_phone ? (
               <tr>
                 <th>電話</th>
