@@ -68,7 +68,7 @@ class TemplateApp extends App {
       return {
         pageProps: {
           ...pageProps,
-          statusCode: 500
+          statusCode: error.statusCode || 500
         }
       }
     }
