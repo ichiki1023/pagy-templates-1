@@ -76,7 +76,7 @@ const SNSServices = props => {
     <div className={className}>
       {formattedServices.map(service => {
         return (
-          <BackgroundIcon key={service.id} iconSize={iconSize}>
+          <BackgroundIcon key={service.iconName} iconSize={iconSize}>
             <a href={`${service.url}`} target={'_blank'}>
               <StyledIcon name={service.iconName} color={service.iconColor} />
               {hasText ? <p>{service.name}</p> : null}

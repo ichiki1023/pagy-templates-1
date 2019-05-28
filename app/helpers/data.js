@@ -2,6 +2,8 @@ import SiteApi from 'app/api/SiteApi'
 import FashionApi from 'app/api/FashionApi'
 import SitePhotosApi from 'app/api/SitePhotosApi'
 import SiteArticlesApi from 'app/api/SiteArticlesApi'
+import FashionItemsApi from 'app/api/FashionItemsApi'
+import FashionCoordinatesApi from 'app/api/FashionCoordinatesApi'
 import defaultData from 'app/data/default'
 import mapper from 'app/helpers/mapper'
 import validate from 'app/helpers/validate'
@@ -43,9 +45,17 @@ export async function getData (ctx, hostName) {
   // 登録済みのサイト表示
   if (process.env.WEB_HOST !== hostName) {
     const site = await SiteApi.getByDomain({ domain: hostName })
-    const photos = await SitePhotosApi.get({ siteId: site.id })
-    const articles = await SiteArticlesApi.get({ siteId: site.id })
     const fashion = await FashionApi.getBySiteId({ siteId: site.id })
+
+    // サイトとファッションAPI以外は並列で処理させる
+    const apiResults = await Promise.all([
+      SitePhotosApi.get({ siteId: site.id }),
+      SiteArticlesApi.get({ siteId: site.id }),
+      FashionItemsApi.get({ fashionId: fashion.id }),
+      FashionCoordinatesApi.get({ fashionId: fashion.id })
+    ])
+
+    const [photos, articles, items, coordinates] = apiResults
     const apiData = mapper({
       site: {
         ...site,
@@ -54,8 +64,8 @@ export async function getData (ctx, hostName) {
       },
       fashion: {
         id: fashion.id,
-        items: fashion['fashion_items'],
-        coordinates: fashion['fashion_coordinates']
+        items: items,
+        coordinates: coordinates
       }
     })
     return {
