@@ -7,6 +7,7 @@ import getPageContext from 'app/helpers/getPageContext'
 import { createGlobalStyle } from 'styled-components'
 import { getData } from 'app/helpers/data'
 import Error from 'next/error'
+import Head from 'next/head'
 
 // next.jsのバグ。_app.jsでcssを読み込まないとcssをimportしている画面へ遷移できない
 // https://spectrum.chat/next-js/general/bounty-for-issues~2183fc55-236d-42cb-92b9-3ab10acc6303?m=MTUzODU2NDg2ODA2Mg==
@@ -115,8 +116,16 @@ class TemplateApp extends App {
       )
     }
 
+    const title =
+      pageProps && pageProps.title
+        ? `${pageProps.title} | ${site.name}`
+        : site.name
+
     return (
       <Container>
+        <Head>
+          <title>{title}</title>
+        </Head>
         <AppContext.Provider value={{ site, fashion, hostName, userAgent }}>
           <GlobalStyle />
           <MuiThemeProvider

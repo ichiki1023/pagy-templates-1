@@ -136,4 +136,8 @@ class Coordinates extends React.Component {
   }
 }
 
+Coordinates.getInitialProps = () => {
+  return { title: 'COORDINATES' }
+}
+
 export default Coordinates
