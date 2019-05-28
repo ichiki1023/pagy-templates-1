@@ -5,8 +5,8 @@ function nameValidate (value) {
   }
 
   // 128文字以下
-  if (value.length > 128) {
-    return ErrorMessages.maxLength(128)
+  if (value.length > 80) {
+    return ErrorMessages.maxLength(80)
   }
   return null
 }
@@ -31,8 +31,8 @@ function contentValidate (value) {
   }
 
   // 1000文字以下
-  if (value.length > 1000) {
-    return ErrorMessages.maxLength(1000)
+  if (value.length > 1600) {
+    return ErrorMessages.maxLength(1600)
   }
   return null
 }
