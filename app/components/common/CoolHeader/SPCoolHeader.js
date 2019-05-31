@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link as ScrollLink } from 'react-scroll'
+import Link from 'app/components/common/MyLink'
 import MenuIcon from '@material-ui/icons/Menu'
 import CloseIcon from '@material-ui/icons/Close'
 import Drawer from '@material-ui/core/Drawer'
@@ -124,7 +125,7 @@ class SPCoolHeader extends React.Component {
   }
 
   render () {
-    const { site, fashion, services, ...props } = this.props
+    const { site, fashion, pageName, services, ...props } = this.props
     const { articles = [] } = site
     const { items = [], coordinates = [] } = fashion
     const scrollDuration = 500
@@ -132,6 +133,7 @@ class SPCoolHeader extends React.Component {
     //   { value: 'ja', label: 'Japanese' },
     //   { value: 'en', label: 'English' }
     // ]
+    const isHome = pageName === 'home'
 
     return (
       <Header {...props}>
@@ -156,69 +158,134 @@ class SPCoolHeader extends React.Component {
             <Close onClick={this.handleCloseMenu} />
             <MenuList>
               <FirstSectionTitle>MENU</FirstSectionTitle>
-              <ScrollLink
-                to={'home'}
-                offset={scrollOffset}
-                smooth
-                duration={scrollDuration}
-              >
-                <MenuTitle>HOME</MenuTitle>
-              </ScrollLink>
-              {/* News */}
-              {articles && articles.length !== 0 ? (
+              {isHome ? (
                 <ScrollLink
-                  to={'news'}
+                  to={'home'}
                   offset={scrollOffset}
                   smooth
                   duration={scrollDuration}
                 >
-                  <MenuTitle>NEWS</MenuTitle>
+                  <MenuTitle>HOME</MenuTitle>
                 </ScrollLink>
+              ) : (
+                <Link href={'/'}>
+                  <MenuTitle>HOME</MenuTitle>
+                </Link>
+              )}
+              {/* News */}
+              {articles && articles.length !== 0 ? (
+                isHome ? (
+                  <ScrollLink
+                    to={'news'}
+                    offset={scrollOffset}
+                    smooth
+                    spy
+                    hashSpy
+                    duration={scrollDuration}
+                  >
+                    <MenuTitle>NEWS</MenuTitle>
+                  </ScrollLink>
+                ) : (
+                  <Link href={'/#news'}>
+                    <MenuTitle>NEWS</MenuTitle>
+                  </Link>
+                )
               ) : null}
               {/* Selection */}
               {items && items.length !== 0 ? (
-                <ScrollLink
-                  to={'selection'}
-                  offset={scrollOffset}
-                  smooth
-                  duration={scrollDuration}
-                >
-                  <MenuTitle>SELECTION</MenuTitle>
-                </ScrollLink>
+                isHome ? (
+                  <ScrollLink
+                    to={'selection'}
+                    offset={scrollOffset}
+                    smooth
+                    spy
+                    hashSpy
+                    duration={scrollDuration}
+                  >
+                    <MenuTitle>SELECTION</MenuTitle>
+                  </ScrollLink>
+                ) : (
+                  <Link href={'/#selection'}>
+                    <MenuTitle>SELECTION</MenuTitle>
+                  </Link>
+                )
               ) : null}
               {/* Coordinates */}
               {coordinates && coordinates.length !== 0 ? (
-                <ScrollLink to={'coordinates'} smooth duration={scrollDuration}>
+                <Link href={'/coordinates'}>
                   <MenuTitle>COORDINATES</MenuTitle>
-                </ScrollLink>
+                </Link>
               ) : null}
-              <ScrollLink
-                to={'about'}
-                smooth
-                offset={scrollOffset}
-                duration={scrollDuration}
-              >
-                <MenuTitle>ABOUT</MenuTitle>
-              </ScrollLink>
-              <ChildMenuTitle>
-                <ScrollLink to={'about'} smooth duration={scrollDuration}>
-                  <MenuTitle>− Introduce</MenuTitle>
-                </ScrollLink>
-                <ScrollLink to={'map'} smooth duration={scrollDuration}>
-                  <MenuTitle>− Access</MenuTitle>
-                </ScrollLink>
-              </ChildMenuTitle>
-              {/* Contact */}
-              {site.plan.id !== PlanType.trial && (
+              {/* About */}
+              {isHome ? (
                 <ScrollLink
-                  to={'contact'}
+                  to={'about'}
                   offset={scrollOffset}
                   smooth
+                  spy
+                  hashSpy
                   duration={scrollDuration}
                 >
-                  <MenuTitle>CONTACT</MenuTitle>
+                  <MenuTitle>ABOUT</MenuTitle>
                 </ScrollLink>
+              ) : (
+                <Link href={'/#about'}>
+                  <MenuTitle>ABOUT</MenuTitle>
+                </Link>
               )}
+
+              <ChildMenuTitle>
+                {isHome ? (
+                  <ScrollLink
+                    to={'about'}
+                    offset={scrollOffset}
+                    smooth
+                    spy
+                    hashSpy
+                    duration={scrollDuration}
+                  >
+                    <MenuTitle>− Introduce</MenuTitle>
+                  </ScrollLink>
+                ) : (
+                  <Link href={'/#about'}>
+                    <MenuTitle>− Introduce</MenuTitle>
+                  </Link>
+                )}
+                {isHome ? (
+                  <ScrollLink
+                    to={'map'}
+                    offset={scrollOffset}
+                    smooth
+                    spy
+                    hashSpy
+                    duration={scrollDuration}
+                  >
+                    <MenuTitle>− Access</MenuTitle>
+                  </ScrollLink>
+                ) : (
+                  <Link href={'/#map'}>
+                    <MenuTitle>− Access</MenuTitle>
+                  </Link>
+                )}
+              </ChildMenuTitle>
+              {/* Contact */}
+              {site.plan.id !== PlanType.trial &&
+                (isHome ? (
+                  <ScrollLink
+                    to={'contact'}
+                    offset={scrollOffset}
+                    smooth
+                    spy
+                    hashSpy
+                    duration={scrollDuration}
+                  >
+                    <MenuTitle>CONTACT</MenuTitle>
+                  </ScrollLink>
+                ) : (
+                  <Link href={'/#contact'}>
+                    <MenuTitle>CONTACT</MenuTitle>
+                  </Link>
+                ))}
               {/* TODO: 多言語対応が実装されるまで非表示にする */}
               {/* <SectionTitle>LANGUAGE</SectionTitle>
               <LanguageArea>
@@ -244,9 +311,20 @@ class SPCoolHeader extends React.Component {
             </MenuList>
           </SlideMenu>
         </Drawer>
-        <ScrollLink to={'home'} smooth duration={scrollDuration}>
-          <SiteName>{site.name}</SiteName>
-        </ScrollLink>
+        {isHome ? (
+          <ScrollLink
+            to={'home'}
+            offset={scrollOffset}
+            smooth
+            duration={scrollDuration}
+          >
+            <SiteName>{site.name}</SiteName>
+          </ScrollLink>
+        ) : (
+          <Link href={'/'}>
+            <SiteName>{site.name}</SiteName>
+          </Link>
+        )}
         <MenuIconArea onClick={this.handleOpenMenu}>
           <Menu />
           <MenuText>MENU</MenuText>
