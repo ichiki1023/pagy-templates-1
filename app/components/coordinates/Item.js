@@ -89,6 +89,10 @@ const StyledSubPhotoImage = styled.img`
 const Contents = styled.div`
   position: relative;
   width: calc(100% - 300px);
+  @media (max-width: 750px) {
+    width: 100%;
+    margin: 0 auto;
+  }
 `
 
 const Bottom = styled.div`
