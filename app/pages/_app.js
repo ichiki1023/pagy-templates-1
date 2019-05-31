@@ -66,10 +66,14 @@ class TemplateApp extends App {
       }
     } catch (error) {
       console.debug(error)
+      let statusCode = 500
+      if (error.response && error.response.status < 500) {
+        statusCode = 404
+      }
       return {
         pageProps: {
           ...pageProps,
-          statusCode: error.statusCode || 500
+          statusCode: statusCode
         }
       }
     }
