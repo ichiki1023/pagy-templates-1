@@ -190,13 +190,14 @@ const About = props => {
           </tbody>
         </StyledTable>
         {site.address && address.latitude && address.longitude ? (
-          <StyledGoogleMap
-            center={{
-              lat: Number(address.latitude),
-              lng: Number(address.longitude)
-            }}
-            name={'map'}
-          />
+          <div name={'map'}>
+            <StyledGoogleMap
+              center={{
+                lat: Number(address.latitude),
+                lng: Number(address.longitude)
+              }}
+            />
+          </div>
         ) : null}
       </Contents>
     </Section>
