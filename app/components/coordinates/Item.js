@@ -52,7 +52,8 @@ const StyledSubPhotoImages = styled.div`
     props.imagePosition === 'right' &&
     css`
       flex-direction: row-reverse;
-      margin-left: 50px;
+      margin-right: -50px;
+      margin-left: 0px;
     `}
 
   @media (max-width: 750px) {

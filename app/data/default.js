@@ -186,7 +186,8 @@ export default {
     coordinates: [
       {
         main_image_url: `${staticPath}/images/coordinates/shutterstock_730631257.jpg`,
-        description: '',
+        description:
+          'コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。',
         sub_image_urls: [],
         items: []
       },
@@ -194,34 +195,22 @@ export default {
         main_image_url: `${staticPath}/images/coordinates/shutterstock_342317609.jpg`,
         description:
           'コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。',
-        sub_image_urls: [
-          `${staticPath}/images/coordinates/shutterstock_730631257.jpg`
-        ],
+        sub_image_urls: [],
         items: []
       },
       {
         main_image_url: `${staticPath}/images/coordinates/shutterstock_793633075.jpg`,
         description:
           'コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。',
-        sub_image_urls: [
-          `${staticPath}/images/coordinates/shutterstock_730631257.jpg`,
-          `${staticPath}/images/coordinates/shutterstock_730631257.jpg`,
-          `${staticPath}/images/coordinates/shutterstock_730631257.jpg`,
-          `${staticPath}/images/coordinates/shutterstock_730631257.jpg`,
-          `${staticPath}/images/coordinates/shutterstock_730631257.jpg`
-        ],
-        items: [`${staticPath}/images/items/shutterstock_207690136_06.jpg`]
+        sub_image_urls: [],
+        items: []
       },
       {
         main_image_url: `${staticPath}/images/coordinates/shutterstock_713504557.jpg`,
-        description: '',
+        description:
+          'コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。コーディネイトの詳細を記載してください。',
         sub_image_urls: [],
-        items: [
-          `${staticPath}/images/items/shutterstock_207690136_06.jpg`,
-          `${staticPath}/images/items/shutterstock_207690136_06.jpg`,
-          `${staticPath}/images/items/shutterstock_207690136_06.jpg`,
-          `${staticPath}/images/items/shutterstock_207690136_06.jpg`
-        ]
+        items: []
       },
       {
         main_image_url: `${staticPath}/images/coordinates/shutterstock_1182188362.jpg`,
