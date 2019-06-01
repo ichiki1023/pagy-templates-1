@@ -47,6 +47,7 @@ const StyledTable = styled.table`
     font-size: 18px;
     font-weight: normal;
     padding-bottom: 1.5em;
+    text-align: left;
 
     @media (max-width: 750px) {
       display: inline-block;
