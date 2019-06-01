@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 const StyledItem = styled.div`
   display: flex;
   margin-bottom: 80px;
+  overflow-x: hidden;
   ${props =>
     props.imagePosition === 'right' &&
     css`
@@ -44,7 +45,8 @@ const StyledSubPhotoImages = styled.div`
   display: flex;
   margin-bottom: 20px;
   margin-left: -50px;
-  width: 100%;
+  width: calc(100% + 50px);
+  overflow-x: scroll;
 
   ${props =>
     props.imagePosition === 'right' &&
@@ -55,9 +57,10 @@ const StyledSubPhotoImages = styled.div`
 
   @media (max-width: 750px) {
     margin: 0 auto;
-    justify-content: center;
     position: absolute;
     top: -30px;
+    flex-direction: row;
+    width: 100%;
   }
 `
 
@@ -99,6 +102,7 @@ const Bottom = styled.div`
   position: absolute;
   bottom: 0;
   z-index: 2;
+  width: 100%;
 
   ${props =>
     props.imagePosition === 'right' &&
