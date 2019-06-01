@@ -47,6 +47,7 @@ const StyledTable = styled.table`
     font-size: 18px;
     font-weight: normal;
     padding-bottom: 1.5em;
+    text-align: left;
 
     @media (max-width: 750px) {
       display: inline-block;
@@ -84,8 +85,13 @@ const StyledAboutImages = styled(AboutImages)`
   margin-top: 48px;
 `
 
+const MapArea = styled.div`
+  width: 100%;
+`
+
 const StyledGoogleMap = styled(GoogleMap)`
   height: calc(54vw * (724 / 1024));
+  width: 100%;
 
   @media (max-width: 750px) {
     width: 100%;
@@ -190,14 +196,14 @@ const About = props => {
           </tbody>
         </StyledTable>
         {site.address && address.latitude && address.longitude ? (
-          <div name={'map'}>
+          <MapArea name={'map'}>
             <StyledGoogleMap
               center={{
                 lat: Number(address.latitude),
                 lng: Number(address.longitude)
               }}
             />
-          </div>
+          </MapArea>
         ) : null}
       </Contents>
     </Section>
