@@ -269,23 +269,11 @@ class SPCoolHeader extends React.Component {
                 )}
               </ChildMenuTitle>
               {/* Contact */}
-              {site.plan.id !== PlanType.trial &&
-                (isHome ? (
-                  <ScrollLink
-                    to={'contact'}
-                    offset={scrollOffset}
-                    smooth
-                    spy
-                    hashSpy
-                    duration={scrollDuration}
-                  >
-                    <MenuTitle>CONTACT</MenuTitle>
-                  </ScrollLink>
-                ) : (
-                  <Link href={'/#contact'}>
-                    <MenuTitle>CONTACT</MenuTitle>
-                  </Link>
-                ))}
+              {site.plan.id !== PlanType.trial && (
+                <Link href={'/contact'}>
+                  <MenuTitle>CONTACT</MenuTitle>
+                </Link>
+              )}
               {/* TODO: 多言語対応が実装されるまで非表示にする */}
               {/* <SectionTitle>LANGUAGE</SectionTitle>
               <LanguageArea>

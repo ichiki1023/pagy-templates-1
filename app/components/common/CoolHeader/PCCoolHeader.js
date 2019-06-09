@@ -176,21 +176,9 @@ const PCCoolHeader = props => {
           {/* Contact */}
           {site.plan.id !== PlanType.trial && (
             <HeaderList key={'contact'}>
-              {isHome ? (
-                <ScrollLink
-                  to={'contact'}
-                  smooth
-                  spy
-                  hashSpy
-                  duration={scrollDuration}
-                >
-                  CONTACT
-                </ScrollLink>
-              ) : (
-                <Link href={'/#contact'}>
-                  <a>CONTACT</a>
-                </Link>
-              )}
+              <Link href={'/contact'}>
+                <a>CONTACT</a>
+              </Link>
             </HeaderList>
           )}
           {/* TODO: 多言語対応が実装されるまで非表示にする */}

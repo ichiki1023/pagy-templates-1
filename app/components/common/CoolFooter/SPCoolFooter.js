@@ -8,7 +8,6 @@ import moment from 'moment'
 const Footer = styled.div`
   background-color: rgba(240, 240, 240, 0.8);
   width: 100%;
-  height: 130px;
   display: flex;
   flex-direction: column;
 `
