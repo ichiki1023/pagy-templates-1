@@ -54,6 +54,9 @@ class Items extends React.Component {
   render () {
     const { items, onClickImage } = this.props
 
+    const displayNum = 8
+    const displayItems = items.slice(0, displayNum)
+
     const settings = {
       slidesToShow: 4,
       slidesToScroll: 1,
@@ -87,7 +90,7 @@ class Items extends React.Component {
 
     return (
       <CoolSlider settings={settings} arrowIconSize={52}>
-        {items.map((item, index) => {
+        {displayItems.map((item, index) => {
           return (
             <Item key={index}>
               <StyledImage
