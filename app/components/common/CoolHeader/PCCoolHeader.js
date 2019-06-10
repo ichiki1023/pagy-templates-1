@@ -157,21 +157,9 @@ const PCCoolHeader = props => {
           ) : null}
           {/* About */}
           <HeaderList key={'about'}>
-            {isHome ? (
-              <ScrollLink
-                to={'about'}
-                smooth
-                spy
-                hashSpy
-                duration={scrollDuration}
-              >
-                ABOUT US
-              </ScrollLink>
-            ) : (
-              <Link href={'/#about'}>
-                <a>ABOUT US</a>
-              </Link>
-            )}
+            <Link href={'/about'}>
+              <a>ABOUT US</a>
+            </Link>
           </HeaderList>
           {/* Contact */}
           {site.plan.id !== PlanType.trial && (

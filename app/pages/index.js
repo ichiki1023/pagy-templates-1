@@ -185,7 +185,7 @@ class Index extends React.Component {
               marginTop={paddingTop}
             />
           ) : null}
-          <StyledAbout />
+          <StyledAbout pageName={'home'} />
           {services && <StyledSocialMedia services={services} />}
         </Wrapper>
         {site.plan.id !== PlanType.trial && <StyledContact />}

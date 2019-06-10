@@ -5,6 +5,7 @@ import GoogleMap from 'app/components/GoogleMap'
 import AboutImages from './AboutImages'
 import BusinessHour from './BusinessHour'
 import withAppContext from 'app/components/wrapper/withAppContext'
+import MoreLink from 'app/components/common/MoreLink'
 
 const Section = styled.div`
   position: relative;
@@ -86,6 +87,8 @@ const StyledAboutImages = styled(AboutImages)`
 `
 
 const MapArea = styled.div`
+  padding-top: 70px;
+  margin-top: -70px;
   width: 100%;
 `
 
@@ -118,8 +121,10 @@ const About = props => {
   const {
     site,
     site: { address, holiday },
-    className
+    className,
+    pageName
   } = props
+  const isHome = pageName === 'home'
 
   const holidays = Object.keys(holiday).filter(key => holiday[key])
   const holidayText =
@@ -135,9 +140,9 @@ const About = props => {
             backgroundText={'ABOUT US'}
             titleText={'私たちについて'}
           />
-          <StyledDescription>{site.description}</StyledDescription>
+          {!isHome && <StyledDescription>{site.description}</StyledDescription>}
         </StyledTexts>
-        {site.photos && site.photos.length !== 0 ? (
+        {!isHome && site.photos && site.photos.length !== 0 ? (
           <StyledAboutImages photos={site.photos} />
         ) : null}
         <StyledTable>
@@ -205,6 +210,8 @@ const About = props => {
             />
           </MapArea>
         ) : null}
+
+        {isHome && <MoreLink href={'/about'} textType={'detail'} />}
       </Contents>
     </Section>
   )
