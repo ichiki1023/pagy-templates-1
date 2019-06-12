@@ -224,7 +224,7 @@ class SPCoolHeader extends React.Component {
                 <Link href={'/about'}>
                   <MenuTitle>− Introduce</MenuTitle>
                 </Link>
-                <Link href={'/about/#map'}>
+                <Link href={'/about#map'}>
                   <MenuTitle>− Access</MenuTitle>
                 </Link>
               </ChildMenuTitle>

@@ -60,7 +60,7 @@ class ContactPage extends React.Component {
 
     return (
       <Page>
-        <StyledHeader services={services} pageName={'Contact'} />
+        <StyledHeader services={services} pageName={'contact'} />
         {services ? <StyledSNSNavigation services={services} /> : null}
         {isDisplayContact && <StyledContact />}
         <FooterWrapper>

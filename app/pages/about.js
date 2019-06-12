@@ -51,7 +51,7 @@ class AboutPage extends React.Component {
 
     return (
       <Page>
-        <StyledHeader services={services} pageName={'About'} />
+        <StyledHeader services={services} pageName={'about'} />
         {services ? <StyledSNSNavigation services={services} /> : null}
         <StyledAbout />
         <FooterWrapper>
