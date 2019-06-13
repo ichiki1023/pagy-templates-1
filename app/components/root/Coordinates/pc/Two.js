@@ -114,7 +114,7 @@ const CoordinatesPC = props => {
   const imageWidth = window.innerWidth * 0.54 * 0.6
 
   return (
-    <Section name={'coordinates'} {...custom}>
+    <Section id={'coordinates'} {...custom}>
       <DefaultSVGClipPath />
       <Contents>
         <BackgroundImages>

@@ -124,7 +124,7 @@ const CoordinatesPC = props => {
   const { images, marginTop, ...custom } = props
 
   return (
-    <Section name={'coordinates'} {...custom}>
+    <Section id={'coordinates'} {...custom}>
       <BackgroundImages marginTop={marginTop}>
         {images.map((image, index) => {
           return (

@@ -217,75 +217,23 @@ class SPCoolHeader extends React.Component {
                 </Link>
               ) : null}
               {/* About */}
-              {isHome ? (
-                <ScrollLink
-                  to={'about'}
-                  offset={scrollOffset}
-                  smooth
-                  spy
-                  hashSpy
-                  duration={scrollDuration}
-                >
-                  <MenuTitle>ABOUT</MenuTitle>
-                </ScrollLink>
-              ) : (
-                <Link href={'/#about'}>
-                  <MenuTitle>ABOUT</MenuTitle>
-                </Link>
-              )}
-
+              <Link href={'/about'}>
+                <MenuTitle>ABOUT</MenuTitle>
+              </Link>
               <ChildMenuTitle>
-                {isHome ? (
-                  <ScrollLink
-                    to={'about'}
-                    offset={scrollOffset}
-                    smooth
-                    spy
-                    hashSpy
-                    duration={scrollDuration}
-                  >
-                    <MenuTitle>− Introduce</MenuTitle>
-                  </ScrollLink>
-                ) : (
-                  <Link href={'/#about'}>
-                    <MenuTitle>− Introduce</MenuTitle>
-                  </Link>
-                )}
-                {isHome ? (
-                  <ScrollLink
-                    to={'map'}
-                    offset={scrollOffset}
-                    smooth
-                    spy
-                    hashSpy
-                    duration={scrollDuration}
-                  >
-                    <MenuTitle>− Access</MenuTitle>
-                  </ScrollLink>
-                ) : (
-                  <Link href={'/#map'}>
-                    <MenuTitle>− Access</MenuTitle>
-                  </Link>
-                )}
+                <Link href={'/about'}>
+                  <MenuTitle>− Introduce</MenuTitle>
+                </Link>
+                <Link href={'/about#map'}>
+                  <MenuTitle>− Access</MenuTitle>
+                </Link>
               </ChildMenuTitle>
               {/* Contact */}
-              {site.plan.id !== PlanType.trial &&
-                (isHome ? (
-                  <ScrollLink
-                    to={'contact'}
-                    offset={scrollOffset}
-                    smooth
-                    spy
-                    hashSpy
-                    duration={scrollDuration}
-                  >
-                    <MenuTitle>CONTACT</MenuTitle>
-                  </ScrollLink>
-                ) : (
-                  <Link href={'/#contact'}>
-                    <MenuTitle>CONTACT</MenuTitle>
-                  </Link>
-                ))}
+              {site.plan.id !== PlanType.trial && (
+                <Link href={'/contact'}>
+                  <MenuTitle>CONTACT</MenuTitle>
+                </Link>
+              )}
               {/* TODO: 多言語対応が実装されるまで非表示にする */}
               {/* <SectionTitle>LANGUAGE</SectionTitle>
               <LanguageArea>

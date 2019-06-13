@@ -78,7 +78,7 @@ const News = props => {
   const { articles, ...custom } = props
 
   return (
-    <Section name={'news'} {...custom}>
+    <Section id={'news'} {...custom}>
       <Contents>
         <div>
           <SectionTitle backgroundText={'NEWS'} titleText={'ニュース'} />

@@ -85,7 +85,7 @@ const FollowUs = styled.div`
 const SocialMedia = props => {
   const { services, ...custom } = props
   return (
-    <Section name={'socialMedia'} {...custom}>
+    <Section id={'socialMedia'} {...custom}>
       <Contents>
         <StyledSectionTitle
           backgroundText={'SOCIAL MEDIA'}

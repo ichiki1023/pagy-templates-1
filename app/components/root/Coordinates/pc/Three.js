@@ -113,7 +113,7 @@ const CoordinatesPC = props => {
   const { images, ...custom } = props
 
   return (
-    <Section name={'coordinates'} {...custom}>
+    <Section id={'coordinates'} {...custom}>
       <Contents>
         <ImageWrapper>
           <BackgroundImages>

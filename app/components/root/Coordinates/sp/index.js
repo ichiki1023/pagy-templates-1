@@ -104,7 +104,7 @@ const CoordinatesSP = props => {
   const { image, ...custom } = props
 
   return (
-    <Section name={'coordinates'} {...custom}>
+    <Section id={'coordinates'} {...custom}>
       <BackgroundImages>
         <BackgroundImage>
           <StyledImage src={image} />

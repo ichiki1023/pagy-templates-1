@@ -57,7 +57,7 @@ class Selection extends React.Component {
   render () {
     const { items, userAgent, className } = this.props
     return (
-      <div name={'selection'} className={className}>
+      <div id={'selection'} className={className}>
         <Contents>
           <StyledSectionTitle
             backgroundText={'SELECTION'}
