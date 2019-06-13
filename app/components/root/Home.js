@@ -59,7 +59,7 @@ const TitleContents = styled.div`
 const Home = props => {
   const { site } = props
   return (
-    <Section name={'home'} store_front_image_url={site.store_front_image_url}>
+    <Section id={'home'} store_front_image_url={site.store_front_image_url}>
       <Page>
         <Contents>
           <TitleContents>

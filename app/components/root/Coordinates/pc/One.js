@@ -75,7 +75,7 @@ const CoordinatesPC = props => {
   const { coordinate, image, ...custom } = props
   const description = coordinate['description']
   return (
-    <Section name={'coordinates'} {...custom}>
+    <Section id={'coordinates'} {...custom}>
       <StyledSectionTitle
         backgroundText={'COORDINATES'}
         titleText={'おすすめコーディネート'}

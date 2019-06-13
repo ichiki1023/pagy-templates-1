@@ -133,7 +133,7 @@ const About = props => {
       : 'なし'
 
   return (
-    <Section name={'about'} className={className}>
+    <Section id={'about'} className={className}>
       <Contents>
         <StyledTexts>
           <StyledSectionTitle
@@ -201,7 +201,7 @@ const About = props => {
           </tbody>
         </StyledTable>
         {site.address && address.latitude && address.longitude ? (
-          <MapArea name={'map'}>
+          <MapArea id={'map'}>
             <StyledGoogleMap
               center={{
                 lat: Number(address.latitude),

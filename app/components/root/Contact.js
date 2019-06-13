@@ -157,7 +157,7 @@ class Contact extends React.Component {
       !this.state.content.value
 
     return (
-      <div name={'contact'} className={className}>
+      <div id={'contact'} className={className}>
         <form onSubmit={this.validate} noValidate>
           <Contents>
             <StyledSectionTitle
