@@ -1,10 +1,9 @@
 import React from 'react'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import CoolHeader from 'app/components/common/CoolHeader'
 import CoolFooter from 'app/components/common/CoolFooter'
 import SNSNavigation from 'app/components/common/SNSServices/Navigation'
 import Contact from 'app/components/root/Contact'
-import PlanType from 'app/helpers/planType'
 
 const paddingTop = 100
 const Page = styled.div`
@@ -26,12 +25,6 @@ const FooterWrapper = styled.div`
 const StyledFooter = styled(CoolFooter)`
   z-index: 1000;
   position: relative;
-  ${props =>
-    !props.isDisplayContact &&
-    css`
-      position: fixed;
-      bottom: 0;
-    `};
 `
 
 const StyledSNSNavigation = styled(SNSNavigation)`
@@ -56,15 +49,13 @@ class ContactPage extends React.Component {
         }
         : null
 
-    const isDisplayContact = site.plan.id !== PlanType.trial
-
     return (
       <Page>
         <StyledHeader services={services} pageName={'contact'} />
         {services ? <StyledSNSNavigation services={services} /> : null}
-        {isDisplayContact && <StyledContact />}
+        <StyledContact />
         <FooterWrapper>
-          <StyledFooter isDisplayContact={isDisplayContact} />
+          <StyledFooter />
         </FooterWrapper>
       </Page>
     )

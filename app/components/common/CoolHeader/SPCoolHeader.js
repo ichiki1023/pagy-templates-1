@@ -6,7 +6,6 @@ import MenuIcon from '@material-ui/icons/Menu'
 import CloseIcon from '@material-ui/icons/Close'
 import Drawer from '@material-ui/core/Drawer'
 import SNSServicesBtns from 'app/components/common/SNSServices/Buttons'
-import PlanType from 'app/helpers/planType'
 import withAppContext from 'app/components/wrapper/withAppContext'
 // import LanguageDropDown from 'app/components/common/LanguageDropDown'
 // import LanguageIcon from '@material-ui/icons/Language'
@@ -229,11 +228,9 @@ class SPCoolHeader extends React.Component {
                 </Link>
               </ChildMenuTitle>
               {/* Contact */}
-              {site.plan.id !== PlanType.trial && (
-                <Link href={'/contact'}>
-                  <MenuTitle>CONTACT</MenuTitle>
-                </Link>
-              )}
+              <Link href={'/contact'}>
+                <MenuTitle>CONTACT</MenuTitle>
+              </Link>
               {/* TODO: 多言語対応が実装されるまで非表示にする */}
               {/* <SectionTitle>LANGUAGE</SectionTitle>
               <LanguageArea>

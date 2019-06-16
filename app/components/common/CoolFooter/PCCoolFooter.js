@@ -2,7 +2,6 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 import { Link as ScrollLink } from 'react-scroll/modules'
 import Link from 'app/components/common/MyLink'
-import PlanType from 'app/helpers/planType'
 import withAppContext from 'app/components/wrapper/withAppContext'
 import moment from 'moment'
 // import LanguageIcon from '@material-ui/icons/Language'
@@ -174,25 +173,23 @@ const PCCoolFooter = props => {
             )}
           </FooterList>
           {/* Contact */}
-          {site.plan.id !== PlanType.trial && (
-            <FooterList key={'contact'}>
-              {isHome ? (
-                <ScrollLink
-                  to={'contact'}
-                  smooth
-                  spy
-                  hashSpy
-                  duration={scrollDuration}
-                >
-                  CONTACT
-                </ScrollLink>
-              ) : (
-                <Link href={'/#contact'}>
-                  <a>CONTACT</a>
-                </Link>
-              )}
-            </FooterList>
-          )}
+          <FooterList key={'contact'}>
+            {isHome ? (
+              <ScrollLink
+                to={'contact'}
+                smooth
+                spy
+                hashSpy
+                duration={scrollDuration}
+              >
+                CONTACT
+              </ScrollLink>
+            ) : (
+              <Link href={'/#contact'}>
+                <a>CONTACT</a>
+              </Link>
+            )}
+          </FooterList>
           {/* TODO: 多言語対応が実装されるまで非表示にする */}
           {/* <LanguageFooterList key={'language'}>
             <StyledLanguageIcon width={24} height={24} />
