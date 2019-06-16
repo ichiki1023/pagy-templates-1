@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link as ScrollLink } from 'react-scroll'
 import Link from 'app/components/common/MyLink'
-import PlanType from 'app/helpers/planType'
 import withAppContext from 'app/components/wrapper/withAppContext'
 // import LanguageIcon from '@material-ui/icons/Language'
 // import LanguageDropDown from 'app/components/common/LanguageDropDown'
@@ -162,13 +161,11 @@ const PCCoolHeader = props => {
             </Link>
           </HeaderList>
           {/* Contact */}
-          {site.plan.id !== PlanType.trial && (
-            <HeaderList key={'contact'}>
-              <Link href={'/contact'}>
-                <a>CONTACT</a>
-              </Link>
-            </HeaderList>
-          )}
+          <HeaderList key={'contact'}>
+            <Link href={'/contact'}>
+              <a>CONTACT</a>
+            </Link>
+          </HeaderList>
           {/* TODO: 多言語対応が実装されるまで非表示にする */}
           {/* <HeaderList key={'language'}>
           <Languages>
