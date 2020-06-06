@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link as ScrollLink } from 'react-scroll'
-import Link from 'src/components/common/MyLink'
+import Link from 'next/link'
 import withAppContext from 'src/components/wrapper/withAppContext'
 import LanguageIcon from '@material-ui/icons/Language'
 import LanguageDropDown from 'src/components/common/LanguageDropDown'

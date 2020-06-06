@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link as ScrollLink } from 'react-scroll'
-import Link from 'src/components/common/MyLink'
+import Link from 'next/link'
 import MenuIcon from '@material-ui/icons/Menu'
 import CloseIcon from '@material-ui/icons/Close'
 import Drawer from '@material-ui/core/Drawer'

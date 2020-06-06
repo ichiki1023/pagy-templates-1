@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 import SectionTitle from 'src/components/common/SectionTitle'
-import Link from 'src/components/common/MyLink'
+import Link from 'next/link'
 import ArrowForwardIcon from '@material-ui/icons/ArrowForwardIos'
 import CroppedImage, {
   DefaultSVGClipPath,

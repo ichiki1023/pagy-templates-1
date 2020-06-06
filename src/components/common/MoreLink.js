@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import Link from 'src/components/common/MyLink'
+import Link from 'next/link'
 
 const MoreLinkArea = styled.span`
   float: right;

@@ -5,7 +5,7 @@ import CoolFooter from 'src/components/common/CoolFooter'
 import SectionTitle from 'src/components/common/SectionTitle'
 import SNSNavigation from 'src/components/common/SNSServices/Navigation'
 import Items from 'src/components/coordinates/Items'
-// import AddIcon from '@material-ui/icons/Add'
+import AddIcon from '@material-ui/icons/Add'
 
 const Page = styled.div`
   background-color: #fcfcfa;
@@ -63,30 +63,30 @@ const StyledCoordinateItems = styled(Items)`
   margin-top: 50px;
 `
 
-// const NextLink = styled.a`
-//   width: 80%;
-//   max-width: 384px;
-//   height: 80px;
-//   font-size: 24px;
-//   margin: 0 auto;
-//   color: #545454;
-//   text-decoration: none;
-//   border: 1px solid #545454;
-//   border-radius: 50px;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//
-//   @media (max-width: 750px) {
-//     height: 48px;
-//     font-size: 16px;
-//   }
-// `
-//
-// const StyledAddIcon = styled(AddIcon)`
-//   color: #545454;
-//   margin-right: 12px;
-// `
+const NextLink = styled.a`
+  width: 80%;
+  max-width: 384px;
+  height: 80px;
+  font-size: 24px;
+  margin: 0 auto;
+  color: #545454;
+  text-decoration: none;
+  border: 1px solid #545454;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media (max-width: 750px) {
+    height: 48px;
+    font-size: 16px;
+  }
+`
+
+const StyledAddIcon = styled(AddIcon)`
+  color: #545454;
+  margin-right: 12px;
+`
 
 class Coordinates extends React.Component {
   render() {
@@ -119,11 +119,10 @@ class Coordinates extends React.Component {
           {!isEmptyCoordinates ? (
             <div>
               <StyledCoordinateItems coordinates={coordinates} />
-              {/* FIXME: paginationができるまでは外す */}
-              {/* <NextLink href={'#'}> */}
-              {/* <StyledAddIcon width={24} height={24} /> */}
-              {/* もっと見る */}
-              {/* </NextLink> */}
+              <NextLink href={'#'}>
+                <StyledAddIcon width={24} height={24} />
+                もっと見る
+              </NextLink>
             </div>
           ) : null}
         </Contents>

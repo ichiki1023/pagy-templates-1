@@ -1,11 +1,11 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 import { Link as ScrollLink } from 'react-scroll/modules'
-import Link from 'src/components/common/MyLink'
+import Link from 'next/link'
 import withAppContext from 'src/components/wrapper/withAppContext'
 import moment from 'moment'
-// import LanguageIcon from '@material-ui/icons/Language'
-// import LanguageDropDown from 'src/components/common/LanguageDropDown'
+import LanguageIcon from '@material-ui/icons/Language'
+import LanguageDropDown from 'src/components/common/LanguageDropDown'
 
 const Footer = styled.div`
   background-color: rgba(240, 240, 240, 0.8);
@@ -75,26 +75,26 @@ const CopyRights = styled.ul`
   }
 `
 
-// const LanguageFooterList = styled(FooterList)`
-//   padding: 12px;
-//   display: flex;
-//   flex-direction: row;
-//   align-items: center;
-// `
+const LanguageFooterList = styled(FooterList)`
+  padding: 12px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`
 
-// const StyledLanguageIcon = styled(LanguageIcon)`
-//   color: #9b9b9b;
-// `
+const StyledLanguageIcon = styled(LanguageIcon)`
+  color: #9b9b9b;
+`
 
 const PCCoolFooter = (props) => {
   const { site, fashion, pageName, ...otherProps } = props
   const { articles = [] } = site
   const { items = [], coordinates = [] } = fashion
   const scrollDuration = 500
-  // const languageOptions = [
-  //   { value: 'ja', label: 'Japanese' },
-  //   { value: 'en', label: 'English' }
-  // ]
+  const languageOptions = [
+    { value: 'ja', label: 'Japanese' },
+    { value: 'en', label: 'English' },
+  ]
   const isHome = pageName === 'home'
   const createdYear = moment(site.created_at).year()
 
@@ -190,21 +190,18 @@ const PCCoolFooter = (props) => {
               </Link>
             )}
           </FooterList>
-          {/* TODO: 多言語対応が実装されるまで非表示にする */}
-          {/* <LanguageFooterList key={'language'}>
+          <LanguageFooterList key={'language'}>
             <StyledLanguageIcon width={24} height={24} />
             <LanguageDropDown
               options={languageOptions}
               value={languageOptions[0]}
-              onChange={option => {
-                // TODO: 多言語対応の実装は別途対応する
-                // const queryString = serialize(site)
-                // Router.push(`/templates/fashions/cool?ln=${option.value}&${queryString}`)
+              onChange={() => {
+                // TODO: Change language
               }}
               backgroundColor={'transparent'}
               color={'#9B9B9B'}
             />
-          </LanguageFooterList> */}
+          </LanguageFooterList>
         </FooterLists>
         <CopyRights>
           <li>
