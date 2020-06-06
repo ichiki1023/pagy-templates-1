@@ -1,5 +1,4 @@
 import React from 'react'
-import { Container } from 'next/app'
 import AppContext from 'src/context/AppContext'
 import { getUserAgent } from 'src/helpers/userAgent'
 import { ThemeProvider } from '@material-ui/styles'
@@ -54,7 +53,7 @@ const TemplateApp = (props) => {
   }, [pageProps, site.name])
 
   return (
-    <Container>
+    <>
       <Head>
         <title>{title}</title>
       </Head>
@@ -64,7 +63,7 @@ const TemplateApp = (props) => {
           <Component {...pageProps} />
         </ThemeProvider>
       </AppContext.Provider>
-    </Container>
+    </>
   )
 }
 

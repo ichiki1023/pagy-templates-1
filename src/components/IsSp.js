@@ -5,7 +5,10 @@ import withAppContext from 'src/components/wrapper/withAppContext'
 const IsSp = (props) => {
   const { userAgent, children, maxWidth } = props
   return (
-    <Media query={`(max-width: ${maxWidth}px)`} defaultMatches={userAgent.issp}>
+    <Media
+      query={`(max-width: ${maxWidth}px)`}
+      defaultMatches={userAgent.isMobile}
+    >
       {children}
     </Media>
   )

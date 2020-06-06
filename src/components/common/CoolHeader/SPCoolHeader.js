@@ -7,8 +7,8 @@ import CloseIcon from '@material-ui/icons/Close'
 import Drawer from '@material-ui/core/Drawer'
 import SNSServicesBtns from 'src/components/common/SNSServices/Buttons'
 import withAppContext from 'src/components/wrapper/withAppContext'
-// import LanguageDropDown from 'src/components/common/LanguageDropDown'
-// import LanguageIcon from '@material-ui/icons/Language'
+import LanguageDropDown from 'src/components/common/LanguageDropDown'
+import LanguageIcon from '@material-ui/icons/Language'
 
 const Header = styled.div`
   background-color: #000000;
@@ -86,14 +86,14 @@ const ChildMenuTitle = styled.div`
   margin-left: 16px;
 `
 
-// const LanguageArea = styled.div`
-//   display: flex;
-//   flex-direction: row;
-//   align-items: center;
-// `
-// const StyledLanguageIcon = styled(LanguageIcon)`
-//   color: #ffffff;
-// `
+const LanguageArea = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`
+const StyledLanguageIcon = styled(LanguageIcon)`
+  color: #ffffff;
+`
 
 const headerHeight = 64
 const offset = 20
@@ -128,10 +128,10 @@ class SPCoolHeader extends React.Component {
     const { articles = [] } = site
     const { items = [], coordinates = [] } = fashion
     const scrollDuration = 500
-    // const languageOptions = [
-    //   { value: 'ja', label: 'Japanese' },
-    //   { value: 'en', label: 'English' }
-    // ]
+    const languageOptions = [
+      { value: 'ja', label: 'Japanese' },
+      { value: 'en', label: 'English' },
+    ]
     const isHome = pageName === 'home'
 
     return (
@@ -231,22 +231,19 @@ class SPCoolHeader extends React.Component {
               <Link href={'/contact'}>
                 <MenuTitle>CONTACT</MenuTitle>
               </Link>
-              {/* TODO: 多言語対応が実装されるまで非表示にする */}
-              {/* <SectionTitle>LANGUAGE</SectionTitle>
+              <SectionTitle>LANGUAGE</SectionTitle>
               <LanguageArea>
                 <StyledLanguageIcon width={'28px'} height={'28px'} />
                 <LanguageDropDown
                   options={languageOptions}
                   value={languageOptions[0]}
-                  onChange={option => {
-                    // TODO: 多言語対応の実装は別途対応する
-                    // const queryString = serialize(site)
-                    // Router.push(`/templates/fashions/cool?ln=${option.value}&${queryString}`)
+                  onChange={() => {
+                    // TODO: Change language
                   }}
                   backgroundColor={'transparent'}
                   color={'#FCFCFA'}
                 />
-              </LanguageArea> */}
+              </LanguageArea>
               {services ? (
                 <div>
                   <SectionTitle>FOLLOW US</SectionTitle>
