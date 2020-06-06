@@ -6,7 +6,7 @@ const StyledItem = styled.div`
   display: flex;
   margin-bottom: 80px;
   overflow-x: hidden;
-  ${props =>
+  ${(props) =>
     props.imagePosition === 'right' &&
     css`
       flex-direction: row-reverse;
@@ -48,7 +48,7 @@ const StyledSubPhotoImages = styled.div`
   width: calc(100% + 50px);
   overflow-x: scroll;
 
-  ${props =>
+  ${(props) =>
     props.imagePosition === 'right' &&
     css`
       flex-direction: row-reverse;
@@ -66,7 +66,7 @@ const StyledSubPhotoImages = styled.div`
 `
 
 const ImageFilter = styled.p`
-  background-color: ${props =>
+  background-color: ${(props) =>
     props.isSelectedImage ? 'transparent' : 'white'};
   margin: 0 12px;
   border-radius: 8px;
@@ -82,7 +82,7 @@ const StyledSubPhotoImage = styled.img`
   object-fit: cover;
   border-radius: 8px;
   display: block;
-  opacity: ${props => (props.isSelectedImage ? '1' : '0.5')};
+  opacity: ${(props) => (props.isSelectedImage ? '1' : '0.5')};
 
   @media (max-width: 750px) {
     width: 76px;
@@ -105,7 +105,7 @@ const Bottom = styled.div`
   z-index: 2;
   width: 100%;
 
-  ${props =>
+  ${(props) =>
     props.imagePosition === 'right' &&
     css`
       right: 0px;
@@ -116,26 +116,27 @@ const Bottom = styled.div`
 
 // FIXME: 複数枚のsubImageUrlsに対応する
 export default class Item extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
-      selectedIndex: props.selectedIndex
+      selectedIndex: props.selectedIndex,
     }
   }
+
   static propTypes = {
     description: PropTypes.string,
     subImageUrls: PropTypes.arrayOf(PropTypes.string),
     imagePosition: PropTypes.string,
-    selectedIndex: PropTypes.number.isRequired
+    selectedIndex: PropTypes.number.isRequired,
   }
 
-  onClickImage (index) {
+  onClickImage(index) {
     this.setState({
-      selectedIndex: index
+      selectedIndex: index,
     })
   }
 
-  render () {
+  render() {
     const { description, subImageUrls, imagePosition } = this.props
     const selectedImageUrl = subImageUrls[this.state.selectedIndex]
 

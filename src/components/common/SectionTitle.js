@@ -31,10 +31,10 @@ const StyledSectionTitle = styled.div`
 export default class SectionTitle extends React.Component {
   static propTypes = {
     backgroundText: PropTypes.string.isRequired,
-    titleText: PropTypes.string.isRequired
+    titleText: PropTypes.string.isRequired,
   }
 
-  render () {
+  render() {
     const { backgroundText, titleText, ...props } = this.props
     return (
       <StyledSectionTitle {...props}>

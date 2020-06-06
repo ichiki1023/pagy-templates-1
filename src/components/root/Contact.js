@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import SectionTitle from 'src/components/common/SectionTitle'
 import Input from 'src/components/common/Input'
-import SendContactMessageApi from 'src/api/SendContactMessageApi'
 import contactFormValidate from 'src/helpers/contactFormValidate'
 import SubmitButton from 'src/components/common/SubmitButton'
 import withAppContext from 'src/components/wrapper/withAppContext'
@@ -31,52 +30,53 @@ const initialInputState = {
   focus: false,
   touched: false,
   value: '',
-  error: null
+  error: null,
 }
 
 class Contact extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
       loading: false,
       requestSuccess: false,
       requestError: null,
       name: {
-        ...initialInputState
+        ...initialInputState,
       },
       email: {
-        ...initialInputState
+        ...initialInputState,
       },
       content: {
-        ...initialInputState
-      }
+        ...initialInputState,
+      },
     }
   }
 
-  handleFocus = field => () => {
+  handleFocus = (field) => () => {
     this.setState({
       [field]: {
         ...this.state[field],
-        focus: true
-      }
+        focus: true,
+      },
     })
   }
-  handleBlur = field => event => {
+
+  handleBlur = (field) => (event) => {
     const errorMessage = contactFormValidate(field, event.target.value)
     this.setState({
       [field]: {
         ...this.state[field],
         error: errorMessage,
         touched: true,
-        focus: false
-      }
+        focus: false,
+      },
     })
   }
 
-  handleChange = field => event => {
+  handleChange = (field) => (event) => {
     if (this.state.requestSuccess) {
       this.setState({
-        requestSuccess: false
+        requestSuccess: false,
       })
     }
     const errorMessage = contactFormValidate(field, event.target.value)
@@ -85,32 +85,32 @@ class Contact extends React.Component {
       [field]: {
         ...this.state[field],
         value: event.target.value,
-        error: touched ? errorMessage : null
-      }
+        error: touched ? errorMessage : null,
+      },
     })
   }
 
-  validate = async event => {
+  validate = async (event) => {
     event.preventDefault()
     this.setState({
       requestSuccess: false,
-      requestError: null
+      requestError: null,
     })
     const validates = ['name', 'email', 'content']
-      .map(key => {
+      .map((key) => {
         const errorMessage = contactFormValidate(key, this.state[key].value)
         if (errorMessage) {
           this.setState({
             [key]: {
               ...this.state[key],
-              error: errorMessage
-            }
+              error: errorMessage,
+            },
           })
           return errorMessage
         }
         return null
       })
-      .filter(value => value)
+      .filter((value) => value)
 
     if (validates.length === 0) {
       await this.handleSubmit()
@@ -120,36 +120,29 @@ class Contact extends React.Component {
   handleSubmit = async () => {
     const { site } = this.props
     if (site.id) {
-      const data = {
-        siteId: site.id,
-        name: this.state.name.value,
-        email: this.state.email.value,
-        content: this.state.content.value
-      }
-
       try {
         this.setState({
-          loading: true
+          loading: true,
         })
-        await SendContactMessageApi.post({ ...data })
+        // TODO: Send to contact message api
         this.setState({
           loading: false,
           requestSuccess: true,
           name: { ...initialInputState },
           email: { ...initialInputState },
-          content: { ...initialInputState }
+          content: { ...initialInputState },
         })
       } catch (error) {
         console.debug(error)
         this.setState({
           loading: false,
-          requestError: '送信に失敗しました。再度お試しください。'
+          requestError: '送信に失敗しました。再度お試しください。',
         })
       }
     }
   }
 
-  render () {
+  render() {
     const { className } = this.props
     const disabled =
       !this.state.name.value ||

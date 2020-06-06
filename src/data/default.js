@@ -63,10 +63,10 @@ export default {
     },
     photos: [
       {
-        url: '/images/store/shutterstock_479222686.jp'`
+        url: '/images/store/shutterstock_479222686.jpg',
       },
       {
-        url: '/images/store/shutterstock_479221186.jp'`,
+        url: '/images/store/shutterstock_479221186.jpg',
       },
     ],
     articles: [

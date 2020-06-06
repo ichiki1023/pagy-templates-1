@@ -48,10 +48,10 @@ const Title = styled.span`
 class Items extends React.Component {
   static propTypes = {
     items: PropTypes.array.isRequired,
-    onClickImage: PropTypes.func
+    onClickImage: PropTypes.func,
   }
 
-  render () {
+  render() {
     const { items, onClickImage } = this.props
 
     const displayNum = 8
@@ -66,26 +66,26 @@ class Items extends React.Component {
           settings: {
             arrows: true,
             slidesToShow: 3,
-            slidesToScroll: 1
-          }
+            slidesToScroll: 1,
+          },
         },
         {
           breakpoint: 936,
           settings: {
             arrows: true,
             slidesToShow: 2,
-            slidesToScroll: 1
-          }
+            slidesToScroll: 1,
+          },
         },
         {
           breakpoint: 624,
           settings: {
             arrows: false,
             slidesToShow: 1.5,
-            swipeToSlide: true
-          }
-        }
-      ]
+            swipeToSlide: true,
+          },
+        },
+      ],
     }
 
     return (

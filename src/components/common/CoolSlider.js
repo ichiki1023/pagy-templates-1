@@ -49,7 +49,7 @@ const StyledArrowForwardIcon = styled(ArrowForwardIos)`
 
 const NextArrow = function (props) {
   return (
-    <ArrowForward className='slick-next' isModal={props.isModal}>
+    <ArrowForward className="slick-next" isModal={props.isModal}>
       <StyledArrowForwardIcon
         style={{ fontSize: props.arrowIconSize }}
         slides={props.slidesToShow}
@@ -63,7 +63,7 @@ const NextArrow = function (props) {
 
 const PrevArrow = function (props) {
   return (
-    <ArrowBack className='slick-prev' isModal={props.isModal}>
+    <ArrowBack className="slick-prev" isModal={props.isModal}>
       <StyledArrowBackIcon
         style={{ fontSize: props.arrowIconSize }}
         current={props.currentSlide}
@@ -74,19 +74,19 @@ const PrevArrow = function (props) {
 }
 
 class CoolSlider extends React.Component {
-  sliderRef = null;
+  sliderRef = null
 
-  constructor (props) {
+  constructor(props) {
     super(props)
     const settings = props.settings
     this.state = {
       currentSlide: 0,
       slidesToScroll: settings.slidesToScroll,
-      slidesToShow: settings.slidesToShow
+      slidesToShow: settings.slidesToShow,
     }
   }
 
-  render () {
+  render() {
     const settings = {
       dots: false,
       infinite: false,
@@ -97,7 +97,7 @@ class CoolSlider extends React.Component {
         const responsive = this.props.settings.responsive
         if (responsive) {
           const result = responsive.filter(
-            (res) => res.breakpoint === this.sliderRef.state.breakpoint
+            (res) => res.breakpoint === this.sliderRef.state.breakpoint,
           )
           const setting =
             result[0] && result[0].settings
@@ -106,11 +106,11 @@ class CoolSlider extends React.Component {
           this.setState({
             currentSlide: newIndex,
             slidesToScroll: setting.slidesToScroll,
-            slidesToShow: setting.slidesToShow
+            slidesToShow: setting.slidesToShow,
           })
         }
       },
-      ...this.props.settings
+      ...this.props.settings,
     }
 
     return (
@@ -127,11 +127,11 @@ class CoolSlider extends React.Component {
 
 CoolSlider.propTypes = {
   settings: PropTypes.object,
-  arrowIconSize: PropTypes.number
+  arrowIconSize: PropTypes.number,
 }
 
 CoolSlider.defaultProps = {
-  arrowIconSize: 32
+  arrowIconSize: 32,
 }
 
 export default CoolSlider

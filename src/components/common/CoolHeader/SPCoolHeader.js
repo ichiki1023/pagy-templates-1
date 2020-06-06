@@ -100,30 +100,30 @@ const offset = 20
 const scrollOffset = -(headerHeight + offset)
 
 class SPCoolHeader extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
-      openMenu: props.openMenu
+      openMenu: props.openMenu,
     }
   }
 
   static defaultProps = {
-    openMenu: false
+    openMenu: false,
   }
 
   handleOpenMenu = () => {
     this.setState({
-      openMenu: true
+      openMenu: true,
     })
   }
 
   handleCloseMenu = () => {
     this.setState({
-      openMenu: false
+      openMenu: false,
     })
   }
 
-  render () {
+  render() {
     const { site, fashion, pageName, services, ...props } = this.props
     const { articles = [] } = site
     const { items = [], coordinates = [] } = fashion
@@ -139,18 +139,18 @@ class SPCoolHeader extends React.Component {
         <Drawer
           open={this.state.openMenu}
           onClose={this.handleCloseMenu}
-          anchor='right'
+          anchor="right"
           // use transparent background
           BackdropProps={{
             style: {
-              backgroundColor: 'transparent'
-            }
+              backgroundColor: 'transparent',
+            },
           }}
           // change background color
           PaperProps={{
             style: {
-              backgroundColor: '#545454'
-            }
+              backgroundColor: '#545454',
+            },
           }}
         >
           <SlideMenu>

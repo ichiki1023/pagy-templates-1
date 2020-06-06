@@ -1,3 +1,4 @@
+import React from 'react'
 import Media from 'react-media'
 import withAppContext from 'src/components/wrapper/withAppContext'
 

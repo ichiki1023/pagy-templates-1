@@ -27,34 +27,34 @@ const Contents = styled.div`
 
 class Selection extends React.Component {
   static propTypes = {
-    items: PropTypes.array.isRequired
+    items: PropTypes.array.isRequired,
   }
 
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
       openModal: false,
-      selectedImageIndex: 0
+      selectedImageIndex: 0,
     }
   }
 
-  handleOpenModal = selectedImageIndex => {
+  handleOpenModal = (selectedImageIndex) => {
     if (this.props.userAgent.isMobile) {
       return
     }
     this.setState({
       selectedImageIndex: selectedImageIndex,
-      openModal: true
+      openModal: true,
     })
   }
 
   handleCloseModal = () => {
     this.setState({
-      openModal: false
+      openModal: false,
     })
   }
 
-  render () {
+  render() {
     const { items, userAgent, className } = this.props
     return (
       <div id={'selection'} className={className}>

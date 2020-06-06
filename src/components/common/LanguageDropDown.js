@@ -68,6 +68,6 @@ const StyledDropDown = styled(Dropdown)`
   }
 `
 
-export default (props) => {
+export default function LanguageDropDown(props) {
   return <StyledDropDown {...props} />
 }

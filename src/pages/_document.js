@@ -1,27 +1,9 @@
 import React from 'react'
 import Document, { Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
-import getPageContext from 'src/helpers/getPageContext'
+import { ServerStyleSheets } from '@material-ui/styles'
 
 export default class TemplateDocument extends Document {
-  static async getInitialProps() {
-    const sheet = new ServerStyleSheet() // for styled-component
-    const pageContext = getPageContext() // for material-ui
-    const styleTags = sheet.getStyleElement()
-    return {
-      pageContext,
-      styleTags,
-      styles: (
-        <style
-          id="jss-server-side"
-          dangerouslySetInnerHTML={{
-            __html: pageContext.sheetsRegistry.toString(),
-          }}
-        />
-      ),
-    }
-  }
-
   render() {
     return (
       <html>
@@ -38,5 +20,34 @@ export default class TemplateDocument extends Document {
         </body>
       </html>
     )
+  }
+}
+
+TemplateDocument.getInitialProps = async (ctx) => {
+  const styledComponentsSheet = new ServerStyleSheet()
+  const materialSheets = new ServerStyleSheets()
+  const originalRenderPage = ctx.renderPage
+
+  try {
+    ctx.renderPage = () =>
+      originalRenderPage({
+        enhanceApp: (App) => (props) =>
+          styledComponentsSheet.collectStyles(
+            materialSheets.collect(<App {...props} />),
+          ),
+      })
+    const initialProps = await Document.getInitialProps(ctx)
+    return {
+      ...initialProps,
+      styles: (
+        <React.Fragment>
+          {initialProps.styles}
+          {materialSheets.getStyleElement()}
+          {styledComponentsSheet.getStyleElement()}
+        </React.Fragment>
+      ),
+    }
+  } finally {
+    styledComponentsSheet.seal()
   }
 }
