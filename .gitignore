@@ -1,7 +1,2 @@
 node_modules/
-build/
 .next/
-/static/
-.env
-.idea/
-.vscode/
