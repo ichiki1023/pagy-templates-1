@@ -4,6 +4,7 @@ import Header from 'src/components/common/Header'
 import Footer from 'src/components/common/Footer'
 import SNSNavigation from 'src/components/common/SNSServices/Navigation'
 import Contact from 'src/components/root/Contact'
+import withAppContext from 'src/components/wrapper/withAppContext'
 
 class ContactPage extends React.Component {
   render() {
@@ -36,7 +37,7 @@ ContactPage.getInitialProps = () => {
   return { title: 'CONTACT' }
 }
 
-export default ContactPage
+export default withAppContext(ContactPage)
 
 /**
  * style

@@ -4,6 +4,7 @@ import Header from 'src/components/common/Header'
 import Footer from 'src/components/common/Footer'
 import SNSNavigation from 'src/components/common/SNSServices/Navigation'
 import About from 'src/components/root/About'
+import withAppContext from 'src/components/wrapper/withAppContext'
 
 class AboutPage extends React.Component {
   render() {
@@ -36,7 +37,7 @@ AboutPage.getInitialProps = () => {
   return { title: 'ABOUT US' }
 }
 
-export default AboutPage
+export default withAppContext(AboutPage)
 
 /**
  * style

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 import CroppedImage, {
@@ -8,7 +8,11 @@ import IsSp from 'src/components/IsSp'
 
 const AboutImages = (props) => {
   const { photos, ...photosProps } = props
-  const imageWidth = window.innerWidth * 0.54 * 0.6
+  const [imageWidth, setImageWidth] = useState(0)
+
+  useEffect(() => {
+    setImageWidth(window.innerWidth * 0.54 * 0.6)
+  }, [])
 
   const Image = (props) => {
     return <StyledImage src={props.photo.url} />

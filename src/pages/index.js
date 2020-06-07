@@ -11,6 +11,7 @@ import Coordinates from 'src/components/root/Coordinates'
 import SocialMedia from 'src/components/root/SocialMedia'
 import Contact from 'src/components/root/Contact'
 import { animateScroll as scroll, scroller } from 'react-scroll'
+import withAppContext from 'src/components/wrapper/withAppContext'
 
 class Index extends React.Component {
   static async getInitialProps({ req, asPath }) {
@@ -89,7 +90,7 @@ class Index extends React.Component {
   }
 }
 
-export default Index
+export default withAppContext(Index)
 
 /**
  * style

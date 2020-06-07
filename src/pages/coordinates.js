@@ -6,6 +6,7 @@ import SectionTitle from 'src/components/common/SectionTitle'
 import SNSNavigation from 'src/components/common/SNSServices/Navigation'
 import Items from 'src/components/coordinates/Items'
 import AddIcon from '@material-ui/icons/Add'
+import withAppContext from 'src/components/wrapper/withAppContext'
 
 class Coordinates extends React.Component {
   render() {
@@ -60,7 +61,7 @@ Coordinates.getInitialProps = () => {
   return { title: 'COORDINATES' }
 }
 
-export default Coordinates
+export default withAppContext(Coordinates)
 
 /**
  * style

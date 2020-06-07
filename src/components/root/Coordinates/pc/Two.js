@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 import SectionTitle from 'src/components/common/SectionTitle'
@@ -10,7 +10,11 @@ import CroppedImage, {
 
 const CoordinatesPC = (props) => {
   const { images, ...custom } = props
-  const imageWidth = window.innerWidth * 0.54 * 0.6
+  const [imageWidth, setImageWidth] = useState(0)
+
+  useEffect(() => {
+    setImageWidth(window.innerWidth * 0.54 * 0.6)
+  }, [])
 
   return (
     <Section id={'coordinates'} {...custom}>

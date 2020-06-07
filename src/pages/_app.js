@@ -34,8 +34,8 @@ const GlobalStyle = createGlobalStyle`
 `
 
 const TemplateApp = (props) => {
-  const { Component, pageProps, userAgent } = props
-  const { site, fashion } = pageProps
+  const { Component, pageProps, data, userAgent } = props
+  const { site, fashion } = data
 
   React.useEffect(() => {
     // Remove the server-side injected CSS.
@@ -67,23 +67,15 @@ const TemplateApp = (props) => {
   )
 }
 
-TemplateApp.getInitialProps = async ({ Component, ctx }) => {
+TemplateApp.getInitialProps = async ({ ctx }) => {
   const { req } = ctx
-  let pageProps = {}
 
   // userAgent取得
   const ua = req ? req.headers['user-agent'] : window.navigator.userAgent
   const userAgent = getUserAgent(ua)
 
-  if (Component.getInitialProps) {
-    pageProps = await Component.getInitialProps({ ...ctx })
-  }
-
   return {
-    pageProps: {
-      ...defaultData,
-      ...pageProps,
-    },
+    data: defaultData,
     userAgent,
   }
 }
