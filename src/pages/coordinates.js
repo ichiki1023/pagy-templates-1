@@ -7,6 +7,65 @@ import SNSNavigation from 'src/components/common/SNSServices/Navigation'
 import Items from 'src/components/coordinates/Items'
 import AddIcon from '@material-ui/icons/Add'
 
+class Coordinates extends React.Component {
+  render() {
+    const {
+      site,
+      fashion: { coordinates },
+    } = this.props
+
+    const services =
+      site.facebook || site.twitter || site.instagram || site.pinterest
+        ? {
+            facebook: site.facebook,
+            twitter: site.twitter,
+            instagram: site.instagram,
+            pinterest: site.pinterest,
+          }
+        : null
+
+    const isEmptyCoordinates = !coordinates || coordinates.length === 0
+
+    return (
+      <Page>
+        <StyledHeader services={services} pageName={'coordinates'} />
+        {services ? <StyledSNSNavigation services={services} /> : null}
+        <Contents>
+          <StyledSectionTitle
+            backgroundText={'COORDINATES'}
+            titleText={'おすすめコーディネート'}
+          />
+          {!isEmptyCoordinates ? (
+            <div>
+              <StyledCoordinateItems coordinates={coordinates} />
+              <NextLink href={'#'}>
+                <StyledAddIcon width={24} height={24} />
+                もっと見る
+              </NextLink>
+            </div>
+          ) : null}
+        </Contents>
+        <FooterWrapper>
+          <StyledFooter
+            pageName={'coordinates'}
+            isEmptyCoordinates={isEmptyCoordinates}
+          />
+        </FooterWrapper>
+      </Page>
+    )
+  }
+}
+
+Coordinates.getInitialProps = () => {
+  return { title: 'COORDINATES' }
+}
+
+export default Coordinates
+
+/**
+ * style
+ **/
+
 const Page = styled.div`
   background-color: #fcfcfa;
 `
@@ -87,58 +146,3 @@ const StyledAddIcon = styled(AddIcon)`
   color: #545454;
   margin-right: 12px;
 `
-
-class Coordinates extends React.Component {
-  render() {
-    const {
-      site,
-      fashion: { coordinates },
-    } = this.props
-
-    const services =
-      site.facebook || site.twitter || site.instagram || site.pinterest
-        ? {
-            facebook: site.facebook,
-            twitter: site.twitter,
-            instagram: site.instagram,
-            pinterest: site.pinterest,
-          }
-        : null
-
-    const isEmptyCoordinates = !coordinates || coordinates.length === 0
-
-    return (
-      <Page>
-        <StyledHeader services={services} pageName={'coordinates'} />
-        {services ? <StyledSNSNavigation services={services} /> : null}
-        <Contents>
-          <StyledSectionTitle
-            backgroundText={'COORDINATES'}
-            titleText={'おすすめコーディネート'}
-          />
-          {!isEmptyCoordinates ? (
-            <div>
-              <StyledCoordinateItems coordinates={coordinates} />
-              <NextLink href={'#'}>
-                <StyledAddIcon width={24} height={24} />
-                もっと見る
-              </NextLink>
-            </div>
-          ) : null}
-        </Contents>
-        <FooterWrapper>
-          <StyledFooter
-            pageName={'coordinates'}
-            isEmptyCoordinates={isEmptyCoordinates}
-          />
-        </FooterWrapper>
-      </Page>
-    )
-  }
-}
-
-Coordinates.getInitialProps = () => {
-  return { title: 'COORDINATES' }
-}
-
-export default Coordinates

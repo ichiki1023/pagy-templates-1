@@ -6,11 +6,6 @@ import {
   isEqualAllBusinessHour,
 } from 'src/helpers/businessHourUtils'
 
-const BusinessHourText = styled.span`
-  display: block;
-  color: #545454;
-`
-
 const BusinessHour = (props) => {
   const businessHour = props.businessHour
   const isEqualBusinessHour = isEqualAllBusinessHour(businessHour)
@@ -74,3 +69,12 @@ BusinessHour.propTypes = {
 }
 
 export default BusinessHour
+
+/**
+ * style
+ **/
+
+const BusinessHourText = styled.span`
+  display: block;
+  color: #545454;
+`

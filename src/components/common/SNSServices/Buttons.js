@@ -2,6 +2,16 @@ import React from 'react'
 import styled from 'styled-components'
 import SNSServices, { BackgroundIcon } from './SNSServices'
 
+const Buttons = ({ services }) => {
+  return <StyledSNSServices services={services} iconColor={'gray'} />
+}
+
+export default Buttons
+
+/**
+ * style
+ **/
+
 const StyledSNSServices = styled(SNSServices)`
   color: #ffffff;
   display: flex;
@@ -15,9 +25,3 @@ const StyledSNSServices = styled(SNSServices)`
     min-height: 48px;
   }
 `
-
-const Buttons = ({ services }) => {
-  return <StyledSNSServices services={services} iconColor={'gray'} />
-}
-
-export default Buttons

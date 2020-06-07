@@ -6,6 +6,44 @@ import SNSServices, {
   BackgroundIcon,
 } from 'src/components/common/SNSServices/SNSServices'
 
+const SocialMedia = (props) => {
+  const { services, ...custom } = props
+  return (
+    <Section id={'socialMedia'} {...custom}>
+      <Contents>
+        <StyledSectionTitle
+          backgroundText={'SOCIAL MEDIA'}
+          titleText={'ソーシャルメディア'}
+        />
+        <FollowUs>
+          <span>FOLLOW US</span>
+          <StyledSNSServices
+            services={services}
+            iconSize={48}
+            iconColor={'gray'}
+            hasText
+          />
+        </FollowUs>
+      </Contents>
+    </Section>
+  )
+}
+
+SocialMedia.propTypes = {
+  services: PropTypes.shape({
+    twitter: PropTypes.string,
+    facebook: PropTypes.string,
+    instagram: PropTypes.string,
+    pinterest: PropTypes.string,
+  }).isRequired,
+}
+
+export default SocialMedia
+
+/**
+ * style
+ **/
+
 const Section = styled.div``
 
 const StyledSectionTitle = styled(SectionTitle)`
@@ -81,37 +119,3 @@ const FollowUs = styled.div`
     margin-bottom: 30px;
   }
 `
-
-const SocialMedia = (props) => {
-  const { services, ...custom } = props
-  return (
-    <Section id={'socialMedia'} {...custom}>
-      <Contents>
-        <StyledSectionTitle
-          backgroundText={'SOCIAL MEDIA'}
-          titleText={'ソーシャルメディア'}
-        />
-        <FollowUs>
-          <span>FOLLOW US</span>
-          <StyledSNSServices
-            services={services}
-            iconSize={48}
-            iconColor={'gray'}
-            hasText
-          />
-        </FollowUs>
-      </Contents>
-    </Section>
-  )
-}
-
-SocialMedia.propTypes = {
-  services: PropTypes.shape({
-    twitter: PropTypes.string,
-    facebook: PropTypes.string,
-    instagram: PropTypes.string,
-    pinterest: PropTypes.string,
-  }).isRequired,
-}
-
-export default SocialMedia

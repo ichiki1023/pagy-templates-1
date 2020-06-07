@@ -7,85 +7,6 @@ import moment from 'moment'
 import LanguageIcon from '@material-ui/icons/Language'
 import LanguageDropDown from 'src/components/common/LanguageDropDown'
 
-const Footer = styled.div`
-  background-color: rgba(240, 240, 240, 0.8);
-  width: 100%;
-  height: 192px;
-  display: flex;
-  flex-direction: column;
-  bottom: 0;
-`
-
-const Contents = styled.div`
-  width: 64%;
-  height: 128px;
-  margin: 0 auto;
-`
-
-const FooterList = styled.li`
-  cursor: pointer;
-  text-align: center;
-
-  a {
-    font-size: 12px;
-    display: block;
-    padding: 0 8px;
-    text-decoration: none;
-    color: #9b9b9b;
-    font-weight: bold;
-  }
-
-  ${(props) =>
-    props.isTitle &&
-    css`
-      a {
-        font-size: 14px;
-      }
-    `};
-`
-
-const FooterLists = styled.ul`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  height: 100%;
-  padding: 0;
-  list-style: none;
-  border-bottom: 1px solid #d1d3cf;
-
-  li:first-child {
-    margin-right: auto;
-  }
-`
-
-const CopyRights = styled.ul`
-  color: #9b9b9b;
-  margin: 16px 0;
-  display: flex;
-  justify-content: flex-start;
-  list-style: none;
-
-  li {
-    font-size: 12px;
-  }
-
-  li:last-of-type {
-    font-size: 14px;
-    margin-left: auto;
-  }
-`
-
-const LanguageFooterList = styled(FooterList)`
-  padding: 12px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-`
-
-const StyledLanguageIcon = styled(LanguageIcon)`
-  color: #9b9b9b;
-`
-
 const PCCoolFooter = (props) => {
   const { site, fashion, pageName, ...otherProps } = props
   const { articles = [] } = site
@@ -214,3 +135,86 @@ const PCCoolFooter = (props) => {
 }
 
 export default withAppContext(PCCoolFooter)
+
+/**
+ * style
+ **/
+
+const Footer = styled.div`
+  background-color: rgba(240, 240, 240, 0.8);
+  width: 100%;
+  height: 192px;
+  display: flex;
+  flex-direction: column;
+  bottom: 0;
+`
+
+const Contents = styled.div`
+  width: 64%;
+  height: 128px;
+  margin: 0 auto;
+`
+
+const FooterList = styled.li`
+  cursor: pointer;
+  text-align: center;
+
+  a {
+    font-size: 12px;
+    display: block;
+    padding: 0 8px;
+    text-decoration: none;
+    color: #9b9b9b;
+    font-weight: bold;
+  }
+
+  ${(props) =>
+    props.isTitle &&
+    css`
+      a {
+        font-size: 14px;
+      }
+    `};
+`
+
+const FooterLists = styled.ul`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 100%;
+  padding: 0;
+  list-style: none;
+  border-bottom: 1px solid #d1d3cf;
+
+  li:first-child {
+    margin-right: auto;
+  }
+`
+
+const CopyRights = styled.ul`
+  color: #9b9b9b;
+  margin: 16px 0;
+  display: flex;
+  justify-content: flex-start;
+  list-style: none;
+
+  li {
+    font-size: 12px;
+  }
+
+  li:last-of-type {
+    font-size: 14px;
+    margin-left: auto;
+  }
+`
+
+const LanguageFooterList = styled(FooterList)`
+  padding: 12px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`
+
+const StyledLanguageIcon = styled(LanguageIcon)`
+  color: #9b9b9b;
+`

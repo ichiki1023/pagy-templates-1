@@ -6,25 +6,6 @@ import Items from './Items'
 import Modal from './Modal'
 import withAppContext from 'src/components/wrapper/withAppContext'
 
-// Contents幅に合わせて幅の調整を行っている(54% + 100%-contents size)
-const StyledSectionTitle = styled(SectionTitle)`
-  width: 54vw;
-  margin: 0 auto 80px auto;
-
-  @media (max-width: 750px) {
-    width: 90%;
-    margin: 0 auto 48px auto;
-  }
-`
-
-const Contents = styled.div`
-  width: 100%;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`
-
 class Selection extends React.Component {
   static propTypes = {
     items: PropTypes.array.isRequired,
@@ -83,3 +64,26 @@ class Selection extends React.Component {
 }
 
 export default withAppContext(Selection)
+
+/**
+ * style
+ **/
+
+// Contents幅に合わせて幅の調整を行っている(54% + 100%-contents size)
+const StyledSectionTitle = styled(SectionTitle)`
+  width: 54vw;
+  margin: 0 auto 80px auto;
+
+  @media (max-width: 750px) {
+    width: 90%;
+    margin: 0 auto 48px auto;
+  }
+`
+
+const Contents = styled.div`
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`

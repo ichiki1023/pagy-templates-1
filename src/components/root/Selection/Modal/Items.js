@@ -3,26 +3,6 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import CoolSlider from 'src/components/common/CoolSlider'
 
-const Item = styled.div`
-  margin: auto;
-`
-
-const StyledImage = styled.img`
-  width: 50%;
-  min-width: 240px;
-  margin: 0 auto;
-`
-
-const Description = styled.span`
-  width: 35%;
-  min-width: 180px;
-  font-size: calc(20px - 0.2em);
-  color: #545454;
-  margin: 0 auto;
-  display: block;
-  text-align: center;
-`
-
 const ModalItems = (props) => {
   const settings = {
     arrows: true,
@@ -55,3 +35,27 @@ ModalItems.defaultProps = {
 }
 
 export default ModalItems
+
+/**
+ * style
+ **/
+
+const Item = styled.div`
+  margin: auto;
+`
+
+const StyledImage = styled.img`
+  width: 50%;
+  min-width: 240px;
+  margin: 0 auto;
+`
+
+const Description = styled.span`
+  width: 35%;
+  min-width: 180px;
+  font-size: calc(20px - 0.2em);
+  color: #545454;
+  margin: 0 auto;
+  display: block;
+  text-align: center;
+`

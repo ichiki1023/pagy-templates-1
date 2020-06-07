@@ -3,37 +3,6 @@ import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 import Icon from 'src/components/common/Icon'
 
-/**
- * 拡張用のstyled-component. 親のComponentで${BackgroundIcon}する
- */
-export const BackgroundIcon = styled.div`
-  width: 48px;
-  height: 48px;
-  position: relative;
-  ${(props) =>
-    props.iconSize &&
-    css`
-      width: ${props.iconSize}px;
-      height: ${props.iconSize}px;
-    `};
-
-  & > p {
-  }
-`
-
-export const StyledIcon = styled(Icon)`
-  & svg {
-    width: 50%;
-    height: 50%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
-  }
-`
-
 const snsServices = {
   facebook: {
     name: 'Facebook',
@@ -104,3 +73,35 @@ SNSServices.defaultProps = {
 }
 
 export default SNSServices
+
+/**
+ * style
+ **/
+
+export const BackgroundIcon = styled.div`
+  width: 48px;
+  height: 48px;
+  position: relative;
+  ${(props) =>
+    props.iconSize &&
+    css`
+      width: ${props.iconSize}px;
+      height: ${props.iconSize}px;
+    `};
+
+  & > p {
+  }
+`
+
+export const StyledIcon = styled(Icon)`
+  & svg {
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+  }
+`

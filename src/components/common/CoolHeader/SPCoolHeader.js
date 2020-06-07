@@ -10,91 +10,6 @@ import withAppContext from 'src/components/wrapper/withAppContext'
 import LanguageDropDown from 'src/components/common/LanguageDropDown'
 import LanguageIcon from '@material-ui/icons/Language'
 
-const Header = styled.div`
-  background-color: #000000;
-  width: 100%;
-  height: 48px;
-  line-height: 48px;
-  position: fixed;
-`
-
-const MenuIconArea = styled.div`
-  float: right;
-  width: 20px;
-  margin-right: 16px;
-  text-align: right;
-`
-
-const Menu = styled(MenuIcon)`
-  color: #ffffff;
-`
-
-const Close = styled(CloseIcon)`
-  color: #ffffff;
-  float: right;
-  height: 16px;
-  margin: 16px 16px 18px 0;
-`
-
-const MenuText = styled.p`
-  color: #ffffff;
-  font-size: 10px;
-  transform: scale(0.6);
-  transform-origin: left center;
-  margin-left: 2.5px;
-  margin-top: -38px;
-`
-
-const SiteName = styled.span`
-  vertical-align: middle;
-  color: #ffffff;
-  margin-left: 16px;
-  font-size: 14px;
-`
-
-const SlideMenu = styled.div`
-  width: 80%;
-  min-width: 300px;
-  background-color: #545454;
-`
-
-const MenuList = styled.div`
-  margin-left: 24px;
-  clear: right;
-`
-
-const FirstSectionTitle = styled.p`
-  color: rgba(252, 252, 250, 0.54);
-  font-size: 16px;
-  margin-bottom: 24px;
-`
-
-const SectionTitle = styled.p`
-  color: rgba(252, 252, 250, 0.54);
-  font-size: 16px;
-  margin-top: 48px;
-  margin-bottom: 24px;
-`
-
-const MenuTitle = styled.li`
-  list-style: none;
-  color: #fcfcfa;
-  margin-bottom: 20px;
-`
-
-const ChildMenuTitle = styled.div`
-  margin-left: 16px;
-`
-
-const LanguageArea = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-`
-const StyledLanguageIcon = styled(LanguageIcon)`
-  color: #ffffff;
-`
-
 const headerHeight = 64
 const offset = 20
 const scrollOffset = -(headerHeight + offset)
@@ -277,3 +192,92 @@ class SPCoolHeader extends React.Component {
 }
 
 export default withAppContext(SPCoolHeader)
+
+/**
+ * style
+ **/
+
+const Header = styled.div`
+  background-color: #000000;
+  width: 100%;
+  height: 48px;
+  line-height: 48px;
+  position: fixed;
+`
+
+const MenuIconArea = styled.div`
+  float: right;
+  width: 20px;
+  margin-right: 16px;
+  text-align: right;
+`
+
+const Menu = styled(MenuIcon)`
+  color: #ffffff;
+`
+
+const Close = styled(CloseIcon)`
+  color: #ffffff;
+  float: right;
+  height: 16px;
+  margin: 16px 16px 18px 0;
+`
+
+const MenuText = styled.p`
+  color: #ffffff;
+  font-size: 10px;
+  transform: scale(0.6);
+  transform-origin: left center;
+  margin-left: 2.5px;
+  margin-top: -38px;
+`
+
+const SiteName = styled.span`
+  vertical-align: middle;
+  color: #ffffff;
+  margin-left: 16px;
+  font-size: 14px;
+`
+
+const SlideMenu = styled.div`
+  width: 80%;
+  min-width: 300px;
+  background-color: #545454;
+`
+
+const MenuList = styled.div`
+  margin-left: 24px;
+  clear: right;
+`
+
+const FirstSectionTitle = styled.p`
+  color: rgba(252, 252, 250, 0.54);
+  font-size: 16px;
+  margin-bottom: 24px;
+`
+
+const SectionTitle = styled.p`
+  color: rgba(252, 252, 250, 0.54);
+  font-size: 16px;
+  margin-top: 48px;
+  margin-bottom: 24px;
+`
+
+const MenuTitle = styled.li`
+  list-style: none;
+  color: #fcfcfa;
+  margin-bottom: 20px;
+`
+
+const ChildMenuTitle = styled.div`
+  margin-left: 16px;
+`
+
+const LanguageArea = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`
+const StyledLanguageIcon = styled(LanguageIcon)`
+  color: #ffffff;
+`

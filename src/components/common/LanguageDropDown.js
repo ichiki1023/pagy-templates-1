@@ -2,6 +2,16 @@ import React from 'react'
 import Dropdown from 'react-dropdown'
 import styled from 'styled-components'
 
+const LanguageDropDown = (props) => {
+  return <StyledDropDown {...props} />
+}
+
+export default LanguageDropDown
+
+/**
+ * style
+ **/
+
 /**
  * react-dropdownのlibraryを利用しているため、cssべた書きしています。
  * @type {StyledComponentClass<any, any, *>}
@@ -67,9 +77,3 @@ const StyledDropDown = styled(Dropdown)`
     color: #545454;
   }
 `
-
-const LanguageDropDown = (props) => {
-  return <StyledDropDown {...props} />
-}
-
-export default LanguageDropDown

@@ -6,33 +6,6 @@ import contactFormValidate from 'src/helpers/contactFormValidate'
 import SubmitButton from 'src/components/common/SubmitButton'
 import withAppContext from 'src/components/wrapper/withAppContext'
 
-const StyledSectionTitle = styled(SectionTitle)`
-  margin-bottom: 50px;
-  @media (max-width: 750px) {
-    margin-bottom: 24px;
-  }
-`
-
-const Contents = styled.div`
-  width: 54%;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: relative;
-
-  @media (max-width: 750px) {
-    width: 90%;
-  }
-`
-
-const initialInputState = {
-  focus: false,
-  touched: false,
-  value: '',
-  error: null,
-}
-
 class Contact extends React.Component {
   constructor(props) {
     super(props)
@@ -204,3 +177,34 @@ class Contact extends React.Component {
 }
 
 export default withAppContext(Contact)
+
+/**
+ * style
+ **/
+
+const StyledSectionTitle = styled(SectionTitle)`
+  margin-bottom: 50px;
+  @media (max-width: 750px) {
+    margin-bottom: 24px;
+  }
+`
+
+const Contents = styled.div`
+  width: 54%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+
+  @media (max-width: 750px) {
+    width: 90%;
+  }
+`
+
+const initialInputState = {
+  focus: false,
+  touched: false,
+  value: '',
+  error: null,
+}

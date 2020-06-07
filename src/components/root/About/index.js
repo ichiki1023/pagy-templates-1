@@ -7,105 +7,6 @@ import BusinessHour from './BusinessHour'
 import withAppContext from 'src/components/wrapper/withAppContext'
 import MoreLink from 'src/components/common/MoreLink'
 
-const Section = styled.div`
-  position: relative;
-`
-
-const StyledSectionTitle = styled(SectionTitle)`
-  @media (max-width: 750px) {
-    width: 90%;
-    margin: 0 auto 48px auto;
-  }
-`
-
-const Contents = styled.div`
-  width: 54%;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: relative;
-
-  @media (max-width: 750px) {
-    width: 100%;
-  }
-`
-
-const StyledTexts = styled.div`
-  width: 100%;
-  margin: 0 auto;
-`
-
-const StyledTable = styled.table`
-  margin: 50px 0;
-  @media (max-width: 750px) {
-    width: 90%;
-    margin: 30px auto;
-  }
-
-  th {
-    color: #9b9b9b;
-    font-size: 18px;
-    font-weight: normal;
-    padding-bottom: 1.5em;
-    text-align: left;
-
-    @media (max-width: 750px) {
-      display: inline-block;
-      font-size: 14px;
-      padding: 4px 0;
-    }
-  }
-
-  td {
-    color: #545454;
-    font-size: 18px;
-    padding-bottom: 1.5em;
-
-    @media (max-width: 750px) {
-      display: block;
-      font-size: 16px;
-      padding: 0;
-      margin-bottom: 20px;
-    }
-  }
-`
-
-const StyledDescription = styled.div`
-  color: #545454;
-  margin-top: 40px;
-  @media (max-width: 750px) {
-    width: 90%;
-    margin: 24px auto auto;
-  }
-`
-
-const StyledAboutImages = styled(AboutImages)`
-  width: 100%;
-  position: relative;
-  margin-top: 48px;
-`
-
-const MapArea = styled.div`
-  padding-top: 70px;
-  margin-top: -70px;
-  width: 100%;
-`
-
-const StyledGoogleMap = styled(GoogleMap)`
-  height: calc(54vw * (724 / 1024));
-  width: 100%;
-
-  @media (max-width: 750px) {
-    width: 100%;
-    height: 375px;
-  }
-`
-
-const AddressText = styled.span`
-  display: block;
-`
-
 const HOLIDAYS = {
   mon: '月曜日',
   tue: '火曜日',
@@ -218,3 +119,106 @@ const About = (props) => {
 }
 
 export default withAppContext(About)
+
+/**
+ * style
+ **/
+
+const Section = styled.div`
+  position: relative;
+`
+
+const StyledSectionTitle = styled(SectionTitle)`
+  @media (max-width: 750px) {
+    width: 90%;
+    margin: 0 auto 48px auto;
+  }
+`
+
+const Contents = styled.div`
+  width: 54%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+
+  @media (max-width: 750px) {
+    width: 100%;
+  }
+`
+
+const StyledTexts = styled.div`
+  width: 100%;
+  margin: 0 auto;
+`
+
+const StyledTable = styled.table`
+  margin: 50px 0;
+  @media (max-width: 750px) {
+    width: 90%;
+    margin: 30px auto;
+  }
+
+  th {
+    color: #9b9b9b;
+    font-size: 18px;
+    font-weight: normal;
+    padding-bottom: 1.5em;
+    text-align: left;
+
+    @media (max-width: 750px) {
+      display: inline-block;
+      font-size: 14px;
+      padding: 4px 0;
+    }
+  }
+
+  td {
+    color: #545454;
+    font-size: 18px;
+    padding-bottom: 1.5em;
+
+    @media (max-width: 750px) {
+      display: block;
+      font-size: 16px;
+      padding: 0;
+      margin-bottom: 20px;
+    }
+  }
+`
+
+const StyledDescription = styled.div`
+  color: #545454;
+  margin-top: 40px;
+  @media (max-width: 750px) {
+    width: 90%;
+    margin: 24px auto auto;
+  }
+`
+
+const StyledAboutImages = styled(AboutImages)`
+  width: 100%;
+  position: relative;
+  margin-top: 48px;
+`
+
+const MapArea = styled.div`
+  padding-top: 70px;
+  margin-top: -70px;
+  width: 100%;
+`
+
+const StyledGoogleMap = styled(GoogleMap)`
+  height: calc(54vw * (724 / 1024));
+  width: 100%;
+
+  @media (max-width: 750px) {
+    width: 100%;
+    height: 375px;
+  }
+`
+
+const AddressText = styled.span`
+  display: block;
+`

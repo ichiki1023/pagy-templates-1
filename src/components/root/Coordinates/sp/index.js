@@ -5,6 +5,44 @@ import SectionTitle from 'src/components/common/SectionTitle'
 import Link from 'next/link'
 import ArrowForwardIcon from '@material-ui/icons/ArrowForwardIos'
 
+const CoordinatesSP = (props) => {
+  const { image, ...custom } = props
+
+  return (
+    <Section id={'coordinates'} {...custom}>
+      <BackgroundImages>
+        <BackgroundImage>
+          <StyledImage src={image} />
+        </BackgroundImage>
+      </BackgroundImages>
+      <Contents>
+        <div>
+          <StyledSectionTitle
+            backgroundText={'COORDINATES'}
+            titleText={'おすすめコーディネート'}
+          />
+        </div>
+        <Link href={'/coordinates'}>
+          <StyledLink>
+            <p>さらに詳しく</p>
+            <StyledArrowForwardIcon />
+          </StyledLink>
+        </Link>
+      </Contents>
+    </Section>
+  )
+}
+
+CoordinatesSP.propTypes = {
+  image: PropTypes.string.isRequired,
+}
+
+export default CoordinatesSP
+
+/**
+ * style
+ **/
+
 const Section = styled.div`
   height: 100vh;
   position: relative;
@@ -99,37 +137,3 @@ const StyledImage = styled.img`
 const StyledArrowForwardIcon = styled(ArrowForwardIcon)`
   color: #fff;
 `
-
-const CoordinatesSP = (props) => {
-  const { image, ...custom } = props
-
-  return (
-    <Section id={'coordinates'} {...custom}>
-      <BackgroundImages>
-        <BackgroundImage>
-          <StyledImage src={image} />
-        </BackgroundImage>
-      </BackgroundImages>
-      <Contents>
-        <div>
-          <StyledSectionTitle
-            backgroundText={'COORDINATES'}
-            titleText={'おすすめコーディネート'}
-          />
-        </div>
-        <Link href={'/coordinates'}>
-          <StyledLink>
-            <p>さらに詳しく</p>
-            <StyledArrowForwardIcon />
-          </StyledLink>
-        </Link>
-      </Contents>
-    </Section>
-  )
-}
-
-CoordinatesSP.propTypes = {
-  image: PropTypes.string.isRequired,
-}
-
-export default CoordinatesSP

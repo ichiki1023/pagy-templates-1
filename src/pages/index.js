@@ -12,6 +12,89 @@ import SocialMedia from 'src/components/root/SocialMedia'
 import Contact from 'src/components/root/Contact'
 import { animateScroll as scroll, scroller } from 'react-scroll'
 
+class Index extends React.Component {
+  static async getInitialProps({ req, asPath }) {
+    const anchor = req ? null : asPath
+    return { anchor }
+  }
+
+  componentDidMount() {
+    if (this.props.anchor) {
+      try {
+        const element = this.props.anchor.split('/#')[1]
+        if (element) {
+          scroller.scrollTo(element)
+          return
+        }
+        scroll.scrollToTop({
+          smooth: false,
+          duration: 0,
+        })
+        return
+      } catch (error) {
+        // splitできない場合はtopへ送る
+        scroll.scrollToTop({
+          smooth: false,
+          duration: 0,
+        })
+        return
+      }
+    }
+    scroll.scrollToTop({
+      smooth: false,
+      duration: 0,
+    })
+  }
+
+  render() {
+    const { site, fashion } = this.props
+
+    const services =
+      site.facebook || site.twitter || site.instagram || site.pinterest
+        ? {
+            facebook: site.facebook,
+            twitter: site.twitter,
+            instagram: site.instagram,
+            pinterest: site.pinterest,
+          }
+        : null
+
+    return (
+      <Page>
+        <Wrapper>
+          <StyledHeader services={services} pageName={'home'} />
+          <Home />
+          {site.articles && site.articles.length !== 0 ? (
+            <StyledNews containerId={'news'} articles={site.articles} />
+          ) : null}
+          {fashion.items && fashion.items.length !== 0 ? (
+            <StyledSelection items={fashion.items} />
+          ) : null}
+          {fashion.coordinates && fashion.coordinates.length !== 0 ? (
+            <StyledCoordinates
+              coordinates={fashion.coordinates}
+              marginTop={paddingTop}
+            />
+          ) : null}
+          <StyledAbout pageName={'home'} />
+          {services && <StyledSocialMedia services={services} />}
+        </Wrapper>
+        <StyledContact />
+        {services ? <StyledSNSNavigation services={services} /> : null}
+        <FooterWrapper>
+          <StyledFooter pageName={'home'} />
+        </FooterWrapper>
+      </Page>
+    )
+  }
+}
+
+export default Index
+
+/**
+ * style
+ **/
+
 const headerHeight = 64
 const padding = 40
 const sectionMargin = 224
@@ -119,82 +202,3 @@ const Wrapper = styled.div`
   width: 100%;
   position: relative;
 `
-
-class Index extends React.Component {
-  static async getInitialProps({ req, asPath }) {
-    const anchor = req ? null : asPath
-    return { anchor }
-  }
-
-  componentDidMount() {
-    if (this.props.anchor) {
-      try {
-        const element = this.props.anchor.split('/#')[1]
-        if (element) {
-          scroller.scrollTo(element)
-          return
-        }
-        scroll.scrollToTop({
-          smooth: false,
-          duration: 0,
-        })
-        return
-      } catch (error) {
-        // splitできない場合はtopへ送る
-        scroll.scrollToTop({
-          smooth: false,
-          duration: 0,
-        })
-        return
-      }
-    }
-    scroll.scrollToTop({
-      smooth: false,
-      duration: 0,
-    })
-  }
-
-  render() {
-    const { site, fashion } = this.props
-
-    const services =
-      site.facebook || site.twitter || site.instagram || site.pinterest
-        ? {
-            facebook: site.facebook,
-            twitter: site.twitter,
-            instagram: site.instagram,
-            pinterest: site.pinterest,
-          }
-        : null
-
-    return (
-      <Page>
-        <Wrapper>
-          <StyledHeader services={services} pageName={'home'} />
-          <Home />
-          {site.articles && site.articles.length !== 0 ? (
-            <StyledNews containerId={'news'} articles={site.articles} />
-          ) : null}
-          {fashion.items && fashion.items.length !== 0 ? (
-            <StyledSelection items={fashion.items} />
-          ) : null}
-          {fashion.coordinates && fashion.coordinates.length !== 0 ? (
-            <StyledCoordinates
-              coordinates={fashion.coordinates}
-              marginTop={paddingTop}
-            />
-          ) : null}
-          <StyledAbout pageName={'home'} />
-          {services && <StyledSocialMedia services={services} />}
-        </Wrapper>
-        <StyledContact />
-        {services ? <StyledSNSNavigation services={services} /> : null}
-        <FooterWrapper>
-          <StyledFooter pageName={'home'} />
-        </FooterWrapper>
-      </Page>
-    )
-  }
-}
-
-export default Index

@@ -2,6 +2,26 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
+const SectionTitle = ({ backgroundText, titleText, ...props }) => {
+  return (
+    <StyledSectionTitle {...props}>
+      <h3>{backgroundText}</h3>
+      <span>{titleText}</span>
+    </StyledSectionTitle>
+  )
+}
+
+SectionTitle.propTypes = {
+  backgroundText: PropTypes.string.isRequired,
+  titleText: PropTypes.string.isRequired,
+}
+
+export default SectionTitle
+
+/**
+ * style
+ **/
+
 const StyledSectionTitle = styled.div`
   position: relative;
   h3 {
@@ -27,19 +47,3 @@ const StyledSectionTitle = styled.div`
     }
   }
 `
-
-const SectionTitle = ({ backgroundText, titleText, ...props }) => {
-  return (
-    <StyledSectionTitle {...props}>
-      <h3>{backgroundText}</h3>
-      <span>{titleText}</span>
-    </StyledSectionTitle>
-  )
-}
-
-SectionTitle.propTypes = {
-  backgroundText: PropTypes.string.isRequired,
-  titleText: PropTypes.string.isRequired,
-}
-
-export default SectionTitle

@@ -4,11 +4,10 @@ import PCCoolFooter from './PCCoolFooter'
 import SPCoolFooter from './SPCoolFooter'
 
 const CoolFooter = (props) => {
-  const { ...custom } = props
   return (
     <IsSp>
       {(matches) =>
-        matches ? <SPCoolFooter {...custom} /> : <PCCoolFooter {...custom} />
+        matches ? <SPCoolFooter {...props} /> : <PCCoolFooter {...props} />
       }
     </IsSp>
   )

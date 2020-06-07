@@ -3,6 +3,36 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import withAppContext from 'src/components/wrapper/withAppContext'
 
+const Home = (props) => {
+  const { site } = props
+  return (
+    <Section id={'home'} store_front_image_url={site.store_front_image_url}>
+      <Page>
+        <Contents>
+          <TitleContents>
+            <h3>{site.name}</h3>
+            <span>{site.catch_phrase}</span>
+          </TitleContents>
+        </Contents>
+      </Page>
+    </Section>
+  )
+}
+
+Home.propTypes = {
+  site: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    catch_phrase: PropTypes.string,
+    store_front_image_url: PropTypes.string,
+  }).isRequired,
+}
+
+export default withAppContext(Home)
+
+/**
+ * style
+ **/
+
 const Section = styled.div`
   background: url(${(props) => props.store_front_image_url}) no-repeat center;
   background-size: cover;
@@ -55,29 +85,3 @@ const TitleContents = styled.div`
     }
   }
 `
-
-const Home = (props) => {
-  const { site } = props
-  return (
-    <Section id={'home'} store_front_image_url={site.store_front_image_url}>
-      <Page>
-        <Contents>
-          <TitleContents>
-            <h3>{site.name}</h3>
-            <span>{site.catch_phrase}</span>
-          </TitleContents>
-        </Contents>
-      </Page>
-    </Section>
-  )
-}
-
-Home.propTypes = {
-  site: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    catch_phrase: PropTypes.string,
-    store_front_image_url: PropTypes.string,
-  }).isRequired,
-}
-
-export default withAppContext(Home)

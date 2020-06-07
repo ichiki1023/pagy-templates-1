@@ -4,6 +4,46 @@ import styled from 'styled-components'
 import SNSServices, { BackgroundIcon } from './SNSServices'
 import IsSp from 'src/components/IsSp'
 
+const Navigation = (props) => {
+  const { services, className } = props
+
+  return (
+    <IsSp maxWidth={1024}>
+      {(matches) =>
+        !matches && (
+          <Contents className={className}>
+            <WrapperText>
+              <StyledText>FOLLOW US</StyledText>
+            </WrapperText>
+            <FirstLine />
+            <StyledSNSServices
+              services={services}
+              iconSize={48}
+              iconColor={'white'}
+            />
+            <Line />
+          </Contents>
+        )
+      }
+    </IsSp>
+  )
+}
+
+Navigation.propTypes = {
+  services: PropTypes.shape({
+    twitter: PropTypes.string,
+    facebook: PropTypes.string,
+    instagram: PropTypes.string,
+    pinterest: PropTypes.string,
+  }).isRequired,
+}
+
+export default Navigation
+
+/**
+ * style
+ **/
+
 const Contents = styled.div`
   position: fixed;
   top: calc(50% + 32px); /* headerの半分を追加して調整 */
@@ -55,39 +95,3 @@ const Line = styled.div`
 const FirstLine = styled(Line)`
   margin: 24px 0;
 `
-
-const Navigation = (props) => {
-  const { services, className } = props
-
-  return (
-    <IsSp maxWidth={1024}>
-      {(matches) =>
-        !matches && (
-          <Contents className={className}>
-            <WrapperText>
-              <StyledText>FOLLOW US</StyledText>
-            </WrapperText>
-            <FirstLine />
-            <StyledSNSServices
-              services={services}
-              iconSize={48}
-              iconColor={'white'}
-            />
-            <Line />
-          </Contents>
-        )
-      }
-    </IsSp>
-  )
-}
-
-Navigation.propTypes = {
-  services: PropTypes.shape({
-    twitter: PropTypes.string,
-    facebook: PropTypes.string,
-    instagram: PropTypes.string,
-    pinterest: PropTypes.string,
-  }).isRequired,
-}
-
-export default Navigation

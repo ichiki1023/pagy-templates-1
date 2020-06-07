@@ -2,14 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
-const StyldDefaultSVG = styled.svg`
-  width: 0;
-  height: 0;
-  position: absolute;
-  top: 0;
-  left: 0;
-`
-
 /**
  * 形を変形させるためのsvg。中身としては存在せず、id紐付けで指定されたpolygon値を呼び出す
  * @returns {*}
@@ -74,3 +66,15 @@ CroppedImage.defaultProps = {
 }
 
 export default CroppedImage
+
+/**
+ * style
+ **/
+
+const StyldDefaultSVG = styled.svg`
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+`

@@ -4,47 +4,6 @@ import styled from 'styled-components'
 import CoolSlider from 'src/components/common/CoolSlider'
 import withAppContext from 'src/components/wrapper/withAppContext'
 
-const Item = styled.div`
-  margin: auto;
-`
-
-const StyledImage = styled.img`
-  width: 100%;
-  display: block;
-  padding: 24px;
-  box-sizing: border-box;
-  cursor: pointer;
-
-  @media (max-width: 750px) {
-    cursor: default;
-  }
-`
-
-const Line = styled.div`
-  border: 1px solid #9b9b9b;
-  margin: 0 auto;
-  width: 80px;
-
-  @media (max-width: 750px) {
-    margin: 0 auto;
-    width: 48px;
-  }
-`
-
-const Title = styled.span`
-  width: 300px;
-  display: block;
-  color: #545454;
-  margin: 24px auto;
-  text-align: center;
-  font-size: 18px;
-
-  @media (max-width: 750px) {
-    width: 180px;
-    font-size: 14px;
-  }
-`
-
 class Items extends React.Component {
   static propTypes = {
     items: PropTypes.array.isRequired,
@@ -111,3 +70,48 @@ class Items extends React.Component {
 }
 
 export default withAppContext(Items)
+
+/**
+ * style
+ **/
+
+const Item = styled.div`
+  margin: auto;
+`
+
+const StyledImage = styled.img`
+  width: 100%;
+  display: block;
+  padding: 24px;
+  box-sizing: border-box;
+  cursor: pointer;
+
+  @media (max-width: 750px) {
+    cursor: default;
+  }
+`
+
+const Line = styled.div`
+  border: 1px solid #9b9b9b;
+  margin: 0 auto;
+  width: 80px;
+
+  @media (max-width: 750px) {
+    margin: 0 auto;
+    width: 48px;
+  }
+`
+
+const Title = styled.span`
+  width: 300px;
+  display: block;
+  color: #545454;
+  margin: 24px auto;
+  text-align: center;
+  font-size: 18px;
+
+  @media (max-width: 750px) {
+    width: 180px;
+    font-size: 14px;
+  }
+`

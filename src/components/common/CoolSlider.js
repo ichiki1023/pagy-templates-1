@@ -5,48 +5,6 @@ import Slider from 'react-slick'
 import ArrowBackIos from '@material-ui/icons/ArrowBackIos'
 import ArrowForwardIos from '@material-ui/icons/ArrowForwardIos'
 
-const ArrowForward = styled.div`
-  width: auto;
-  height: auto;
-  cursor: pointer;
-  ${(props) =>
-    !props.isModal &&
-    css`
-      top: auto;
-      bottom: 10%;
-    `}
-
-  &::before {
-    font-size: 0;
-  }
-`
-
-const ArrowBack = styled.div`
-  width: auto;
-  height: auto;
-  cursor: pointer;
-
-  ${(props) =>
-    !props.isModal &&
-    css`
-      top: auto;
-      bottom: 10%;
-    `}
-
-  &::before {
-    font-size: 0;
-  }
-`
-
-const StyledArrowBackIcon = styled(ArrowBackIos)`
-  color: ${(props) => (props.current === 0 ? '#D1D3CF' : '#9B9B9B')};
-`
-
-const StyledArrowForwardIcon = styled(ArrowForwardIos)`
-  color: ${(props) =>
-    props.slides + props.current >= props.count ? '#D1D3CF' : '#9B9B9B'};
-`
-
 const NextArrow = function (props) {
   return (
     <ArrowForward className="slick-next" isModal={props.isModal}>
@@ -135,3 +93,49 @@ CoolSlider.defaultProps = {
 }
 
 export default CoolSlider
+
+/**
+ * style
+ **/
+
+const ArrowForward = styled.div`
+  width: auto;
+  height: auto;
+  cursor: pointer;
+  ${(props) =>
+    !props.isModal &&
+    css`
+      top: auto;
+      bottom: 10%;
+    `}
+
+  &::before {
+    font-size: 0;
+  }
+`
+
+const ArrowBack = styled.div`
+  width: auto;
+  height: auto;
+  cursor: pointer;
+
+  ${(props) =>
+    !props.isModal &&
+    css`
+      top: auto;
+      bottom: 10%;
+    `}
+
+  &::before {
+    font-size: 0;
+  }
+`
+
+const StyledArrowBackIcon = styled(ArrowBackIos)`
+  color: ${(props) => (props.current === 0 ? '#D1D3CF' : '#9B9B9B')};
+`
+
+const StyledArrowForwardIcon = styled(ArrowForwardIos)`
+  color: ${(props) =>
+    props.slides + props.current >= props.count ? '#D1D3CF' : '#9B9B9B'};
+`

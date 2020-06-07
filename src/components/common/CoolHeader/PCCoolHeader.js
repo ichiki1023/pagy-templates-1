@@ -6,73 +6,6 @@ import withAppContext from 'src/components/wrapper/withAppContext'
 import LanguageIcon from '@material-ui/icons/Language'
 import LanguageDropDown from 'src/components/common/LanguageDropDown'
 
-const Header = styled.div`
-  background-color: #000000;
-  width: 100%;
-  position: -webkit-sticky; /* Safari */
-  position: sticky;
-  display: table;
-`
-
-const HeaderContent = styled.div`
-  height: 64px;
-  text-align: center;
-  display: table-cell;
-  vertical-align: middle;
-  & > * {
-    margin: 0 4vw;
-  }
-`
-
-const HeaderLists = styled.ul`
-  display: inline-block;
-  list-style-type: none;
-`
-
-const HeaderList = styled.li`
-  cursor: pointer;
-  display: inline-block;
-  padding: 0px 12px;
-
-  a {
-    font-size: 18px;
-    display: inline-block;
-    text-align: center;
-    text-decoration: none;
-    color: #ffffff;
-  }
-`
-
-const ShopName = styled.div`
-  cursor: pointer;
-  display: inline-block;
-
-  a {
-    font-size: 24px;
-    display: inline-block;
-    box-sizing: border-box;
-    color: #ffffff;
-    text-decoration: none;
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    padding-right: 8vw !important;
-  }
-`
-
-const Languages = styled.div`
-  padding: 0 12px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-`
-
-const StyledLanguageIcon = styled(LanguageIcon)`
-  color: #ffffff;
-`
-
 const headerHeight = 64
 const scrollDuration = 500
 
@@ -185,3 +118,74 @@ const PCCoolHeader = (props) => {
 }
 
 export default withAppContext(PCCoolHeader)
+
+/**
+ * style
+ **/
+
+const Header = styled.div`
+  background-color: #000000;
+  width: 100%;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  display: table;
+`
+
+const HeaderContent = styled.div`
+  height: 64px;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+  & > * {
+    margin: 0 4vw;
+  }
+`
+
+const HeaderLists = styled.ul`
+  display: inline-block;
+  list-style-type: none;
+`
+
+const HeaderList = styled.li`
+  cursor: pointer;
+  display: inline-block;
+  padding: 0px 12px;
+
+  a {
+    font-size: 18px;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    color: #ffffff;
+  }
+`
+
+const ShopName = styled.div`
+  cursor: pointer;
+  display: inline-block;
+
+  a {
+    font-size: 24px;
+    display: inline-block;
+    box-sizing: border-box;
+    color: #ffffff;
+    text-decoration: none;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    padding-right: 8vw !important;
+  }
+`
+
+const Languages = styled.div`
+  padding: 0 12px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`
+
+const StyledLanguageIcon = styled(LanguageIcon)`
+  color: #ffffff;
+`

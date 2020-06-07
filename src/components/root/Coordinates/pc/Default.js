@@ -7,6 +7,49 @@ import ArrowForwardIcon from '@material-ui/icons/ArrowForwardIos'
 
 const screenSize = 640
 
+const CoordinatesPC = (props) => {
+  const { images, marginTop, ...custom } = props
+
+  return (
+    <Section id={'coordinates'} {...custom}>
+      <BackgroundImages marginTop={marginTop}>
+        {images.map((image, index) => {
+          return (
+            <BackgroundImage key={index}>
+              <StyledImage src={image} />
+            </BackgroundImage>
+          )
+        })}
+      </BackgroundImages>
+      <Contents>
+        <div>
+          <StyledSectionTitle
+            backgroundText={'COORDINATES'}
+            titleText={'おすすめコーディネート'}
+          />
+        </div>
+        <Link href={'/coordinates'}>
+          <StyledLink>
+            <p>さらに詳しく</p>
+            <StyledArrowForwardIcon />
+          </StyledLink>
+        </Link>
+      </Contents>
+    </Section>
+  )
+}
+
+CoordinatesPC.propTypes = {
+  images: PropTypes.array.isRequired,
+  marginTop: PropTypes.number.isRequired,
+}
+
+export default CoordinatesPC
+
+/**
+ * style
+ **/
+
 const Section = styled.div`
   height: ${screenSize}px;
   position: relative;
@@ -119,42 +162,3 @@ const StyledImage = styled.img`
 const StyledArrowForwardIcon = styled(ArrowForwardIcon)`
   color: #ffffff;
 `
-
-const CoordinatesPC = (props) => {
-  const { images, marginTop, ...custom } = props
-
-  return (
-    <Section id={'coordinates'} {...custom}>
-      <BackgroundImages marginTop={marginTop}>
-        {images.map((image, index) => {
-          return (
-            <BackgroundImage key={index}>
-              <StyledImage src={image} />
-            </BackgroundImage>
-          )
-        })}
-      </BackgroundImages>
-      <Contents>
-        <div>
-          <StyledSectionTitle
-            backgroundText={'COORDINATES'}
-            titleText={'おすすめコーディネート'}
-          />
-        </div>
-        <Link href={'/coordinates'}>
-          <StyledLink>
-            <p>さらに詳しく</p>
-            <StyledArrowForwardIcon />
-          </StyledLink>
-        </Link>
-      </Contents>
-    </Section>
-  )
-}
-
-CoordinatesPC.propTypes = {
-  images: PropTypes.array.isRequired,
-  marginTop: PropTypes.number.isRequired,
-}
-
-export default CoordinatesPC

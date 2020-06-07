@@ -2,6 +2,64 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 import PropTypes from 'prop-types'
 
+export default class Item extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      selectedIndex: props.selectedIndex,
+    }
+  }
+
+  static propTypes = {
+    description: PropTypes.string,
+    subImageUrls: PropTypes.arrayOf(PropTypes.string),
+    imagePosition: PropTypes.string,
+    selectedIndex: PropTypes.number.isRequired,
+  }
+
+  onClickImage(index) {
+    this.setState({
+      selectedIndex: index,
+    })
+  }
+
+  render() {
+    const { description, subImageUrls, imagePosition } = this.props
+    const selectedImageUrl = subImageUrls[this.state.selectedIndex]
+
+    return (
+      <StyledItem imagePosition={imagePosition}>
+        <StyledMainImage src={selectedImageUrl} />
+        <Contents>
+          <Bottom imagePosition={imagePosition}>
+            <StyledDescription>{description}</StyledDescription>
+            <StyledSubPhotoImages imagePosition={imagePosition}>
+              {subImageUrls.map((subPhotoUrl, index) => {
+                const isSelectedImage = this.state.selectedIndex === index
+                return (
+                  <ImageFilter key={index} isSelectedImage={isSelectedImage}>
+                    <StyledSubPhotoImage
+                      onClick={() => {
+                        this.onClickImage(index)
+                      }}
+                      isSelectedImage={isSelectedImage}
+                      src={subPhotoUrl}
+                    />
+                  </ImageFilter>
+                )
+              })}
+            </StyledSubPhotoImages>
+          </Bottom>
+        </Contents>
+      </StyledItem>
+    )
+  }
+}
+
+/**
+ * style
+ **/
+
 const StyledItem = styled.div`
   display: flex;
   margin-bottom: 80px;
@@ -113,58 +171,3 @@ const Bottom = styled.div`
     position: inherit;
   }
 `
-
-// FIXME: 複数枚のsubImageUrlsに対応する
-export default class Item extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      selectedIndex: props.selectedIndex,
-    }
-  }
-
-  static propTypes = {
-    description: PropTypes.string,
-    subImageUrls: PropTypes.arrayOf(PropTypes.string),
-    imagePosition: PropTypes.string,
-    selectedIndex: PropTypes.number.isRequired,
-  }
-
-  onClickImage(index) {
-    this.setState({
-      selectedIndex: index,
-    })
-  }
-
-  render() {
-    const { description, subImageUrls, imagePosition } = this.props
-    const selectedImageUrl = subImageUrls[this.state.selectedIndex]
-
-    return (
-      <StyledItem imagePosition={imagePosition}>
-        <StyledMainImage src={selectedImageUrl} />
-        <Contents>
-          <Bottom imagePosition={imagePosition}>
-            <StyledDescription>{description}</StyledDescription>
-            <StyledSubPhotoImages imagePosition={imagePosition}>
-              {subImageUrls.map((subPhotoUrl, index) => {
-                const isSelectedImage = this.state.selectedIndex === index
-                return (
-                  <ImageFilter key={index} isSelectedImage={isSelectedImage}>
-                    <StyledSubPhotoImage
-                      onClick={() => {
-                        this.onClickImage(index)
-                      }}
-                      isSelectedImage={isSelectedImage}
-                      src={subPhotoUrl}
-                    />
-                  </ImageFilter>
-                )
-              })}
-            </StyledSubPhotoImages>
-          </Bottom>
-        </Contents>
-      </StyledItem>
-    )
-  }
-}

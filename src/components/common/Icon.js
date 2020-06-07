@@ -3,16 +3,6 @@ import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 import ReactSVG from 'react-svg'
 
-const StyledSVG = styled(ReactSVG)`
-  & path {
-    ${(props) =>
-      props.color &&
-      css`
-        fill: ${props.color};
-      `};
-  }
-`
-
 export const iconPaths = {
   facebook: '/icons/facebook.svg',
   google: '/icons/google.svg',
@@ -32,3 +22,17 @@ Icon.propTypes = {
 }
 
 export default Icon
+
+/**
+ * style
+ **/
+
+const StyledSVG = styled(ReactSVG)`
+  & path {
+    ${(props) =>
+      props.color &&
+      css`
+        fill: ${props.color};
+      `};
+  }
+`

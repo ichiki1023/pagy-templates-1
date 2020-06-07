@@ -5,36 +5,6 @@ import CoolFooter from 'src/components/common/CoolFooter'
 import SNSNavigation from 'src/components/common/SNSServices/Navigation'
 import About from 'src/components/root/About'
 
-const paddingTop = 100
-const Page = styled.div`
-  background-color: #fcfcfa;
-`
-
-const StyledHeader = styled(CoolHeader)`
-  top: 0;
-  z-index: 1000;
-`
-
-const FooterWrapper = styled.div`
-  margin-top: 224px;
-  @media (max-width: 750px) {
-    margin-top: 180px;
-  }
-`
-
-const StyledFooter = styled(CoolFooter)`
-  z-index: 1000;
-  position: relative;
-`
-
-const StyledSNSNavigation = styled(SNSNavigation)`
-  z-index: 2;
-`
-
-const StyledAbout = styled(About)`
-  padding-top: ${paddingTop}px;
-`
-
 class AboutPage extends React.Component {
   render() {
     const { site } = this.props
@@ -67,3 +37,37 @@ AboutPage.getInitialProps = () => {
 }
 
 export default AboutPage
+
+/**
+ * style
+ **/
+
+const paddingTop = 100
+const Page = styled.div`
+  background-color: #fcfcfa;
+`
+
+const StyledHeader = styled(CoolHeader)`
+  top: 0;
+  z-index: 1000;
+`
+
+const FooterWrapper = styled.div`
+  margin-top: 224px;
+  @media (max-width: 750px) {
+    margin-top: 180px;
+  }
+`
+
+const StyledFooter = styled(CoolFooter)`
+  z-index: 1000;
+  position: relative;
+`
+
+const StyledSNSNavigation = styled(SNSNavigation)`
+  z-index: 2;
+`
+
+const StyledAbout = styled(About)`
+  padding-top: ${paddingTop}px;
+`

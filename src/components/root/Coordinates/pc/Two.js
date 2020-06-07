@@ -8,6 +8,54 @@ import CroppedImage, {
   DefaultSVGClipPath,
 } from 'src/components/root/Coordinates/CroppedImage'
 
+const CoordinatesPC = (props) => {
+  const { images, ...custom } = props
+  const imageWidth = window.innerWidth * 0.54 * 0.6
+
+  return (
+    <Section id={'coordinates'} {...custom}>
+      <DefaultSVGClipPath />
+      <Contents>
+        <BackgroundImages>
+          {images.map((image, index) => {
+            return (
+              <StyledCroppedImg
+                key={index}
+                src={image}
+                width={imageWidth}
+                height={(imageWidth * 4) / 3}
+                croppedSide={index === 0 ? 'right' : 'left'}
+              />
+            )
+          })}
+        </BackgroundImages>
+        <TextWrapper>
+          <StyledSectionTitle
+            backgroundText={'COORDINATES'}
+            titleText={'おすすめコーディネート'}
+          />
+          <Link href={'/coordinates'}>
+            <StyledLink>
+              <p>さらに詳しく</p>
+              <StyledArrowForwardIcon />
+            </StyledLink>
+          </Link>
+        </TextWrapper>
+      </Contents>
+    </Section>
+  )
+}
+
+CoordinatesPC.propTypes = {
+  images: PropTypes.array.isRequired,
+}
+
+export default CoordinatesPC
+
+/**
+ * style
+ **/
+
 const Section = styled.div`
   width: 54%;
   margin: 0 auto;
@@ -108,47 +156,3 @@ const StyledCroppedImg = styled(CroppedImage)`
       float: left;
     `};
 `
-
-const CoordinatesPC = (props) => {
-  const { images, ...custom } = props
-  const imageWidth = window.innerWidth * 0.54 * 0.6
-
-  return (
-    <Section id={'coordinates'} {...custom}>
-      <DefaultSVGClipPath />
-      <Contents>
-        <BackgroundImages>
-          {images.map((image, index) => {
-            return (
-              <StyledCroppedImg
-                key={index}
-                src={image}
-                width={imageWidth}
-                height={(imageWidth * 4) / 3}
-                croppedSide={index === 0 ? 'right' : 'left'}
-              />
-            )
-          })}
-        </BackgroundImages>
-        <TextWrapper>
-          <StyledSectionTitle
-            backgroundText={'COORDINATES'}
-            titleText={'おすすめコーディネート'}
-          />
-          <Link href={'/coordinates'}>
-            <StyledLink>
-              <p>さらに詳しく</p>
-              <StyledArrowForwardIcon />
-            </StyledLink>
-          </Link>
-        </TextWrapper>
-      </Contents>
-    </Section>
-  )
-}
-
-CoordinatesPC.propTypes = {
-  images: PropTypes.array.isRequired,
-}
-
-export default CoordinatesPC

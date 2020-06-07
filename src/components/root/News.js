@@ -5,6 +5,46 @@ import SectionTitle from 'src/components/common/SectionTitle'
 import ArrowForwardIcon from '@material-ui/icons/ArrowForwardIos'
 import moment from 'moment'
 
+const News = (props) => {
+  const { articles, ...custom } = props
+
+  return (
+    <Section id={'news'} {...custom}>
+      <Contents>
+        <div>
+          <SectionTitle backgroundText={'NEWS'} titleText={'ニュース'} />
+        </div>
+        <StyledTable>
+          {articles.map((article, index) => {
+            return (
+              <StyledTableBlock key={index}>
+                <StyledDateText>
+                  {moment(new Date(article.created_at)).format('YYYY/MM/DD')}
+                </StyledDateText>
+                <StyledDescriptionText>{article.title}</StyledDescriptionText>
+              </StyledTableBlock>
+            )
+          })}
+        </StyledTable>
+        <MoreLink href={`#`}>
+          一覧を見る
+          <StyledArrowForwardIcon />
+        </MoreLink>
+      </Contents>
+    </Section>
+  )
+}
+
+News.propTypes = {
+  articles: PropTypes.array.isRequired,
+}
+
+export default News
+
+/**
+ * style
+ **/
+
 const Section = styled.div`
   position: relative;
 `
@@ -73,39 +113,3 @@ const MoreLink = styled.a`
 const StyledArrowForwardIcon = styled(ArrowForwardIcon)`
   color: #9b9b9b;
 `
-
-const News = (props) => {
-  const { articles, ...custom } = props
-
-  return (
-    <Section id={'news'} {...custom}>
-      <Contents>
-        <div>
-          <SectionTitle backgroundText={'NEWS'} titleText={'ニュース'} />
-        </div>
-        <StyledTable>
-          {articles.map((article, index) => {
-            return (
-              <StyledTableBlock key={index}>
-                <StyledDateText>
-                  {moment(new Date(article.created_at)).format('YYYY/MM/DD')}
-                </StyledDateText>
-                <StyledDescriptionText>{article.title}</StyledDescriptionText>
-              </StyledTableBlock>
-            )
-          })}
-        </StyledTable>
-        <MoreLink href={`#`}>
-          一覧を見る
-          <StyledArrowForwardIcon />
-        </MoreLink>
-      </Contents>
-    </Section>
-  )
-}
-
-News.propTypes = {
-  articles: PropTypes.array.isRequired,
-}
-
-export default News

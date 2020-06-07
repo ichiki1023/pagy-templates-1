@@ -5,6 +5,52 @@ import MaterialModal from '@material-ui/core/Modal'
 import CloseIcon from '@material-ui/icons/CloseOutlined'
 import Items from './Items'
 
+const Modal = (props) => {
+  return (
+    <MaterialModal
+      open={props.open}
+      onClose={props.handleClose}
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+      }}
+    >
+      <ModalContainer>
+        <ModalHeader>
+          <StyledCloseIcon onClick={props.handleClose} />
+        </ModalHeader>
+        <ModalContents>
+          <ModalSlick>
+            <Items
+              items={props.items}
+              selectedImageIndex={props.selectedImageIndex}
+            />
+          </ModalSlick>
+        </ModalContents>
+      </ModalContainer>
+    </MaterialModal>
+  )
+}
+
+Modal.propTypes = {
+  open: PropTypes.bool,
+  handleClose: PropTypes.func,
+  selectedImageIndex: PropTypes.number,
+  items: PropTypes.array,
+}
+
+Modal.defaultProps = {
+  open: false,
+  selectedImageIndex: 0,
+  items: [],
+}
+
+export default Modal
+
+/**
+ * style
+ **/
+
 const ModalContainer = styled.div`
   background-color: #fff;
   outline: none;
@@ -49,45 +95,3 @@ const ModalContents = styled.div`
 const ModalSlick = styled.div`
   height: calc(100% - 32px);
 `
-
-const Modal = (props) => {
-  return (
-    <MaterialModal
-      open={props.open}
-      onClose={props.handleClose}
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-      }}
-    >
-      <ModalContainer>
-        <ModalHeader>
-          <StyledCloseIcon onClick={props.handleClose} />
-        </ModalHeader>
-        <ModalContents>
-          <ModalSlick>
-            <Items
-              items={props.items}
-              selectedImageIndex={props.selectedImageIndex}
-            />
-          </ModalSlick>
-        </ModalContents>
-      </ModalContainer>
-    </MaterialModal>
-  )
-}
-
-Modal.propTypes = {
-  open: PropTypes.bool,
-  handleClose: PropTypes.func,
-  selectedImageIndex: PropTypes.number,
-  items: PropTypes.array,
-}
-
-Modal.defaultProps = {
-  open: false,
-  selectedImageIndex: 0,
-  items: [],
-}
-
-export default Modal

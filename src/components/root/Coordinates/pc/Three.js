@@ -5,6 +5,50 @@ import SectionTitle from 'src/components/common/SectionTitle'
 import Link from 'next/link'
 import ArrowForwardIcon from '@material-ui/icons/ArrowForwardIos'
 
+const CoordinatesPC = (props) => {
+  const { images, ...custom } = props
+
+  return (
+    <Section id={'coordinates'} {...custom}>
+      <Contents>
+        <ImageWrapper>
+          <BackgroundImages>
+            {images.map((image, index) => {
+              return (
+                <BackgroundImage key={index}>
+                  <StyledImage src={image} />
+                </BackgroundImage>
+              )
+            })}
+          </BackgroundImages>
+        </ImageWrapper>
+        <TextWrapper>
+          <StyledSectionTitle
+            backgroundText={'COORDINATES'}
+            titleText={'おすすめコーディネート'}
+          />
+          <Link href={'/coordinates'}>
+            <StyledLink>
+              <p>さらに詳しく</p>
+              <StyledArrowForwardIcon />
+            </StyledLink>
+          </Link>
+        </TextWrapper>
+      </Contents>
+    </Section>
+  )
+}
+
+CoordinatesPC.propTypes = {
+  images: PropTypes.array.isRequired,
+}
+
+export default CoordinatesPC
+
+/**
+ * style
+ **/
+
 const Section = styled.div`
   width: 54%;
   margin: 0 auto;
@@ -108,43 +152,3 @@ const ImageWrapper = styled.div`
 const StyledArrowForwardIcon = styled(ArrowForwardIcon)`
   color: #ffffff;
 `
-
-const CoordinatesPC = (props) => {
-  const { images, ...custom } = props
-
-  return (
-    <Section id={'coordinates'} {...custom}>
-      <Contents>
-        <ImageWrapper>
-          <BackgroundImages>
-            {images.map((image, index) => {
-              return (
-                <BackgroundImage key={index}>
-                  <StyledImage src={image} />
-                </BackgroundImage>
-              )
-            })}
-          </BackgroundImages>
-        </ImageWrapper>
-        <TextWrapper>
-          <StyledSectionTitle
-            backgroundText={'COORDINATES'}
-            titleText={'おすすめコーディネート'}
-          />
-          <Link href={'/coordinates'}>
-            <StyledLink>
-              <p>さらに詳しく</p>
-              <StyledArrowForwardIcon />
-            </StyledLink>
-          </Link>
-        </TextWrapper>
-      </Contents>
-    </Section>
-  )
-}
-
-CoordinatesPC.propTypes = {
-  images: PropTypes.array.isRequired,
-}
-
-export default CoordinatesPC

@@ -6,6 +6,60 @@ import DoneIcon from '@material-ui/icons/DoneOutlined'
 import ErrorIcon from '@material-ui/icons/ErrorOutlined'
 import Button from '@material-ui/core/Button'
 
+const SubmitButton = (props) => {
+  const textMessage = () => {
+    if (props.loading) {
+      return <StyledCircularProgress style={{ width: 24, height: 24 }} />
+    } else if (props.success) {
+      return (
+        <SuccessText>
+          <StyledDoneIcon />
+          送信が完了しました
+        </SuccessText>
+      )
+    } else {
+      return 'メッセージを送る'
+    }
+  }
+  const message = textMessage()
+  return (
+    <ButtonComponent>
+      <StyledSubmitButton
+        type={'submit'}
+        variant={'outlined'}
+        disabled={props.success || props.disabled}
+        success={props.success.toString()}
+      >
+        {message}
+      </StyledSubmitButton>
+      {props.error && (
+        <ErrorMessage>
+          <StyledErrorIcon />
+          {props.error}
+        </ErrorMessage>
+      )}
+    </ButtonComponent>
+  )
+}
+
+SubmitButton.propTypes = {
+  loading: PropTypes.bool.isRequired,
+  success: PropTypes.bool.isRequired,
+  error: PropTypes.string,
+  disabled: PropTypes.bool.isRequired,
+}
+
+SubmitButton.defaultProps = {
+  loading: false,
+  disabled: false,
+}
+
+export default SubmitButton
+
+/**
+ * style
+ **/
+
 const StyledDoneIcon = styled(DoneIcon)`
   && {
     margin-right: 8px;
@@ -98,53 +152,3 @@ const SuccessText = styled.span`
     }
   }
 `
-
-const SubmitButton = (props) => {
-  const textMessage = () => {
-    if (props.loading) {
-      return <StyledCircularProgress style={{ width: 24, height: 24 }} />
-    } else if (props.success) {
-      return (
-        <SuccessText>
-          <StyledDoneIcon />
-          送信が完了しました
-        </SuccessText>
-      )
-    } else {
-      return 'メッセージを送る'
-    }
-  }
-  const message = textMessage()
-  return (
-    <ButtonComponent>
-      <StyledSubmitButton
-        type={'submit'}
-        variant={'outlined'}
-        disabled={props.success || props.disabled}
-        success={props.success.toString()}
-      >
-        {message}
-      </StyledSubmitButton>
-      {props.error && (
-        <ErrorMessage>
-          <StyledErrorIcon />
-          {props.error}
-        </ErrorMessage>
-      )}
-    </ButtonComponent>
-  )
-}
-
-SubmitButton.propTypes = {
-  loading: PropTypes.bool.isRequired,
-  success: PropTypes.bool.isRequired,
-  error: PropTypes.string,
-  disabled: PropTypes.bool.isRequired,
-}
-
-SubmitButton.defaultProps = {
-  loading: false,
-  disabled: false,
-}
-
-export default SubmitButton

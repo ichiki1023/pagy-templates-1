@@ -5,6 +5,36 @@ import { Link as ScrollLink } from 'react-scroll/modules'
 import withAppContext from 'src/components/wrapper/withAppContext'
 import moment from 'moment'
 
+const SPCoolFooter = (props) => {
+  const { site, ...otherProps } = props
+  const createdYear = moment(site.created_at).year()
+
+  return (
+    <Footer {...otherProps}>
+      <FooterLists>
+        <FooterList key={site.name} isTitle>
+          <ScrollLink to={'home'} smooth duration={500}>
+            {site.name}
+          </ScrollLink>
+        </FooterList>
+      </FooterLists>
+      <StyledCopyRightText>
+        Copyright © {createdYear} {site.name}. All rights reserved.
+      </StyledCopyRightText>
+    </Footer>
+  )
+}
+
+SPCoolFooter.propTypes = {
+  site: PropTypes.object.isRequired,
+}
+
+export default withAppContext(SPCoolFooter)
+
+/**
+ * style
+ **/
+
 const Footer = styled.div`
   background-color: rgba(240, 240, 240, 0.8);
   width: 100%;
@@ -47,29 +77,3 @@ const StyledCopyRightText = styled.p`
   box-sizing: border-box;
   color: #9b9b9b;
 `
-
-const SPCoolFooter = (props) => {
-  const { site, ...otherProps } = props
-  const createdYear = moment(site.created_at).year()
-
-  return (
-    <Footer {...otherProps}>
-      <FooterLists>
-        <FooterList key={site.name} isTitle>
-          <ScrollLink to={'home'} smooth duration={500}>
-            {site.name}
-          </ScrollLink>
-        </FooterList>
-      </FooterLists>
-      <StyledCopyRightText>
-        Copyright © {createdYear} {site.name}. All rights reserved.
-      </StyledCopyRightText>
-    </Footer>
-  )
-}
-
-SPCoolFooter.propTypes = {
-  site: PropTypes.object.isRequired,
-}
-
-export default withAppContext(SPCoolFooter)
