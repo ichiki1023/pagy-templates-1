@@ -33,7 +33,6 @@ class Index extends React.Component {
         })
         return
       } catch (error) {
-        // splitできない場合はtopへ送る
         scroll.scrollToTop({
           smooth: false,
           duration: 0,
@@ -198,7 +197,6 @@ const StyledSNSNavigation = styled(SNSNavigation)`
   z-index: 999;
 `
 
-// PCのHeaderを表示させる領域. wrapperより下の領域はheaderを表示させない
 const Wrapper = styled.div`
   width: 100%;
   position: relative;

@@ -1,10 +1,10 @@
 function nameValidate(value) {
-  // 必須
+  // Required
   if (!value) {
     return ErrorMessages.required
   }
 
-  // 128文字以下
+  // Max 128 character
   if (value.length > 80) {
     return ErrorMessages.maxLength(80)
   }
@@ -12,12 +12,12 @@ function nameValidate(value) {
 }
 
 function emailValidate(value) {
-  // 必須
+  // Required
   if (!value) {
     return ErrorMessages.required
   }
 
-  // メール
+  // Validate email
   if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
     return ErrorMessages.invalidEmail
   }
@@ -25,12 +25,12 @@ function emailValidate(value) {
 }
 
 function contentValidate(value) {
-  // 必須
+  // Required
   if (!value) {
     return ErrorMessages.required
   }
 
-  // 1000文字以下
+  // Max 1600 character
   if (value.length > 1600) {
     return ErrorMessages.maxLength(1600)
   }

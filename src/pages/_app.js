@@ -70,7 +70,7 @@ const TemplateApp = (props) => {
 TemplateApp.getInitialProps = async ({ ctx }) => {
   const { req } = ctx
 
-  // userAgent取得
+  // Get userAgent
   const ua = req ? req.headers['user-agent'] : window.navigator.userAgent
   const userAgent = getUserAgent(ua)
 

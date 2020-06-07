@@ -44,11 +44,7 @@ class Selection extends React.Component {
             backgroundText={'SELECTION'}
             titleText={'おすすめアイテム'}
           />
-          <Items
-            userAgent={userAgent}
-            items={items}
-            onClickImage={this.handleOpenModal}
-          />
+          <Items items={items} onClickImage={this.handleOpenModal} />
           {!userAgent.isMobile && (
             <Modal
               open={this.state.openModal}
@@ -69,7 +65,6 @@ export default withAppContext(Selection)
  * style
  **/
 
-// Contents幅に合わせて幅の調整を行っている(54% + 100%-contents size)
 const StyledSectionTitle = styled(SectionTitle)`
   width: 54vw;
   margin: 0 auto 80px auto;

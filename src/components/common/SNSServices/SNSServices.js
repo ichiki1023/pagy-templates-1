@@ -25,7 +25,6 @@ const snsServices = {
 const SNSServices = (props) => {
   const { iconSize, iconColor, services, hasText, className } = props
 
-  // service objectから指定されているidのみ抽出
   const formattedServices = Object.keys(services)
     .map((serviceName) => {
       const serviceId = services[serviceName]

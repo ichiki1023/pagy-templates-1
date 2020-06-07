@@ -97,7 +97,6 @@ class Contact extends React.Component {
         this.setState({
           loading: true,
         })
-        // TODO: Send to contact message api
         this.setState({
           loading: false,
           requestSuccess: true,

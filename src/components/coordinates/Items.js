@@ -7,7 +7,6 @@ const Items = (props) => {
   return (
     <div {...otherProps}>
       {coordinates.map((coordinate, index) => {
-        // 先頭にmain画像を追加
         const imageUrls = [coordinate.main_image_url].concat(
           coordinate.sub_image_urls,
         )

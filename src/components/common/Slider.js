@@ -1,9 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
-import SlickSlider from 'react-slick'
 import ArrowBackIos from '@material-ui/icons/ArrowBackIos'
 import ArrowForwardIos from '@material-ui/icons/ArrowForwardIos'
+import dynamic from 'next/dynamic'
+
+const SlickSlider = dynamic(import('react-slick'), {
+  ssr: false,
+})
 
 const NextArrow = function (props) {
   return (
@@ -51,23 +55,6 @@ class Slider extends React.Component {
       speed: 500,
       nextArrow: <NextArrow {...this.props} {...this.state} />,
       prevArrow: <PrevArrow {...this.props} />,
-      beforeChange: (oldIndex, newIndex) => {
-        const responsive = this.props.settings.responsive
-        if (responsive) {
-          const result = responsive.filter(
-            (res) => res.breakpoint === this.sliderRef.state.breakpoint,
-          )
-          const setting =
-            result[0] && result[0].settings
-              ? result[0].settings
-              : this.props.settings
-          this.setState({
-            currentSlide: newIndex,
-            slidesToScroll: setting.slidesToScroll,
-            slidesToShow: setting.slidesToShow,
-          })
-        }
-      },
       ...this.props.settings,
     }
 

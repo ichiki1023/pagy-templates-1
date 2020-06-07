@@ -1,3 +1,9 @@
+## Next.js sample landing page for apparel shop
+URL: https://pagy-templates-1.netlify.app  
+
+- Developed by [Ichiki](https://github.com/ichiki1023)
+- Designed by [Joe]()
+
 ## Setup
 
 ### install modules
