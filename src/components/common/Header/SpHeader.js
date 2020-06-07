@@ -7,8 +7,6 @@ import CloseIcon from '@material-ui/icons/Close'
 import Drawer from '@material-ui/core/Drawer'
 import SNSServicesBtns from 'src/components/common/SNSServices/Buttons'
 import withAppContext from 'src/components/wrapper/withAppContext'
-import LanguageDropDown from 'src/components/common/LanguageDropDown'
-import LanguageIcon from '@material-ui/icons/Language'
 
 const headerHeight = 64
 const offset = 20
@@ -43,10 +41,6 @@ class SpHeader extends React.Component {
     const { articles = [] } = site
     const { items = [], coordinates = [] } = fashion
     const scrollDuration = 500
-    const languageOptions = [
-      { value: 'ja', label: 'Japanese' },
-      { value: 'en', label: 'English' },
-    ]
     const isHome = pageName === 'home'
 
     return (
@@ -146,19 +140,6 @@ class SpHeader extends React.Component {
               <Link href={'/contact'}>
                 <MenuTitle>CONTACT</MenuTitle>
               </Link>
-              <SectionTitle>LANGUAGE</SectionTitle>
-              <LanguageArea>
-                <StyledLanguageIcon width={'28px'} height={'28px'} />
-                <LanguageDropDown
-                  options={languageOptions}
-                  value={languageOptions[0]}
-                  onChange={() => {
-                    // TODO: Change language
-                  }}
-                  backgroundColor={'transparent'}
-                  color={'#FCFCFA'}
-                />
-              </LanguageArea>
               {services ? (
                 <div>
                   <SectionTitle>FOLLOW US</SectionTitle>
@@ -271,13 +252,4 @@ const MenuTitle = styled.li`
 
 const ChildMenuTitle = styled.div`
   margin-left: 16px;
-`
-
-const LanguageArea = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-`
-const StyledLanguageIcon = styled(LanguageIcon)`
-  color: #ffffff;
 `

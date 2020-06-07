@@ -3,8 +3,6 @@ import styled from 'styled-components'
 import { Link as ScrollLink } from 'react-scroll'
 import Link from 'next/link'
 import withAppContext from 'src/components/wrapper/withAppContext'
-import LanguageIcon from '@material-ui/icons/Language'
-import LanguageDropDown from 'src/components/common/LanguageDropDown'
 
 const headerHeight = 64
 const scrollDuration = 500
@@ -13,10 +11,6 @@ const PcHeader = (props) => {
   const { site, fashion, pageName, className } = props
   const { articles = [] } = site
   const { items = [], coordinates = [] } = fashion
-  const languageOptions = [
-    { value: 'ja', label: 'Japanese' },
-    { value: 'en', label: 'English' },
-  ]
   const isHome = pageName === 'home'
 
   return (
@@ -99,18 +93,6 @@ const PcHeader = (props) => {
               <a>CONTACT</a>
             </Link>
           </HeaderList>
-          <HeaderList key={'language'}>
-            <Languages>
-              <StyledLanguageIcon width={24} height={24} />
-              <LanguageDropDown
-                options={languageOptions}
-                value={languageOptions[0]}
-                onChange={() => {
-                  // TODO: Change language
-                }}
-              />
-            </Languages>
-          </HeaderList>
         </HeaderLists>
       </HeaderContent>
     </Header>
@@ -177,15 +159,4 @@ const ShopName = styled.div`
     position: absolute;
     padding-right: 8vw !important;
   }
-`
-
-const Languages = styled.div`
-  padding: 0 12px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-`
-
-const StyledLanguageIcon = styled(LanguageIcon)`
-  color: #ffffff;
 `
