@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import CoolSlider from 'src/components/common/CoolSlider'
+import Slider from 'src/components/common/Slider'
 
 const ModalItems = (props) => {
   const settings = {
@@ -12,7 +12,7 @@ const ModalItems = (props) => {
   }
 
   return (
-    <CoolSlider settings={settings} isModal arrowIconSize={32}>
+    <Slider settings={settings} isModal arrowIconSize={32}>
       {props.items.map((item, index) => {
         return (
           <Item key={index}>
@@ -21,7 +21,7 @@ const ModalItems = (props) => {
           </Item>
         )
       })}
-    </CoolSlider>
+    </Slider>
   )
 }
 

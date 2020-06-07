@@ -3,7 +3,7 @@ import AppContext from 'src/context/AppContext'
 import { getUserAgent } from 'src/helpers/userAgent'
 import { ThemeProvider } from '@material-ui/styles'
 import { createGlobalStyle } from 'styled-components'
-import defaultData from 'src/data/default'
+import defaultData from 'src/data'
 import Head from 'next/head'
 import theme from 'src/helpers/theme'
 
@@ -75,15 +75,13 @@ TemplateApp.getInitialProps = async ({ Component, ctx }) => {
   const ua = req ? req.headers['user-agent'] : window.navigator.userAgent
   const userAgent = getUserAgent(ua)
 
-  const data = defaultData
-
   if (Component.getInitialProps) {
-    pageProps = await Component.getInitialProps({ ...ctx, data: data })
+    pageProps = await Component.getInitialProps({ ...ctx })
   }
 
   return {
     pageProps: {
-      ...data,
+      ...defaultData,
       ...pageProps,
     },
     userAgent,

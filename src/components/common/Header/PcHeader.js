@@ -9,7 +9,7 @@ import LanguageDropDown from 'src/components/common/LanguageDropDown'
 const headerHeight = 64
 const scrollDuration = 500
 
-const PCCoolHeader = (props) => {
+const PcHeader = (props) => {
   const { site, fashion, pageName, className } = props
   const { articles = [] } = site
   const { items = [], coordinates = [] } = fashion
@@ -117,7 +117,7 @@ const PCCoolHeader = (props) => {
   )
 }
 
-export default withAppContext(PCCoolHeader)
+export default withAppContext(PcHeader)
 
 /**
  * style

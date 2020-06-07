@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import CoolHeader from 'src/components/common/CoolHeader'
-import CoolFooter from 'src/components/common/CoolFooter'
+import Header from 'src/components/common/Header'
+import Footer from 'src/components/common/Footer'
 import SNSNavigation from 'src/components/common/SNSServices/Navigation'
 import Home from 'src/components/root/Home'
 import News from 'src/components/root/News'
@@ -107,7 +107,7 @@ const spSectionMargin = 180
 const spPaddingTop = spHeaderHeight + spPadding
 const spMarginTop = spSectionMargin - (spHeaderHeight + spPadding)
 
-const StyledHeader = styled(CoolHeader)`
+const StyledHeader = styled(Header)`
   z-index: 1000;
   top: 0;
   height: ${headerHeight}px;
@@ -188,7 +188,7 @@ const FooterWrapper = styled.div`
   }
 `
 
-const StyledFooter = styled(CoolFooter)`
+const StyledFooter = styled(Footer)`
   z-index: 1000;
   position: relative;
 `

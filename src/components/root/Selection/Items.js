@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import CoolSlider from 'src/components/common/CoolSlider'
+import Slider from 'src/components/common/Slider'
 import withAppContext from 'src/components/wrapper/withAppContext'
 
 class Items extends React.Component {
@@ -48,7 +48,7 @@ class Items extends React.Component {
     }
 
     return (
-      <CoolSlider settings={settings} arrowIconSize={52}>
+      <Slider settings={settings} arrowIconSize={52}>
         {displayItems.map((item, index) => {
           return (
             <Item key={index}>
@@ -64,7 +64,7 @@ class Items extends React.Component {
             </Item>
           )
         })}
-      </CoolSlider>
+      </Slider>
     )
   }
 }

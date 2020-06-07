@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import CoolHeader from 'src/components/common/CoolHeader'
-import CoolFooter from 'src/components/common/CoolFooter'
+import Header from 'src/components/common/Header'
+import Footer from 'src/components/common/Footer'
 import SNSNavigation from 'src/components/common/SNSServices/Navigation'
 import About from 'src/components/root/About'
 
@@ -47,7 +47,7 @@ const Page = styled.div`
   background-color: #fcfcfa;
 `
 
-const StyledHeader = styled(CoolHeader)`
+const StyledHeader = styled(Header)`
   top: 0;
   z-index: 1000;
 `
@@ -59,7 +59,7 @@ const FooterWrapper = styled.div`
   }
 `
 
-const StyledFooter = styled(CoolFooter)`
+const StyledFooter = styled(Footer)`
   z-index: 1000;
   position: relative;
 `

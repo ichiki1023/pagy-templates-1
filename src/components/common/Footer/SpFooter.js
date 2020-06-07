@@ -5,7 +5,7 @@ import { Link as ScrollLink } from 'react-scroll/modules'
 import withAppContext from 'src/components/wrapper/withAppContext'
 import moment from 'moment'
 
-const SPCoolFooter = (props) => {
+const SpFooter = (props) => {
   const { site, ...otherProps } = props
   const createdYear = moment(site.created_at).year()
 
@@ -25,11 +25,11 @@ const SPCoolFooter = (props) => {
   )
 }
 
-SPCoolFooter.propTypes = {
+SpFooter.propTypes = {
   site: PropTypes.object.isRequired,
 }
 
-export default withAppContext(SPCoolFooter)
+export default withAppContext(SpFooter)
 
 /**
  * style

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
-import Slider from 'react-slick'
+import SlickSlider from 'react-slick'
 import ArrowBackIos from '@material-ui/icons/ArrowBackIos'
 import ArrowForwardIos from '@material-ui/icons/ArrowForwardIos'
 
@@ -31,7 +31,7 @@ const PrevArrow = function (props) {
   )
 }
 
-class CoolSlider extends React.Component {
+class Slider extends React.Component {
   sliderRef = null
 
   constructor(props) {
@@ -72,27 +72,27 @@ class CoolSlider extends React.Component {
     }
 
     return (
-      <Slider
+      <SlickSlider
         ref={(el) => (this.sliderRef = el)}
         {...settings}
         className={this.props.className}
       >
         {this.props.children}
-      </Slider>
+      </SlickSlider>
     )
   }
 }
 
-CoolSlider.propTypes = {
+Slider.propTypes = {
   settings: PropTypes.object,
   arrowIconSize: PropTypes.number,
 }
 
-CoolSlider.defaultProps = {
+Slider.defaultProps = {
   arrowIconSize: 32,
 }
 
-export default CoolSlider
+export default Slider
 
 /**
  * style

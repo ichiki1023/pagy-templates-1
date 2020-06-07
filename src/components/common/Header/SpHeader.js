@@ -14,7 +14,7 @@ const headerHeight = 64
 const offset = 20
 const scrollOffset = -(headerHeight + offset)
 
-class SPCoolHeader extends React.Component {
+class SpHeader extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -191,7 +191,7 @@ class SPCoolHeader extends React.Component {
   }
 }
 
-export default withAppContext(SPCoolHeader)
+export default withAppContext(SpHeader)
 
 /**
  * style

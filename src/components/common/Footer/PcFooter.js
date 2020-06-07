@@ -7,7 +7,7 @@ import moment from 'moment'
 import LanguageIcon from '@material-ui/icons/Language'
 import LanguageDropDown from 'src/components/common/LanguageDropDown'
 
-const PCCoolFooter = (props) => {
+const PcFooter = (props) => {
   const { site, fashion, pageName, ...otherProps } = props
   const { articles = [] } = site
   const { items = [], coordinates = [] } = fashion
@@ -134,7 +134,7 @@ const PCCoolFooter = (props) => {
   )
 }
 
-export default withAppContext(PCCoolFooter)
+export default withAppContext(PcFooter)
 
 /**
  * style
