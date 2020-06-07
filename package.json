@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "pagy template 1",
   "author": "ichiki1023",
+  "license": "MIT",
   "scripts": {
     "dev": "next",
     "build": "next build",
