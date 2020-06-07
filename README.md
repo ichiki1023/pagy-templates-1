@@ -5,21 +5,28 @@
  npm install
 ```
 
-### copy env
-```bash
-cp env.sample .env
-```
-
 ## Run
 ### dev
 ```bash
 npm run dev
 ```
 
+### production
+```bash
+npm run build
+npm run start
+```
+
+### static
+```bash
+npm run build
+npm run export
+```
+
 ## Access
 ```
-http://localhost:5000
+http://localhost:3000
 ```
 
 ## License
-MIT
+[MIT licensed](./LICENSE).
