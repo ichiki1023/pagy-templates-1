@@ -28,19 +28,18 @@ const StyledSectionTitle = styled.div`
   }
 `
 
-export default class SectionTitle extends React.Component {
-  static propTypes = {
-    backgroundText: PropTypes.string.isRequired,
-    titleText: PropTypes.string.isRequired,
-  }
-
-  render() {
-    const { backgroundText, titleText, ...props } = this.props
-    return (
-      <StyledSectionTitle {...props}>
-        <h3>{backgroundText}</h3>
-        <span>{titleText}</span>
-      </StyledSectionTitle>
-    )
-  }
+const SectionTitle = ({ backgroundText, titleText, ...props }) => {
+  return (
+    <StyledSectionTitle {...props}>
+      <h3>{backgroundText}</h3>
+      <span>{titleText}</span>
+    </StyledSectionTitle>
+  )
 }
+
+SectionTitle.propTypes = {
+  backgroundText: PropTypes.string.isRequired,
+  titleText: PropTypes.string.isRequired,
+}
+
+export default SectionTitle

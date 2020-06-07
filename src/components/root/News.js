@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import SectionTitle from 'src/components/common/SectionTitle'
-// import ArrowForwardIcon from '@material-ui/icons/ArrowForwardIos'
+import ArrowForwardIcon from '@material-ui/icons/ArrowForwardIos'
 import moment from 'moment'
 
 const Section = styled.div`
@@ -61,18 +61,18 @@ const StyledDescriptionText = styled.p`
   }
 `
 
-// const MoreLink = styled.a`
-//   color: #9b9b9b;
-//   margin-top: calc(50px - 1.5em);
-//   margin-right: 10px;
-//   text-decoration: none;
-//   display: flex;
-//   align-items: center;
-//   justify-content: flex-end;
-// `
-// const StyledArrowForwardIcon = styled(ArrowForwardIcon)`
-//   color: #9b9b9b;
-// `
+const MoreLink = styled.a`
+  color: #9b9b9b;
+  margin-top: calc(50px - 1.5em);
+  margin-right: 10px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+`
+const StyledArrowForwardIcon = styled(ArrowForwardIcon)`
+  color: #9b9b9b;
+`
 
 const News = (props) => {
   const { articles, ...custom } = props
@@ -95,10 +95,10 @@ const News = (props) => {
             )
           })}
         </StyledTable>
-        {/* <MoreLink href={`#`}>
+        <MoreLink href={`#`}>
           一覧を見る
           <StyledArrowForwardIcon />
-        </MoreLink> */}
+        </MoreLink>
       </Contents>
     </Section>
   )

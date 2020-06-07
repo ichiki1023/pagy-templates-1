@@ -16,9 +16,8 @@ const StyledSNSServices = styled(SNSServices)`
   }
 `
 
-export default class Buttons extends React.Component {
-  render() {
-    const { services } = this.props
-    return <StyledSNSServices services={services} iconColor={'gray'} />
-  }
+const Buttons = ({ services }) => {
+  return <StyledSNSServices services={services} iconColor={'gray'} />
 }
+
+export default Buttons
