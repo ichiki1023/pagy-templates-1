@@ -1,0 +1,14 @@
+.slick-slide,
+.slick-slide * {
+  outline: none !important;
+}
+
+.slick-prev {
+  z-index: 100;
+  left: 12px;
+}
+
+.slick-next {
+  z-index: 100;
+  right: 12px;
+}

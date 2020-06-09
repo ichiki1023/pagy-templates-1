@@ -1,0 +1,39 @@
+{
+    "env": {
+        "browser": true,
+        "es2020": true
+    },
+    "extends": [
+        "plugin:react/recommended",
+        "standard",
+        "prettier"
+    ],
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 11,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react",
+        "prettier"
+    ],
+    "parser": "babel-eslint",
+    "settings": {
+        "react": {
+            "version": "detect" // React version. "detect" automatically picks the version you have installed.
+        }
+    },
+    "rules": {
+        "prettier/prettier": [
+            "error",
+            {
+                "singleQuote": true,
+                "semi": false,
+                "trailingComma": "all"
+            }
+        ],
+        "react/prop-types": "off"
+    }
+}
